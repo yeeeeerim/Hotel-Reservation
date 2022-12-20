@@ -1,5 +1,4 @@
-# STUDY-GROUP-ACTIVITY
-패스트캠퍼스교육 스터디활동
+#패스트캠퍼스교육 스터디활동
 
 # ...작성중...
 
@@ -9,17 +8,38 @@
 
 <hr>
 
-### 2주차
+<details>
+    <summary><h3>2주차</h3></summary>
+
 - [ ] MyBatis, JPA 차이 - 우람
 - [ ] Spring, SpringBoot 차이 - 영진
 - [ ] CSR, SSR - 예림
+</details>
+<details>
+    <summary><h3>3주차</h3></summary>
 
-### 3주차
 
-### 4주차
+</details>
 
-### 5주차
+<details>
+    <summary><h3>4주차</h3></summary>
 
-### 6주차- 지금까지한거 정리예정
+
+</details>
+
+<details>
+    <summary><h3>5주차</h3></summary>
+
+
+</details>
+
+<details>
+    <summary><h3>6주차</h3></summary>
+
+</details>
+
+
+
+
 
 
