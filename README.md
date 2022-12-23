@@ -1,6 +1,9 @@
 #패스트캠퍼스교육 스터디활동
 
-# ...작성중...
+# 게시판 프로젝트
+## ERD 
+![image](https://user-images.githubusercontent.com/79129475/209271963-18a01b48-b03c-4115-b60a-0a8dd73ab55a.png)
+
 
 ## 작성법
 
