@@ -22,7 +22,7 @@ public class MainController {
   } // naver.com/query=검색어
 
     @PostMapping("/save/{number}")
-    public ResponseEntity<Boolean> postSave(BoardRequestDTO requestDTO,
+    public ResponseEntity<Boolean> postSave(@RequestBody BoardRequestDTO requestDTO,
                                             @PathVariable String number){
 
         System.out.println(requestDTO);
