@@ -11,7 +11,7 @@ public interface BoardService {
     //TODO: 재우
     public boolean saveBoard(BoardRequestDTO boardRequestDTO);
     //TODO: 우람
-    public BoardResponseDTO updateBoard(BoardRequestDTO boardRequestDTO);
+    public boolean updateBoard(BoardRequestDTO boardRequestDTO);
     //TODO: 예림
 
     public boolean deleteBoard(Long boardRequestDTO);

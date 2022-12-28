@@ -10,11 +10,12 @@ import lombok.ToString;
 @Setter
 @ToString
 public class BoardRequestDTO {
+//request pageNum size
 
+    //response totalPage pageNum(현재페이지) 리스트(데이터)
     private Long id;
     private String title;
     private String content;
-
 
     public static Board toEntity(BoardRequestDTO dto){
         return Board.builder()

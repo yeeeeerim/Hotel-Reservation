@@ -26,5 +26,10 @@ public class Board {
 
     private String content;
 
+    public void modifyTitleAndContent(String title,String content){
+        this.title =title;
+        this.content = content;
+    }
+
 
 }
