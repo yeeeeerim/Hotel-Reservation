@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 public class BoardServiceImpl implements BoardService {
 
     private final BoardRepository boardRepository;
+
     @Override
     public BoardResponseDTO read(Long id) {
         Board board = boardRepository.findById(id)
@@ -27,7 +28,7 @@ public class BoardServiceImpl implements BoardService {
 
     @Override
     public boolean saveBoard(BoardRequestDTO boardRequestDTO) {
-       // boardRepository.save();
+        boardRepository.save(BoardRequestDTO.toEntity(boardRequestDTO));
         return false;
     }
 
@@ -37,9 +38,8 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
-
-    public boolean deleteBoard(Long boardRequestDTO) {
-        boardRepository.deleteById(boardRequestDTO.longValue());
+    public boolean deleteBoard(Long id) {
+        boardRepository.deleteById(id);
 
         return false;
     }

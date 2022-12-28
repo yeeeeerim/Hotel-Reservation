@@ -14,7 +14,7 @@ public interface BoardService {
     public BoardResponseDTO updateBoard(BoardRequestDTO boardRequestDTO);
     //TODO: 예림
 
-    public boolean deleteBoard(BoardRequestDTO boardRequestDTO);
+    public boolean deleteBoard(Long boardRequestDTO);
     //TOdO: 영진
 
 }

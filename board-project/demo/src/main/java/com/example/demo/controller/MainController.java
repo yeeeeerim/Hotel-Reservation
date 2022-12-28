@@ -27,19 +27,17 @@ public class MainController {
   } // naver.com/query=검색어
 
     @PostMapping("/save/{number}")
-
     public ResponseEntity<Boolean> postSave(@RequestBody BoardRequestDTO requestDTO,
-
                                             @PathVariable String number){
 
-        System.out.println(requestDTO);
+        boardService.saveBoard(requestDTO);
         return ResponseEntity.ok(false);
     }
-  // POST, PUT, DELETE
+  // POST(우람), PUT(예림), DELETE(영진)
 
-  @GetMapping("/delete/{id}") //송영진
-  public ResponseEntity<Boolean> getDelete(@RequestParam Long id){
-            return ResponseEntity.ok(boardService.deleteBoard(id));
-    }
+      @DeleteMapping("/delete") //송영진
+      public ResponseEntity<Boolean> getDelete(@RequestParam Long id){
+                return ResponseEntity.ok(boardService.deleteBoard(id));
+      }
 
 }

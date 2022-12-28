@@ -1,15 +1,12 @@
 package com.example.demo.data.request;
 
 
-import com.example.demo.data.response.BoardResponseDTO;
 import com.example.demo.domain.Board;
 import lombok.Builder;
-import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
 @Builder
-@Getter
 @Setter
 @ToString
 public class BoardRequestDTO {
@@ -25,5 +22,17 @@ public class BoardRequestDTO {
                 .title(dto.getTitle())
                 .content(dto.getContent())
                 .build();
+    }
+
+    public Long getId() {
+        return this.id;
+    }
+
+    public String getTitle() {
+        return this.title;
+    }
+
+    public String getContent() {
+        return this.content;
     }
 }
