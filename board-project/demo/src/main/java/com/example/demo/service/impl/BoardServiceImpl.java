@@ -37,9 +37,9 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
-    public boolean deleteBoard(BoardRequestDTO boardRequestDTO) {
 
-        boardRepository.deleteById(boardRequestDTO.getId());
+    public boolean deleteBoard(Long boardRequestDTO) {
+        boardRepository.deleteById(boardRequestDTO.longValue());
 
         return false;
     }
