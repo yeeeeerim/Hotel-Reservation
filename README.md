@@ -1,6 +1,9 @@
 #패스트캠퍼스교육 스터디활동
+swagger- http://localhost:8080/swagger-ui/#/
+# 게시판 프로젝트
+## ERD 
+![image](https://user-images.githubusercontent.com/79129475/209271963-18a01b48-b03c-4115-b60a-0a8dd73ab55a.png)
 
-# ...작성중...
 
 ## 작성법
 
@@ -11,9 +14,9 @@
 <details>
     <summary><h3>2주차</h3></summary>
 
-- [ ] MyBatis, JPA 차이 - 우람
-- [ ] Spring, SpringBoot 차이 - 영진
-- [ ] CSR, SSR - 예림
+- [x] MyBatis, JPA 차이 - 우람
+- [x] Spring, SpringBoot 차이 - 영진
+- [x] CSR, SSR - 예림
 </details>
 <details>
     <summary><h3>3주차</h3></summary>

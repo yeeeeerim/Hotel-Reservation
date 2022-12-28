@@ -13,6 +13,8 @@ public interface BoardService {
     //TODO: 우람
     public BoardResponseDTO updateBoard(BoardRequestDTO boardRequestDTO);
     //TODO: 예림
-    public boolean deleteBoard(Long boardRequestDTO);
-    //TODO: 영진
+
+    public boolean deleteBoard(BoardRequestDTO boardRequestDTO);
+    //TOdO: 영진
+
 }
