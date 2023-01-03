@@ -63,10 +63,13 @@ public class BoardServiceImpl implements BoardService {
         boardRepository.deleteById(id);
         return false;
     }
+
     //영진님 슬랙dm에 있던 코드, 영진 - 메소드를 통해 데이터를 가져옴
+
+
     @Override
     public Page<Board> boardlist(int page){
-        return boardRepository.findAll(PageRequest.of(page, 3, Sort.by(Sort.Direction.DESC, "id")));
+        return boardRepository.findAll(PageRequest.of(page, 3));
     }
 
 

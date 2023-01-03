@@ -2,12 +2,14 @@ package com.example.demo.data.request;
 
 
 import com.example.demo.domain.Board;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Setter;
 import lombok.ToString;
 
 @Builder
 @Setter
+@AllArgsConstructor
 @ToString
 public class BoardRequestDTO {
 //request pageNum size
@@ -35,5 +37,9 @@ public class BoardRequestDTO {
 
     public String getContent() {
         return this.content;
+    }
+
+    public static BoardRequestDTO of(String title, String content){
+        return  new BoardRequestDTO(1L,title,content);
     }
 }

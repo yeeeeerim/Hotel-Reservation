@@ -18,6 +18,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.rmi.server.ExportException;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.data.domain.Page;
 
 @RestController
@@ -68,11 +71,11 @@ public class MainController {
   }
 
     @GetMapping("/list")
-    public Page<Board> getPaging(@RequestParam PageRequestDTO pagedto){
+    public ResponseEntity<List<Board>> getPaging(@RequestParam int page){
+        var list = boardService.boardlist(page)
+                .stream().collect(Collectors.toList());
 
-        int page=pagedto.getPage();
-        return boardService.boardlist(page);
-
+        return ResponseEntity.ok(list);
     }
 
   // 예림 - Controller 요청받아 Service에 데이터요청
