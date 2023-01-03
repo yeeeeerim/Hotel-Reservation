@@ -2,6 +2,8 @@ package com.example.demo.service;
 
 import com.example.demo.data.request.BoardRequestDTO;
 import com.example.demo.data.response.BoardResponseDTO;
+import com.example.demo.domain.Board;
+import org.springframework.data.domain.Page;
 
 public interface BoardService {
 
@@ -15,6 +17,8 @@ public interface BoardService {
     //TODO: 예림
 
     public boolean deleteBoard(Long boardRequestDTO);
+
+    Page<Board> boardlist(int page);
     //TOdO: 영진
 
 }

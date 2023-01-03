@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 
 import com.example.demo.data.request.BoardRequestDTO;
+import com.example.demo.data.request.PageRequestDTO;
 import com.example.demo.data.response.BoardResponseDTO;
 
 import com.example.demo.domain.Board;
@@ -17,6 +18,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.rmi.server.ExportException;
+import org.springframework.data.domain.Page;
 
 @RestController
 @RequiredArgsConstructor
@@ -65,6 +67,13 @@ public class MainController {
             return ResponseEntity.ok(boardService.deleteBoard(id));
   }
 
+    @GetMapping("/list")
+    public Page<Board> getPaging(@RequestParam PageRequestDTO pagedto){
+
+        int page=pagedto.getPage();
+        return boardService.boardlist(page);
+
+    }
 
   // 예림 - Controller 요청받아 Service에 데이터요청
     //우람 - PageDTO
