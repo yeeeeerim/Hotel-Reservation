@@ -8,6 +8,9 @@ import com.example.demo.data.response.BoardResponseDTO;
 import com.example.demo.domain.Board;
 import com.example.demo.service.BoardService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +26,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.data.domain.Page;
 
+@Slf4j
 @RestController
 @RequiredArgsConstructor
 public class MainController {
@@ -70,13 +74,21 @@ public class MainController {
             return ResponseEntity.ok(boardService.deleteBoard(id));
   }
 
-    @GetMapping("/list")
-    public ResponseEntity<List<Board>> getPaging(@RequestParam int page){
-        var list = boardService.boardlist(page)
-                .stream().collect(Collectors.toList());
+@GetMapping("/list")
+public ResponseEntity<List<Board>> getPaging(@PageableDefault(
+        size = 5, sort = "id", direction = Sort.Direction.DESC)
+                                                 Pageable pageable){
+  //page=0&sort=id,ASC
 
-        return ResponseEntity.ok(list);
-    }
+    log.info("pageable.getPageSize() ==> {}",pageable.getPageSize());   // 지정한 size
+    log.info("pageable.getPageNumber() ==> {}",pageable.getPageNumber());   //요청들어온 page=2
+    log.info("pageable.getOffset() ==> {}",pageable.getOffset());   //어디서부터 가져올지
+
+    var list = boardService.boardlist(pageable)
+            .stream().collect(Collectors.toList());
+
+    return ResponseEntity.ok(list);
+}
 
   // 예림 - Controller 요청받아 Service에 데이터요청
     //우람 - PageDTO

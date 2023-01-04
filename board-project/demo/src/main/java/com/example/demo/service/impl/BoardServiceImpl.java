@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
@@ -68,8 +69,8 @@ public class BoardServiceImpl implements BoardService {
 
 
     @Override
-    public Page<Board> boardlist(int page){
-        return boardRepository.findAll(PageRequest.of(page, 3));
+    public Page<Board> boardlist(Pageable pageable){
+        return boardRepository.findAll(pageable);
     }
 
 

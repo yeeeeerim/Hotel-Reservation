@@ -8,7 +8,6 @@ import org.springframework.data.domain.Sort;
 import java.awt.print.Pageable;
 //우람님 dm에 있던 코드
 @Data
-@Builder
 public class PageRequestDTO {
     private int page; //첫번째 페이지
     private int size; //페이지당 데이터수

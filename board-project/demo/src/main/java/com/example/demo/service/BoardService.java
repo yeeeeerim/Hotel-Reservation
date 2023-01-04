@@ -4,6 +4,7 @@ import com.example.demo.data.request.BoardRequestDTO;
 import com.example.demo.data.response.BoardResponseDTO;
 import com.example.demo.domain.Board;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 public interface BoardService {
 
@@ -18,7 +19,7 @@ public interface BoardService {
 
     public boolean deleteBoard(Long boardRequestDTO);
 
-    Page<Board> boardlist(int page);
+    Page<Board> boardlist(Pageable pageable);
     //TOdO: 영진
 
 }
