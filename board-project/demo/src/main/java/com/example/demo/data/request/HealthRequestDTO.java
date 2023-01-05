@@ -6,6 +6,9 @@ import lombok.Getter;
 @Getter
 public class HealthRequestDTO {
     private Long id;
+
+
+
     private String brand_name;
     private String land_number;
     private String road_number;
