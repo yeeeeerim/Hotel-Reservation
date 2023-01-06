@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="VcsDirectoryMappings">
-<<<<<<< HEAD
     <mapping directory="" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/STUDY-GROUP-ACTIVITY" vcs="Git" />
-=======
-    <mapping directory="$PROJECT_DIR$/.." vcs="Git" />
-    <mapping directory="$PROJECT_DIR$" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/demo/src" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/demo/src/main/java/com/example/demo/service/impl" vcs="Git" />
->>>>>>> 57029720b34e40a1d4ce68c898b0b8f94b36cd11
+    <mapping directory="$PROJECT_DIR$/HEALTH-INFO-BATCH" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/board-project" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/board-project/demo/src/main/java/com/example/demo/service/impl" vcs="Git" />
   </component>
 </project>
