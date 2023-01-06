@@ -28,5 +28,12 @@ public class HealthInfo {
 
         private String category;
 
+        public void modifyHealthinfo(String brand_name,String land_number,String road_number, String category){
+                this.brand_name=brand_name;
+                this.land_number=land_number;
+                this.road_number=road_number;
+                this.category=category;
+        }
+
 
 }
