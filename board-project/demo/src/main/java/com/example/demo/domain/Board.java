@@ -3,10 +3,8 @@ package com.example.demo.domain;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Builder
@@ -28,6 +26,9 @@ public class Board {
         this.title =title;
         this.content = content;
     }
+
+    @OneToMany(mappedBy = "board")
+    private List<Reply> reply;
 
 
 }
