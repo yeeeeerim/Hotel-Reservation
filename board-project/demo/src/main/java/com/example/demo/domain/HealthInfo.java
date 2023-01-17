@@ -35,5 +35,6 @@ public class HealthInfo {
                 this.category=category;
         }
 
-
+        @OneToMany(mappedBy = "healthInfo")
+        private List<Reply> replyList;
 }
