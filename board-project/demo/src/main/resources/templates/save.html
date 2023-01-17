@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>게시물 작성폼</title>
+</head>
+
+<style>
+    .layout {
+        width: 500px;
+        margin: 0 auto;
+        margin-top: 40px;
+    }
+</style>
+<body>
+
+<div class="layout">
+    <form th:action="@{/write/post}" method="post">
+        <input type="text" name="brand_name"><br>
+        <input type="text" name="category"><br>
+        <input type="text" name="land_number"><br>
+        <input type="text" name="road_number"><br>
+        <button type="submit">
+            작성
+        </button>
+    </form>
+
+</div>
+
+</body>
+</html>

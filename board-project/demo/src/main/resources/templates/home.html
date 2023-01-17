@@ -1,10 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>게시글 리스트 페이지</title>
 </head>
+
+<style>
+    .layout {
+        width: 500px;
+        margin: 0 auto;
+        margin-top: 40px;
+    }
+</style>
 <body>
-<h3>이건 페이지</h3>
+
+<div class="layout">
+    <button type="submit" onclick="location.href='/write'">글쓰기</button>
+    <table>
+        <thead>
+        <tr>
+            <th>글번호</th>
+            <th>제목</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each = "HealthInfo:${list}">
+            <td th:text="${HealthInfo.id}"></td>
+            <td>
+                <a th:text="${HealthInfo.brand_name}" th:href="@{/review(id=${HealthInfo.id})}"></a>
+            </td>
+            <td th:text="${HealthInfo.land_number}"></td>
+            <td th:text="${HealthInfo.road_number}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
 </body>
 </html>
