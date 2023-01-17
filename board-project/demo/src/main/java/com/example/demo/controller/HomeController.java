@@ -20,7 +20,7 @@ public class HomeController {
 //    private ReviewRepository reviewRepository;
 //    public List<Review> reviewList(){
 //        return reviewRepository.findAll();
-//    }
+//    }@@
 
 
     @GetMapping("/write")
