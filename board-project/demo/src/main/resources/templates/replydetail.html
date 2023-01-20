@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>상세 페이지</title>
+</head>
+<body>
+<tbody>
+<tr th:each = "reply:${list}">
+  <td th:text="${reply.replyId}"></td>
+  <td th:text="${reply.writer}"></td>
+  <td th:text="${reply.content}"></td>
+</tr>
+</tbody>
+</body>
+</html>

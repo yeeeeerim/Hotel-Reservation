@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>상세 페이지</title>
+</head>
+<body>
+    <h1 th:text="${HealthInfo.id}">land_number</h1>
+    <p th:text="${HealthInfo.brand_name}">brand_number</p>
+    <p th:text="${HealthInfo.land_number}">land_number</p>
+    <p th:text="${HealthInfo.road_number}">road_number</p>
+    <p th:text="${HealthInfo.category}">category</p>
+    <button type="submit" onclick="location.href='/reply/write'">댓글쓰기</button>
+    <button type="submit" onclick="location.href='/reply'">댓글보기</button>
+</body>
+</html>

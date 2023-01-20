@@ -1,10 +1,13 @@
 package com.example.demo.service;
 
 import com.example.demo.domain.HealthInfo;
-import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 
 public interface HomeService {
     public void write(HealthInfo healthInfo);
-    public List<HealthInfo> HealthList();
+
+    Page<HealthInfo> healthList(Pageable pageable);
 
 }

@@ -5,6 +5,8 @@ import com.example.demo.repository.HealthRepository;
 import com.example.demo.service.HomeService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,17 +15,16 @@ import java.util.List;
 @RequiredArgsConstructor
 @Slf4j
 public class HomeServiceImpl implements HomeService {
-    HealthRepository healthRepository;
+    private final HealthRepository healthRepository;
 
     @Override
     public void write(HealthInfo healthInfo) {
 
         healthRepository.save(healthInfo);
     }
-
     @Override
-    public List<HealthInfo> HealthList() {
-        List<HealthInfo>list=healthRepository.findAll();
-        return list;
+    public Page<HealthInfo> healthList(Pageable pageable) {
+        return healthRepository.findAll(pageable);
     }
+
 }

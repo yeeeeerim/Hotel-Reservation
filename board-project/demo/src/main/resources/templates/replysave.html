@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>게시물 작성폼</title>
+    <title>댓글 작성폼</title>
 </head>
 
 <style>
@@ -15,11 +15,10 @@
 <body>
 
 <div class="layout">
-    <form th:action="@{/write/post}" method="post">
-        <input type="text" name="brand_name"><br>
-        <input type="text" name="category"><br>
-        <input type="text" name="land_number"><br>
-        <input type="text" name="road_number"><br>
+    <form th:action="@{/reply/wirte/post}" method="post">
+        <input type="text" name="replyId"><br>
+        <input type="text" name="writer"><br>
+        <input type="text" name="content"><br>
         <button type="submit">
             작성
         </button>

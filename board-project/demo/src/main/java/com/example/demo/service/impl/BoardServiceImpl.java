@@ -1,21 +1,15 @@
 package com.example.demo.service.impl;
 
 import com.example.demo.data.request.BoardRequestDTO;
-import com.example.demo.data.request.CommentRequestDTO;
-import com.example.demo.data.request.HealthRequestDTO;
 import com.example.demo.data.response.BoardResponseDTO;
 import com.example.demo.domain.Board;
-import com.example.demo.domain.HealthInfo;
 import com.example.demo.repository.BoardRepository;
 import com.example.demo.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 
 @Service

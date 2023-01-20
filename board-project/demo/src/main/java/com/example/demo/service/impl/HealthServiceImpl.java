@@ -3,7 +3,6 @@ package com.example.demo.service.impl;
 import com.example.demo.data.request.HealthRequestDTO;
 import com.example.demo.data.response.HealthResponseDTO;
 import com.example.demo.domain.HealthInfo;
-import com.example.demo.repository.BoardRepository;
 import com.example.demo.repository.HealthRepository;
 import com.example.demo.service.HealthService;
 import lombok.RequiredArgsConstructor;
@@ -55,5 +54,15 @@ public class HealthServiceImpl implements HealthService {
     public boolean deleteHealth(Long id){
         healthRepository.deleteById(id);
         return true;
+    }
+
+    @Override
+    public List<HealthInfo> HealthList() {
+        List<HealthInfo>list=healthRepository.findAll();
+        return list;
+    }
+    @Override
+    public HealthInfo healthInfoDetail(Long id){
+        return healthRepository.findById(id).get();
     }
 }

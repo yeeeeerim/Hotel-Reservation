@@ -26,9 +26,4 @@ public class Board {
         this.title =title;
         this.content = content;
     }
-
-    @OneToMany(mappedBy = "board")
-    private List<Reply> reply;
-
-
 }

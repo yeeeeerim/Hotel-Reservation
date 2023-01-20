@@ -10,14 +10,16 @@ import java.awt.print.Pageable;
 @Data
 public class PageRequestDTO {
     private int page; //첫번째 페이지
-    private int size; //페이지당 데이터수
+    private int recordSize; //페이지당 게시글 수
+    private int pageSize; // 화면 하단에 출력할 페이지 수
 
     public PageRequestDTO(){
         this.page = 1;
-        this.size = 10;
+        this.recordSize = 10;
+        this.pageSize = 10;
     }
-//    public Pageable getPageable(Sort sort){
-//        return PageRequest.of(page -1, size,sort);
-//
-//    }
+    public int getRecordSize(){
+        return (page - 1) * recordSize;
+    }
+
 }

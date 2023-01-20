@@ -1,32 +1,23 @@
 package com.example.demo.domain;
 
-import com.sun.istack.NotNull;
 import lombok.*;
-import org.hibernate.annotations.CreationTimestamp;
-
 import javax.persistence.*;
-import java.sql.Timestamp;
 
-
-
-@Data
-@Entity(name = "reply")
-@Builder
 @Getter
+@Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+@ToString
 public class Reply {
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long replyId;
-    @NotNull
-    @Column(nullable = false,length = 255)
+    private String writer;
     private String content;
-    @ManyToOne
-    @JoinColumn(name = "id")
-    private Board board;
-    @ManyToOne
-    @JoinColumn(name = "id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "health_id") // healthinfo entity의 테이블 중 어떤 컬럼과 매핑할지 지정하기 위함
+    @ToString.Exclude // 무한루프 방지
     private HealthInfo healthInfo;
-
-    @CreationTimestamp
-    private Timestamp createDate;
 }
