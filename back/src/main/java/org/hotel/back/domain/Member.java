@@ -2,22 +2,32 @@ package org.hotel.back.domain;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
-@Builder
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @ToString
 public class Member {
     @Id
-    String memberEmail;
-    String memberPassword;
-    String memberTellNumber;
-    String memberGender;
-    String memberNickname;
+    private String email;
+    private String password;
+    private String tellNumber;
+    private String Gender;
+    private String nickName;
+
+    @Builder.Default
+    @ElementCollection(fetch = FetchType.LAZY)
+    private Set<MemberRole> roleSet = new HashSet<>();
+
+
+
+    public void addRole(MemberRole memberRole){
+        this.roleSet.add(memberRole);
+    }
+
 }
