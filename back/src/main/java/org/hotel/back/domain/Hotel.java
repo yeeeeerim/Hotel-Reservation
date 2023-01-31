@@ -16,12 +16,12 @@ import javax.persistence.Id;
 public class Hotel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int hotelId;
+    long id;
     String hotelName;
     String cityName;
     String tellNumber;
-    double latitude;
-    double longitude;
+    String latitude;
+    String longitude;
 
 
 }
