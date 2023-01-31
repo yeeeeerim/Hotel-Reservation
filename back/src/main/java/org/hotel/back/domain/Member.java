@@ -15,9 +15,9 @@ import javax.persistence.Id;
 @ToString
 public class Member {
     @Id
-    String member_email;
-    String member_password;
-    String member_tell_number;
-    String member_gender;
-    String member_nickname;
+    String memberEmail;
+    String memberPassword;
+    String memberTellNumber;
+    String memberGender;
+    String memberNickname;
 }

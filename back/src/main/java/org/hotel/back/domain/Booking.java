@@ -16,12 +16,12 @@ import java.time.LocalDateTime;
 public class Booking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int booking_id;
-    int hotel_id;
-    LocalDateTime created_at;
-    LocalDateTime modified_at;
-    int member_id;
-    LocalDateTime check_in;
+    int bookingId;
+    int hotelId;
+    LocalDateTime createdAt;
+    LocalDateTime modifiedAt;
+    int memberId;
+    LocalDateTime checkIn;
     LocalDateTime check_out;
 
 }

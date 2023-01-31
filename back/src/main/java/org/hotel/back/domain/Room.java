@@ -16,11 +16,11 @@ import javax.persistence.Id;
 public class Room {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int room_id;
-    int hotel_id;
-    int room_number;
-    int room_class;
-    int room_price;
-    int room_limit;
+    int roomId;
+    int hotelId;
+    int roomNumber;
+    int roomClass;
+    int roomPrice;
+    int roomLimit;
     String description;
 }

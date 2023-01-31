@@ -16,7 +16,7 @@ import javax.persistence.Id;
 public class Rating {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int rating_id;
-    int hotel_id;
-    String rating_content;
+    int ratingId;
+    int hotelId;
+    String ratingContent;
 }

@@ -16,10 +16,10 @@ import javax.persistence.Id;
 public class HotelImage {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int hotel_image_id;
-    int room_id;
+    int hotelImageId;
+    int roomId;
     int uuid;
-    String created_at;
-    String modified_at;
+    String createdAt;
+    String modifiedAt;
     String image_name;
 }
