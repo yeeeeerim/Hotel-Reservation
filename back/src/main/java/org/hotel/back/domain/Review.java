@@ -16,10 +16,10 @@ import java.time.LocalDateTime;
 public class Review {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int review_id;
-    int hotel_id;
-    String review_content;
-    LocalDateTime created_at;
-    LocalDateTime modified_at;
-    String review_writer;
+    int reviewId;
+    int hotelId;
+    String reviewContent;
+    LocalDateTime createdAt;
+    LocalDateTime modifiedAt;
+    String reviewWriter;
 }
