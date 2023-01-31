@@ -3,6 +3,9 @@ package org.hotel.back.domain;
 import lombok.*;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
 @Builder
@@ -11,6 +14,8 @@ import javax.persistence.Entity;
 @AllArgsConstructor
 @ToString
 public class HotelImage {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     int hotel_image_id;
     int room_id;
     int uuid;
