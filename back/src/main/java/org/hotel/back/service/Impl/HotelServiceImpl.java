@@ -1,9 +1,8 @@
-package org.hotel.back.service.impl;
+package org.hotel.back.service.Impl;
 
 import lombok.RequiredArgsConstructor;
 import org.hotel.back.domain.Hotel;
 import org.hotel.back.dto.request.HotelRequestDTO;
-import org.hotel.back.dto.response.HotelResponseDTO;
 import org.hotel.back.repository.HotelRepository;
 import org.hotel.back.service.HotelService;
 import org.springframework.data.domain.Page;
@@ -17,8 +16,9 @@ public class HotelServiceImpl implements HotelService {
     //호텔 저장
     @Override
     public boolean write(HotelRequestDTO hotelRequestDTO) {
+        Hotel hotel=HotelRequestDTO.toEntity(hotelRequestDTO);
         //요청 데이터를(hotelRequestDTO) hotel객체로 바꿔준다.
-        hotelRepository.save(hotelRequestDTO.toEntity(hotelRequestDTO));
+        hotelRepository.save(hotel);
         return true;
     }
     //호텔 리스트

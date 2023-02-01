@@ -6,6 +6,7 @@ import org.hotel.back.domain.Hotel;
 
 import org.hotel.back.domain.Review;
 import org.hotel.back.dto.request.HotelRequestDTO;
+import org.hotel.back.dto.request.ReviewRequestDTO;
 import org.hotel.back.service.HotelService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -14,6 +15,7 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
@@ -28,20 +30,21 @@ public class HotelController {
 
         return "hotelSave";
     }
-
+//==========호텔 저장==============
     @PostMapping("/hotel/save")
     public String hotelSave(HotelRequestDTO hotelRequestDTO){
         hotelService.write(hotelRequestDTO);
+        System.out.println(hotelRequestDTO);
         return "redirect:/hotel";
     }
 
     @GetMapping("/hotel")
-    public String hotelList(@PageableDefault(page = 0, size = 10,sort="id",direction = Sort.Direction.ASC) Pageable pageable, Model model){
+    public String hotelList(@PageableDefault(page = 0, size = 10,sort="id",direction = Sort.Direction.DESC) Pageable pageable, Model model){
         //서비스에서 생성한 리스트를 list라는 이름으로 반환하겠다.
         Page<Hotel> list =hotelService.hotelList(pageable);
         int nowPage =list.getPageable().getPageNumber()+1;//pageable은 0부터 시작해서 +1을 해줘야 함
-        int startPage=Math.max(nowPage-4,1);//1보다 작은 수면 1을 반환
-        int endPage=Math.min(nowPage+5,list.getTotalPages());
+        int startPage=1;//시작페이지
+        int endPage=list.getTotalPages();//10개씩 자른 페이지
 
 
         model.addAttribute("nowPage",nowPage);
@@ -51,24 +54,26 @@ public class HotelController {
         model.addAttribute("list",list);
         return "hotelMain";
     }
+//========호텔 자세히보기  ============
     @GetMapping("/hotel/detail")
     public String hotelDetail(Model model, Long id){
-        Hotel hotel=hotelService.hotelDetail(id);
-        List<Review> reviewlist =hotel.getReviews();
+        Hotel hotel=hotelService.hotelDetail(id); //호텔 객체를 불러옴 ->service hotelDetail메서드
+        List<Review> reviewlist =hotel.getReviews(); //호텔 객체에서 review 가져와서 넣음(hotelId의 리뷰)
         model.addAttribute("article",hotel);
         model.addAttribute("review",reviewlist);
         return "hotelDetail";
     }
-
+//===========호텔 지우기===============
     @GetMapping("/hotel/delete")
     public String hotelDelete(Long id){
         hotelService.hotelDelete(id);
         return "redirect:/hotel";
     }
+//=============호텔 업데이트==============
     @PostMapping("/hotel/update")
     public String hotelUpdatePost(HotelRequestDTO hotelRequestDTO){
         hotelService.hotelUpdate(hotelRequestDTO);
-        return "redirect:/hotel/detail?id="+hotelRequestDTO.getId();
+        return "redirect:/hotel/detail?id="+hotelRequestDTO.getId(); //숙소정보 업데이트 후 detail=id로 다시 redirect
     }
 
     @GetMapping("/hotel/update")

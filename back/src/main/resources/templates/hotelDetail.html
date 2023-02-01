@@ -32,14 +32,17 @@
         <th>id</th>
         <th>Review Content</th>
         <th>Review Writer</th>
-        <th></th>
+        <th>Created Date</th>
+        <th>Modified Date</th>
+        <th> </th>
+        <th> </th>
     </tr>
     </thead>
 
     <tbody>
     <form th:action="@{/hotel/review/save(id=${article.id})}" method="post">
-        <input class="form-control" placeholder="Review "name="reviewContent" type="text">
-        <input class="form-control" placeholder="Review "name="reviewWriter" type="text">
+        <input class="form-control" placeholder="리뷰 작성자 "name="reviewWriter" type="text">
+        <input class="form-control" placeholder="리뷰를 입력하세요 "name="reviewContent" type="text">
         <button class="btn btn-primary" type="submit">리뷰 작성</button>
     </form>
 
@@ -47,7 +50,9 @@
         <td th:text="${review.id}"></td>
         <td th:text="${review.reviewContent}"></td>
         <td th:text="${review.reviewWriter}"></td>
-        <td><a th:href="@{/hotel/review/delete/(id=${review.id},hotel=${article.id})}">댓글 삭제</a></td>
+        <td th:text="${review.createdDate}"></td>
+        <td th:text="${review.modifiedDate}"></td>
+        <td><a th:href="@{/hotel/review/delete/(id=${review.id},hotelid=${article.id})}">댓글 삭제</a></td>
         <td><a th:href="@{/hotel/review/update(id=${review.id})}">댓글 수정</a></td>
     </tr>
     </tbody>

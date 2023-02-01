@@ -1,8 +1,6 @@
 package org.hotel.back.dto.request;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import org.hotel.back.domain.Hotel;
 import org.hotel.back.domain.Review;
 import org.springframework.data.annotation.CreatedDate;
@@ -16,21 +14,20 @@ import java.time.format.DateTimeFormatter;
 
 @Getter
 @Setter
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
 public class ReviewRequestDTO {
 
-    long id;
+    Long id;
     String reviewContent;
-    LocalDateTime createdAt;
-    LocalDateTime modifiedAt;
     String reviewWriter;
     Hotel hotel;
     public static Review toEntity(ReviewRequestDTO dto){
         return Review.builder()
-                .id(dto.getId())
                 .reviewContent(dto.getReviewContent())
                 .reviewWriter(dto.getReviewWriter())
-                .createdAt(dto.getCreatedAt())
-                .modifiedAt(dto.getModifiedAt())
+                .hotel(dto.getHotel())
                 .build();
     }
 }

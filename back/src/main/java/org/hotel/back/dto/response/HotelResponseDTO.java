@@ -9,7 +9,7 @@ import org.hotel.back.domain.Review;
 @ToString
 @Getter
 public class HotelResponseDTO {
-    long id;
+    Long id;
     String hotelName;
     String cityName;
     String tellNumber;

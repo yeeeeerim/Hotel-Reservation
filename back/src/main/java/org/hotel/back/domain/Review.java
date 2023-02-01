@@ -12,19 +12,15 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class Review {
+public class Review extends BaseTimeEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    long id;
+    Long id;
     String reviewContent;
-    @CreatedDate
-    LocalDateTime createdAt;
-    @LastModifiedDate
-    LocalDateTime modifiedAt;
     String reviewWriter;
     @ToString.Exclude
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "hotelId")
+    @JoinColumn(name = "hotel_id")
     Hotel hotel;
 
     public void updateReview(String reviewContent){

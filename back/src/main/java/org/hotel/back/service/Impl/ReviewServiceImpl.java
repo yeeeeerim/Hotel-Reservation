@@ -1,4 +1,4 @@
-package org.hotel.back.service.impl;
+package org.hotel.back.service.Impl;
 
 import lombok.RequiredArgsConstructor;
 import org.hotel.back.domain.Hotel;
@@ -23,23 +23,16 @@ public class ReviewServiceImpl implements ReviewService {
     public Long saveReview(Long id, ReviewRequestDTO reviewRequestDTO) {
         Hotel hotel = hotelRepository.findById(id).
                 orElseThrow(()->new IllegalArgumentException
-                        ("리뷰 쓰기 실패: 해당 호텔이 존재하지 않습니다." + id));
-        reviewRequestDTO.setHotel(hotel);//해당 호텔 dto에 추가하기
-
+                        ("댓글 쓰기 실패: 해당 게시글이 존재하지 않습니다." + id));
+        reviewRequestDTO.setHotel(hotel);
+        System.out.println(reviewRequestDTO);
         Review review = reviewRequestDTO.toEntity(reviewRequestDTO);
+        System.out.println("=======**===="+review.getHotel());
         reviewRepository.save(review);
-        System.out.println("aaa================================"+review);
         return reviewRequestDTO.getId();
     }
 
-    @Override
-    public ReviewResponseDTO readReview(Long id){
 
-        Review review=reviewRepository.findById
-                (id).orElseThrow(RuntimeException::new);
-        return new ReviewResponseDTO(review);
-
-    }
 
     @Override
     public List<ReviewResponseDTO> findReview(Long id) {
@@ -49,9 +42,18 @@ public class ReviewServiceImpl implements ReviewService {
         return reviews.stream().map(ReviewResponseDTO::new).collect(Collectors.toList());
 
     }
+    @Override
+    public ReviewResponseDTO readReview(Long id){
 
+        Review review=reviewRepository.findById
+                (id).orElseThrow(RuntimeException::new);
+        System.out.println("======="+review);
+        return new ReviewResponseDTO(review);
+
+    }
 
     public Long updateReview(ReviewRequestDTO reviewRequestDTO){
+        System.out.println("****reviewRequestDTO*******  "+reviewRequestDTO);
         Review review=reviewRepository.findById(reviewRequestDTO.getId())
                 .orElseThrow(()-> new IllegalArgumentException("해당 리뷰가 존재하지 않습니다. "));
         review.updateReview(reviewRequestDTO.getReviewContent());

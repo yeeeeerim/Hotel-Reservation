@@ -10,10 +10,8 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 public class ReviewResponseDTO {
-    long id;
+    Long id;
     String reviewContent;
-    LocalDateTime createdAt;
-    LocalDateTime modifiedAt;
     String reviewWriter;
     Long hotelId;
     public static Review toEntity(ReviewRequestDTO dto){
@@ -21,15 +19,11 @@ public class ReviewResponseDTO {
                 .id(dto.getId())
                 .reviewContent(dto.getReviewContent())
                 .reviewWriter(dto.getReviewWriter())
-                .createdAt(dto.getCreatedAt())
-                .modifiedAt(dto.getModifiedAt())
                 .build();
     }
     public ReviewResponseDTO(Review review){
         this.id=review.getId();
         this.reviewContent=review.getReviewContent();
-        this.createdAt=review.getCreatedAt();
-        this.modifiedAt=review.getModifiedAt();
         this.reviewWriter=review.getReviewWriter();
         this.hotelId=review.getHotel().getId();
 

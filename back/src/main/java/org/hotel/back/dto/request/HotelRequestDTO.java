@@ -2,19 +2,21 @@ package org.hotel.back.dto.request;
 
 import lombok.*;
 import org.hotel.back.domain.Hotel;
+import org.hotel.back.domain.Review;
 
 @Builder
 @Setter
-@Getter
 @AllArgsConstructor
 @ToString
+@Getter
 public class HotelRequestDTO {
-    long id;
-    String hotelName;
-    String cityName;
-    String tellNumber;
-    String latitude;
-    String longitude;
+    private Long id;
+    private String hotelName;
+    private String cityName;
+    private String tellNumber;
+    private String latitude;
+    private String longitude;
+    private Review review;
 
     public static Hotel toEntity(HotelRequestDTO hotelRequestDTO){
         return Hotel.builder()
@@ -26,4 +28,5 @@ public class HotelRequestDTO {
                 .longitude(hotelRequestDTO.getLongitude())
                 .build();
     }
+
 }

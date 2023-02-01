@@ -17,14 +17,16 @@ public class ReviewController {
     private final ReviewService reviewService;
     //-----------댓글 삭제
     @GetMapping("/hotel/review/delete")
-    public String reviewDelete(Long id, Long healthid){
+    public String reviewDelete(Long id, Long hotelid){
         reviewService.deleteReview(id);
-        return "redirect:/list/detail?id="+healthid;
+        return "redirect:/hotel/detail?id="+hotelid;
     }
 
     //----------댓글 작성
     @PostMapping("/hotel/review/save")
     public String reviewSave(Long id, ReviewRequestDTO reviewRequestDTO){
+        System.out.println(id);
+        System.out.println(reviewRequestDTO);
         reviewService.saveReview(id,reviewRequestDTO);
         return "redirect:/hotel/detail?id="+id;
     }
@@ -38,6 +40,7 @@ public class ReviewController {
 
     @PostMapping("/hotel/review/update")
     public String reviewUpdatePost(ReviewRequestDTO reviewRequestDTO){
+        System.out.println("----=========***"+reviewRequestDTO);
         long id=reviewService.updateReview(reviewRequestDTO);
         System.out.println(reviewRequestDTO.getReviewContent());
         return "redirect:/hotel/detail?id="+id;
