@@ -6,13 +6,11 @@ import lombok.extern.slf4j.Slf4j;
 import org.hotel.back.data.request.RegisterData;
 import org.hotel.back.service.MemberService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindException;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
@@ -26,7 +24,14 @@ public class MemberController {
 
     private final MemberService memberService;
 
-
+    @GetMapping("/login")
+    public String loginGET(@RequestParam(required = false) String err,
+                           Model model){
+            if (err != null){
+                model.addAttribute("err","err");
+            }
+            return "login";
+    }
 
     @GetMapping("/register")
     public String registerGET(){

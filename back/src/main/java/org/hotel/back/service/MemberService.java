@@ -3,6 +3,7 @@ package org.hotel.back.service;
 
 import lombok.RequiredArgsConstructor;
 import org.hotel.back.data.request.RegisterData;
+import org.hotel.back.domain.Gender;
 import org.hotel.back.domain.Member;
 import org.hotel.back.domain.MemberRole;
 import org.hotel.back.repository.MemberRepository;
@@ -24,10 +25,12 @@ public class MemberService {
      *
      * */
     public boolean registerSave(RegisterData registerData){
+
+
         Member member = Member.builder()
                 .email(registerData.getEmail())
                 .password(passwordEncoder.encode(registerData.getPassword()))
-                .Gender(registerData.getGender())
+                .gender(registerData.getGender().equals("MAN") ? Gender.MAN : Gender.WOMAN)
                 .nickName(registerData.getNickName())
                 .tellNumber(registerData.getTellNumber())
                 .build();
@@ -36,6 +39,14 @@ public class MemberService {
         boolean fail =ObjectUtils.isEmpty(memberRepository.save(member));
 
         return !fail;
+    }
+
+    /**
+     * @param email
+     * @return true/false 있다면 true 없다면 false
+     * */
+    public boolean checkEmail(String email){
+        return memberRepository.existsByEmail(email);
     }
 
 }

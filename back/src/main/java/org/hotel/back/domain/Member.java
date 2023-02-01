@@ -17,7 +17,10 @@ public class Member {
     private String email;
     private String password;
     private String tellNumber;
-    private String Gender;
+
+    @Enumerated(EnumType.STRING)
+    private Gender gender;
+
     private String nickName;
 
     @Builder.Default

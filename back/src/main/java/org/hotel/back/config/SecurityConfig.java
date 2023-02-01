@@ -18,7 +18,10 @@ public class SecurityConfig {
                 auth.anyRequest().permitAll()
         ).csrf()
                 .disable()
-                .build();
+                .formLogin()
+                .loginPage("/login").failureUrl("/login?err=e")
+                .and().
+                build();
     }
 
     @Bean
