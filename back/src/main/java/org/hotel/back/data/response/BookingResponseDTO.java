@@ -2,6 +2,8 @@ package org.hotel.back.data.response;
 
 import lombok.*;
 import org.hotel.back.domain.Booking;
+import org.hotel.back.domain.Hotel;
+import org.hotel.back.domain.Member;
 
 import java.time.LocalDateTime;
 
@@ -12,20 +14,20 @@ import java.time.LocalDateTime;
 @ToString
 public class BookingResponseDTO {
     private Long bookingId;
-    private Long hotelId;
+    private Hotel hotel;
     private LocalDateTime createdAt;
     private LocalDateTime modifiedAt;
-    private Long memberId;
+    private Member member;
     private LocalDateTime checkIn;
     private LocalDateTime check_out;
 
     public Booking toEntity(BookingResponseDTO bookingResponseDTO){
         return Booking.builder()
                 .bookingId(bookingResponseDTO.bookingId)
-                .hotelId(bookingResponseDTO.hotelId)
+                .hotel(bookingResponseDTO.hotel)
                 .createdAt(bookingResponseDTO.createdAt)
                 .modifiedAt(bookingResponseDTO.modifiedAt)
-                .memberId(bookingResponseDTO.memberId)
+                .member(bookingResponseDTO.member)
                 .checkIn(bookingResponseDTO.checkIn)
                 .check_out(bookingResponseDTO.check_out)
                 .build();

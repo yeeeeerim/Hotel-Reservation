@@ -22,4 +22,7 @@ public class HotelImage {
     String createdAt;
     String modifiedAt;
     String image_name;
+
+    public static void main(String[] args) {
+    }
 }

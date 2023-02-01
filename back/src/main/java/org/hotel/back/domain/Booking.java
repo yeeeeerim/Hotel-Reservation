@@ -19,23 +19,23 @@ public class Booking {
     private Long bookingId;
     @ManyToOne
     @JoinColumn(name = "hotelId")
-    private Long hotelId;
+    private Hotel hotel;
     @Column(nullable = false)
     private LocalDateTime createdAt;
     @Column(nullable = false)
     private LocalDateTime modifiedAt;
     @ManyToOne
     @JoinColumn(name = "memberId")
-    private Long memberId;
+    private Member member;
     @Column(nullable = false)
     private LocalDateTime checkIn;
     @Column(nullable = false)
     private LocalDateTime check_out;
 
-    public void modifyBooking(Long hotelId, Long memberId, LocalDateTime checkIn){
-        this.hotelId = hotelId;
+    public void modifyBooking(Hotel hotel, Member member, LocalDateTime checkIn){
+        this.hotel = hotel;
         this.modifiedAt = LocalDateTime.now();
-        this.memberId = memberId;
+        this.member = member;
         this.checkIn = LocalDateTime.now();
         this.check_out = checkIn.plusDays(1);
 

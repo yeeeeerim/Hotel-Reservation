@@ -38,10 +38,10 @@ public class BookingServiceImpl implements BookingService{
 
         return BookingResponseDTO.builder()
                 .bookingId(booking.getBookingId())
-                .hotelId(booking.getHotelId())
+                .hotel(booking.getHotel())
                 .createdAt(booking.getCreatedAt())
                 .modifiedAt(booking.getModifiedAt())
-                .memberId(booking.getMemberId())
+                .member(booking.getMember())
                 .checkIn(booking.getCheckIn())
                 .check_out(booking.getCheck_out())
                 .build();
@@ -65,8 +65,8 @@ public class BookingServiceImpl implements BookingService{
     public boolean modify(BookingRequestDTO bookingRequestDTO) {
         Booking booking = bookingRepository.findById(bookingRequestDTO.getBookingId())
                 .orElseThrow(RuntimeException::new);
-        booking.modifyBooking(bookingRequestDTO.getHotelId()
-                                        ,bookingRequestDTO.getMemberId()
+        booking.modifyBooking(bookingRequestDTO.getHotel()
+                                        ,bookingRequestDTO.getMember()
                                         ,bookingRequestDTO.getCheckIn());
         try {
             bookingRepository.save(booking);

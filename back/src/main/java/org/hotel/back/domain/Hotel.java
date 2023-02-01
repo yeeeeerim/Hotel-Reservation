@@ -15,13 +15,14 @@ import java.util.List;
 public class Hotel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int hotelId;
+    long id;
     String hotelName;
     String cityName;
     String tellNumber;
-    double latitude;
-    double longitude;
+    String latitude;
+    String longitude;
 
-    @OneToMany(cascade = CascadeType.ALL,mappedBy = "hotelId")
+    @Builder.Default
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL,mappedBy = "hotel")
     private List<Booking> bookingList = new ArrayList<>();
 }

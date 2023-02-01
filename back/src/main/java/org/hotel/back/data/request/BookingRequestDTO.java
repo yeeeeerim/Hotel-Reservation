@@ -2,6 +2,8 @@ package org.hotel.back.data.request;
 
 import lombok.*;
 import org.hotel.back.domain.Booking;
+import org.hotel.back.domain.Hotel;
+import org.hotel.back.domain.Member;
 
 import java.time.LocalDateTime;
 
@@ -13,20 +15,20 @@ import java.time.LocalDateTime;
 public class BookingRequestDTO {
 
     private Long bookingId;
-    private Long hotelId;
+    private Hotel hotel;
     private LocalDateTime createdAt;
     private LocalDateTime modifiedAt;
-    private Long memberId;
+    private Member member;
     private LocalDateTime checkIn;
     private LocalDateTime check_out;
 
     public static Booking toEntity(BookingRequestDTO bookingRequestDTO){
         return Booking.builder()
                 .bookingId(bookingRequestDTO.bookingId)
-                .hotelId(bookingRequestDTO.hotelId)
+                .hotel(bookingRequestDTO.hotel)
                 .createdAt(bookingRequestDTO.createdAt)
                 .modifiedAt(bookingRequestDTO.modifiedAt)
-                .memberId(bookingRequestDTO.memberId)
+                .member(bookingRequestDTO.member)
                 .checkIn(bookingRequestDTO.checkIn)
                 .check_out(bookingRequestDTO.check_out)
                 .build();
