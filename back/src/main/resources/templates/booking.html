@@ -9,8 +9,6 @@
 
 <body>
 <form>
-    <input type="hidden" th:name="bookingId" th:value="${booking.bookingId}"></input>
-    <input type="hidden" th:name="hotelId" th:value="${hotel.id}"></input>
     <input type="hidden" th:name="memberId" th:value="${member.id}"></input>
     <h1 th:text="${hotel.id}"></h1>
     <p th:text="${booking.createdAt}"></p>

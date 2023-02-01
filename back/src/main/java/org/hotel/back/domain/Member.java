@@ -16,7 +16,6 @@ import java.util.Set;
 @ToString
 public class Member {
     @Id
-
     private String memberEmail;
     private String memberPassword;
     private String memberTellNumber;

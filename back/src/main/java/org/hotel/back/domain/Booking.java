@@ -10,22 +10,20 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-@Table(name = "Booking")
 public class Booking {
 
-    //hotel 하고 manytone,member하고도 manytoone
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long bookingId;
-    @ManyToOne
-    @JoinColumn(name = "hotelId")
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "hotel_id")
     private Hotel hotel;
     @Column(nullable = false)
     private LocalDateTime createdAt;
     @Column(nullable = false)
     private LocalDateTime modifiedAt;
-    @ManyToOne
-    @JoinColumn(name = "memberId")
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "member_email")
     private Member member;
     @Column(nullable = false)
     private LocalDateTime checkIn;

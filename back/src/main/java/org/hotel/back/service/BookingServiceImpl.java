@@ -11,6 +11,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -23,8 +24,8 @@ public class BookingServiceImpl implements BookingService{
     * 관리자용
     * 예약내용 전체 가져오기.*/
     @Override
-    public Page<Booking> findAll(Pageable pageable) {
-        return bookingRepository.findAll(pageable);
+    public List<Booking> findAll() {
+        return bookingRepository.findAll();
     }
 
     /*booking id를 통해 하나의 예약 정보를 가져온다.
@@ -54,6 +55,11 @@ public class BookingServiceImpl implements BookingService{
     @Override
     public boolean save(BookingRequestDTO bookingRequestDTO) {
         bookingRequestDTO.setCreatedAt(LocalDateTime.now());
+        //null에러 방지.
+        bookingRequestDTO.setCheckIn(LocalDateTime.of(2000,01,01,01,01,01));
+        bookingRequestDTO.setCheck_out(LocalDateTime.of(2000,01,01,01,01,01));
+        bookingRequestDTO.setModifiedAt(LocalDateTime.of(2000,01,01,01,01,01));
+
         bookingRepository.save(BookingRequestDTO.toEntity(bookingRequestDTO));
         System.out.println(bookingRequestDTO); // 콘솔에서 확인용.
         return false;
