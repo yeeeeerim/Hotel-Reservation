@@ -17,8 +17,8 @@ public class HotelServiceImpl implements HotelService {
     //호텔 저장
     @Override
     public boolean write(HotelRequestDTO hotelRequestDTO) {
-        Hotel hotel=hotelRequestDTO.toEntity(hotelRequestDTO); //요청 데이터를(hotelRequestDTO) hotel객체로 바꿔준다.
-        hotelRepository.save(hotel);
+        //요청 데이터를(hotelRequestDTO) hotel객체로 바꿔준다.
+        hotelRepository.save(hotelRequestDTO.toEntity(hotelRequestDTO));
         return true;
     }
     //호텔 리스트

@@ -61,16 +61,19 @@ public class HotelController {
     }
 
     @GetMapping("/hotel/delete")
-    public String hotelDelete(){
-        return "";
+    public String hotelDelete(Long id){
+        hotelService.hotelDelete(id);
+        return "redirect:/hotel";
     }
     @PostMapping("/hotel/update")
-    public String hotelUpdatePost(){
-        return "";
+    public String hotelUpdatePost(HotelRequestDTO hotelRequestDTO){
+        hotelService.hotelUpdate(hotelRequestDTO);
+        return "redirect:/hotel/detail?id="+hotelRequestDTO.getId();
     }
 
     @GetMapping("/hotel/update")
-    public String hotelUpdate(){
-        return "";
+    public String hotelUpdate(Long id, Model model){
+        model.addAttribute("article",hotelService.hotelDetail(id));
+        return "hotelupdate";
     }
 }

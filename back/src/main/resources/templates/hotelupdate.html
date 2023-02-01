@@ -1,10 +1,49 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <title>Document</title>
 </head>
-<body>
+<style>
 
+</style>
+<body>
+<div class="container">
+    <form th:action="@{/hotel/update(id=${article.id})}" method="post">
+        <div class="form-group">
+            <label th:text="${article.id}"></label>
+        </div>
+
+        <div class="form-group">
+            <label for="hotelName">hotelName</label>
+            <input name="hotelName" id="hotelName" class="form-control" type="text" th:value="${article.hotelName}">
+        </div>
+
+        <div class="form-group">
+            <label for="cityName">cityName</label>
+            <input name="cityName" id=cityName class="form-control" type="text" th:value="${article.cityName}">
+        </div>
+        <div class="form-group">
+            <label for="tellNumber">tellNumber</label>
+            <input name="tellNumber" id="tellNumber" class="form-control" type="text" th:value="${article.tellNumber}">
+        </div>
+        <div class="form-group">
+            <label for="latitude">latitude</label>
+            <input name="latitude" id="latitude" class="form-control" type="text" th:value="${article.latitude}">
+        </div>
+        <div class="form-group">
+            <label for="longitude">longitude</label>
+            <input name="longitude" id="longitude" class="form-control" type="text" th:value="${article.longitude}">
+        </div>
+        \
+        <button type="submit" class="btn btn-warning">수정</button>
+    </form>
+</div>
 </body>
 </html>
