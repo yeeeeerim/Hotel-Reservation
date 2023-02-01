@@ -26,7 +26,7 @@ public class HotelController {
     @GetMapping("/hotel/save")//localhost:8080/save
     public String hotelWriteForm(){
 
-        return "hotelsave";
+        return "hotelSave";
     }
 
     @PostMapping("/hotel/save")
@@ -49,7 +49,7 @@ public class HotelController {
         model.addAttribute("endPage",endPage);
 
         model.addAttribute("list",list);
-        return "hotelmain";
+        return "hotelMain";
     }
     @GetMapping("/hotel/detail")
     public String hotelDetail(Model model, Long id){
@@ -57,7 +57,7 @@ public class HotelController {
         List<Review> reviewlist =hotel.getReviews();
         model.addAttribute("article",hotel);
         model.addAttribute("review",reviewlist);
-        return "hoteldetail";
+        return "hotelDetail";
     }
 
     @GetMapping("/hotel/delete")
@@ -74,6 +74,6 @@ public class HotelController {
     @GetMapping("/hotel/update")
     public String hotelUpdate(Long id, Model model){
         model.addAttribute("article",hotelService.hotelDetail(id));
-        return "hotelupdate";
+        return "hotelUpdate";
     }
 }

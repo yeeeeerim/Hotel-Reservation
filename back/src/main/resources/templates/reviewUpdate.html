@@ -17,7 +17,7 @@
 <div class="layout">
   <form th:action="@{/hotel/review/update(id=${review.id})}" method="post">
     <p th:text="${review.id}"></p>
-    <input class="form-control" name="content" type="text" th:value="${review.content}">
+    <input class="form-control" name="content" type="text" th:value="${review.reviewContent}">
     <button class="btn btn-warning" type="submit">리뷰 수정</button>
   </form>
 </div>
