@@ -49,7 +49,7 @@ public class MemberDTO extends User {
                     member.getPassword(),
                     member.getTellNumber(),
                     member.getRoleSet().stream().map(memberRole
-                                    -> new SimpleGrantedAuthority(memberRole.getRole())).
+                                    -> new SimpleGrantedAuthority("ROLE_"+memberRole.getRole())).
                             collect(Collectors.toList()),
                     member.getGender(),
                     member.getNickName()

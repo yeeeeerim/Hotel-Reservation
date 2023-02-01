@@ -1,6 +1,7 @@
 package org.hotel.back.service.security;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.hotel.back.data.dto.MemberDTO;
 import org.hotel.back.domain.Member;
 import org.hotel.back.repository.MemberRepository;
@@ -10,6 +11,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
+@Slf4j
 @RequiredArgsConstructor
 public class MemberDetailsService implements UserDetailsService {
     private final MemberRepository memberRepository;
@@ -17,7 +19,7 @@ public class MemberDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Member member = memberRepository.getMember(username).orElseThrow(() -> new UsernameNotFoundException("없는 유저"));
-
+        log.info("=>>> Member {}",member);
         return MemberDTO.toDTO(member);
     }
 }
