@@ -1,6 +1,8 @@
 package org.hotel.back.config;
 
 
+import lombok.RequiredArgsConstructor;
+import org.hotel.back.service.security.MemberDetailsService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -9,7 +11,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
+@RequiredArgsConstructor
 public class SecurityConfig {
+
+    private final MemberDetailsService memberDetailsService;
 
 
     @Bean
@@ -19,9 +24,12 @@ public class SecurityConfig {
         ).csrf()
                 .disable()
                 .formLogin()
-                .loginPage("/login").failureUrl("/login?err=e")
-                .and().
-                build();
+                .loginPage("/login")
+                .defaultSuccessUrl("/main")
+                .failureUrl("/login?err=e")
+                .and()
+                .userDetailsService(memberDetailsService)
+                                .build();
     }
 
     @Bean

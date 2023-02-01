@@ -16,7 +16,7 @@ public class MemberDataController {
 
 
     /**
-     * @param email을 통해 해당 이메일이 존재하는지를 확인한다.
+     * @param email 을 통해 해당 이메일이 존재하는지를 확인한다.
      * @apiNote 만약 있으면 false를 없다면 true를 반환함 true를 반환한다면 그 이메일을 사용해도됨
      * */
 
