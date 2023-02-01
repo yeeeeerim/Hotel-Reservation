@@ -2,10 +2,9 @@ package org.hotel.back.domain;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Builder
@@ -23,5 +22,6 @@ public class Hotel {
     double latitude;
     double longitude;
 
-
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "hotelId")
+    private List<Booking> bookingList = new ArrayList<>();
 }

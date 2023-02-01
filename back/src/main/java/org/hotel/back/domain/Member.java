@@ -20,4 +20,6 @@ public class Member {
     String memberTellNumber;
     String memberGender;
     String memberNickname;
+
+
 }
