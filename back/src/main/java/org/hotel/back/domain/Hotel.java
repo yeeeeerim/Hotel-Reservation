@@ -2,10 +2,9 @@ package org.hotel.back.domain;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Builder
@@ -13,15 +12,26 @@ import javax.persistence.Id;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
+@Setter
 public class Hotel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    long id;
+    Long id;
     String hotelName;
     String cityName;
     String tellNumber;
     String latitude;
     String longitude;
+    @Builder.Default
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "hotel")
+    private List<Review> reviews = new ArrayList<>();
 
+    public void modifyHotel(String hotelName, String cityName, String tellNumber, String latitude, String longitude){
+        this.hotelName=hotelName;
+        this.cityName=cityName;
+        this.tellNumber=tellNumber;
+        this.latitude=latitude;
+        this.longitude=longitude;
+    }
 
 }

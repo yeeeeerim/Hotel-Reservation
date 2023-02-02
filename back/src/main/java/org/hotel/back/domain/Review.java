@@ -1,11 +1,10 @@
 package org.hotel.back.domain;
 
 import lombok.*;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 @Entity
 @Builder
@@ -13,13 +12,18 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class Review {
+public class Review extends BaseTimeEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int reviewId;
-    int hotelId;
+    Long id;
     String reviewContent;
-    LocalDateTime createdAt;
-    LocalDateTime modifiedAt;
     String reviewWriter;
+    @ToString.Exclude
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "hotel_id")
+    Hotel hotel;
+
+    public void updateReview(String reviewContent){
+        this.reviewContent=reviewContent;
+    }
 }
