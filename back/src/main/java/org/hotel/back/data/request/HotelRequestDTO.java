@@ -1,4 +1,4 @@
-package org.hotel.back.dto.request;
+package org.hotel.back.data.request;
 
 import lombok.*;
 import org.hotel.back.domain.Hotel;

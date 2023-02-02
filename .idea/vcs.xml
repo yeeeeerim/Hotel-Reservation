@@ -2,8 +2,5 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/HEALTH-INFO-BATCH" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/board-project" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/board-project/demo/src/main/java/com/example/demo/service/impl" vcs="Git" />
   </component>
 </project>

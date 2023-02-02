@@ -1,8 +1,7 @@
 package org.hotel.back.service;
 
 import org.hotel.back.domain.Hotel;
-import org.hotel.back.dto.request.HotelRequestDTO;
-import org.hotel.back.dto.response.HotelResponseDTO;
+import org.hotel.back.data.request.HotelRequestDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 

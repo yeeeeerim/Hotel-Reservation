@@ -13,14 +13,12 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class RoomImage {
+public class RoomImage extends BaseTimeEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int roomImageId;
     int roomId;
     int uuid;
-    LocalDateTime createdAt;
-    LocalDateTime modifiedAt;
     int roomImageName;
 
 }

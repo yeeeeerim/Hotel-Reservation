@@ -2,7 +2,7 @@ package org.hotel.back.service.Impl;
 
 import lombok.RequiredArgsConstructor;
 import org.hotel.back.domain.Hotel;
-import org.hotel.back.dto.request.HotelRequestDTO;
+import org.hotel.back.data.request.HotelRequestDTO;
 import org.hotel.back.repository.HotelRepository;
 import org.hotel.back.service.HotelService;
 import org.springframework.data.domain.Page;

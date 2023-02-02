@@ -13,7 +13,10 @@
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="6d2b8566-f7e3-473d-8382-11757b0dd11b">
-      <console name="Connection" type="STANDARD" schema="board" session="Main"><![CDATA[select * from health_info]]></console>
+      <console name="Connection" type="STANDARD" schema="study" session="Main"><![CDATA[use study;
+select * from health_info;]]></console>
+      <console name="Connection 1" type="STANDARD" schema="study" session="Main"><![CDATA[use study;
+select * from study.booking]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">
@@ -29,6 +32,9 @@
       </filter>
     </filter-actions>
     <filter-actions connection-id="6d2b8566-f7e3-473d-8382-11757b0dd11b" dataset="board.health_info" active-filter-id="" />
+    <filter-actions connection-id="6d2b8566-f7e3-473d-8382-11757b0dd11b" dataset="study.batch_job_execution_context" active-filter-id="" />
+    <filter-actions connection-id="6d2b8566-f7e3-473d-8382-11757b0dd11b" dataset="study.booking" active-filter-id="" />
+    <filter-actions connection-id="6d2b8566-f7e3-473d-8382-11757b0dd11b" dataset="study.batch_step_execution_context" active-filter-id="" />
   </component>
   <component name="DBNavigator.Project.ExecutionManager">
     <retain-sticky-names value="false" />
