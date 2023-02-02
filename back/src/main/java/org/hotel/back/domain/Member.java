@@ -16,11 +16,13 @@ import java.util.Set;
 @ToString
 public class Member {
     @Id
-    private String memberEmail;
-    private String memberPassword;
-    private String memberTellNumber;
-    private String memberGender;
-    private String memberNickname;
+    private String email;
+    private String password;
+    private String tellNumber;
+
+    @Enumerated(EnumType.STRING)
+    private Gender gender;
+    private String nickName;
 
     @Builder.Default
     @ElementCollection(fetch = FetchType.LAZY)

@@ -1,4 +1,15 @@
 package org.hotel.back.domain;
-enum MemberRole{
-    ROLE_USER,ROLE_ADMIN,ROLE_OWNER
+public enum MemberRole{
+    ROLE_USER("USER"),ROLE_ADMIN("ADMIN"),ROLE_OWNER("OWNER");
+
+
+    private final String role;
+
+    MemberRole(String role){
+        this.role =role;
+    }
+
+    public String getRole(){
+        return this.role;
+    }
 }

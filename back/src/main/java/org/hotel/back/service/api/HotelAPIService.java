@@ -45,9 +45,7 @@ public class HotelAPIService {
                 String.class
         );
 
-     //   System.out.println(responseEntity.getBody());
         HotelResponseData data = parser(responseEntity.getBody());
-      //  System.out.println(data);
         return data;
     }
 

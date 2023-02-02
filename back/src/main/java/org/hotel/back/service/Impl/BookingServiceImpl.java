@@ -1,4 +1,4 @@
-package org.hotel.back.service;
+package org.hotel.back.service.Impl;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -6,6 +6,7 @@ import org.hotel.back.data.request.BookingRequestDTO;
 import org.hotel.back.data.response.BookingResponseDTO;
 import org.hotel.back.domain.Booking;
 import org.hotel.back.repository.BookingRepository;
+import org.hotel.back.service.BookingService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -16,7 +17,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 @Slf4j
-public class BookingServiceImpl implements BookingService{
+public class BookingServiceImpl implements BookingService {
 
     private final BookingRepository bookingRepository;
 

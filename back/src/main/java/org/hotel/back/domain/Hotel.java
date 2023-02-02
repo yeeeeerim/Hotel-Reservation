@@ -12,17 +12,30 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
+@Setter
 public class Hotel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    long id;
+    Long id;
     String hotelName;
     String cityName;
     String tellNumber;
     String latitude;
     String longitude;
+    @Builder.Default
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "hotel")
+    private List<Review> reviews = new ArrayList<>();
 
     @Builder.Default
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL,mappedBy = "hotel")
     private List<Booking> bookingList = new ArrayList<>();
+
+    public void modifyHotel(String hotelName, String cityName, String tellNumber, String latitude, String longitude){
+        this.hotelName=hotelName;
+        this.cityName=cityName;
+        this.tellNumber=tellNumber;
+        this.latitude=latitude;
+        this.longitude=longitude;
+    }
+
 }

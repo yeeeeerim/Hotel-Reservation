@@ -1,15 +1,22 @@
-package org.hotel.back.contoller;
+package org.hotel.back.controller;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.hotel.back.data.request.BookingRequestDTO;
 import org.hotel.back.data.response.BookingResponseDTO;
+import org.hotel.back.domain.Gender;
+import org.hotel.back.domain.Hotel;
+import org.hotel.back.domain.Member;
 import org.hotel.back.repository.BookingRepository;
 import org.hotel.back.service.BookingService;
+import org.hotel.back.service.HotelService;
+import org.hotel.back.service.MemberService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDateTime;
 
 @RequiredArgsConstructor
 @Controller
@@ -17,6 +24,9 @@ import org.springframework.web.bind.annotation.*;
 public class BookingContoller {
 
     private final BookingService bookingService;
+    private final HotelService hotelService;
+    private final MemberService memberService;
+
 
     /*view 예약된 정보 조회*/
     @GetMapping("/booking")
@@ -30,10 +40,33 @@ public class BookingContoller {
     /*view - 예약하기 버튼으로 수행되는 저장
     * requestDTO의 setter를 통해 바인딩 된 form데이터 저장
     * prg패턴으로 예약완료된 페이지 보여줌. */
-    @PostMapping("/hotel/detail/save")
-    public String bookingSave(@RequestBody BookingRequestDTO bookingRequestDTO){
+    @GetMapping("/booking/save")
+    public void bookingSave(@RequestParam Long id){
+        //호텔 객체에 id값으로 조회된 호텔 불러오기
+        Hotel hotel = hotelService.hotelDetail(id);
+        //멤버 객체 불러와야하지만 임시로 멤버 객체 생성.
+        Member member = Member.builder()
+                .email("test1")
+                .password("test1")
+                .tellNumber("011-0202-0202")
+                .gender(Gender.WOMAN)
+                .nickName("mic")
+                .build();
+
+        //request 객체 생성하여 전달.
+        BookingRequestDTO bookingRequestDTO = BookingRequestDTO.builder()
+                .hotel(hotel)
+                .member(member)
+                .createdAt(LocalDateTime.now())
+                .modifiedAt(LocalDateTime.of(2000,01,01,01,01,01))
+                .checkIn(LocalDateTime.of(2000,01,01,01,01,01))
+                .check_out(LocalDateTime.of(2000,01,01,01,01,01))
+                .build();
+
+        //null에러 방지를 위해 localdateTime 기본값 입력.
+
         bookingService.save(bookingRequestDTO);
-        return "redirect:/booking";
+       /* return "redirect:/booing";*/
     }
 
 
