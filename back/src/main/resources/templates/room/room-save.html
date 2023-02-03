@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>입력항목 예제1</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+</head>
+<body>
+
+<div class="container">
+  <form name="f" method="post">
+
+    <div class="col-sm-12 pt-3">
+      <div class="card">
+        <div class="card-header card-header-primary">
+          <h4 class="card-title"><i class="fas fa-chess-queen"></i>&nbsp&nbsp 객실 등록하기</h4>
+          <p class="card-catagory"></p>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table">
+              <tbody>
+              <tr style="line-height:32px;">
+                <td>관리자 ID</td>
+                <td>
+                  <input type="text" name="admin_id" class="form-control" value="" readonly>
+                </td>
+                <td>관리자 이름</td>
+                <td>
+                  <input type="text" name="admin_name" class="form-control" value="">
+                </td>
+              </tr>
+              <tr>
+                <td>관리자 비밀번호</td>
+                <td>
+                  <input type="password" name="admin_passwd1" class="form-control" maxlength="10" value="">
+                </td>
+                <td>관리자 비밀번호 확인</td>
+                <td>
+                  <input type="password" name="admin_passwd2" class="form-control" maxlength="10" value="">
+                </td>
+              </tr>
+              <tr>
+                <td>전화번호</td>
+                <td>
+                  <input type="tel" name="tel" class="form-control" value="">
+                </td>
+                <td>팩스</td>
+                <td>
+                  <input type="tel" name="fax" class="form-control" value="">
+                </td>
+              </tr>
+              <tr>
+                <td>우편번호</td>
+                <td>
+                  <input type="text" name="post1" id="post1" size="5" class="form-control" readonly value="" style="display:inline-block;width:100px;">
+                  <i class="fas fa-search" onclick="sample6_execDaumPostcode()" style="cursor:pointer;font-size:24px;"></i>
+                </td>
+                <td>HP</td>
+                <td><input type="tel" name="hp" class="form-control" value=""></td>
+              </tr>
+              <tr>
+                <td>주소</td>
+                <td colspan="3">
+                  <input type="text" name="address1" id="address1" class="form-control mb-3" value="">
+                  <input type="text" name="address2" id="address2" class="form-control" value="">
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="pt-3"></div>
+
+      <div class="card">
+        <div class="card-header"><i class="fas fa-chess-rook"></i>&nbsp&nbsp 이미지 저장</div>
+        <div class="card-body">
+          <table class="table">
+            <tbody>
+            <tr style="line-height:32px;">
+              <td>기본 변경값</td>
+              <td>
+                <input type="text" name="gps_radius" class="form-control text-right" maxlength="3" size="3" value="" style="display:inline-block;width:100px;"> Km
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+
+  </form>
+
+  <div class="text-center mt-3">
+    <button type="button" class="btn btn-success">변경하기</button>
+    <button type="button" class="btn btn-info">다시쓰기</button>
+  </div>
+</div>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<script>
+
+</script>
+</body>
+</html>
