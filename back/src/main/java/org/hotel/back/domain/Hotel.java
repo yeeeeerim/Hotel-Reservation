@@ -4,7 +4,9 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Builder
@@ -30,12 +32,24 @@ public class Hotel {
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL,mappedBy = "hotel")
     private List<Booking> bookingList = new ArrayList<>();
 
+
+    @ToString.Exclude
+    @Builder.Default
+    @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL,orphanRemoval = true)
+    private Set<Room> roomSet = new HashSet<>();
+
     public void modifyHotel(String hotelName, String cityName, String tellNumber, String latitude, String longitude){
         this.hotelName=hotelName;
         this.cityName=cityName;
         this.tellNumber=tellNumber;
         this.latitude=latitude;
         this.longitude=longitude;
+    }
+
+
+    public void addRoom(Room room){
+
+        this.roomSet.add(room);
     }
 
 }
