@@ -2,10 +2,7 @@ package org.hotel.back.domain;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @Builder
@@ -16,8 +13,11 @@ import javax.persistence.Id;
 public class HotelImage {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int hotelImageId;
-    int roomId;
+    private Long id;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "hotel_id")
+    private Hotel hotel;
     int uuid;
     String createdAt;
     String modifiedAt;

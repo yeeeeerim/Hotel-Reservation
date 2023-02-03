@@ -22,8 +22,9 @@ public class RoomImageController {
 
         private final RoomService roomService;
 
+        //
         //저장한 걸 바로 화면에 뿌리려고 리턴 list
-        @PostMapping(value = "/room/image", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+        @PostMapping(value = "/image", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
         public ResponseEntity<List<FileDTO>> saveFile(UploadDTO dto){
                 var response = roomService.upload(dto);
                 if(ObjectUtils.isEmpty(response)){
@@ -32,7 +33,7 @@ public class RoomImageController {
                 return ResponseEntity.ok(response);
         }
 
-        @GetMapping("/view")
+        @GetMapping("/view")    //여기에 요청 넣는 거에요
         public ResponseEntity<Resource> viewFile(@RequestParam String fileName){
                 var response = roomService.viewFile(fileName);
                 if(ObjectUtils.isEmpty(response)){

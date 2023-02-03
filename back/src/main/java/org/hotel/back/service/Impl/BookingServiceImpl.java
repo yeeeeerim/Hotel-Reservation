@@ -39,13 +39,7 @@ public class BookingServiceImpl implements BookingService {
                 .orElseThrow(IllegalArgumentException::new);
 
         return BookingResponseDTO.builder()
-                .bookingId(booking.getBookingId())
-                .hotel(booking.getHotel())
-                .createdAt(booking.getCreatedAt())
-                .modifiedAt(booking.getModifiedAt())
-                .member(booking.getMember())
-                .checkIn(booking.getCheckIn())
-                .check_out(booking.getCheck_out())
+
                 .build();
     }
 
@@ -61,7 +55,7 @@ public class BookingServiceImpl implements BookingService {
         bookingRequestDTO.setCheck_out(LocalDateTime.of(2000,01,01,01,01,01));
         bookingRequestDTO.setModifiedAt(LocalDateTime.of(2000,01,01,01,01,01));
 
-        bookingRepository.save(BookingRequestDTO.toEntity(bookingRequestDTO));
+    //    bookingRepository.save(BookingRequestDTO.toEntity(bookingRequestDTO));
         System.out.println(bookingRequestDTO); // 콘솔에서 확인용.
         return false;
     }
@@ -72,9 +66,7 @@ public class BookingServiceImpl implements BookingService {
     public boolean modify(BookingRequestDTO bookingRequestDTO) {
         Booking booking = bookingRepository.findById(bookingRequestDTO.getBookingId())
                 .orElseThrow(RuntimeException::new);
-        booking.modifyBooking(bookingRequestDTO.getHotel()
-                                        ,bookingRequestDTO.getMember()
-                                        ,bookingRequestDTO.getCheckIn());
+
         try {
             bookingRepository.save(booking);
         }catch (Exception e){
