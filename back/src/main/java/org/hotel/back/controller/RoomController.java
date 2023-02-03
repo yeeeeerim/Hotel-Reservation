@@ -17,10 +17,10 @@ public class RoomController {
 
     @GetMapping("/room/save")
     public String roomSaveGET(RoomDTO roomDTO){
-        return "room-save";
+        return "/room/room-save";
     }
 
-    @PostMapping("/room/save")
+    @PostMapping("/room/saved")
     public String roomSavePOST(RoomDTO roomDTO){
             roomService.save(roomDTO);
              return "redirect:/room/save";

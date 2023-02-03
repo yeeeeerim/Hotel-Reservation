@@ -21,16 +21,5 @@ public class BookingResponseDTO {
     private LocalDateTime checkIn;
     private LocalDateTime check_out;
 
-    public Booking toEntity(BookingResponseDTO bookingResponseDTO){
-        return Booking.builder()
-                .bookingId(bookingResponseDTO.bookingId)
-                .hotel(bookingResponseDTO.hotel)
-                .createdAt(bookingResponseDTO.createdAt)
-                .modifiedAt(bookingResponseDTO.modifiedAt)
-                .member(bookingResponseDTO.member)
-                .checkIn(bookingResponseDTO.checkIn)
-                .check_out(bookingResponseDTO.check_out)
-                .build();
-    }
 
 }

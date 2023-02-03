@@ -35,7 +35,7 @@ public class Hotel {
 
     @ToString.Exclude
     @Builder.Default
-    @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL,orphanRemoval = true)
+    @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL,orphanRemoval = true,mappedBy = "hotel")
     private Set<Room> roomSet = new HashSet<>();
 
     public void modifyHotel(String hotelName, String cityName, String tellNumber, String latitude, String longitude){

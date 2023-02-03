@@ -17,8 +17,6 @@ import java.util.List;
 @AllArgsConstructor
 public class RoomDTO {
 
-    private String name;
-
     private Hotel hotel;    //호텔
 
     private String roomNumber;  //방번호

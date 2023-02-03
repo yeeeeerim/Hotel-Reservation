@@ -10,11 +10,12 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
+@Table(name = "room_image")
 public class RoomImage extends BaseTimeEntity{
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String name;
 
+
+    @Id
+    private String name;
 
     @ToString.Exclude
     @ManyToOne(fetch = FetchType.LAZY)

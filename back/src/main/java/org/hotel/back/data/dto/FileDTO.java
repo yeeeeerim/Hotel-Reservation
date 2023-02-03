@@ -11,4 +11,9 @@ import lombok.*;
 public class FileDTO {
     private String uuid;
     private String fileName;
+
+
+    public String getLink(){
+        return uuid+"_"+fileName;
+    }
 }

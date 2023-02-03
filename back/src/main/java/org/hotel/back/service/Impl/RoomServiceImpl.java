@@ -116,10 +116,11 @@ public class RoomServiceImpl implements RoomService {
                         .roomLimit(dto.getRoomLimit())
                         .roomNumber(dto.getRoomNumber())
                         .roomClass(dto.getRoomClass())
-                        .hotelId(dto.getHotelId())
                         .build();
 
-                dto.getFileNames().forEach(room::addImage);
+                if(!dto.getFileNames().isEmpty()){
+                    dto.getFileNames().forEach(room::addImage);
+                   }
                 return room;
      }
      protected RoomDTO toDTO(Room room) {
