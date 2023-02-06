@@ -11,13 +11,14 @@ import javax.persistence.ManyToOne;
 import java.util.List;
 
 @Builder
+@ToString
 @Setter
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
 public class RoomDTO {
+    private Long id;
 
-    private Hotel hotel;    //호텔
 
     private String roomNumber;  //방번호
 

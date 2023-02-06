@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -46,6 +47,11 @@ public class RoomImageController {
         public Map<String,Boolean> deleteFile(@RequestParam String fileName){
 
                 return roomService.removeFile(fileName);
+        }
+
+        @ExceptionHandler(FileNotFoundException.class)
+        public ResponseEntity<Resource> errorImage(){
+                return ResponseEntity.ok(roomService.viewFile("404.jpg").getResource());
         }
 
 

@@ -49,4 +49,22 @@ public class Room {
                             .room(this)
                     .build());
     }
+
+    /**
+     * @param roomPrice 첫번째
+     * @param description 두번째
+     * */
+    public void changeRoomInfo(String roomPrice,String description){
+            this.roomPrice = roomPrice;
+            this.description = description;
+
+    }
+
+    //참조삭제
+    public void imageInit(){
+        this.roomImage.forEach(roomImage1 -> roomImage1.changeReference(null));
+
+        this.roomImage.clear();
+    }
+
 }

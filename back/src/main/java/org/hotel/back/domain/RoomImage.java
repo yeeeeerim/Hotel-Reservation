@@ -22,4 +22,9 @@ public class RoomImage extends BaseTimeEntity{
     @JoinColumn(name = "room_id")
     private Room room;
     //C:\lecture_homework\oneToy\proj\STUDY-GROUP-ACTIVITY\back\temp
+
+
+    public void changeReference(Room room){
+        this.room = room;
+    }
 }

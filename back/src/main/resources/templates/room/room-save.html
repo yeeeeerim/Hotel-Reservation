@@ -10,7 +10,7 @@
 <body>
 
 <div class="container">
-  <form action="/room/save" method="post" >
+  <form action="/room/save" method="post" id="form-info" >
 
     <div class="col-sm-12 pt-3">
       <div class="card">
@@ -70,29 +70,32 @@
           <table class="table">
             <tbody>
             <tr style="line-height:32px;">
-              <td>이미지 첨부</td>
+              <td colspan="4">이미지 첨부</td>
               <td>
                  파일 <input type="file" name="files" class="form-control" multiple>
-                <input type="button" class="btn-upload-upload btn-info" id="btn-upload" style="margin-top: 10px">임시저장</input>
+                <input type="button" class="btn-upload-upload btn-info" id="btn-upload" style="margin-top: 10px" value="임시저장"></input>
               </td>
             </tr>
+
+            </tbody>
+          </table>
+          <table>
             <tr>
               <td class="image">
 
               </td>
             </tr>
-            </tbody>
           </table>
         </div>
       </div>
 
     </div>
-
+    <input type="hidden" value="1" name="hotelId"/>
   </form>
 
   <div class="text-center mt-3">
-    <button type="button" class="btn btn-success">변경하기</button>
-    <button type="button" class="btn btn-info">다시쓰기</button>
+    <input type="button" value="객실저장"class="btn btn-success" id="form-submit" >
+    <input type="button" value="뒤로가기" class="btn btn-info" id="form-back">
   </div>
 </div>
 
@@ -118,7 +121,20 @@
 
          return response.data
        }
+      async function deleteFile(fileName,obj){
 
+          const response = await axios.delete(`/delete?fileName=`+fileName)
+          if(response != null){
+              obj.closest('.card-temp').remove()
+          }
+          return response.data;
+      }
+      async function deleteBack(fileName){
+
+        const response = await axios.delete(`/delete?fileName=`+fileName)
+
+        return response.data;
+      }
        $('#btn-upload').click(function (){
          const formData = new FormData(); //이게 위에 함수에 넣은 데이터에요
 
@@ -136,13 +152,45 @@
                    for(const file of result){ //반환타입이 List<DTO>라서
                      console.log(file.link) //거기서 데이터를 뽑는 거에요 dto.get떙떙
                      const imgSrc = "/view?fileName="+file.link
-                     $('.image').append(`<img src='${imgSrc}' width="200" height="140" data-src='${file.link}'/>`)
+                     $('.image').append(`
+                       <div class="card-temp" className="card" style="width: 200px; display: inline-block; box-shadow: 5px 5px 5px;">
+                         <img src='${imgSrc}' width="200" height="140" data-src='${file.link}'/>
+                           <div className="card-body">
+                             <button type="button" className="btn-sm btn-danger" class="btn-sm btn-danger" onclick="javascript:deleteFile('${file.link}',this)">x</button>
+                           </div>
+                       </div>
+                    `)
                    }              //여기 그래서 이 태그에 이미지가 출력돼요
                  }).catch(e => {
 
          })
        })
 
+      $('#form-submit').click(function (e){
+            e.preventDefault()
+            e.stopPropagation()
+
+          const fileName =$('.image').children('img')
+
+         for(const name of fileName){
+           $('#form-info').append(`
+            <input type="hidden" name="fileNames" value="${name.getAttribute("data-src")}"/>`)
+         }
+
+         $('#form-info').submit()
+      })
+
+
+    $('#form-back').click(function(){
+
+        const fileName =$('.image').children('div').children('img')
+
+        for(const name of fileName){
+              deleteBack(name.getAttribute("data-src"))
+        }
+
+      window.history.back()
+    })
 </script>
 <script>
 
