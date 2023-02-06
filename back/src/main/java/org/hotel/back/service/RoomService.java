@@ -4,6 +4,8 @@ import org.hotel.back.data.dto.FileDTO;
 import org.hotel.back.data.dto.UploadDTO;
 import org.hotel.back.data.response.FileResponseData;
 import org.hotel.back.data.response.RoomDTO;
+import org.hotel.back.data.response.RoomResponseDTO;
+import org.hotel.back.domain.Room;
 
 import java.util.List;
 import java.util.Map;
@@ -34,4 +36,14 @@ public interface RoomService {
     public void save(RoomDTO roomDTO);
 
     public RoomDTO findByRoomWithImage(Long id);
+
+    public boolean modifyRoom(RoomDTO roomDTO);
+    public RoomResponseDTO getDetail(long id);
+
+    public void deleteRoom(Long id);
+    /**
+     * @param  id room이 참조하는 hotel id
+     * @return 해당 hotel을 참조하는 room 엔티티들을 List로 리턴한다.
+     * */
+    public List<RoomResponseDTO> findAllWithImage(Long id);
 }

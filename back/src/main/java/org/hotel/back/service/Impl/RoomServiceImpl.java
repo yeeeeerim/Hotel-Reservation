@@ -8,6 +8,7 @@ import org.hotel.back.data.dto.FileDTO;
 import org.hotel.back.data.dto.UploadDTO;
 import org.hotel.back.data.response.FileResponseData;
 import org.hotel.back.data.response.RoomDTO;
+import org.hotel.back.data.response.RoomResponseDTO;
 import org.hotel.back.domain.Room;
 import org.hotel.back.domain.RoomImage;
 import org.hotel.back.repository.RoomRepository;
@@ -17,6 +18,7 @@ import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.ObjectUtils;
 
 import java.io.File;
@@ -103,14 +105,38 @@ public class RoomServiceImpl implements RoomService {
                 roomRepository.save(toEntity(roomDTO));
        }
        public RoomDTO findByRoomWithImage(Long id){
-                return toDTO(roomRepository.getRoomWithImage(id));
+                return toDTO(roomRepository.getRoomWithImage(id).orElseThrow(RuntimeException::new));
        }
 
+        public boolean modifyRoom(RoomDTO roomDTO){
+                Room room = roomRepository.getRoomWithImage(roomDTO.getId()).orElse(null);
+
+                if(room != null){
+                    room.changeRoomInfo(roomDTO.getRoomPrice(), roomDTO.getDescription());
+                    room.imageInit();
+
+                    if(roomDTO.getFileNames() != null){
+                        for(String fileName : roomDTO.getFileNames()){
+                            room.addImage(fileName);
+                        }
+                    }
+
+                    roomRepository.save(room);
+                    return true;
+                }else{
+                    return false;
+                }
+        }
+
+        public void deleteRoom(Long id){
+            roomRepository.deleteById(id);  //상세보기 페이지에서 id값을 날리기 때문에 굳이 null체크 필요없을 거 같다
+        }
 
 
 
-       protected Room toEntity(RoomDTO dto){
+    protected Room toEntity(RoomDTO dto){
                 Room room = Room.builder()
+                        .hotelId(dto.getHotelId())
                         .description(dto.getDescription())
                         .roomPrice(dto.getRoomPrice())
                         .roomLimit(dto.getRoomLimit())
@@ -118,13 +144,14 @@ public class RoomServiceImpl implements RoomService {
                         .roomClass(dto.getRoomClass())
                         .build();
 
-                if(!dto.getFileNames().isEmpty()){
+                if(dto.getFileNames() != null){
                     dto.getFileNames().forEach(room::addImage);
                    }
                 return room;
      }
      protected RoomDTO toDTO(Room room) {
          RoomDTO dto = RoomDTO.builder()
+                 .id(room.getId())
                  .description(room.getDescription())
                  .roomPrice(room.getRoomPrice())
                  .roomLimit(room.getRoomLimit())
@@ -140,6 +167,54 @@ public class RoomServiceImpl implements RoomService {
                  .collect(Collectors.toList()));
          return dto;
      }
+
+     public RoomResponseDTO getDetail(long id){
+         Room room = roomRepository.getRoomWithImage(id).orElse(null);
+         if(room != null){
+           RoomResponseDTO roomResponseDTO =  RoomResponseDTO.builder()
+                     .id(room.getId())
+                     .description(room.getDescription())
+                     .roomClass(room.getRoomClass())
+                     .roomLimit(room.getRoomLimit())
+                     .hotelId(room.getHotelId())
+                     .roomNumber(room.getRoomNumber())
+                     .roomImage(room.getRoomImage()
+                             .stream()
+                             .map(RoomImage::getName)
+                             .collect(Collectors.toUnmodifiableSet()))
+                     .roomPrice(room.getRoomPrice())
+                     .build();
+           return roomResponseDTO;
+         }else{
+             return RoomResponseDTO.builder().build();
+         }
+    }
+
+
+
+
+    public List<RoomResponseDTO> findAllWithImage(Long id){
+            List<RoomResponseDTO> responseDTOList = new ArrayList<>();
+
+
+            roomRepository.roomListWithImage(id).forEach(room -> {
+                responseDTOList.add(RoomResponseDTO.builder()
+                                .roomPrice(room.getRoomPrice())
+                                .roomLimit(room.getRoomLimit())
+                                .roomClass(room.getRoomClass())
+                                .roomNumber(room.getRoomNumber())
+                                .id(room.getId())
+                                .roomImage(room.getRoomImage().stream()
+                                        .map(image -> image.getName())
+                                        .collect(Collectors.toUnmodifiableSet()))
+                                .hotelId(room.getHotelId())
+                                .description(room.getDescription())
+                        .build());
+            });
+
+            return responseDTOList;
+    }
+
 
 
 

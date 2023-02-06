@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bootstrap 4</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <style>
+    p { margin:20px 0px; }
+  </style>
+</head>
+<body>
+<div class="container">
+
+
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+<script th:inline ="javascript">
+    const listDTO = [[${dto}]]
+    let index = 3;
+    let temp
+    for(const dto of listDTO){
+
+        if(dto.roomImage != null){
+              temp = "/view?fileName="+dto.roomImage[0];
+            console.log(temp)
+        }
+        const more = '/room/detail?id='+dto.id
+        $(`.container`).append(`
+         <div class="row">
+              <div class="col-3">
+                <p></p>
+                <div class="card">
+                  <div class="card-header">
+                    ${dto.roomNumber}
+                  </div>`+`
+                  <img  src='${temp}' alt="이미지없음" style="width: 100%" height="240" class="justify-content-center"/>
+                `+`
+                  <div class="card-body">
+                    <h5 class="card-title">${dto.roomClass}</h5>
+                    <a href='${more}' class="btn btn-info">More</a>
+                  </div>
+                </div>
+              </div>
+             <div class="col-8" style="margin-top: 200px;margin-left: 30px">
+                    <p>${dto.description}</p>
+                    <p>가격 : ${dto.roomPrice}</p>
+                    <p>인원 : ${dto.roomLimit}</p>
+             </div>
+
+        </div>
+      `)
+
+    }
+</script>
+</body>
+</html>
