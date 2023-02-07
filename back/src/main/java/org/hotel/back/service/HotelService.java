@@ -5,12 +5,15 @@ import org.hotel.back.data.request.HotelRequestDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.util.List;
+
 
 public interface HotelService {
-    public boolean write(HotelRequestDTO hotelRequestDTO);
-    public Page<Hotel> hotelList(Pageable pageable);
-    public Hotel hotelDetail(Long id);
-    public boolean  hotelDelete(Long id);
-    public boolean hotelUpdate(HotelRequestDTO hotelRequestDTO);
+    boolean write(HotelRequestDTO hotelRequestDTO);
+    Page<Hotel> hotelList(Pageable pageable);
+    Hotel hotelDetail(Long id);
+    boolean  hotelDelete(Long id);
+    boolean hotelUpdate(HotelRequestDTO hotelRequestDTO);
+    List<Hotel> hotelListSearch(String keyword);
 
 }

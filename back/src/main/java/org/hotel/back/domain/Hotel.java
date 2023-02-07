@@ -16,40 +16,46 @@ import java.util.Set;
 @ToString
 @Setter
 public class Hotel {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
-    String hotelName;
-    String cityName;
-    String tellNumber;
-    String latitude;
-    String longitude;
-    @Builder.Default
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "hotel")
-    private List<Review> reviews = new ArrayList<>();
-
-    @Builder.Default
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL,mappedBy = "hotel")
-    private List<Booking> bookingList = new ArrayList<>();
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	Long id;
+	String hotelName;
+	String cityName;
+	String tellNumber;
+	String latitude;
+	String longitude;
+	String address;
 
 
-    @ToString.Exclude
-    @Builder.Default
-    @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL,orphanRemoval = true,mappedBy = "hotel")
-    private Set<Room> roomSet = new HashSet<>();
+	@Builder.Default
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL,mappedBy = "hotel")
+	private List<HotelImage> hotelImages = new ArrayList<>();
+	@Builder.Default
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "hotel")
+	private List<Review> reviews = new ArrayList<>();
 
-    public void modifyHotel(String hotelName, String cityName, String tellNumber, String latitude, String longitude){
-        this.hotelName=hotelName;
-        this.cityName=cityName;
-        this.tellNumber=tellNumber;
-        this.latitude=latitude;
-        this.longitude=longitude;
-    }
+	@Builder.Default
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "hotel")
+	private List<Booking> bookingList = new ArrayList<>();
 
 
-    public void addRoom(Room room){
+	@ToString.Exclude
+	@Builder.Default
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "hotel")
+	private Set<Room> roomSet = new HashSet<>();
 
-        this.roomSet.add(room);
-    }
+	public void modifyHotel(String hotelName, String cityName, String tellNumber, String latitude, String longitude) {
+		this.hotelName = hotelName;
+		this.cityName = cityName;
+		this.tellNumber = tellNumber;
+		this.latitude = latitude;
+		this.longitude = longitude;
+	}
+
+
+	public void addRoom(Room room) {
+
+		this.roomSet.add(room);
+	}
 
 }
