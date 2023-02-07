@@ -20,9 +20,8 @@ public class HotelRequestDTO {
     private String tellNumber;
     private String latitude;
     private String longitude;
-    private Review review;
     String address;
-    List<MultipartFile> hotelImage=new ArrayList<>();
+    List<MultipartFile> hotelImage;
 
     public static Hotel toEntity(HotelRequestDTO hotelRequestDTO){
         return Hotel.builder()
@@ -32,6 +31,7 @@ public class HotelRequestDTO {
                 .tellNumber(hotelRequestDTO.getTellNumber())
                 .latitude(hotelRequestDTO.getLatitude())
                 .longitude(hotelRequestDTO.getLongitude())
+                .address(hotelRequestDTO.getAddress())
                 .build();
     }
 

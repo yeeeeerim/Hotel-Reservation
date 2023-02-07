@@ -2,12 +2,15 @@ package org.hotel.back.service.Impl;
 
 import lombok.RequiredArgsConstructor;
 import org.hotel.back.config.exception.FileUploadException;
+import org.hotel.back.data.response.HotelResponseDTO;
 import org.hotel.back.domain.Hotel;
 import org.hotel.back.data.request.HotelRequestDTO;
 import org.hotel.back.domain.HotelImage;
 import org.hotel.back.repository.HotelImageRepository;
 import org.hotel.back.repository.HotelRepository;
 import org.hotel.back.service.HotelService;
+import org.hotel.back.service.api.KaKaoAPIService;
+import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -25,6 +28,7 @@ import java.util.UUID;
 public class HotelServiceImpl implements HotelService {
     private final HotelRepository hotelRepository;
     private final HotelImageRepository hotelImageRepository;
+    private final KaKaoAPIService kaKaoAPIService;
     @Value("${upload.path}")
     private String path;
 
@@ -63,9 +67,17 @@ public class HotelServiceImpl implements HotelService {
     }
     //호텔 자세히보기
     @Override
-    public Hotel hotelDetail(Long id) {
+    public HotelResponseDTO hotelDetail(Long id) throws ParseException {
         Hotel hotel=hotelRepository.findFetchJoin(id);
-        return hotel;
+        HotelResponseDTO hotelResponseDTO=new HotelResponseDTO(hotel);
+
+        if(kaKaoAPIService.getAddressInfo(hotel.getLongitude(),hotel.getLatitude()).isPresent()){//위, 경도를 넣어서 주소가 반환된다면
+            String address=kaKaoAPIService.getAddressInfo(hotelResponseDTO.getLongitude(),hotelResponseDTO.getLatitude()).orElse(null);//address에 값 넣기
+            hotelResponseDTO.setAddress(address);//변환한 주소 넣기
+            System.out.println(hotelResponseDTO);
+            }
+
+        return hotelResponseDTO;
     }
     //호텔 지우기
     @Override

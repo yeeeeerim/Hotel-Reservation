@@ -2,6 +2,7 @@ package org.hotel.back.controller;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.hotel.back.data.response.HotelResponseDTO;
 import org.hotel.back.data.response.KaKaoResponseData;
 import org.hotel.back.domain.Hotel;
 
@@ -42,9 +43,10 @@ public class HotelController {
     //==========호텔 저장==============
     @PostMapping("/hotel/save")
     public String hotelSave(HotelRequestDTO hotelRequestDTO) throws ParseException {
-
+        String address=hotelRequestDTO.getAddress();
+        System.out.println(address);
         try{
-            if(kaKaoAPIService.getLocationInfo(hotelRequestDTO.getAddress()).isPresent()){
+            if(kaKaoAPIService.getLocationInfo(address).isPresent()){
                 KaKaoResponseData kaKaoResponseData= kaKaoAPIService.getLocationInfo(hotelRequestDTO.getAddress()).orElse(null);
                 hotelRequestDTO.setLatitude(kaKaoResponseData.getLatitude());
                 hotelRequestDTO.setLongitude(kaKaoResponseData.getLongitude());
@@ -86,15 +88,16 @@ public class HotelController {
 
     //========호텔 자세히보기  ============
     @GetMapping("/hotel/detail")
-    public String hotelDetail(Model model, Long id){
-        Hotel hotel=hotelService.hotelDetail(id); //호텔 객체를 불러옴 ->service hotelDetail메서드
-        List<Review> reviewlist =hotel.getReviews(); //호텔 객체에서 review 가져와서 넣음(hotelId의 리뷰)
-        List<HotelImage>hotelImages = hotel.getHotelImages();
-        model.addAttribute("article",hotel);
+    public String hotelDetail(Model model, Long id) throws ParseException {
+        HotelResponseDTO hotelResponseDTO =hotelService.hotelDetail(id); //호텔 객체를 불러옴 ->service hotelDetail메서드
+
+        List<Review> reviewlist =hotelResponseDTO.getReviews(); //호텔 객체에서 review 가져와서 넣음(hotelId의 리뷰)
+        List<HotelImage>hotelImages = hotelResponseDTO.getHotelImages();
+        model.addAttribute("article",hotelResponseDTO);
         model.addAttribute("review",reviewlist);
         model.addAttribute("image",hotelImages);
         model.addAttribute("path",path);
-        return "hotelDetail";
+        return "hotelDetail2";
     }
 
     //===========호텔 지우기===============
@@ -112,7 +115,7 @@ public class HotelController {
     }
 
     @GetMapping("/hotel/update")
-    public String hotelUpdate(Long id, Model model) {
+    public String hotelUpdate(Long id, Model model) throws ParseException {
         model.addAttribute("article", hotelService.hotelDetail(id));
         return "hotelUpdate";
     }
