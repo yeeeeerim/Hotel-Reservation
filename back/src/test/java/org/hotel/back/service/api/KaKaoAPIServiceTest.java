@@ -20,4 +20,9 @@ class KaKaoAPIServiceTest {
     void test() throws ParseException {
         System.out.println(kaKaoAPIService.getLocationInfo("미사강변대로 165"));;
     }
+    @Test
+    @DisplayName("KAKAOAPI 위도경도를 도로명주소로")
+    void test2() throws ParseException {
+        System.out.println(kaKaoAPIService.getAddressInfo("127.10459896729914","37.40269721785548"));;
+    }
 }
