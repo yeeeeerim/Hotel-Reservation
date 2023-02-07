@@ -28,16 +28,18 @@ class HotelAPIServiceTest {
                 .key("26f037dc249943e4b75e005d6fc3858d")
                 .type("json")
                 .build()).getGSST().get(1).getRowList().forEach(row -> {
-            hotelRepository.save(Hotel.builder()
-                    .hotelName(row.getENTRPS_NM())
-                    .cityName(row.getSIGUN_NM())
-                    .tellNumber(row.getTELNO())
-                    .latitude(row.getREFINE_WGS84_LAT())
-                    .longitude(row.getREFINE_WGS84_LOGT())
-                    .build());
+            System.out.println(row);
+
+
         });
         System.out.println();
         //https://openapi.gg.go.kr/GSST?key=26f037dc249943e4b75e005d6fc3858d
-
+//        hotelRepository.save(Hotel.builder()
+//                .hotelName(row.getENTRPS_NM())
+//                .cityName(row.getSIGUN_NM())
+//                .tellNumber(row.getTELNO())
+//                .latitude(row.getREFINE_WGS84_LAT())
+//                .longitude(row.getREFINE_WGS84_LOGT())
+//                .build());
     }
 }

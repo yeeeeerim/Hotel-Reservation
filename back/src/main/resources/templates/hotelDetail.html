@@ -25,6 +25,7 @@
 <button type="button" class="btn btn-dark" th:onclick="|location.href='@{/hotel/delete(id=${article.id})}'|">글 삭제</button>
 <button type="button" class="btn btn-warning" th:onclick="|location.href='@{/hotel/update(id=${article.id})}'|">글 수정</button>
 <button type="button" class="btn btn-dark" th:onclick="|location.href='@{/booking/save(id=${article.id})}'|">예약하기</button>
+<button type="button" class="btn btn-info" th:onclick="|location.href='@{/room/list(id=${article.id})}'|">객실 확인하기</button>
 <p></p>
 <p></p>
 <table class="table table-striped">
