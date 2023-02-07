@@ -6,6 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.hotel.back.data.response.RoomDTO;
 import org.hotel.back.domain.Room;
 import org.hotel.back.service.RoomService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,17 +34,22 @@ public class RoomController {
         return "/room/room-detail";
     }
 
+    @PreAuthorize("hasRole('OWNER')")
     @GetMapping("/room/save")
     public String roomSaveGET(RoomDTO roomDTO){
         return "/room/room-save";
     }
 
+
+    @PreAuthorize("hasRole('OWNER')")
     @GetMapping("/room/modify")
     public String roomModifyGET(Long id,Model model){
         model.addAttribute("dto",roomService.getDetail(id));
         return "/room/room-modify";
     }
 
+
+    @PreAuthorize("hasRole('OWNER')")
     @GetMapping("/room/delete")
     public String roomDeleteGET(RoomDTO dto, RedirectAttributes redirectAttributes){
             redirectAttributes.addAttribute("id",dto.getHotelId());
@@ -51,14 +57,14 @@ public class RoomController {
         return "redirect:/hotel/detail";
     }
 
-
+    @PreAuthorize("hasRole('OWNER')")
     @PostMapping("/room/save")
     public String roomSavePOST(RoomDTO roomDTO){
             log.info("==> {}",roomDTO);
             roomService.save(roomDTO);
              return "redirect:/room/save";
     }
-
+    @PreAuthorize("hasRole('OWNER')")
     @PostMapping("/room/modify")
     public String roomModifyPOST(RoomDTO roomDTO,RedirectAttributes redirectAttributes){
         roomService.modifyRoom(roomDTO);
