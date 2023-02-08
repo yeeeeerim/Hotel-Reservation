@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
 <head>
     <meta charset="UTF-8">
     <title>게시글 상세페이지</title>
@@ -11,6 +11,20 @@
 </head>
 <body>
 
+<div class="pos-f-t">
+    <div class="collapse" id="navbarToggleExternalContent">
+        <div class="bg-dark p-4">
+            <h5 class="text-white h4">Collapsed content</h5>
+            <span class="text-muted">Toggleable via the navbar brand.</span>
+        </div>
+    </div>
+    <nav class="navbar navbar-dark bg-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </nav>
+</div>
+
 <div class="container">
 
     <ul class="list-group">
@@ -21,11 +35,21 @@
         <li class="list-group-item" th:text="${article.latitude}"></li>
         <li class="list-group-item" th:text="${article.longitude}"></li>
     </ul>
+    <table class="table table-striped">
+        <tr>이미지</tr>
+        <tr th:each = "image:${image}">
+            <img th:src="|/view?filename=${image.name}|" width="200" height="140" >
+
+            <td th:text="|${path}/${image.name}|">
+        </tr>
+        </tr>
+    </table>
+
+
 </div>
 <button type="button" class="btn btn-dark" th:onclick="|location.href='@{/hotel/delete(id=${article.id})}'|">글 삭제</button>
 <button type="button" class="btn btn-warning" th:onclick="|location.href='@{/hotel/update(id=${article.id})}'|">글 수정</button>
 <button type="button" class="btn btn-dark" th:onclick="|location.href='@{/booking/save(id=${article.id})}'|">예약하기</button>
-<button type="button" class="btn btn-info" th:onclick="|location.href='@{/room/list(id=${article.id})}'|">객실 확인하기</button>
 <p></p>
 <p></p>
 <table class="table table-striped">
@@ -38,6 +62,7 @@
         <th>Modified Date</th>
         <th> </th>
         <th> </th>
+        <th> </th>
     </tr>
     </thead>
 
@@ -48,22 +73,22 @@
         <button class="btn btn-primary" type="submit">리뷰 작성</button>
     </form>
 
-    <tr th:each = "review:${review}">
-        <td th:text="${review.id}"></td>
-        <td th:text="${review.reviewContent}"></td>
-        <td th:text="${review.reviewWriter}"></td>
-        <td th:text="${review.createdDate}"></td>
-        <td th:text="${review.modifiedDate}"></td>
-        <td><a th:href="@{/hotel/review/delete/(id=${review.id},hotelid=${article.id})}">댓글 삭제</a></td>
-        <td><a th:href="@{/hotel/review/update(id=${review.id})}">댓글 수정</a></td>
-        <td>            <button type="button" class="btn btn-dark" th:onclick="|location.href='@{/room/list(id=${article.id})}'|">해당 호텔 룸 정보보기</button></td>
-    </tr>
-    <tr>
-        <td>
-
-        </td>
-    </tr>
+<!--    <tr th:each = "review:${review}">-->
+<!--        <td th:text="${review.id}"></td>-->
+<!--        <td th:text="${review.reviewContent}"></td>-->
+<!--        <td th:text="${review.reviewWriter}"></td>-->
+<!--        <td th:text="${review.createdDate}"></td>-->
+<!--        <td th:text="${review.modifiedDate}"></td>-->
+<!--        <td><a th:href="@{/hotel/review/delete/(id=${review.id},hotelid=${article.id})}">댓글 삭제</a></td>-->
+<!--        <td><a th:href="@{/hotel/review/update(id=${review.id})}">댓글 수정</a></td>-->
+<!--        <td>-->
+<!--            <button type="button" class="btn btn-dark" th:onclick="|location.href='@{/room/list(id=${article.id})}'|">해당-->
+<!--                호텔 룸 정보보기-->
+<!--            </button>-->
+<!--        </td>-->
+<!--    </tr>-->
     </tbody>
 </table>
 </body>
+
 </html>

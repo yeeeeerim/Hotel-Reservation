@@ -40,6 +40,7 @@ public class RoomImageController {
                 if(ObjectUtils.isEmpty(response)){
                         return ResponseEntity.internalServerError().build();
                 }
+                System.out.println(fileName);
                 return ResponseEntity.ok().headers(response.getHeaders()).body(response.getResource());
 
         }
