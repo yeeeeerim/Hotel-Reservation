@@ -91,11 +91,11 @@ public class HotelController {
     public String hotelDetail(Model model, Long id) throws ParseException {
         HotelResponseDTO hotelResponseDTO =hotelService.hotelDetail(id); //호텔 객체를 불러옴 ->service hotelDetail메서드
 
-        List<Review> reviewlist =hotelResponseDTO.getReviews(); //호텔 객체에서 review 가져와서 넣음(hotelId의 리뷰)
-        List<HotelImage>hotelImages = hotelResponseDTO.getHotelImages();
+//        List<Review> reviewlist =hotelResponseDTO.getReviews(); //호텔 객체에서 review 가져와서 넣음(hotelId의 리뷰)
+//        List<HotelImage>hotelImages = hotelResponseDTO.getHotelImages();
         model.addAttribute("article",hotelResponseDTO);
-        model.addAttribute("review",reviewlist);
-        model.addAttribute("image",hotelImages);
+//        model.addAttribute("review",reviewlist);
+//        model.addAttribute("image",hotelImages);
         model.addAttribute("path",path);
         return "hotelDetail2";
     }

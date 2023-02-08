@@ -7,6 +7,8 @@ import org.hotel.back.domain.Review;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 @Builder
 @Setter
@@ -23,7 +25,8 @@ public class HotelResponseDTO {
     String longitude;
     List<Review> reviews = new ArrayList<>();
     String address;
-    List<HotelImage>hotelImages =new ArrayList<>();
+
+    List<String>hotelImages=new ArrayList<>();
 
     public HotelResponseDTO(Hotel hotel){
         this.id=hotel.getId();
@@ -32,7 +35,7 @@ public class HotelResponseDTO {
         this.tellNumber=hotel.getTellNumber();
         this.latitude=hotel.getLatitude();
         this.longitude=hotel.getLongitude();
-        this.hotelImages=hotel.getHotelImages();
+        this.hotelImages=hotel.getHotelImages().stream().map(entity-> entity.getName()).collect(Collectors.toList());
         this.reviews=hotel.getReviews();
     }
 
