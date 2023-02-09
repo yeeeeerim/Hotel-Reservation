@@ -30,7 +30,7 @@ public class RoomDTO {
     private String description; //방설명
 
 
-    private Long hotelId;
+    private String hotelId;
     private List<String> fileNames;// 파일
 
 }

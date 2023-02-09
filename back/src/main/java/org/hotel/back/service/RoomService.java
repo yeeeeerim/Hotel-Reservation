@@ -46,4 +46,10 @@ public interface RoomService {
      * @return 해당 hotel을 참조하는 room 엔티티들을 List로 리턴한다.
      * */
     public List<RoomResponseDTO> findAllWithImage(Long id);
+    /**
+     * @apiNote 호텔정보 작성자와 해당 사용자가 같은지 조회 하는 기능
+     * @param hotelId, email
+     *
+     * */
+    public boolean hotelInfoWriter(Long hotelId, String email);
 }
