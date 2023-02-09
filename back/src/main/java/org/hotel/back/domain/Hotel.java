@@ -19,6 +19,7 @@ import java.util.Set;
 @Setter
 @EntityListeners(AuditingEntityListener.class)
 public class Hotel {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
@@ -61,5 +62,6 @@ public class Hotel {
 
         this.roomSet.add(room);
     }
+
 
 }
