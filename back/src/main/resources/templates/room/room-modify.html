@@ -11,8 +11,8 @@
 <div class="pos-f-t">
     <div class="collapse" id="navbarToggleExternalContent">
         <div class="bg-dark p-4">
-            <h5 class="text-white h4">Collapsed content</h5>
-            <span class="text-muted">Toggleable via the navbar brand.</span>
+            <h5 class="text-white h4">HOTEL SERVICE WEB</h5>
+            <span class="text-muted">호텔 서비스를 제공하는 웹입니다.</span>
         </div>
     </div>
     <nav class="navbar navbar-dark bg-dark">
@@ -102,7 +102,7 @@
             </div>
 
         </div>
-        <input type="hidden" value="1" name="hotelId"/>
+        <input type="hidden" th:value="${dto.hotelId}" name="hotelId"/>
         <input type="hidden" th:value="${dto.id}" name="id">
     </form>
 

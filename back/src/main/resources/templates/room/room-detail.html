@@ -11,8 +11,8 @@
 <div class="pos-f-t">
   <div class="collapse" id="navbarToggleExternalContent">
     <div class="bg-dark p-4">
-      <h5 class="text-white h4">Collapsed content</h5>
-      <span class="text-muted">Toggleable via the navbar brand.</span>
+      <h5 class="text-white h4">HOTEL SERVICE WEB</h5>
+      <span class="text-muted">호텔 서비스를 제공하는 웹입니다.</span>
     </div>
   </div>
   <nav class="navbar navbar-dark bg-dark">
@@ -102,7 +102,7 @@
       </div>
 
     </div>
-    <input type="hidden" value="1" name="hotelId"/>
+    <input type="hidden" class="hotelId" name="hotelId"/>
   </form>
 
   <div class="text-center mt-3">
@@ -110,7 +110,8 @@
     <input type="button" value="뒤로가기" class="btn btn-info" onclick="window.history.back()">
 
     <!--수정하기 누르면 현재 사용자와 이 호텔 담당자와 회원정보가 같은지 조회하고 get요청을 보내야한다. 아니면 다르다는 에러띄움-->
-    <input type="button" value="수정하기" class="btn btn-info" onclick="">
+    <input type="button" value="수정하기" class="btn btn-info" id="modify" onclick="">
+    <input type="button" value="삭제하기" class="btn btn-danger" id="delete" onclick="">
   </div>
 </div>
 
@@ -126,6 +127,10 @@
 <script th:inline="javascript">  //여기서 요청 넣는 거에요 저 메소드에
 
     let imageList = [[ ${dto.roomImage} ]]
+    const hotelId = [[ ${hotelId} ]]
+    const roomId = [[ ${dto.id} ]]
+
+    $('.hotelId').val(hotelId)
 
     if(imageList != null){
           for(const fileName of imageList){
@@ -139,6 +144,13 @@
                     `)
           }
     }
+
+    $('#modify').click(function (){
+          location.href = '/room/modify?id='+roomId+'&hotel='+hotelId
+    })
+    $('#delete').click(function (){
+      location.href = '/room/delete?id='+roomId+'&hotel='+hotelId
+    })
 </script>
 <script>
 

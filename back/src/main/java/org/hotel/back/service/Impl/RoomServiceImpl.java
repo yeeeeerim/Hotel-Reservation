@@ -136,7 +136,7 @@ public class RoomServiceImpl implements RoomService {
 
     protected Room toEntity(RoomDTO dto){
                 Room room = Room.builder()
-                        .hotelId(dto.getHotelId())
+                        .hotelId(Long.parseLong(dto.getHotelId()))
                         .description(dto.getDescription())
                         .roomPrice(dto.getRoomPrice())
                         .roomLimit(dto.getRoomLimit())
@@ -157,7 +157,7 @@ public class RoomServiceImpl implements RoomService {
                  .roomLimit(room.getRoomLimit())
                  .roomNumber(room.getRoomNumber())
                  .roomClass(room.getRoomClass())
-                 .hotelId(room.getHotelId())
+                 .hotelId(Long.toString(room.getHotelId()))
                  .build();
 
          dto.setFileNames(room.getRoomImage()
@@ -213,6 +213,16 @@ public class RoomServiceImpl implements RoomService {
             });
 
             return responseDTOList;
+    }
+
+
+    /**
+     * @apiNote 호텔정보 작성자와 해당 사용자가 같은지 조회 하는 기능
+     * @param hotelId, email
+     *
+     * */
+    public boolean hotelInfoWriter(Long hotelId, String email){
+         return false;
     }
 
 

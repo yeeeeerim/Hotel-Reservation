@@ -11,6 +11,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,12 +24,15 @@ import java.util.List;
 @RequiredArgsConstructor
 public class HotelController {
     private final HotelService hotelService;
+
+    @PreAuthorize("isAuthenticated()")
     @GetMapping("/hotel/save")//localhost:8080/save
     public String hotelWriteForm(){
 
         return "hotelSave";
     }
 //==========호텔 저장==============
+    @PreAuthorize("isAuthenticated()")
     @PostMapping("/hotel/save")
     public String hotelSave(HotelRequestDTO hotelRequestDTO){
         hotelService.write(hotelRequestDTO);
@@ -62,18 +66,20 @@ public class HotelController {
         return "hotelDetail";
     }
 //===========호텔 지우기===============
+    @PreAuthorize("isAuthenticated()")
     @GetMapping("/hotel/delete")
     public String hotelDelete(Long id){
         hotelService.hotelDelete(id);
         return "redirect:/hotel";
     }
 //=============호텔 업데이트==============
+    @PreAuthorize("isAuthenticated()")
     @PostMapping("/hotel/update")
     public String hotelUpdatePost(HotelRequestDTO hotelRequestDTO){
         hotelService.hotelUpdate(hotelRequestDTO);
         return "redirect:/hotel/detail?id="+hotelRequestDTO.getId(); //숙소정보 업데이트 후 detail=id로 다시 redirect
     }
-
+    @PreAuthorize("isAuthenticated()")
     @GetMapping("/hotel/update")
     public String hotelUpdate(Long id, Model model){
         model.addAttribute("article",hotelService.hotelDetail(id));
