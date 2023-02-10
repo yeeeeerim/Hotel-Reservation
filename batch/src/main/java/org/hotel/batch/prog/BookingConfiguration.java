@@ -39,7 +39,7 @@ public class BookingConfiguration {
         return this.stepBuilderFactory.get("bookingStep")
                 .tasklet((contribution, chunkContext) -> {
                     System.out.println("TEST 배치 프로그램");
-                    return RepeatStatus.FINISHED;
+                    return RepeatStatus.CONTINUABLE;
                 }).build();
     }
 
