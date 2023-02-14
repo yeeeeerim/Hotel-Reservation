@@ -24,7 +24,7 @@ Thymeleaf(MVC) <br>
 
 
 ## ERD 
-![image](https://user-images.githubusercontent.com/79129475/215671900-322c1cdc-c431-48fc-bdef-febdfc18344a.png)
+![image](https://user-images.githubusercontent.com/79129475/218641818-f3f11a25-7f1f-4841-8070-41100b803672.png)
 
 ## 작성법
 브랜치 이름 ->  FEAT: 브랜치이름(소문자)  브랜치 이름은 기능명
