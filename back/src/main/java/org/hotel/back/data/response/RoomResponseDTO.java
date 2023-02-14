@@ -33,4 +33,6 @@ public class RoomResponseDTO {
 
     private long hotelId;
 
+    private boolean checking;
+
 }

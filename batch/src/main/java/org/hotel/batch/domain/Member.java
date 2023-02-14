@@ -1,4 +1,5 @@
-package org.hotel.back.domain;
+package org.hotel.batch.domain;
+
 
 import lombok.*;
 
@@ -8,11 +9,11 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-@Entity
-@Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Entity
+@Getter
 @ToString
 public class Member {
     @Id
@@ -36,5 +37,6 @@ public class Member {
     public void addRole(MemberRole memberRole){
         this.roleSet.add(memberRole);
     }
+
 
 }

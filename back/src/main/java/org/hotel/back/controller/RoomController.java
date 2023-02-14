@@ -34,9 +34,14 @@ public class RoomController {
 
 
     @GetMapping("/room/detail")
-    public String roomDetailsGET(Long id, Model model,String hotel){
-        model.addAttribute("dto",roomService.getDetail(id));
+    public String roomDetailsGET(Long id,
+                                 Model model,
+                                 @RequestParam(required = false) String check,
+                                 String hotel,
+                                 @AuthenticationPrincipal MemberDTO memberDTO){
+        model.addAttribute("dto",roomService.getDetail(id,memberDTO != null ? memberDTO.getEmail() : null));
         model.addAttribute("hotelId",hotel);
+        if(check != null) model.addAttribute("check",check);
         return "/room/room-detail";
     }
 
@@ -49,17 +54,30 @@ public class RoomController {
 
     @PreAuthorize("hasRole('OWNER')")
     @GetMapping("/room/modify")
-    public String roomModifyGET(Long id,Model model){
-        model.addAttribute("dto",roomService.getDetail(id));
+    public String roomModifyGET(Long id,
+                                Model model,
+                                @AuthenticationPrincipal MemberDTO memberDTO){
+
+        var responseData =roomService.getDetail(id,memberDTO.getEmail());
+        model.addAttribute("dto",responseData);
+        if(responseData.isChecking()){
+                model.addAttribute("check",true);
+        }
         return "/room/room-modify";
     }
 
 
     @PreAuthorize("hasRole('OWNER')")
     @GetMapping("/room/delete")
-    public String roomDeleteGET(String id,String hotel, RedirectAttributes redirectAttributes){
+    public String roomDeleteGET(String id,
+                                String hotel,
+                                RedirectAttributes redirectAttributes,
+                                @AuthenticationPrincipal MemberDTO memberDTO){
             redirectAttributes.addAttribute("id",hotel);
-            roomService.deleteRoom(Long.parseLong(id));
+            boolean authorize =
+                    roomService.hotelInfoWriter(Long.parseLong(hotel),memberDTO != null ? memberDTO.getEmail() : null);
+            if(authorize) roomService.deleteRoom(Long.parseLong(id));
+            else return  "redirect:/room/detail?id="+id+"&check=err";
         return "redirect:/room/list";
     }
 

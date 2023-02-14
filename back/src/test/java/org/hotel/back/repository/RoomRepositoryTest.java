@@ -65,4 +65,17 @@ class RoomRepositoryTest {
         //해당 네이티브 쿼리와 동일함
         roomService.findAllWithImage(1L).forEach(System.out::println);
     }
+
+    @Test
+    @DisplayName("사용자 검증 테스트")
+    void testQuery(){
+         roomRepository.getRoomWithImage(13L);
+
+         roomRepository.getRoomWithImageOne(13L);
+
+        System.out.println("3");
+         roomRepository.getRoomWithImageTwo(13L);
+
+
+    }
 }

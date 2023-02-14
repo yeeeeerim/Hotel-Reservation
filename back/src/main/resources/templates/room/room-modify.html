@@ -121,7 +121,15 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 
 
-<script th:inline="javascript">  //여기서 요청 넣는 거에요 저 메소드에
+<script th:inline="javascript">
+    $(document).ready(function(){
+        const check = [[ ${check} ]]
+        if(check == null) {
+            alert("해당 객실을 수정할 권한이 없습니다.")
+            window.history.back()
+        }
+    })
+
     async function upload(formData){
         const response = await axios({
             method : 'post', //POST요청
