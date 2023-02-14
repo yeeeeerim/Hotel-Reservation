@@ -38,7 +38,7 @@ public interface RoomService {
     public RoomDTO findByRoomWithImage(Long id);
 
     public boolean modifyRoom(RoomDTO roomDTO);
-    public RoomResponseDTO getDetail(long id);
+    public RoomResponseDTO getDetail(long id,String email);
 
     public void deleteRoom(Long id);
     /**

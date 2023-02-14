@@ -168,8 +168,11 @@ public class RoomServiceImpl implements RoomService {
          return dto;
      }
 
-     public RoomResponseDTO getDetail(long id){
+     public RoomResponseDTO getDetail(long id,String email){
          Room room = roomRepository.getRoomWithImage(id).orElse(null);
+         boolean checking = false;
+         if(room.getHotel().getWriter().equals(email != null? email : " ")) checking = true;
+
          if(room != null){
            RoomResponseDTO roomResponseDTO =  RoomResponseDTO.builder()
                      .id(room.getId())
@@ -183,6 +186,7 @@ public class RoomServiceImpl implements RoomService {
                              .map(RoomImage::getName)
                              .collect(Collectors.toUnmodifiableSet()))
                      .roomPrice(room.getRoomPrice())
+                     .checking(checking)
                      .build();
            return roomResponseDTO;
          }else{
@@ -216,13 +220,10 @@ public class RoomServiceImpl implements RoomService {
     }
 
 
-    /**
-     * @apiNote 호텔정보 작성자와 해당 사용자가 같은지 조회 하는 기능
-     * @param hotelId, email
-     *
-     * */
+
     public boolean hotelInfoWriter(Long hotelId, String email){
-         return false;
+
+        return roomRepository.checkingWriter(hotelId,email);
     }
 
 

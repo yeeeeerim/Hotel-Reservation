@@ -126,6 +126,13 @@
 
 <script th:inline="javascript">  //여기서 요청 넣는 거에요 저 메소드에
 
+  $(document).ready(function(){
+    const check = [[ ${check} ]]
+    if(check != null) {
+      alert("해당 객실을 삭제할 권한이 없습니다.")
+      window.history.back()
+    }
+  })
     let imageList = [[ ${dto.roomImage} ]]
     const hotelId = [[ ${hotelId} ]]
     const roomId = [[ ${dto.id} ]]
