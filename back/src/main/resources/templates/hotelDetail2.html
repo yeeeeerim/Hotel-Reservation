@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>객실 정보조회</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+</head>
+<body>
+<div class="pos-f-t">
+    <div class="collapse" id="navbarToggleExternalContent">
+        <div class="bg-dark p-4">
+            <h5 class="text-white h4">Collapsed content</h5>
+            <span class="text-muted">Toggleable via the navbar brand.</span>
+        </div>
+    </div>
+    <nav class="navbar navbar-dark bg-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </nav>
+</div>
+
+
+
+<div class="container">
+    <form action="/room/save" method="post" id="form-info" >
+
+        <div class="col-sm-12 pt-3">
+            <div class="card">
+                <div class="card-header card-header-primary">
+                    <h4 class="card-title"><i class="fas fa-chess-queen"></i>&nbsp&nbsp 호텔 정보</h4>
+                    <p class="card-catagory"></p>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <tbody>
+                            <tr style="line-height:32px;">
+                                <td></td>
+                                <div th:text="${article.id}">
+
+                                </div>
+                            </tr>
+                            <tr>
+                                <td>호텔 이름</td>
+                                <td>
+                                    <input type="text" class="form-control" th:value="${article.hotelName}" readonly>
+                                </td>
+
+                                <td>시 이름</td>
+                                <td>
+                                    <input type="text" class="form-control" th:value="${article.cityName}" readonly>
+                                </td>
+                            </tr>
+                            <tr>
+
+                                <td>전화번호</td>
+                                <td>
+                                    <input type="text" class="form-control" th:value="${article.tellNumber}" readonly>
+                                </td>
+
+                                <td>주소</td>
+                                <td>
+                                    <input type="tel" class="form-control" th:value="${article.address}" readonly>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-3"></div>
+
+            <div class="card">
+                <div class="card-header"><i class="fas fa-chess-rook"></i>&nbsp&nbsp 이미지</div>
+                <div class="card-body">
+                    <table>
+                        <tr>
+                            <td class="image">
+                                <div>
+                                    <td th:text="${article.hotelImages}"/>
+                                </div>
+
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </form>
+
+</div>
+<button type="button" class="btn btn-dark" th:onclick="|location.href='@{/hotel/delete(id=${article.id})}'|">글 삭제</button>
+<button type="button" class="btn btn-warning" th:onclick="|location.href='@{/hotel/update(id=${article.id})}'|">글 수정</button>
+<button type="button" class="btn btn-dark" th:onclick="|location.href='@{/booking/save(id=${article.id})}'|">예약하기</button>
+<p></p>
+<p></p>
+<table class="table table-striped">
+    <thead class="thead-dark">
+    <tr>
+        <th>id</th>
+        <th>Review Content</th>
+        <th>Review Writer</th>
+        <th>Created Date</th>
+        <th>Modified Date</th>
+        <th> </th>
+        <th> </th>
+        <th> </th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <form th:action="@{/hotel/review/save(id=${article.id})}" method="post">
+        <input class="form-control" placeholder="리뷰 작성자 "name="reviewWriter" type="text">
+        <input class="form-control" placeholder="리뷰를 입력하세요 "name="reviewContent" type="text">
+        <button class="btn btn-primary" type="submit">리뷰 작성</button>
+    </form>
+
+<!--    <tr th:each = "review:${review}">-->
+<!--        <td th:text="${review.id}"></td>-->
+<!--        <td th:text="${review.reviewContent}"></td>-->
+<!--        <td th:text="${review.reviewWriter}"></td>-->
+<!--        <td th:text="${review.createdDate}"></td>-->
+<!--        <td th:text="${review.modifiedDate}"></td>-->
+<!--        <td><a th:href="@{/hotel/review/delete/(id=${review.id},hotelid=${article.id})}">댓글 삭제</a></td>-->
+<!--        <td><a th:href="@{/hotel/review/update(id=${review.id})}">댓글 수정</a></td>-->
+<!--        <td>-->
+<!--            <button type="button" class="btn btn-dark" th:onclick="|location.href='@{/room/list(id=${article.id})}'|">해당-->
+<!--                호텔 룸 정보보기-->
+<!--            </button>-->
+<!--        </td>-->
+<!--    </tr>-->
+<!--    </tbody>-->
+</table>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script th:inline="javascript">  //여기서 요청 넣는 거에요 저 메소드에
+
+let imageList = [[ ${article.hotelImages} ]]
+console.log(imageList)
+
+if(imageList != null){
+    for(const name of imageList){
+        const imgSrc = "/view?fileName="+name
+        $('.image').append(`
+                       <div class="card-temp" className="card" style="width: 200px; display: inline-block; box-shadow: 5px 5px 5px;">
+                         <img src='${imgSrc}' width="200" height="140" data-src='${name}'/>
+                           <div className="card-body">
+                           </div>
+                       </div>
+                    `)
+    }
+}
+</script>
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+
+</body>
+</html>

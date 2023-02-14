@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 
+import java.util.UUID;
 @Entity
 @Builder
 @Getter
@@ -12,17 +13,11 @@ import javax.persistence.*;
 @ToString
 public class HotelImage {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private String name;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "hotel_id")
+    @ToString.Exclude
     private Hotel hotel;
-    int uuid;
-    String createdAt;
-    String modifiedAt;
-    String image_name;
 
-    public static void main(String[] args) {
-    }
 }
