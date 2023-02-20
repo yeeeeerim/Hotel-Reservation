@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>객실 정보조회</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+</head>
+<body>
+<div class="pos-f-t">
+  <div class="collapse" id="navbarToggleExternalContent">
+    <div class="bg-dark p-4">
+      <h5 class="text-white h4">HOTEL SERVICE WEB</h5>
+      <span class="text-muted">호텔 서비스를 제공하는 웹입니다.</span>
+    </div>
+  </div>
+  <nav class="navbar navbar-dark bg-dark">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </nav>
+</div>
+
+
+
+<div class="container">
+  <form action="/room/save" method="post" id="form-info" >
+
+    <div class="col-sm-12 pt-3">
+      <div class="card">
+        <div class="card-header card-header-primary">
+          <h4 class="card-title"><i class="fas fa-chess-queen"></i>&nbsp&nbsp 객실 정보</h4>
+          <p class="card-catagory"></p>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table">
+              <tbody>
+              <tr style="line-height:32px;">
+                <td>호텔이름</td>
+                <div th:text="${dto.id}">
+
+                </div>
+                <td>
+                  <input type="text" name="hotel" class="form-control" th:value="${dto.id}" readonly>
+                </td>
+                <td>방 번호</td>
+                <td>
+                  <input type="text" name="roomNumber" class="form-control" th:value="${dto.roomNumber}" readonly>
+                </td>
+              </tr>
+              <tr>
+                <td>방 등급</td>
+                <td>
+                  <input type="text" name="roomClass" class="form-control" maxlength="10" th:value="${dto.roomClass}" readonly>
+                </td>
+                <td>방 가격</td>
+                <td>
+                  <input type="text" name="roomPrice" class="form-control" maxlength="10" th:value="${dto.roomPrice}" readonly>
+                </td>
+              </tr>
+              <tr>
+                <td>제한 인원</td>
+                <td>
+                  <input type="tel" name="roomLimit" class="form-control" th:value="${dto.roomLimit}" readonly>
+                </td>
+
+              </tr>
+
+              <tr>
+                <td>설명</td>
+                <td colspan="3">
+                  <input type="text" name="description" id="address1" class="form-control mb-3" th:value="${dto.description}" readonly>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="pt-3"></div>
+
+      <div class="card">
+        <div class="card-header"><i class="fas fa-chess-rook"></i>&nbsp&nbsp 이미지</div>
+        <div class="card-body">
+          <table class="table">
+            <tbody>
+
+
+            </tbody>
+          </table>
+          <table>
+            <tr>
+              <td class="image">
+
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+    </div>
+    <input type="hidden" class="hotelId" name="hotelId"/>
+  </form>
+
+  <div class="text-center mt-3">
+    <!-- <input type="button" value="객실저장"class="btn btn-success" id="form-submit" > -->
+    <input type="button" value="뒤로가기" class="btn btn-info" onclick="window.history.back()">
+
+    <!--수정하기 누르면 현재 사용자와 이 호텔 담당자와 회원정보가 같은지 조회하고 get요청을 보내야한다. 아니면 다르다는 에러띄움-->
+    <input type="button" value="수정하기" class="btn btn-info" id="modify" onclick="">
+    <input type="button" value="삭제하기" class="btn btn-danger" id="delete" onclick="">
+  </div>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+
+
+<script th:inline="javascript">  //여기서 요청 넣는 거에요 저 메소드에
+
+  $(document).ready(function(){
+    const check = [[ ${check} ]]
+    if(check != null) {
+      alert("해당 객실을 삭제할 권한이 없습니다.")
+      window.history.back()
+    }
+  })
+    let imageList = [[ ${dto.roomImage} ]]
+    const hotelId = [[ ${hotelId} ]]
+    const roomId = [[ ${dto.id} ]]
+
+    $('.hotelId').val(hotelId)
+
+    if(imageList != null){
+          for(const fileName of imageList){
+            const imgSrc = "/view?fileName="+fileName
+            $('.image').append(`
+                       <div class="card-temp" className="card" style="width: 200px; display: inline-block; box-shadow: 5px 5px 5px;">
+                         <img src='${imgSrc}' width="200" height="140" data-src='${fileName}'/>
+                           <div className="card-body">
+                           </div>
+                       </div>
+                    `)
+          }
+    }
+
+    $('#modify').click(function (){
+          location.href = '/room/modify?id='+roomId+'&hotel='+hotelId
+    })
+    $('#delete').click(function (){
+      location.href = '/room/delete?id='+roomId+'&hotel='+hotelId
+    })
+</script>
+<script>
+
+</script>
+</body>
+</html>
