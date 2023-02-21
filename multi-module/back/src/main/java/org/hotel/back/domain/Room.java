@@ -39,6 +39,10 @@ public class Room {
     private String description; //방설명
 
 
+    private String checkIn;
+    private String checkOut;
+
+
     @Column(name = "hotel_id")
     private long hotelId;
 

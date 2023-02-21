@@ -18,7 +18,6 @@ public class Member {
     @Id
     private String email;
     private String password;
-    private String tellNumber;
 
     @Enumerated(EnumType.STRING)
     private Gender gender;
