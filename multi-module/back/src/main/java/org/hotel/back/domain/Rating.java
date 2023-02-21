@@ -13,7 +13,7 @@ import javax.persistence.Id;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class Rating {
+public class Rating extends BaseTimeEntity{ //TODO: 수정요망
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int ratingId;
