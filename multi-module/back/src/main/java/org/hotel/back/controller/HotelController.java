@@ -6,8 +6,6 @@ import org.hotel.back.data.response.HotelResponseDTO;
 import org.hotel.back.data.response.KaKaoResponseData;
 import org.hotel.back.domain.Hotel;
 
-import org.hotel.back.domain.HotelImage;
-import org.hotel.back.domain.Review;
 import org.hotel.back.data.request.HotelRequestDTO;
 import org.hotel.back.service.HotelService;
 import org.hotel.back.service.api.KaKaoAPIService;
@@ -23,7 +21,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.io.IOException;
 import java.util.List;
 
 @Slf4j
@@ -31,8 +28,8 @@ import java.util.List;
 @RequiredArgsConstructor
 public class HotelController {
     private final HotelService hotelService;
-    
-      private final KaKaoAPIService kaKaoAPIService;
+
+    private final KaKaoAPIService kaKaoAPIService;
     @Value("${upload.path}")
     private String path;
 
@@ -41,7 +38,7 @@ public class HotelController {
     @GetMapping("/hotel/save")//localhost:8080/save
     public String hotelWriteForm(){
 
-        return "hotelimage";
+        return "hotelSave";
     }
 
     @PreAuthorize("isAuthenticated()")
@@ -87,21 +84,16 @@ public class HotelController {
         List<Hotel> list =hotelService.hotelListSearch(keyword);
 
         model.addAttribute("list",list);
-        return "hotelsearch";
+        return "hotelSearch";
     }
 
     //========호텔 자세히보기  ============
     @GetMapping("/hotel/detail")
     public String hotelDetail(Model model, Long id) throws ParseException {
         HotelResponseDTO hotelResponseDTO =hotelService.hotelDetail(id); //호텔 객체를 불러옴 ->service hotelDetail메서드
-
-//        List<Review> reviewlist =hotelResponseDTO.getReviews(); //호텔 객체에서 review 가져와서 넣음(hotelId의 리뷰)
-//        List<HotelImage>hotelImages = hotelResponseDTO.getHotelImages();
         model.addAttribute("article",hotelResponseDTO);
-//        model.addAttribute("review",reviewlist);
-//        model.addAttribute("image",hotelImages);
         model.addAttribute("path",path);
-        return "hotelDetail2";
+        return "hotelDetail";
     }
 
     @PreAuthorize("isAuthenticated()")

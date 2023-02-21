@@ -29,9 +29,12 @@ public class Hotel {
     String latitude;
     String longitude;
 
+    @Builder.Default
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL,mappedBy = "hotel")
+    private List<HotelImage> hotelImages = new ArrayList<>();
     @CreatedBy
     String writer;
-
+    String address;
 
     @ToString.Exclude
     @Builder.Default

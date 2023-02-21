@@ -25,9 +25,7 @@ public class ReviewServiceImpl implements ReviewService {
                 orElseThrow(()->new IllegalArgumentException
                         ("댓글 쓰기 실패: 해당 게시글이 존재하지 않습니다." + id));
         reviewRequestDTO.setHotel(hotel);
-        System.out.println(reviewRequestDTO);
         Review review = reviewRequestDTO.toEntity(reviewRequestDTO);
-        System.out.println("=======**===="+review.getHotel());
         reviewRepository.save(review);
         return reviewRequestDTO.getId();
     }
