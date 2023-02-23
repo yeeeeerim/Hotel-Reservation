@@ -22,6 +22,10 @@ public class QRoom extends EntityPathBase<Room> {
 
     public static final QRoom room = new QRoom("room");
 
+    public final StringPath checkIn = createString("checkIn");
+
+    public final StringPath checkOut = createString("checkOut");
+
     public final StringPath description = createString("description");
 
     public final QHotel hotel;

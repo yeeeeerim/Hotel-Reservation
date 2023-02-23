@@ -19,7 +19,15 @@ public class QRating extends EntityPathBase<Rating> {
 
     public static final QRating rating = new QRating("rating");
 
+    public final QBaseTimeEntity _super = new QBaseTimeEntity(this);
+
+    //inherited
+    public final DateTimePath<java.time.LocalDateTime> createdDate = _super.createdDate;
+
     public final NumberPath<Integer> hotelId = createNumber("hotelId", Integer.class);
+
+    //inherited
+    public final DateTimePath<java.time.LocalDateTime> modifiedDate = _super.modifiedDate;
 
     public final StringPath ratingContent = createString("ratingContent");
 
