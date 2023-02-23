@@ -17,11 +17,10 @@ public class MemberAuditorAware implements AuditorAware<String> {
     public Optional<String> getCurrentAuditor() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
-        if(authentication != null || authentication.isAuthenticated()){
+        if(authentication != null || authentication.isAuthenticated() || !authentication.equals("anonymousUser")){
             log.info("JPA AUDTOR ==>> {}",authentication.getPrincipal());
-            MemberDTO dto = (MemberDTO) authentication.getPrincipal();
 
-            return Optional.of(dto.getEmail());
+            return Optional.of(authentication.getName());
         }
         return Optional.empty();
     }
