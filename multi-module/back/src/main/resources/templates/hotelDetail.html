@@ -42,7 +42,10 @@
                                 <div th:text="${article.id}">
 
                                 </div>
+
+
                             </tr>
+
                             <tr>
                                 <td>호텔 이름</td>
                                 <td>
@@ -64,6 +67,11 @@
                                 <td>주소</td>
                                 <td>
                                     <input type="tel" class="form-control" th:value="${article.address}" readonly>
+                                </td>
+
+                                <td>평균 평점</td>
+                                <td>
+                                    <input type="tel" class="form-control" th:value="${article.ratingAvg}" readonly>
                                 </td>
                             </tr>
                             </tbody>
@@ -113,9 +121,9 @@
         <input type="radio" name="rating" value=1 id="rate5"><label
             for="rate5">★</label>
     </fieldset>
-        <input class="form-control" placeholder="리뷰를 입력하세요 " name="reviewContent" type="text">
-        <button class="btn btn-primary" type="submit">리뷰 작성</button>
-    </form>
+    <input class="form-control" placeholder="리뷰를 입력하세요 " name="reviewContent" type="text">
+    <button class="btn btn-primary" type="submit">리뷰 작성</button>
+</form>
 </form>
 <table class="table table-striped">
     <thead class="thead-dark">
@@ -171,7 +179,6 @@ if (imageList != null) {
         const imgSrc = "/view?fileName=" + name
         $('.image').append(`
                        <div class="card-temp" className="card" style="width: 1000px; display: inline-block; box-shadow: 5px 5px 5px;">
-
                            <div className="card-body">
                            <img src='${imgSrc}' width="1000" height="750" data-src='${name}' style="margin: 10px;"/>
                            </div>

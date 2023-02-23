@@ -5,26 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="72fe5824-7f18-44b4-b4a7-fd643a592f7b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/back/src/main/resources/static/css/star.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back/src/main/resources/templates/hotelSearch.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jpa-buddy.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jpa-buddy.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/test/java/org/hotel/back/repository/HotelRepositoryTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/generated/org/hotel/back/domain/QHotel.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/generated/org/hotel/back/domain/QHotel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/generated/org/hotel/back/domain/QRating.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/generated/org/hotel/back/domain/QRating.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/generated/org/hotel/back/domain/QReview.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/generated/org/hotel/back/domain/QReview.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/generated/org/hotel/back/domain/QRoom.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/generated/org/hotel/back/domain/QRoom.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/config/MemberAuditorAware.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/config/MemberAuditorAware.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/controller/HotelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/controller/HotelController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/data/request/ReviewRequestDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/data/request/ReviewRequestDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/data/response/ReviewResponseDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/data/response/ReviewResponseDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/data/request/HotelRequestDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/data/request/HotelRequestDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/data/response/HotelResponseDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/data/response/HotelResponseDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/domain/Hotel.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/domain/Hotel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/domain/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/domain/Member.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/domain/Review.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/domain/Review.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/service/Impl/ReviewServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/service/Impl/ReviewServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/repository/HotelRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/repository/HotelRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/service/Impl/HotelServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/service/Impl/HotelServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/service/ReviewService.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/service/ReviewService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back/src/main/resources/templates/hotelDetail.html" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/resources/templates/hotelDetail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/resources/templates/hotelDetail2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/resources/templates/hotelSave.html" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/resources/templates/hotelSave.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/resources/templates/hotelimage.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,6 +62,7 @@
         <option value="Interface" />
         <option value="Class" />
         <option value="Enum" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -86,33 +80,41 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;temurin-17&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/yerim/Desktop/Spring_study/hotel_221/STUDY-GROUP-ACTIVITY/multi-module/back/src/main/resources/templates&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.17&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;42064a0f62584d50ddb3493ccddc9bf5&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "jdk.selected.JAVA_MODULE": "temurin-17",
+    "last_opened_file_path": "/Users/yerim/Desktop/Spring_study/hotel_221/STUDY-GROUP-ACTIVITY/multi-module/back/src/main/resources/templates",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.17",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
+    "spring.configuration.checksum": "42064a0f62584d50ddb3493ccddc9bf5",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/back/src/main/resources/templates" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="org.hotel.back.repository" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -123,6 +125,29 @@
     </option>
   </component>
   <component name="RunManager" selected="Spring Boot.BackApplication">
+    <configuration name="HotelRepositoryTest.ratingAvg" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/back" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;org.hotel.back.repository.HotelRepositoryTest.ratingAvg&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
     <configuration name="KaKaoAPIServiceTest.test" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="env">
@@ -172,12 +197,14 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Gradle.HotelRepositoryTest.ratingAvg" />
       <item itemvalue="Gradle.KaKaoAPIServiceTest.test" />
       <item itemvalue="Spring Boot.BookingModuleApplication" />
       <item itemvalue="Spring Boot.BackApplication" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.HotelRepositoryTest.ratingAvg" />
         <item itemvalue="Gradle.KaKaoAPIServiceTest.test" />
       </list>
     </recent_temporary>
@@ -199,7 +226,10 @@
       <workItem from="1676952736211" duration="506000" />
       <workItem from="1676975176687" duration="57000" />
       <workItem from="1676975236549" duration="3968000" />
-      <workItem from="1676981002710" duration="4641000" />
+      <workItem from="1676981002710" duration="5567000" />
+      <workItem from="1677069348451" duration="605000" />
+      <workItem from="1677124513510" duration="6245000" />
+      <workItem from="1677161785236" duration="3323000" />
     </task>
     <servers />
   </component>
