@@ -26,7 +26,7 @@ public class TimerAOP {
 
         stopWatch.stop();
 
-        System.out.println("성능시간 : " + stopWatch.getTotalTimeMillis());
+        System.out.println("성능시간 : " + stopWatch.getTotalTimeSeconds());
 
         return result;
     }

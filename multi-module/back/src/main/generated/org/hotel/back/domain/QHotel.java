@@ -20,11 +20,9 @@ public class QHotel extends EntityPathBase<Hotel> {
 
     public static final QHotel hotel = new QHotel("hotel");
 
-    public final ListPath<Booking, QBooking> bookingList = this.<Booking, QBooking>createList("bookingList", Booking.class, QBooking.class, PathInits.DIRECT2);
-
     public final StringPath cityName = createString("cityName");
 
-    public final ListPath<HotelImage, QHotelImage> hotelImages = this.<HotelImage, QHotelImage>createList("hotelImages", HotelImage.class, QHotelImage.class, PathInits.DIRECT2);
+    public final SetPath<HotelImage, QHotelImage> hotelImages = this.<HotelImage, QHotelImage>createSet("hotelImages", HotelImage.class, QHotelImage.class, PathInits.DIRECT2);
 
     public final StringPath hotelName = createString("hotelName");
 

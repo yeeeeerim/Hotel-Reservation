@@ -292,6 +292,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/back/src/main/java/org/hotel/back/config/MemberAuditorAware.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/back/src/main/java/org/hotel/back/data/response/HotelResponseDTO.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/back/src/main/java/org/hotel/back/domain/Hotel.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/back/src/main/java/org/hotel/back/domain/HotelImage.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/back/src/main/java/org/hotel/back/domain/Review.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/back/src/main/java/org/hotel/back/domain/Room.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/back/src/main/java/org/hotel/back/repository/custom/ManagerRepository.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/back/src/main/java/org/hotel/back/repository/custom/impl/ManagerRepositoryImpl.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/back/src/main/java/org/hotel/back/service/Impl/ReviewServiceImpl.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/back/src/main/java/org/hotel/back/service/Impl/RoomServiceImpl.java" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="JpbToolWindowState">
     <option name="myId2FirstActivated">
       <map>
@@ -328,7 +340,7 @@
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
     &quot;jdk.selected.JAVA_MODULE&quot;: &quot;temurin-17&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/study/uuu/SMBE4-Spring-SpringBoot&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/lecture_homework/oneToy/proj/querydsl&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.17&quot;,
@@ -361,35 +373,6 @@
     </option>
   </component>
   <component name="RunManager" selected="Gradle.ManagerRepositoryImplTest.hotelInfoTest (1)">
-    <configuration name="KaKaoAPIServiceTest.webCLientBlock" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="env">
-          <map>
-            <entry key="API_KEY" value="26f037dc249943e4b75e005d6fc3858d" />
-            <entry key="KAKAO_KEY" value="26908928dc4fbc906aa69783b4c367f5" />
-          </map>
-        </option>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/back" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;org.hotel.back.service.api.KaKaoAPIServiceTest.webCLientBlock&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
     <configuration name="ManagerRepositoryImplTest.hotelInfoTest (1)" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="env">
@@ -410,6 +393,35 @@
             <option value=":test" />
             <option value="--tests" />
             <option value="&quot;org.hotel.back.repository.custom.impl.ManagerRepositoryImplTest.hotelInfoTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="ManagerRepositoryImplTest.insertData" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="env">
+          <map>
+            <entry key="API_KEY" value="26f037dc249943e4b75e005d6fc3858d" />
+            <entry key="KAKAO_KEY" value="26908928dc4fbc906aa69783b4c367f5" />
+          </map>
+        </option>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/back" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;org.hotel.back.repository.custom.impl.ManagerRepositoryImplTest.insertData&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -544,21 +556,21 @@
     </configuration>
     <list>
       <item itemvalue="Gradle.booking-module" />
+      <item itemvalue="Gradle.ManagerRepositoryImplTest.insertData" />
       <item itemvalue="Gradle.ManagerRepositoryImplTest.testData (1)" />
       <item itemvalue="Gradle.back [bootJar]" />
       <item itemvalue="Gradle.ManagerRepositoryImplTest.reviewSave" />
       <item itemvalue="Gradle.ManagerRepositoryImplTest.hotelInfoTest (1)" />
-      <item itemvalue="Gradle.KaKaoAPIServiceTest.webCLientBlock" />
       <item itemvalue="Spring Boot.BookingModuleApplication" />
       <item itemvalue="Spring Boot.BackApplication" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.ManagerRepositoryImplTest.hotelInfoTest (1)" />
+        <item itemvalue="Gradle.ManagerRepositoryImplTest.insertData" />
         <item itemvalue="Gradle.ManagerRepositoryImplTest.testData (1)" />
         <item itemvalue="Gradle.back [bootJar]" />
         <item itemvalue="Gradle.ManagerRepositoryImplTest.reviewSave" />
-        <item itemvalue="Gradle.KaKaoAPIServiceTest.webCLientBlock" />
       </list>
     </recent_temporary>
   </component>
@@ -583,7 +595,12 @@
       <workItem from="1677063675568" duration="6282000" />
       <workItem from="1677126315384" duration="12396000" />
       <workItem from="1677151272786" duration="2372000" />
-      <workItem from="1677153703943" duration="984000" />
+      <workItem from="1677153703943" duration="4165000" />
+      <workItem from="1677211747245" duration="903000" />
+      <workItem from="1677214402550" duration="1437000" />
+      <workItem from="1677228494795" duration="690000" />
+      <workItem from="1677233371483" duration="13000" />
+      <workItem from="1677302324539" duration="1787000" />
     </task>
     <servers />
   </component>

@@ -2,6 +2,7 @@ package org.hotel.back.service;
 
 
 import lombok.RequiredArgsConstructor;
+import org.hotel.back.annotation.PerformTimer;
 import org.hotel.back.data.request.RegisterData;
 import org.hotel.back.domain.Gender;
 import org.hotel.back.domain.Hotel;
@@ -63,4 +64,6 @@ public class MemberService {
     public Hotel getMemberCheckHotelInfo(String email){
         return managerRepository.getHotelInfo(email);
     }
+
+
 }
