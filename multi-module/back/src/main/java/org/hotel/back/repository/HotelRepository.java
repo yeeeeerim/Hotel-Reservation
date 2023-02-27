@@ -14,7 +14,8 @@ public interface HotelRepository extends JpaRepository<Hotel,Long> {
             "left outer join HotelImage hi on hi.hotel = h " +
             " left outer join Review r on r.hotel = h " +
             " where h.id = :id ")
-    List<Object[]> getHotelWithAll(@Param("id")Long id); // 특정 영화 조회
+    List<Object[]> getHotelWithAll(@Param("id")Long id);
+
 
     List<Hotel> findByHotelNameContaining(String keyword);
 }

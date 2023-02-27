@@ -5,17 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="72fe5824-7f18-44b4-b4a7-fd643a592f7b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/back/src/test/java/org/hotel/back/repository/HotelRepositoryTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/data/response/HotelListResponseDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/resources/static/css/styles.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/resources/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/config/MemberAuditorAware.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/config/MemberAuditorAware.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/back/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/controller/HotelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/controller/HotelController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/data/request/HotelRequestDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/data/request/HotelRequestDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/data/response/HotelResponseDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/data/response/HotelResponseDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/domain/Hotel.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/domain/Hotel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/domain/Review.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/domain/Review.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/repository/HotelRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/repository/HotelRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/repository/ReviewRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/repository/ReviewRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/service/HotelService.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/service/HotelService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/service/Impl/HotelServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/service/Impl/HotelServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/service/ReviewService.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/service/ReviewService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back/src/main/resources/templates/hotelDetail.html" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/resources/templates/hotelDetail.html" afterDir="false" />
     </list>
@@ -60,9 +61,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Class" />
         <option value="Enum" />
         <option value="JUnit5 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -80,38 +81,42 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "jdk.selected.JAVA_MODULE": "temurin-17",
-    "last_opened_file_path": "/Users/yerim/Desktop/Spring_study/hotel_221/STUDY-GROUP-ACTIVITY/multi-module/back/src/main/resources/templates",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.17",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
-    "spring.configuration.checksum": "42064a0f62584d50ddb3493ccddc9bf5",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;temurin-17&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/yerim/Desktop/Spring_study/hotel_221/STUDY-GROUP-ACTIVITY/multi-module/back/src/main/resources/templates&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.17&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;42064a0f62584d50ddb3493ccddc9bf5&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/back/src/main/resources/templates" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/back/src/main/resources/templates" />
+      <recent name="$PROJECT_DIR$/back/src/main/resources/static/css" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
       <recent name="org.hotel.back.repository" />
@@ -199,8 +204,8 @@
     <list>
       <item itemvalue="Gradle.HotelRepositoryTest.ratingAvg" />
       <item itemvalue="Gradle.KaKaoAPIServiceTest.test" />
-      <item itemvalue="Spring Boot.BookingModuleApplication" />
       <item itemvalue="Spring Boot.BackApplication" />
+      <item itemvalue="Spring Boot.BookingModuleApplication" />
     </list>
     <recent_temporary>
       <list>
@@ -230,6 +235,10 @@
       <workItem from="1677069348451" duration="605000" />
       <workItem from="1677124513510" duration="6245000" />
       <workItem from="1677161785236" duration="3323000" />
+      <workItem from="1677165125298" duration="1941000" />
+      <workItem from="1677210845909" duration="2692000" />
+      <workItem from="1677339700072" duration="612000" />
+      <workItem from="1677497491882" duration="15111000" />
     </task>
     <servers />
   </component>

@@ -1,6 +1,7 @@
 package org.hotel.back.domain;
 
 import lombok.*;
+import org.hibernate.annotations.BatchSize;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -31,6 +32,7 @@ public class Hotel {
 
     @Builder.Default
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL,mappedBy = "hotel")
+    @BatchSize(size=20)
     private List<HotelImage> hotelImages = new ArrayList<>();
     @CreatedBy
     private String writer;

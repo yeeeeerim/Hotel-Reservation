@@ -72,6 +72,7 @@
                                 <td>평균 평점</td>
                                 <td>
                                     <input type="tel" class="form-control" th:value="${article.ratingAvg}" readonly>
+                                    <input type="tel" class="form-control" th:value="${article.hotelImages.get(0)}" readonly>
                                 </td>
                             </tr>
                             </tbody>
@@ -170,17 +171,19 @@
 <script th:inline="javascript">  //여기서 요청 넣는 거에요 저 메소드에
 
 let imageList = [[ ${article.hotelImages}]]
+let imageList2 = [[ ${article.hotelImages.get(0)}]]
 let latitude = [[${article.latitude}]]
 let longitude = [[${article.longitude}]]
-console.log(latitude)
+console.log(imageList2)
 
 if (imageList != null) {
+
     for (const name of imageList) {
         const imgSrc = "/view?fileName=" + name
         $('.image').append(`
                        <div class="card-temp" className="card" style="width: 1000px; display: inline-block; box-shadow: 5px 5px 5px;">
                            <div className="card-body">
-                           <img src='${imgSrc}' width="1000" height="750" data-src='${name}' style="margin: 10px;"/>
+                           <img src='${imgSrc}' width="1000" height="750" ' style="margin: 10px;"/>
                            </div>
                        </div>
                     `)
