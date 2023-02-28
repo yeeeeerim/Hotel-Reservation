@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="72fe5824-7f18-44b4-b4a7-fd643a592f7b" name="Changes" comment="">
+
       <change afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/data/response/HotelListResponseDTO.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/back/src/main/resources/static/css/styles.css" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/back/src/main/resources/templates/index.html" afterDir="false" />
@@ -19,6 +20,7 @@
       <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/service/Impl/HotelServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/service/Impl/HotelServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back/src/main/resources/templates/hotelDetail.html" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/resources/templates/hotelDetail.html" afterDir="false" />
+
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,6 +82,7 @@
 
         <option value="AnnotationType" />
 
+
         <option value="Class" />
       </list>
     </option>
@@ -110,7 +113,9 @@
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
     &quot;jdk.selected.JAVA_MODULE&quot;: &quot;temurin-17&quot;,
+
     &quot;last_opened_file_path&quot;: &quot;/Users/yerim/Desktop/Spring_study/hotel_221/STUDY-GROUP-ACTIVITY/multi-module/back/src/main/resources/templates&quot;,
+
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -121,6 +126,7 @@
     &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
 
     &quot;settings.editor.selected.configurable&quot;: &quot;android.project.structure&quot;,
+
     &quot;spring.configuration.checksum&quot;: &quot;42064a0f62584d50ddb3493ccddc9bf5&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -133,11 +139,14 @@
     <option name="notificationShown" value="true" />
   </component>
   <component name="RecentsManager">
+
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+
       <recent name="org.hotel.back.repository.custom.impl" />
+
 
     </key>
   </component>
@@ -375,6 +384,7 @@
       <workItem from="1676544340038" duration="599000" />
       <workItem from="1676608551489" duration="2003000" />
       <workItem from="1676879035903" duration="4377000" />
+
 
       <workItem from="1676952736211" duration="6918000" />
       <workItem from="1676984222653" duration="124000" />
