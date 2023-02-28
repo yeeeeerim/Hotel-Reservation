@@ -5,11 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="72fe5824-7f18-44b4-b4a7-fd643a592f7b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/e7468247-4beb-4c6a-9ebb-c21d8f77086a.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/multi-module.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/data/response/HotelAndReviewDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/service/Impl/MemberServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/resources/static/css/styles.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/resources/static/js/scripts.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/resources/templates/manage/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/resources/templates/unknown.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9308a626-05ae-4a87-b9a2-6899ee6c2f46.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/9308a626-05ae-4a87-b9a2-6899ee6c2f46.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9308a626-05ae-4a87-b9a2-6899ee6c2f46.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9308a626-05ae-4a87-b9a2-6899ee6c2f46/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/e7468247-4beb-4c6a-9ebb-c21d8f77086a/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9308a626-05ae-4a87-b9a2-6899ee6c2f46/storage_v2/_src_/schema/mysql.osA4Bg.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/e7468247-4beb-4c6a-9ebb-c21d8f77086a/storage_v2/_src_/schema/mysql.osA4Bg.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9308a626-05ae-4a87-b9a2-6899ee6c2f46/storage_v2/_src_/schema/performance_schema.kIw0nw.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/e7468247-4beb-4c6a-9ebb-c21d8f77086a/storage_v2/_src_/schema/performance_schema.kIw0nw.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9308a626-05ae-4a87-b9a2-6899ee6c2f46/storage_v2/_src_/schema/sys.zb4BAA.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/e7468247-4beb-4c6a-9ebb-c21d8f77086a/storage_v2/_src_/schema/sys.zb4BAA.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
@@ -336,6 +350,7 @@
       <workItem from="1677405814542" duration="3761000" />
       <workItem from="1677418624434" duration="417000" />
       <workItem from="1677470926951" duration="10970000" />
+      <workItem from="1677557390756" duration="453000" />
     </task>
     <servers />
   </component>
