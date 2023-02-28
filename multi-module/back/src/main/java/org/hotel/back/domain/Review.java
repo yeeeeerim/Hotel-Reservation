@@ -18,6 +18,7 @@ public class Review extends BaseTimeEntity{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     String reviewContent;
+
     @CreatedBy
     String reviewWriter;
     @ToString.Exclude

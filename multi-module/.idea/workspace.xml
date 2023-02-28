@@ -39,12 +39,26 @@
         <task path="$PROJECT_DIR$/back">
           <activation />
         </task>
+        <task path="$PROJECT_DIR$/booking-module">
+          <activation />
+        </task>
         <projects_view>
           <tree_state>
             <expand>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="back" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="back" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="back" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build" type="c8890929:TasksNode$1" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
@@ -63,6 +77,9 @@
         <option value="Interface" />
         <option value="Enum" />
         <option value="JUnit5 Test Class" />
+
+        <option value="AnnotationType" />
+
         <option value="Class" />
       </list>
     </option>
@@ -102,24 +119,26 @@
     &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.17&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;42064a0f62584d50ddb3493ccddc9bf5&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+
+    &quot;settings.editor.selected.configurable&quot;: &quot;android.project.structure&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;42064a0f62584d50ddb3493ccddc9bf5&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
+    ]
   }
 }</component>
+  <component name="ReactorSettings">
+    <option name="notificationShown" value="true" />
+  </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/back/src/main/resources/templates" />
-    </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/back/src/main/resources/templates" />
-      <recent name="$PROJECT_DIR$/back/src/main/resources/static/css" />
-    </key>
     <key name="CreateTestDialog.RecentsKey">
-      <recent name="org.hotel.back.repository" />
+      <recent name="org.hotel.back.repository.custom.impl" />
+
     </key>
   </component>
   <component name="RunDashboard">
@@ -129,31 +148,9 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.BackApplication">
-    <configuration name="HotelRepositoryTest.ratingAvg" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/back" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;org.hotel.back.repository.HotelRepositoryTest.ratingAvg&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="KaKaoAPIServiceTest.test" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+
+  <component name="RunManager" selected="Gradle.ManagerRepositoryImplTest.hotelInfoTest (1)">
+    <configuration name="KaKaoAPIServiceTest.webCLientBlock" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="env">
           <map>
@@ -172,12 +169,150 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;org.hotel.back.service.api.KaKaoAPIServiceTest.test&quot;" />
+            <option value="&quot;org.hotel.back.service.api.KaKaoAPIServiceTest.webCLientBlock&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
       </ExternalSystemSettings>
       <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="ManagerRepositoryImplTest.hotelInfoTest (1)" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="env">
+          <map>
+            <entry key="API_KEY" value="26f037dc249943e4b75e005d6fc3858d" />
+            <entry key="KAKAO_KEY" value="26908928dc4fbc906aa69783b4c367f5" />
+          </map>
+        </option>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/back" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;org.hotel.back.repository.custom.impl.ManagerRepositoryImplTest.hotelInfoTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="ManagerRepositoryImplTest.reviewSave" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="env">
+          <map>
+            <entry key="API_KEY" value="26f037dc249943e4b75e005d6fc3858d" />
+            <entry key="KAKAO_KEY" value="26908928dc4fbc906aa69783b4c367f5" />
+          </map>
+        </option>
+
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/back" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+
+            <option value="&quot;org.hotel.back.repository.custom.impl.ManagerRepositoryImplTest.reviewSave&quot;" />
+
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+
+    <configuration name="ManagerRepositoryImplTest.testData (1)" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+
+      <ExternalSystemSettings>
+        <option name="env">
+          <map>
+            <entry key="API_KEY" value="26f037dc249943e4b75e005d6fc3858d" />
+            <entry key="KAKAO_KEY" value="26908928dc4fbc906aa69783b4c367f5" />
+          </map>
+        </option>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/back" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;org.hotel.back.repository.custom.impl.ManagerRepositoryImplTest.testData&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="back [bootJar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/back" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="bootJar" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="booking-module" type="GradleRunConfiguration" factoryName="Gradle" nameIsGenerated="true">
+      <ExternalSystemSettings>
+        <option name="env">
+          <map>
+            <entry key="API_KEY" value="26f037dc249943e4b75e005d6fc3858d" />
+            <entry key="KAKAO_KEY" value="26908928dc4fbc906aa69783b4c367f5" />
+          </map>
+        </option>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/booking-module" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list />
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
@@ -202,15 +337,27 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Gradle.HotelRepositoryTest.ratingAvg" />
-      <item itemvalue="Gradle.KaKaoAPIServiceTest.test" />
+
+      <item itemvalue="Gradle.booking-module" />
+      <item itemvalue="Gradle.ManagerRepositoryImplTest.testData (1)" />
+      <item itemvalue="Gradle.back [bootJar]" />
+      <item itemvalue="Gradle.ManagerRepositoryImplTest.reviewSave" />
+      <item itemvalue="Gradle.ManagerRepositoryImplTest.hotelInfoTest (1)" />
+      <item itemvalue="Gradle.KaKaoAPIServiceTest.webCLientBlock" />
+      <item itemvalue="Spring Boot.BookingModuleApplication" />
+
       <item itemvalue="Spring Boot.BackApplication" />
       <item itemvalue="Spring Boot.BookingModuleApplication" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.HotelRepositoryTest.ratingAvg" />
-        <item itemvalue="Gradle.KaKaoAPIServiceTest.test" />
+
+        <item itemvalue="Gradle.ManagerRepositoryImplTest.hotelInfoTest (1)" />
+        <item itemvalue="Gradle.ManagerRepositoryImplTest.testData (1)" />
+        <item itemvalue="Gradle.back [bootJar]" />
+        <item itemvalue="Gradle.ManagerRepositoryImplTest.reviewSave" />
+        <item itemvalue="Gradle.KaKaoAPIServiceTest.webCLientBlock" />
+
       </list>
     </recent_temporary>
   </component>
@@ -228,17 +375,16 @@
       <workItem from="1676544340038" duration="599000" />
       <workItem from="1676608551489" duration="2003000" />
       <workItem from="1676879035903" duration="4377000" />
-      <workItem from="1676952736211" duration="506000" />
-      <workItem from="1676975176687" duration="57000" />
-      <workItem from="1676975236549" duration="3968000" />
-      <workItem from="1676981002710" duration="5567000" />
-      <workItem from="1677069348451" duration="605000" />
-      <workItem from="1677124513510" duration="6245000" />
-      <workItem from="1677161785236" duration="3323000" />
-      <workItem from="1677165125298" duration="1941000" />
-      <workItem from="1677210845909" duration="2692000" />
-      <workItem from="1677339700072" duration="612000" />
-      <workItem from="1677497491882" duration="15111000" />
+
+      <workItem from="1676952736211" duration="6918000" />
+      <workItem from="1676984222653" duration="124000" />
+      <workItem from="1676990326071" duration="546000" />
+      <workItem from="1677057641464" duration="8000" />
+      <workItem from="1677063675568" duration="6282000" />
+      <workItem from="1677126315384" duration="12396000" />
+      <workItem from="1677151272786" duration="2372000" />
+      <workItem from="1677153703943" duration="984000" />
+
     </task>
     <servers />
   </component>

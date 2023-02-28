@@ -23,6 +23,7 @@ public class Member {
     private Gender gender;
     private String nickName;
 
+    private String tellNumber;
     @ToString.Exclude
     @Builder.Default
     @ElementCollection(fetch = FetchType.LAZY)
