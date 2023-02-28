@@ -23,16 +23,20 @@ public class Hotel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
-    String hotelName;
-    String cityName;
-    String tellNumber;
-    String latitude;
-    String longitude;
+    private Long id;
+    private String hotelName;
+    private String cityName;
+    private String tellNumber;
+    private String latitude;
+    private String longitude;
 
+    @Builder.Default
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL,mappedBy = "hotel")
+    @BatchSize(size=20)
+    private List<HotelImage> hotelImages = new ArrayList<>();
     @CreatedBy
-    String writer;
-
+    private String writer;
+    private String address;
 
     @BatchSize(size = 10)
     @ToString.Exclude
@@ -63,7 +67,6 @@ public class Hotel {
         this.latitude=latitude;
         this.longitude=longitude;
     }
-
 
     public void addRoom(Room room){
 

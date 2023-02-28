@@ -26,6 +26,8 @@ public class Review extends BaseTimeEntity{
     @JoinColumn(name = "hotel_id")
     Hotel hotel;
 
+    Long rating;
+
     public void updateReview(String reviewContent){
         this.reviewContent=reviewContent;
     }

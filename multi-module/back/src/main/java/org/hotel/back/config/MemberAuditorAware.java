@@ -21,7 +21,8 @@ public class MemberAuditorAware implements AuditorAware<String> {
             log.info("JPA AUDTOR ==>> {}",authentication.getPrincipal());
 
             return Optional.of(authentication.getName());
+
         }
-        return Optional.empty();
-    }
+        return Optional.empty();}
+
 }

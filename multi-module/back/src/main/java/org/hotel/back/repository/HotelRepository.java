@@ -8,13 +8,14 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface HotelRepository extends JpaRepository<Hotel,Long> {
-    @Query("select distinct h from Hotel h left join fetch h.reviews where h.id = :id")
-    Hotel findFetchJoin(@Param("id")Long id);
-    //fetch join-> review테이블에서 한 번 더 쿼리가 일어나는 것을 방지
-    //호텔 id에 저장되어있는 리뷰를 불러옴
 
-    @Query("select distinct h from Hotel AS h LEFT JOIN Review AS r ON h.id=r.hotel.id LEFT JOIN HotelImage AS i ON h.id=i.hotel.id where h.id= :id")
-    Hotel findJoinImages(@Param("id")Long id);
+    @Query("select h, avg(coalesce(r.rating,0))" +
+            " from Hotel h " +
+            "left outer join HotelImage hi on hi.hotel = h " +
+            " left outer join Review r on r.hotel = h " +
+            " where h.id = :id ")
+    List<Object[]> getHotelWithAll(@Param("id")Long id);
+
 
     List<Hotel> findByHotelNameContaining(String keyword);
 }
