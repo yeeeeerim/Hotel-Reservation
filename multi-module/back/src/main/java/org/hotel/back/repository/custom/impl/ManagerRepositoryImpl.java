@@ -8,7 +8,9 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.swing.text.html.Option;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 @RequiredArgsConstructor
@@ -21,10 +23,11 @@ public class ManagerRepositoryImpl implements ManagerRepository{
     private EntityManager em;
 
     /**
-     * @apiNote 이메일을 받고 해당 이메일과 조회하려는 호텔 정보중 작성자와 동일하다면 데이터 반환
+     * @apiNote 이메일을 받고 해당 계정이 작성한 호텔정보 - 즉 Hotel관리자가 볼 수 있는 정보이다.
+     * 해당 사용자가 작성한 글이 없을 수 있으므로 null처리가 필요하다.
      *
      * */
-    public Hotel getHotelInfo(String email){
+    public Optional<Hotel> getHotelInfo(String email){
         QHotel hotel = QHotel.hotel;
         QReview review =  QReview.review;
         QRoom room = QRoom.room;
@@ -33,16 +36,13 @@ public class ManagerRepositoryImpl implements ManagerRepository{
         Hotel hotelData = jpaQueryFactory.select(hotel)
                 .distinct()
                 .from(hotel)
-                .join(hotel.reviews, review)
+                .leftJoin(hotel.reviews, review)
                 .fetchJoin()
-                .join(hotel.roomSet, room)
-                .fetchJoin()
+                .where(hotel.writer.eq(email))
                 .fetchOne();
 
-        if(hotelData.getWriter().equals(email)){
-            return hotelData;
-        }
-        return hotelData;
+        if(hotelData != null)  return  Optional.of(hotelData);
+        return Optional.empty();
     }
 
     @Override

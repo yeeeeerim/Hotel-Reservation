@@ -69,15 +69,15 @@ public class HotelServiceImpl implements HotelService {
     @Override
     public HotelResponseDTO hotelDetail(Long id) throws ParseException {
         Hotel hotel=hotelRepository.findFetchJoin(id);
-        HotelResponseDTO hotelResponseDTO=new HotelResponseDTO(hotel);
+        var data = kaKaoAPIService.getAddressInfo(hotel.getLongitude(),hotel.getLatitude());
+        HotelResponseDTO dto = new HotelResponseDTO(hotel);
 
-        if(kaKaoAPIService.getAddressInfo(hotel.getLongitude(),hotel.getLatitude()).isPresent()){//위, 경도를 넣어서 주소가 반환된다면
-            String address=kaKaoAPIService.getAddressInfo(hotelResponseDTO.getLongitude(),hotelResponseDTO.getLatitude()).orElse(null);//address에 값 넣기
-            hotelResponseDTO.setAddress(address);//변환한 주소 넣기
-            System.out.println(hotelResponseDTO);
-            }
+        if(data.isPresent()){//위, 경도를 넣어서 주소가 반환된다면
+            String address = data.get();
+            dto.setAddress(address);//변환한 주소 넣기
+        }
 
-        return hotelResponseDTO;
+        return dto;
     }
     //호텔 지우기
     @Override

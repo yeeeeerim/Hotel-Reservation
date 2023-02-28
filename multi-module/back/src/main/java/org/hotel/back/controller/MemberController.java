@@ -3,13 +3,17 @@ package org.hotel.back.controller;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.hotel.back.data.dto.MemberDTO;
 import org.hotel.back.data.request.RegisterData;
+import org.hotel.back.data.response.HotelAndReviewDTO;
 import org.hotel.back.service.MemberService;
+import org.json.simple.parser.ParseException;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindException;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -49,6 +53,30 @@ public class MemberController {
         memberService.registerSave(data);
         return "redirect:login";
     }
+
+    @GetMapping("/manage")
+    //@PreAuthorize("hasRole('OWNER')")
+    public String manageGET(Model model,
+                            @AuthenticationPrincipal MemberDTO memberDTO){
+        HotelAndReviewDTO dto = null;
+
+        try{
+             dto =
+                    memberService.getHotelAndReviewWithRoom(memberDTO.getEmail());
+            model.addAttribute("hotel",dto);
+            if(memberDTO != null) model.addAttribute("member",memberDTO);
+            if(!dto.getImages().isEmpty()) model.addAttribute("images",dto.getImages().stream().findFirst().get());
+        } catch (ParseException e) {
+           log.error("파싱 실패");
+        }
+
+
+
+        return "/manage/index";
+
+
+    }
+
 
 
     @ExceptionHandler(BindException.class)

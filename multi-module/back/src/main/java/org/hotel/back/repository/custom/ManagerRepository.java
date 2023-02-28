@@ -5,9 +5,10 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface ManagerRepository {
-    public Hotel getHotelInfo(String email);
+    public Optional<Hotel> getHotelInfo(String email);
 
 
 

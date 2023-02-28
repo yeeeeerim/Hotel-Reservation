@@ -49,7 +49,6 @@ class ManagerRepositoryImplTest {
 
     @Test
     @Transactional
-    @PerformTimer
     @DisplayName("이메일을 통해 호텔정보가져오기 테스트")
     void hotelInfoTest(){
         /*
@@ -64,7 +63,7 @@ class ManagerRepositoryImplTest {
             System.out.println(hotel);
          //   hotel.getRoomSet().stream().limit(4L).forEach(room -> System.out.println(room.getDescription()));
 
-            System.out.println(hotel.getReviews().get(0).getReviewContent());
+//            System.out.println(hotel.getReviews().get(0).getReviewContent());
     }
 
     @Test
