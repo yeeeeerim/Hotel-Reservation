@@ -27,19 +27,21 @@ public class HotelResponseDTO {
     @Builder.Default
     List<Review> reviews = new ArrayList<>();
     String address;
+    Double ratingAvg;
 
     @Builder.Default
     List<String>hotelImages=new ArrayList<>();
 
-    public HotelResponseDTO(Hotel hotel){
+    public HotelResponseDTO(Hotel hotel,Double avg){
         this.id=hotel.getId();
         this.hotelName=hotel.getHotelName();
         this.cityName=hotel.getCityName();
         this.tellNumber=hotel.getTellNumber();
         this.latitude=hotel.getLatitude();
         this.longitude=hotel.getLongitude();
-    //    this.hotelImages=hotel.getHotelImages().stream().map(entity-> entity.getName()).collect(Collectors.toList());
+        this.hotelImages=hotel.getHotelImages().stream().map(entity-> entity.getName()).collect(Collectors.toList());
         this.reviews=hotel.getReviews();
+        this.ratingAvg=avg;
     }
 
 

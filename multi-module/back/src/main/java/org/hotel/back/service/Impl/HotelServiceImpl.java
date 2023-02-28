@@ -1,7 +1,9 @@
 package org.hotel.back.service.Impl;
 
 import lombok.RequiredArgsConstructor;
+import net.coobird.thumbnailator.Thumbnailator;
 import org.hotel.back.config.exception.FileUploadException;
+import org.hotel.back.data.response.HotelListResponseDTO;
 import org.hotel.back.data.response.HotelResponseDTO;
 import org.hotel.back.domain.Hotel;
 import org.hotel.back.data.request.HotelRequestDTO;
@@ -17,9 +19,13 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.io.IOException;
+import java.nio.DoubleBuffer;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
@@ -44,7 +50,9 @@ public class HotelServiceImpl implements HotelService {
         else{
             Hotel hotel=hotelRequestDTO.toEntity(hotelRequestDTO);
             Long hotelId=hotelRepository.save(hotel).getId();
-            for(MultipartFile hotelImage:hotelRequestDTO.getHotelImage()){;
+
+            //썸네일
+            for(MultipartFile hotelImage:hotelRequestDTO.getHotelImage()){
                 String uuid = UUID.randomUUID().toString()+"_"+hotelImage.getOriginalFilename();
                 Path savePath = Paths.get(path, uuid);
                 try{
@@ -61,24 +69,25 @@ public class HotelServiceImpl implements HotelService {
     }
     //호텔 리스트
     @Override
-    public Page<Hotel> hotelList(Pageable pageable) {
+    public Page<HotelListResponseDTO> hotelList(Pageable pageable) {
+        Page hotel=hotelRepository.findAll(pageable);
 
-        return hotelRepository.findAll(pageable);
+        return hotel;
     }
     //호텔 자세히보기
     @Override
     public HotelResponseDTO hotelDetail(Long id) throws ParseException {
-        Hotel hotel=hotelRepository.findFetchJoin(id);
-        HotelResponseDTO hotelResponseDTO=new HotelResponseDTO(hotel);
-
+        List<Object[]> result = hotelRepository.getHotelWithAll(id);
+        Hotel hotel=(Hotel)result.get(0)[0];
+        Double avg=(Double) result.get(0)[1]; //평점
+        HotelResponseDTO hotelResponseDTO=new HotelResponseDTO(hotel,avg);
         if(kaKaoAPIService.getAddressInfo(hotel.getLongitude(),hotel.getLatitude()).isPresent()){//위, 경도를 넣어서 주소가 반환된다면
             String address=kaKaoAPIService.getAddressInfo(hotelResponseDTO.getLongitude(),hotelResponseDTO.getLatitude()).orElse(null);//address에 값 넣기
             hotelResponseDTO.setAddress(address);//변환한 주소 넣기
-            System.out.println(hotelResponseDTO);
-            }
-
+        }
         return hotelResponseDTO;
     }
+
     //호텔 지우기
     @Override
     public boolean hotelDelete(Long id) {
@@ -99,8 +108,8 @@ public class HotelServiceImpl implements HotelService {
     }
 
     @Override
-    public List<Hotel> hotelListSearch(String keyword) {
+    public List<HotelResponseDTO> hotelListSearch(String keyword) {
         List<Hotel> hotels = hotelRepository.findByHotelNameContaining(keyword);
-        return hotels;
+        return null;
     }
 }

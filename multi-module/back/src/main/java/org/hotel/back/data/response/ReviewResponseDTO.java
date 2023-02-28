@@ -12,6 +12,7 @@ public class ReviewResponseDTO {
     String reviewContent;
     String reviewWriter;
     Long hotelId;
+    Long rating;
     public static Review toEntity(ReviewRequestDTO dto){
         return Review.builder()
                 .id(dto.getId())
@@ -24,6 +25,7 @@ public class ReviewResponseDTO {
         this.reviewContent=review.getReviewContent();
         this.reviewWriter=review.getReviewWriter();
         this.hotelId=review.getHotel().getId();
+        this.rating=review.getRating();
 
     }
 }

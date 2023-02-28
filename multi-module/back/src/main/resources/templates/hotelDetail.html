@@ -1,16 +1,13 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<html lang="ko" xmlns:text="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
-    <title>게시글 상세페이지</title>
+    <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <title>객실 정보조회</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/star.css">
 </head>
 <body>
-
 <div class="pos-f-t">
     <div class="collapse" id="navbarToggleExternalContent">
         <div class="bg-dark p-4">
@@ -19,39 +16,116 @@
         </div>
     </div>
     <nav class="navbar navbar-dark bg-dark">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent"
+                aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
     </nav>
 </div>
 
+
 <div class="container">
+    <form action="/room/save" method="post" id="form-info">
 
-    <ul class="list-group">
-        <li class="list-group-item" th:text="${article.id}"></li>
-        <li class="list-group-item" th:text="${article.hotelName}"></li>
-        <li class="list-group-item" th:text="${article.cityName}"></li>
-        <li class="list-group-item" th:text="${article.tellNumber}"></li>
-        <li class="list-group-item" th:text="${article.latitude}"></li>
-        <li class="list-group-item" th:text="${article.longitude}"></li>
-    </ul>
-    <table class="table table-striped">
-        <tr>이미지</tr>
-        <tr th:each = "image:${image}">
-            <img th:src="|/view?filename=${image.name}|" width="200" height="140" >
+        <div class="col-sm-12 pt-3">
+            <div class="card">
+                <div class="card-header card-header-primary">
+                    <h4 class="card-title"><i class="fas fa-chess-queen"></i>&nbsp&nbsp 호텔 정보</h4>
+                    <p class="card-catagory"></p>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <tbody>
+                            <tr style="line-height:32px;">
+                                <td></td>
+                                <div th:text="${article.id}">
 
-            <td th:text="|${path}/${image.name}|">
-        </tr>
-        </tr>
-    </table>
+                                </div>
 
+
+                            </tr>
+
+                            <tr>
+                                <td>호텔 이름</td>
+                                <td>
+                                    <input type="text" class="form-control" th:value="${article.hotelName}" readonly>
+                                </td>
+
+                                <td>시 이름</td>
+                                <td>
+                                    <input type="text" class="form-control" th:value="${article.cityName}" readonly>
+                                </td>
+                            </tr>
+                            <tr>
+
+                                <td>전화번호</td>
+                                <td>
+                                    <input type="text" class="form-control" th:value="${article.tellNumber}" readonly>
+                                </td>
+
+                                <td>주소</td>
+                                <td>
+                                    <input type="tel" class="form-control" th:value="${article.address}" readonly>
+                                </td>
+
+                                <td>평균 평점</td>
+                                <td>
+                                    <input type="tel" class="form-control" th:value="${article.ratingAvg}" readonly>
+                                    <input type="tel" class="form-control" th:value="${article.hotelImages.get(0)}" readonly>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <div id="map" style="width:1000px;height:400px;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-3"></div>
+
+            <div class="card">
+                <div class="card-header"><i class="fas fa-chess-rook"></i>&nbsp&nbsp 이미지</div>
+                <div class="card-body">
+                    <table>
+                        <tr>
+                            <td class="image">
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </form>
 
 </div>
-<button type="button" class="btn btn-dark" th:onclick="|location.href='@{/hotel/delete(id=${article.id})}'|">글 삭제</button>
-<button type="button" class="btn btn-warning" th:onclick="|location.href='@{/hotel/update(id=${article.id})}'|">글 수정</button>
-<button type="button" class="btn btn-dark" th:onclick="|location.href='@{/booking/save(id=${article.id})}'|">예약하기</button>
+<button type="button" class="btn btn-dark" th:onclick="|location.href='@{/hotel/delete(id=${article.id})}'|">글 삭제
+</button>
+<button type="button" class="btn btn-warning" th:onclick="|location.href='@{/hotel/update(id=${article.id})}'|">글 수정
+</button>
+<button type="button" class="btn btn-dark" th:onclick="|location.href='@{/booking/save(id=${article.id})}'|">예약하기
+</button>
 <p></p>
 <p></p>
+<form class="mb-3" name="myform" id="myform" method="post" th:action="@{/hotel/review/save(id=${article.id})}">
+    <fieldset>
+        <span class="text-bold">별점을 선택해주세요</span>
+        <input type="radio" name="rating" value=5 id="rate1"><label
+            for="rate1">⭐️</label>
+        <input type="radio" name="rating" value=4 id="rate2"><label
+            for="rate2">★</label>
+        <input type="radio" name="rating" value=3 id="rate3"><label
+            for="rate3">★</label>
+        <input type="radio" name="rating" value=2 id="rate4"><label
+            for="rate4">★</label>
+        <input type="radio" name="rating" value=1 id="rate5"><label
+            for="rate5">★</label>
+    </fieldset>
+    <input class="form-control" placeholder="리뷰를 입력하세요 " name="reviewContent" type="text">
+    <button class="btn btn-primary" type="submit">리뷰 작성</button>
+</form>
+</form>
 <table class="table table-striped">
     <thead class="thead-dark">
     <tr>
@@ -60,35 +134,84 @@
         <th>Review Writer</th>
         <th>Created Date</th>
         <th>Modified Date</th>
-        <th> </th>
-        <th> </th>
-        <th> </th>
+        <th>평점</th>
+        <th></th>
+        <th></th>
+        <th></th>
     </tr>
     </thead>
 
     <tbody>
-    <form th:action="@{/hotel/review/save(id=${article.id})}" method="post">
-        <input class="form-control" placeholder="리뷰 작성자 "name="reviewWriter" type="text">
-        <input class="form-control" placeholder="리뷰를 입력하세요 "name="reviewContent" type="text">
-        <button class="btn btn-primary" type="submit">리뷰 작성</button>
-    </form>
 
-<!--    <tr th:each = "review:${review}">-->
-<!--        <td th:text="${review.id}"></td>-->
-<!--        <td th:text="${review.reviewContent}"></td>-->
-<!--        <td th:text="${review.reviewWriter}"></td>-->
-<!--        <td th:text="${review.createdDate}"></td>-->
-<!--        <td th:text="${review.modifiedDate}"></td>-->
-<!--        <td><a th:href="@{/hotel/review/delete/(id=${review.id},hotelid=${article.id})}">댓글 삭제</a></td>-->
-<!--        <td><a th:href="@{/hotel/review/update(id=${review.id})}">댓글 수정</a></td>-->
-<!--        <td>-->
-<!--            <button type="button" class="btn btn-dark" th:onclick="|location.href='@{/room/list(id=${article.id})}'|">해당-->
-<!--                호텔 룸 정보보기-->
-<!--            </button>-->
-<!--        </td>-->
-<!--    </tr>-->
+
+    <tr th:each="review:${article.reviews}">
+        <td th:text="${review.id}"></td>
+        <td th:text="${review.reviewContent}"></td>
+        <td th:text="${review.reviewWriter}"></td>
+        <td th:text="${review.createdDate}"></td>
+        <td th:text="${review.modifiedDate}"></td>
+        <td th:text="${review.rating}"></td>
+        <td><a th:href="@{/hotel/review/delete/(id=${review.id},hotelid=${article.id})}">댓글 삭제</a></td>
+        <td><a th:href="@{/hotel/review/update(id=${review.id})}">댓글 수정</a></td>
+        <td>
+            <button type="button" class="btn btn-dark" th:onclick="|location.href='@{/room/list(id=${article.id})}'|">해당
+                호텔 룸 정보보기
+            </button>
+        </td>
+    </tr>
     </tbody>
 </table>
-</body>
 
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script type="text/javascript"
+        src="//dapi.kakao.com/v2/maps/sdk.js?appkey=	2858a9737134fdb246117b738bcfffec"></script>
+<script th:inline="javascript">  //여기서 요청 넣는 거에요 저 메소드에
+
+let imageList = [[ ${article.hotelImages}]]
+let imageList2 = [[ ${article.hotelImages.get(0)}]]
+let latitude = [[${article.latitude}]]
+let longitude = [[${article.longitude}]]
+console.log(imageList2)
+
+if (imageList != null) {
+
+    for (const name of imageList) {
+        const imgSrc = "/view?fileName=" + name
+        $('.image').append(`
+                       <div class="card-temp" className="card" style="width: 1000px; display: inline-block; box-shadow: 5px 5px 5px;">
+                           <div className="card-body">
+                           <img src='${imgSrc}' width="1000" height="750" ' style="margin: 10px;"/>
+                           </div>
+                       </div>
+                    `)
+    }
+}
+</script>
+<script>
+    var container = document.getElementById('map');
+    var options = {
+        center: new kakao.maps.LatLng(latitude, longitude),
+        level: 3
+    };
+
+    var map = new kakao.maps.Map(container, options);
+
+    var markerPosition = new kakao.maps.LatLng(latitude, longitude);
+
+    // 마커를 생성합니다
+    var marker = new kakao.maps.Marker({
+        position: markerPosition
+    });
+
+    // 마커가 지도 위에 표시되도록 설정합니다
+    marker.setMap(map);
+</script>
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+      integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+
+</body>
 </html>

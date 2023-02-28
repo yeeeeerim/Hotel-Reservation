@@ -1,6 +1,7 @@
 package org.hotel.back.domain;
 
 import lombok.*;
+import org.hibernate.annotations.BatchSize;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -22,20 +23,25 @@ public class Hotel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
-    String hotelName;
-    String cityName;
-    String tellNumber;
-    String latitude;
-    String longitude;
+    private Long id;
+    private String hotelName;
+    private String cityName;
+    private String tellNumber;
+    private String latitude;
+    private String longitude;
 
+    @Builder.Default
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL,mappedBy = "hotel")
+    @BatchSize(size=20)
+    private List<HotelImage> hotelImages = new ArrayList<>();
     @CreatedBy
-    String writer;
+    private String writer;
+    private String address;
 
-
+    @BatchSize(size = 10)
     @ToString.Exclude
     @Builder.Default
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "hotel")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "hotel",fetch = FetchType.LAZY)
     private List<Review> reviews = new ArrayList<>();
 
     @ToString.Exclude
@@ -43,6 +49,11 @@ public class Hotel {
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL,mappedBy = "hotel")
     private List<Booking> bookingList = new ArrayList<>();
 
+    @BatchSize(size = 10)
+    @ToString.Exclude
+    @Builder.Default
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "hotel",fetch = FetchType.LAZY)
+    private List<HotelImage> hotelImages = new ArrayList<>();
 
     @ToString.Exclude
     @Builder.Default
@@ -56,7 +67,6 @@ public class Hotel {
         this.latitude=latitude;
         this.longitude=longitude;
     }
-
 
     public void addRoom(Room room){
 

@@ -1,92 +1,120 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>입력항목 예제1</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700,900&display=swap" rel="stylesheet">
 
-</head>
-<body>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
 
-<div class="container">
-    <form action="/hotel/save" method="post" enctype="multipart/form-data">
-        <div class="form-group">
-            <label for="hotelName">hotelName</label>
-            <input type="text" name="hotelName" id="hotelName" class="form-control" >
-        </div>
+    <!-- Style -->
+    <link rel="stylesheet" href="/css/style.css">
 
-        <div class="form-group">
-            <label for="cityName">cityName</label>
-            <input name="cityName" id=cityName class="form-control" type="text">
-        </div>
-        <div class="form-group">
-            <label for="tellNumber">tellNumber</label>
-            <input name="tellNumber" id="tellNumber" class="form-control" type="text">
-        </div>
-        <div class="form-group">
-            <label for="address">address</label>
-            <input name="address" id="address" class="form-control" type="text">
-        </div>
-        <table>
-            <div class="card">
-                <div class="card-header"><i class="fas fa-chess-rook"></i>&nbsp&nbsp 이미지 저장</div>
-                <div class="card-body">
-                    <table class="table">
-                        <tbody>
-                        <tr style="line-height:32px;">
-                            <td>이미지 첨부</td>
-                            <td>
-                                파일 <input type="file" id="hotelImage" name="hotelImage" class="form-control" accept="image/jpeg, image/png, image/jpg" multiple>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="image">
+    <title>Contact Form #7</title>
+  </head>
+  <body>
 
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
+
+  <div class="content">
+
+    <div class="container">
+      <div class="row align-items-stretch no-gutters contact-wrap">
+        <div class="col-md-8">
+          <div class="form h-100">
+            <h3>호텔 정보 저장</h3>
+            <form class="mb-5" action="/hotel/save" method="post" id="contactForm" enctype="multipart/form-data" name="contactForm">
+              <div class="row">
+                <div class="col-md-12 form-group mb-5">
+                  <label for="" class="col-form-label">hotel Name</label>
+                  <input type="text" class="form-control" name="hotelName" id="hotelName"placeholder="호텔 이름을 입력하세요">
                 </div>
+
+              </div>
+
+              <div class="row">
+                <div class="col-md-12 form-group mb-5">
+                  <label for="" class="col-form-label">city Name</label>
+                  <input type="text" class="form-control" name="cityName" id="cityName"  placeholder="시 이름을 입력하세요">
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-12 form-group mb-5">
+                  <label for="" class="col-form-label">Address</label>
+                  <input type="text" class="form-control" name="address" id="address"  placeholder="주소를 입력하세요">
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-12 form-group mb-5">
+                  <label for="" class="col-form-label">tell Number</label>
+                  <input type="text" class="form-control" name="tellNumber" id="tellNumber"  placeholder="대표 전화번호를 입력하세요">
+                </div>
+              </div>
+
+              <div class="row">
+                <table class="table">
+                  <tbody>
+                  <tr style="line-height:32px;">
+                    <td>이미지 첨부</td>
+                    <td>
+                      파일 <input type="file" name="hotelImage" class="form-control" multiple>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="image">
+
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="row">
+                <div class="col-md-12 form-group">
+                  <input type="submit" value="Save" class="btn btn-primary rounded-0 py-2 px-4">
+                  <span class="submitting"></span>
+                </div>
+              </div>
+            </form>
+
+            <div id="form-message-warning mt-4"></div>
+            <div id="form-message-success">
+              Your message was sent, thank you!
             </div>
-        </table>
+
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="contact-info h-100">
+            <h3>Hotel information</h3>
+            <p class="mb-5">
+              Enter hotel information</p>
+
+              </li>
+              <li class="d-flex">
+
+              </li>
+              <li class="d-flex">
+
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
 
 
-        <button type="submit" class="btn btn-primary">작성</button>
 
-    </form>
-</div>
+    <script src="/js/jquery-3.3.1.min.js"></script>
+    <script src="/js/popper.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/jquery.validate.min.js"></script>
+    <script src="/js/main.js"></script>
 
-
-</form>
-
-</div>
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
-<script>
-    var imgFile = $('#hotelImage').val();
-    var fileForm = /(.*?)\.(jpg|jpeg|png|gif|bmp|pdf)$/;
-    var maxSize = 5 * 1024 * 1024;
-    var fileSize;
-
-
-    if(imgFile != "" && imgFile != null) {
-        fileSize = document.getElementById("isFile").files[0].size;
-
-        if(!imgFile.match(fileForm)) {
-            alert("이미지 파일만 업로드 가능");
-
-        } else if(fileSize = maxSize) {
-            alert("파일 사이즈는 5MB까지 가능");
-
-        }
-    }
-</script>
-
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-
-
-</body>
+  </body>
+</html>

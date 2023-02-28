@@ -5,15 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="72fe5824-7f18-44b4-b4a7-fd643a592f7b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/data/dto/BookingDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/booking-module/src/main/java/com/back/bookingmodule/controller/BookingController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/booking-module/src/test/java/com/back/bookingmodule/service/impl/BookingServiceImplTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jpa-buddy.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jpa-buddy.xml" afterDir="false" />
+
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/data/response/HotelListResponseDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/resources/static/css/styles.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/resources/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/booking-module/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/booking-module/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/booking-module/src/main/java/com/back/bookingmodule/repository/BookingRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/booking-module/src/main/java/com/back/bookingmodule/repository/BookingRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/booking-module/src/main/java/com/back/bookingmodule/service/BookingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/booking-module/src/main/java/com/back/bookingmodule/service/BookingService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/booking-module/src/main/java/com/back/bookingmodule/service/impl/BookingServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/booking-module/src/main/java/com/back/bookingmodule/service/impl/BookingServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/back/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/controller/HotelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/controller/HotelController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/domain/Hotel.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/domain/Hotel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/repository/HotelRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/repository/HotelRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/repository/ReviewRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/repository/ReviewRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/service/HotelService.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/service/HotelService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/service/Impl/HotelServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/service/Impl/HotelServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/resources/templates/hotelDetail.html" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/resources/templates/hotelDetail.html" afterDir="false" />
+
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,12 +41,26 @@
         <task path="$PROJECT_DIR$/back">
           <activation />
         </task>
+        <task path="$PROJECT_DIR$/booking-module">
+          <activation />
+        </task>
         <projects_view>
           <tree_state>
             <expand>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="back" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="back" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="back" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build" type="c8890929:TasksNode$1" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
@@ -58,6 +79,10 @@
         <option value="Interface" />
         <option value="Enum" />
         <option value="JUnit5 Test Class" />
+
+        <option value="AnnotationType" />
+
+
         <option value="Class" />
       </list>
     </option>
@@ -88,7 +113,9 @@
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
     &quot;jdk.selected.JAVA_MODULE&quot;: &quot;temurin-17&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/rla73/OneDrive/바탕 화면/우람/study/multi-module&quot;,
+
+    &quot;last_opened_file_path&quot;: &quot;/Users/yerim/Desktop/Spring_study/hotel_221/STUDY-GROUP-ACTIVITY/multi-module/back/src/main/resources/templates&quot;,
+
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -97,20 +124,30 @@
     &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.17&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+
     &quot;settings.editor.selected.configurable&quot;: &quot;android.project.structure&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;e938f95eee344b16c3cf1d37c296b842&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+
+    &quot;spring.configuration.checksum&quot;: &quot;42064a0f62584d50ddb3493ccddc9bf5&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
+    ]
   }
 }</component>
+  <component name="ReactorSettings">
+    <option name="notificationShown" value="true" />
+  </component>
   <component name="RecentsManager">
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="com.back.bookingmodule.service.impl" />
-    </key>
+
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
-      <recent name="com.back.bookingmodule.service.impl" />
+
+      <recent name="org.hotel.back.repository.custom.impl" />
+
+
     </key>
   </component>
   <component name="RunDashboard">
@@ -120,8 +157,9 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.BackApplication">
-    <configuration name="KaKaoAPIServiceTest.test" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+
+  <component name="RunManager" selected="Gradle.ManagerRepositoryImplTest.hotelInfoTest (1)">
+    <configuration name="KaKaoAPIServiceTest.webCLientBlock" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="env">
           <map>
@@ -140,12 +178,150 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;org.hotel.back.service.api.KaKaoAPIServiceTest.test&quot;" />
+            <option value="&quot;org.hotel.back.service.api.KaKaoAPIServiceTest.webCLientBlock&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
       </ExternalSystemSettings>
       <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="ManagerRepositoryImplTest.hotelInfoTest (1)" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="env">
+          <map>
+            <entry key="API_KEY" value="26f037dc249943e4b75e005d6fc3858d" />
+            <entry key="KAKAO_KEY" value="26908928dc4fbc906aa69783b4c367f5" />
+          </map>
+        </option>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/back" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;org.hotel.back.repository.custom.impl.ManagerRepositoryImplTest.hotelInfoTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="ManagerRepositoryImplTest.reviewSave" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="env">
+          <map>
+            <entry key="API_KEY" value="26f037dc249943e4b75e005d6fc3858d" />
+            <entry key="KAKAO_KEY" value="26908928dc4fbc906aa69783b4c367f5" />
+          </map>
+        </option>
+
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/back" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+
+            <option value="&quot;org.hotel.back.repository.custom.impl.ManagerRepositoryImplTest.reviewSave&quot;" />
+
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+
+    <configuration name="ManagerRepositoryImplTest.testData (1)" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+
+      <ExternalSystemSettings>
+        <option name="env">
+          <map>
+            <entry key="API_KEY" value="26f037dc249943e4b75e005d6fc3858d" />
+            <entry key="KAKAO_KEY" value="26908928dc4fbc906aa69783b4c367f5" />
+          </map>
+        </option>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/back" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;org.hotel.back.repository.custom.impl.ManagerRepositoryImplTest.testData&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="back [bootJar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/back" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="bootJar" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="booking-module" type="GradleRunConfiguration" factoryName="Gradle" nameIsGenerated="true">
+      <ExternalSystemSettings>
+        <option name="env">
+          <map>
+            <entry key="API_KEY" value="26f037dc249943e4b75e005d6fc3858d" />
+            <entry key="KAKAO_KEY" value="26908928dc4fbc906aa69783b4c367f5" />
+          </map>
+        </option>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/booking-module" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list />
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
@@ -170,13 +346,27 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Gradle.KaKaoAPIServiceTest.test" />
+
+      <item itemvalue="Gradle.booking-module" />
+      <item itemvalue="Gradle.ManagerRepositoryImplTest.testData (1)" />
+      <item itemvalue="Gradle.back [bootJar]" />
+      <item itemvalue="Gradle.ManagerRepositoryImplTest.reviewSave" />
+      <item itemvalue="Gradle.ManagerRepositoryImplTest.hotelInfoTest (1)" />
+      <item itemvalue="Gradle.KaKaoAPIServiceTest.webCLientBlock" />
       <item itemvalue="Spring Boot.BookingModuleApplication" />
+
       <item itemvalue="Spring Boot.BackApplication" />
+      <item itemvalue="Spring Boot.BookingModuleApplication" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.KaKaoAPIServiceTest.test" />
+
+        <item itemvalue="Gradle.ManagerRepositoryImplTest.hotelInfoTest (1)" />
+        <item itemvalue="Gradle.ManagerRepositoryImplTest.testData (1)" />
+        <item itemvalue="Gradle.back [bootJar]" />
+        <item itemvalue="Gradle.ManagerRepositoryImplTest.reviewSave" />
+        <item itemvalue="Gradle.KaKaoAPIServiceTest.webCLientBlock" />
+
       </list>
     </recent_temporary>
   </component>
@@ -194,11 +384,17 @@
       <workItem from="1676544340038" duration="599000" />
       <workItem from="1676608551489" duration="2003000" />
       <workItem from="1676879035903" duration="4377000" />
-      <workItem from="1676952736211" duration="506000" />
-      <workItem from="1677032982867" duration="3030000" />
-      <workItem from="1677061776042" duration="92000" />
-      <workItem from="1677482104131" duration="3818000" />
-      <workItem from="1677553755604" duration="1550000" />
+
+
+      <workItem from="1676952736211" duration="6918000" />
+      <workItem from="1676984222653" duration="124000" />
+      <workItem from="1676990326071" duration="546000" />
+      <workItem from="1677057641464" duration="8000" />
+      <workItem from="1677063675568" duration="6282000" />
+      <workItem from="1677126315384" duration="12396000" />
+      <workItem from="1677151272786" duration="2372000" />
+      <workItem from="1677153703943" duration="984000" />
+
     </task>
     <servers />
   </component>

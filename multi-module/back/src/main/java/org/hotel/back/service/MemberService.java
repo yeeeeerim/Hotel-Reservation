@@ -4,9 +4,11 @@ package org.hotel.back.service;
 import lombok.RequiredArgsConstructor;
 import org.hotel.back.data.request.RegisterData;
 import org.hotel.back.domain.Gender;
+import org.hotel.back.domain.Hotel;
 import org.hotel.back.domain.Member;
 import org.hotel.back.domain.MemberRole;
 import org.hotel.back.repository.MemberRepository;
+import org.hotel.back.repository.custom.ManagerRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
@@ -18,6 +20,9 @@ public class MemberService {
     private final MemberRepository memberRepository;
 
     private final PasswordEncoder passwordEncoder;
+
+    private final ManagerRepository managerRepository;
+
 
     /**
      * @param registerData 회원가입에 사용한 데이터
@@ -32,7 +37,7 @@ public class MemberService {
                 .password(passwordEncoder.encode(registerData.getPassword()))
                 .gender(registerData.getGender().equals("MAN") ? Gender.MAN : Gender.WOMAN)
                 .nickName(registerData.getNickName())
-                .tellNumber(registerData.getTellNumber())
+                //.tellNumber(registerData.getTellNumber())
                 .build();
         member.addRole(MemberRole.ROLE_USER);
 
@@ -49,4 +54,13 @@ public class MemberService {
         return memberRepository.existsByEmail(email);
     }
 
+
+
+    /**
+     * DTO 변환필요
+     *
+     * */
+    public Hotel getMemberCheckHotelInfo(String email){
+        return managerRepository.getHotelInfo(email);
+    }
 }
