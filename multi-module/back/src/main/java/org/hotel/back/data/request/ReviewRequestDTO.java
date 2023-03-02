@@ -14,12 +14,14 @@ public class ReviewRequestDTO {
     Long id;
     String reviewContent;
     String reviewWriter;
+    Long rating;
     Hotel hotel;
     public static Review toEntity(ReviewRequestDTO dto){
         return Review.builder()
                 .reviewContent(dto.getReviewContent())
                 .reviewWriter(dto.getReviewWriter())
                 .hotel(dto.getHotel())
+                .rating(dto.getRating())
                 .build();
     }
 }

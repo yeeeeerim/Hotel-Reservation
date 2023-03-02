@@ -23,7 +23,7 @@
                         <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
                         <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
                         <li class="nav-item" style="margin-right: 30px"><a class="nav-link" href="#!">Contact</a></li>
-                        <li class="nav-item"><div class="nav-link active" aria-current="page" href="#"  th:text="${member.email}"></div></li>
+                        <li class="nav-item"><div class="nav-link active" id="email" aria-current="page" href="#"></div></li>
                     </ul>
                 </div>
             </div>
@@ -32,7 +32,7 @@
         <header class="py-5 bg-light border-bottom mb-4">
             <div class="container">
                 <div class="text-center my-5">
-                    <h1 class="fw-bolder">Welcome to [[${member.nickName}]]!</h1>
+                    <h1 class="fw-bolder" id="nickName"></h1>
                     <p class="lead mb-0">회원님의 페이지입니다!</p>
                 </div>
             </div>
@@ -44,8 +44,8 @@
                 <div class="col-lg-8">
                     <!-- Featured blog post-->
                     <div class="card mb-4">
-                        <a href="#!"><img class="card-img-top hotel-image" src="https://dummyimage.com/850x350/dee2e6/6c757d.jpg" alt="..." /></a>
-                        <div class="card-body">
+                        <a href="#!" class="card-header"><img class="card-img-top hotel-image" src="https://dummyimage.com/850x350/dee2e6/6c757d.jpg" alt="..." /></a>
+                        <div class="card-body card-one-body">
                             <div class="small text-muted">January 1, 2022</div>
                             <h2 class="card-title" th:text="${hotel.hotelResponseDTO.getHotelName()}">Featured Post Title</h2>
                             <p class="card-text" th:text="${hotel.hotelResponseDTO.getAddress()}">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
@@ -53,65 +53,20 @@
                         </div>
                     </div>
                     <!-- Nested row for non-featured blog posts-->
-                    <div class="row">
-                        <div class="col-lg-6">
+                    <div class="row" >
+                        <div class="col-lg-6 room">
                             <!-- Blog post-->
-                            <div class="card mb-4">
-                                <a href="#!"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." /></a>
-                                <div class="card-body">
-                                    <div class="small text-muted">January 1, 2022</div>
-                                    <h2 class="card-title h4">Post Title</h2>
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla.</p>
-                                    <a class="btn btn-primary" href="#!">Read more →</a>
-                                </div>
-                            </div>
+
                             <!-- Blog post-->
-                            <div class="card mb-4">
-                                <a href="#!"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." /></a>
-                                <div class="card-body">
-                                    <div class="small text-muted">January 1, 2022</div>
-                                    <h2 class="card-title h4">Post Title</h2>
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla.</p>
-                                    <a class="btn btn-primary" href="#!">Read more →</a>
-                                </div>
-                            </div>
+
                         </div>
                         <div class="col-lg-6">
                             <!-- Blog post-->
-                            <div class="card mb-4">
-                                <a href="#!"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." /></a>
-                                <div class="card-body">
-                                    <div class="small text-muted">January 1, 2022</div>
-                                    <h2 class="card-title h4">Post Title</h2>
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla.</p>
-                                    <a class="btn btn-primary" href="#!">Read more →</a>
-                                </div>
-                            </div>
-                            <!-- Blog post-->
-                            <div class="card mb-4">
-                                <a href="#!"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." /></a>
-                                <div class="card-body">
-                                    <div class="small text-muted">January 1, 2022</div>
-                                    <h2 class="card-title h4">Post Title</h2>
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam.</p>
-                                    <a class="btn btn-primary" href="#!">Read more →</a>
-                                </div>
-                            </div>
+
                         </div>
                     </div>
                     <!-- Pagination-->
-                    <nav aria-label="Pagination">
-                        <hr class="my-0" />
-                        <ul class="pagination justify-content-center my-4">
-                            <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1" aria-disabled="true">Newer</a></li>
-                            <li class="page-item active" aria-current="page"><a class="page-link" href="#!">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#!">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#!">3</a></li>
-                            <li class="page-item disabled"><a class="page-link" href="#!">...</a></li>
-                            <li class="page-item"><a class="page-link" href="#!">15</a></li>
-                            <li class="page-item"><a class="page-link" href="#!">Older</a></li>
-                        </ul>
-                    </nav>
+
                 </div>
                 <!-- Side widgets-->
                 <div class="col-lg-4">
@@ -120,8 +75,10 @@
                         <div class="card-header">Search</div>
                         <div class="card-body">
                             <div class="input-group">
-                                <input class="form-control" type="text" placeholder="Enter search term..." aria-label="Enter search term..." aria-describedby="button-search" />
-                                <button class="btn btn-primary" id="button-search" type="button">Go!</button>
+                                <select class="form-select" aria-label="Default select example" onchange="changeSelect()">
+                                    <option value="hotel" selected>Hotel</option>
+                                    <option value="room">Room</option>
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -161,13 +118,24 @@
         </footer>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="/js/scripts.js"></script>
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
         <script th:inline="javascript">
+
+            let hotelId
             $(document).ready(function(){
+                const member = [[ ${member} ]]
                 const data = [[ ${hotel} ]]
                 const fileName = [[ ${images} ]]
+                hotelId = data.hotelResponseDTO.id
+
+                if(member != null){
+                    $('#email').text(member.email)
+                    $('#nickName').text('Welcome to'+member.nickName)
+                }
+
                 if(fileName != null){
                     const imgSrc = "/view?fileName="+fileName
                     console.log(imgSrc)
@@ -178,6 +146,55 @@
                     window.history.back()
                 }
             })
+
+            function changeSelect(){
+                const selectData = $('.form-select').val();
+
+
+
+                if(selectData == 'room'){       //Hotel 일 경우로 바꿀예정
+                    $('.card-header').remove()
+                    $('.card-one-body').remove()
+
+                     roomRequest().then(value => {
+                            const data = value.data;
+                            console.log(data)
+
+                            str = `<div class="card mb-4">
+                                <a href="#!"><img class="${data.filename}" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." /></a>
+                                <div class="card-body">
+                                    <div class="small text-muted">January 1, 2022</div>
+                                    <h2 class="card-title h4">${data.roomNumber}</h2>
+                                    <p class="card-text">${data.description}</p>
+                                    <a class="btn btn-primary" href="#!">Read more →</a>
+                                </div>
+                            </div>`
+                            $('.room').append(str)
+                        }).catch(reason => {
+                            alert("데이터가 없습니다.")
+                      //      window.history.back()
+                        })
+                }else if(selectData == 'hotel'){
+
+                }
+            }
+
+
+            async function hotelRequest(){
+                    const response = await axios.get('/api/hotel')
+                return response
+
+            }
+
+            async function roomRequest(){
+                console.log(hotelId)
+                const response = await axios.get('/api/room?id='+hotelId)
+                return response
+
+            }
+
+
         </script>
+
     </body>
 </html>

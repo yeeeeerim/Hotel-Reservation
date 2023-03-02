@@ -3,6 +3,7 @@ package org.hotel.back.data.response;
 
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -17,5 +18,5 @@ public class HotelAndReviewDTO {
         public List<ReviewResponseDTO> reviewResponseDTO;
 
 
-        public List<String> images;
+        public List<String> images = new ArrayList<>();
 }

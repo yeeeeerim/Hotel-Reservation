@@ -2,12 +2,11 @@ package org.hotel.back.controller;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.hotel.back.data.response.HotelListResponseDTO;
 import org.hotel.back.data.response.HotelResponseDTO;
 import org.hotel.back.data.response.KaKaoResponseData;
 import org.hotel.back.domain.Hotel;
 
-import org.hotel.back.domain.HotelImage;
-import org.hotel.back.domain.Review;
 import org.hotel.back.data.request.HotelRequestDTO;
 import org.hotel.back.service.HotelService;
 import org.hotel.back.service.api.KaKaoAPIService;
@@ -23,7 +22,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
@@ -31,8 +30,8 @@ import java.util.List;
 @RequiredArgsConstructor
 public class HotelController {
     private final HotelService hotelService;
-    
-      private final KaKaoAPIService kaKaoAPIService;
+
+    private final KaKaoAPIService kaKaoAPIService;
     @Value("${upload.path}")
     private String path;
 
@@ -41,7 +40,7 @@ public class HotelController {
     @GetMapping("/hotel/save")//localhost:8080/save
     public String hotelWriteForm(){
 
-        return "hotelimage";
+        return "hotelSave";
     }
 
     @PreAuthorize("isAuthenticated()")
@@ -65,43 +64,39 @@ public class HotelController {
     }
 
     @GetMapping("/hotel")
-    public String hotelList(@PageableDefault(page = 0, size = 10,sort="id",direction = Sort.Direction.DESC) Pageable pageable, Model model){
+    public String hotelList(@PageableDefault(page = 0, size = 12,sort="id",direction = Sort.Direction.DESC) Pageable pageable, Model model){
         //서비스에서 생성한 리스트를 list라는 이름으로 반환하겠다.
-        Page<Hotel> list =hotelService.hotelList(pageable);
+        Page<HotelListResponseDTO> list =hotelService.hotelList(pageable);
+
         int nowPage =list.getPageable().getPageNumber()+1;//pageable은 0부터 시작해서 +1을 해줘야 함
         int startPage=1;//시작페이지
-        int endPage=list.getTotalPages();//10개씩 자른 페이지
+        int endPage=list.getTotalPages();//12개씩 자른 페이지
 
 
         model.addAttribute("nowPage",nowPage);
         model.addAttribute("startPage",startPage);
         model.addAttribute("endPage",endPage);
-
         model.addAttribute("list",list);
-        return "hotelMain";
+        System.out.println(list);
+        return "index";
     }
 
-    @GetMapping("/hotel/search")
-    public String hotelListSearch(Model model,String keyword){
-        //서비스에서 생성한 리스트를 list라는 이름으로 반환하겠다.
-        List<Hotel> list =hotelService.hotelListSearch(keyword);
-
-        model.addAttribute("list",list);
-        return "hotelsearch";
-    }
+//    @GetMapping("/hotel/search")
+//    public String hotelListSearch(Model model,String keyword){
+//        //서비스에서 생성한 리스트를 list라는 이름으로 반환하겠다.
+//        List<Hotel> list =hotelService.hotelListSearch(keyword);
+//
+//        model.addAttribute("list",list);
+//        return "hotelSearch";
+//    }
 
     //========호텔 자세히보기  ============
     @GetMapping("/hotel/detail")
     public String hotelDetail(Model model, Long id) throws ParseException {
         HotelResponseDTO hotelResponseDTO =hotelService.hotelDetail(id); //호텔 객체를 불러옴 ->service hotelDetail메서드
-
-//        List<Review> reviewlist =hotelResponseDTO.getReviews(); //호텔 객체에서 review 가져와서 넣음(hotelId의 리뷰)
-//        List<HotelImage>hotelImages = hotelResponseDTO.getHotelImages();
         model.addAttribute("article",hotelResponseDTO);
-//        model.addAttribute("review",reviewlist);
-//        model.addAttribute("image",hotelImages);
         model.addAttribute("path",path);
-        return "hotelDetail2";
+        return "hotelDetail";
     }
 
     @PreAuthorize("isAuthenticated()")

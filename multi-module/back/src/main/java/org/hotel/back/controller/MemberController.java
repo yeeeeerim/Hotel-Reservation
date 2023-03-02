@@ -61,11 +61,12 @@ public class MemberController {
         HotelAndReviewDTO dto = null;
 
         try{
-             dto =
-                    memberService.getHotelAndReviewWithRoom(memberDTO.getEmail());
-            model.addAttribute("hotel",dto);
+            dto = memberService.getHotelAndReviewWithRoom(memberDTO != null? memberDTO.getEmail() : "Unknown");
+            if (dto != null){
+                model.addAttribute("hotel",dto);
+                if(!dto.getImages().isEmpty()) model.addAttribute("images",dto.getImages().stream().findFirst().get());
+            }
             if(memberDTO != null) model.addAttribute("member",memberDTO);
-            if(!dto.getImages().isEmpty()) model.addAttribute("images",dto.getImages().stream().findFirst().get());
         } catch (ParseException e) {
            log.error("파싱 실패");
         }

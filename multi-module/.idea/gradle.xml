@@ -4,10 +4,16 @@
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
+<<<<<<< HEAD
         <option name="delegatedBuild" value="false" />
         <option name="testRunner" value="PLATFORM" />
+=======
+        <option name="delegatedBuild" value="true" />
+        <option name="testRunner" value="GRADLE" />
+>>>>>>> f6e045da7288be3532eee8e39adfd015c52bca80
         <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/back" />
+        <option name="gradleJvm" value="corretto-17" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$/back" />
@@ -19,6 +25,7 @@
         <option name="testRunner" value="GRADLE" />
         <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/booking-module" />
+        <option name="gradleJvm" value="corretto-17" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$/booking-module" />

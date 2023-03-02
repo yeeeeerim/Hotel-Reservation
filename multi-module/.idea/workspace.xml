@@ -4,137 +4,104 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="72fe5824-7f18-44b4-b4a7-fd643a592f7b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/e7468247-4beb-4c6a-9ebb-c21d8f77086a.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/multi-module.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/data/response/HotelAndReviewDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/service/Impl/MemberServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back/src/main/resources/static/css/styles.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back/src/main/resources/static/js/scripts.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back/src/main/resources/templates/manage/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back/src/main/resources/templates/unknown.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9308a626-05ae-4a87-b9a2-6899ee6c2f46.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9308a626-05ae-4a87-b9a2-6899ee6c2f46/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/e7468247-4beb-4c6a-9ebb-c21d8f77086a/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9308a626-05ae-4a87-b9a2-6899ee6c2f46/storage_v2/_src_/schema/mysql.osA4Bg.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/e7468247-4beb-4c6a-9ebb-c21d8f77086a/storage_v2/_src_/schema/mysql.osA4Bg.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9308a626-05ae-4a87-b9a2-6899ee6c2f46/storage_v2/_src_/schema/performance_schema.kIw0nw.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/e7468247-4beb-4c6a-9ebb-c21d8f77086a/storage_v2/_src_/schema/performance_schema.kIw0nw.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9308a626-05ae-4a87-b9a2-6899ee6c2f46/storage_v2/_src_/schema/sys.zb4BAA.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/e7468247-4beb-4c6a-9ebb-c21d8f77086a/storage_v2/_src_/schema/sys.zb4BAA.meta" afterDir="false" />
+    <list default="true" id="ee25ebb2-7795-4bae-8ff2-c390a84e9928" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/data/dto/BookingDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/data/response/HotelListResponseDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/resources/static/css/star.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/resources/templates/hotelSearch.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/resources/templates/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/test/java/org/hotel/back/repository/HotelRepositoryTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/temp/0c5606e1-a013-4c0b-affe-8c05656f03ec_card_3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/temp/1eda6a65-e061-4a4f-9ee9-745f5adacad5_card_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/temp/4b68821c-d761-4eaa-852a-8c0d191ee40e_제목을-입력해주세요_-001 (7).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/temp/7cf61c00-122b-4805-8a85-1790536a73b8_thumbnail (24).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/temp/8c20c755-1d61-4d00-8a59-eea9df6cdd68_card_back.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/temp/S_0c5606e1-a013-4c0b-affe-8c05656f03ec_card_3.png_card_3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/temp/S_1eda6a65-e061-4a4f-9ee9-745f5adacad5_card_2.png_card_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/temp/S_7cf61c00-122b-4805-8a85-1790536a73b8_thumbnail (24).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/temp/S_8c20c755-1d61-4d00-8a59-eea9df6cdd68_card_back.png_card_back.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/temp/b164a891-6a1f-4d6f-9e72-3a1a2e5553dc_제목을-입력해주세요_-001 (6).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/temp/f049b8dd-afda-40c2-8a84-8f0872efff7d_IMG_7144.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/booking-module/src/main/java/com/back/bookingmodule/controller/BookingController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/booking-module/src/test/java/com/back/bookingmodule/service/impl/BookingServiceImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e7468247-4beb-4c6a-9ebb-c21d8f77086a.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/e7468247-4beb-4c6a-9ebb-c21d8f77086a.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jpa-buddy.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jpa-buddy.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/back/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/generated/org/hotel/back/domain/QHotel.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/generated/org/hotel/back/domain/QHotel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/generated/org/hotel/back/domain/QReview.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/generated/org/hotel/back/domain/QReview.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/config/MemberAuditorAware.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/config/MemberAuditorAware.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/controller/HotelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/controller/HotelController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/controller/MemberController.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/controller/MemberController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/data/request/HotelRequestDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/data/request/HotelRequestDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/data/request/ReviewRequestDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/data/request/ReviewRequestDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/data/response/HotelAndReviewDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/data/response/HotelAndReviewDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/data/response/HotelResponseDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/data/response/HotelResponseDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/repository/custom/ManagerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/repository/custom/ManagerRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/repository/custom/impl/ManagerRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/repository/custom/impl/ManagerRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/data/response/ReviewResponseDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/data/response/ReviewResponseDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/domain/Hotel.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/domain/Hotel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/domain/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/domain/Member.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/domain/Review.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/domain/Review.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/repository/HotelRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/repository/HotelRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/repository/ReviewRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/repository/ReviewRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/repository/RoomRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/repository/RoomRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/service/HotelService.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/service/HotelService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/service/Impl/HotelServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/service/Impl/HotelServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/service/MemberService.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/service/MemberService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/service/Impl/ReviewServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/service/Impl/ReviewServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/service/Impl/RoomServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/service/Impl/RoomServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/service/ReviewService.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/service/ReviewService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/test/java/org/hotel/back/BackApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/test/java/org/hotel/back/BackApplicationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/test/java/org/hotel/back/repository/custom/impl/ManagerRepositoryImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/test/java/org/hotel/back/repository/custom/impl/ManagerRepositoryImplTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/test/java/org/hotel/back/service/api/HotelAPIServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/test/java/org/hotel/back/service/api/HotelAPIServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/test/java/org/hotel/back/service/security/MemberDetailsServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/test/java/org/hotel/back/service/security/MemberDetailsServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/resources/static/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/resources/static/css/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/resources/templates/hotelDetail.html" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/resources/templates/hotelDetail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/resources/templates/hotelDetail2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/resources/templates/hotelSave.html" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/resources/templates/hotelSave.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/resources/templates/hotelimage.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/resources/templates/manage/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/resources/templates/manage/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/test/java/org/hotel/back/repository/RoomRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/test/java/org/hotel/back/repository/RoomRepositoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/booking-module/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/booking-module/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/booking-module/src/main/java/com/back/bookingmodule/repository/BookingRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/booking-module/src/main/java/com/back/bookingmodule/repository/BookingRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/booking-module/src/main/java/com/back/bookingmodule/service/BookingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/booking-module/src/main/java/com/back/bookingmodule/service/BookingService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/booking-module/src/main/java/com/back/bookingmodule/service/impl/BookingServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/booking-module/src/main/java/com/back/bookingmodule/service/impl/BookingServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExternalProjectsData">
-    <projectState path="$PROJECT_DIR$/back">
-      <ProjectState />
-    </projectState>
-    <projectState path="$PROJECT_DIR$/booking-module">
-      <ProjectState />
-    </projectState>
-  </component>
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
-        <task path="$PROJECT_DIR$/back">
-          <activation />
-        </task>
         <task path="$PROJECT_DIR$/booking-module">
           <activation />
         </task>
-        <projects_view>
-          <tree_state>
-            <expand>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="back" type="f1a62948:ProjectNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="back" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="back" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="build" type="c8890929:TasksNode$1" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="booking-module" type="f1a62948:ProjectNode" />
-              </path>
-            </expand>
-            <select />
-          </tree_state>
-        </projects_view>
+        <task path="$PROJECT_DIR$/back">
+          <activation />
+        </task>
+        <projects_view />
       </state>
     </system>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
-        <option value="Enum" />
-        <option value="JUnit5 Test Class" />
-        <option value="AnnotationType" />
         <option value="Class" />
-        <option value="HTML File" />
       </list>
-    </option>
-  </component>
-  <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
-  </component>
-  <component name="JpbToolWindowState">
-    <option name="myId2FirstActivated">
-      <map>
-        <entry key="com.haulmont.jpb.jpaInspector" value="true" />
-        <entry key="com.haulmont.jpb.jpaPalette" value="true" />
-        <entry key="com.haulmont.jpb.jpaStructure" value="true" />
-      </map>
-    </option>
-    <option name="myId2Visible">
-      <map>
-        <entry key="com.haulmont.jpb.jpaInspector" value="false" />
-        <entry key="com.haulmont.jpb.jpaPalette" value="false" />
-        <entry key="com.haulmont.jpb.jpaStructure" value="false" />
-      </map>
     </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2LjA46NmR9xnpzFdRjjBrVkPPFa" />
+  <component name="ProjectId" id="2MLyQOc7HbfOr4He5QBmlvzIK2k" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
   </component>
   <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
     &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
     &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
     &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
@@ -142,256 +109,82 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;temurin-17&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/PROJECT/STUDY-GROUP-ACTIVITY/multi-module&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/PROJECT/jpashop2-api-v20210805&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.17&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
     &quot;spring.configuration.checksum&quot;: &quot;42064a0f62584d50ddb3493ccddc9bf5&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
-  },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
-    ]
   }
 }</component>
-  <component name="ReactorSettings">
-    <option name="notificationShown" value="true" />
-  </component>
-  <component name="RecentsManager">
-    <key name="CreateTestDialog.Recents.Supers">
-      <recent name="" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\PROJECT\STUDY-GROUP-ACTIVITY\multi-module\back\src\main\resources\templates\manage" />
-      <recent name="C:\PROJECT\STUDY-GROUP-ACTIVITY\multi-module\back\src\main\resources\static\css" />
-      <recent name="C:\PROJECT\STUDY-GROUP-ACTIVITY\multi-module\back\src\main\resources\static\js" />
-    </key>
-    <key name="CreateTestDialog.RecentsKey">
-      <recent name="org.hotel.back.repository.custom.impl" />
-    </key>
-  </component>
   <component name="RunDashboard">
     <option name="configurationTypes">
       <set>
+        <option value="Application" />
         <option value="SpringBootApplicationConfigurationType" />
       </set>
     </option>
   </component>
   <component name="RunManager" selected="Spring Boot.BackApplication">
-    <configuration name="MemberDetailsServiceTest.MemberDetailsServiceTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="env">
-          <map>
-            <entry key="API_KEY" value="26f037dc249943e4b75e005d6fc3858d" />
-            <entry key="KAKAO_KEY" value="26908928dc4fbc906aa69783b4c367f5" />
-          </map>
-        </option>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/back" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;org.hotel.back.service.security.MemberDetailsServiceTest.MemberDetailsServiceTest&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="booking-module" type="GradleRunConfiguration" factoryName="Gradle" nameIsGenerated="true">
-      <ExternalSystemSettings>
-        <option name="env">
-          <map>
-            <entry key="API_KEY" value="26f037dc249943e4b75e005d6fc3858d" />
-            <entry key="KAKAO_KEY" value="26908928dc4fbc906aa69783b4c367f5" />
-          </map>
-        </option>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/booking-module" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list />
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="HotelAPIServiceTest.HotelAPIServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="RoomRepositoryTest.RoomRepositoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="back.test" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.hotel.back.service.api.*" />
+          <option name="PATTERN" value="org.hotel.back.repository.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="org.hotel.back.service.api" />
-      <option name="MAIN_CLASS_NAME" value="org.hotel.back.service.api.HotelAPIServiceTest" />
-      <option name="METHOD_NAME" value="HotelAPIServiceTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="HotelAPIServiceTest.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="back.test" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.hotel.back.service.api.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.hotel.back.service.api" />
-      <option name="MAIN_CLASS_NAME" value="org.hotel.back.service.api.HotelAPIServiceTest" />
-      <option name="METHOD_NAME" value="test" />
+      <option name="PACKAGE_NAME" value="org.hotel.back.repository" />
+      <option name="MAIN_CLASS_NAME" value="org.hotel.back.repository.RoomRepositoryTest" />
+      <option name="METHOD_NAME" value="RoomRepositoryTest" />
       <option name="TEST_OBJECT" value="method" />
       <envs>
         <env name="API_KEY" value="26f037dc249943e4b75e005d6fc3858d" />
-        <env name="KAKAO_KEY" value="26908928dc4fbc906aa69783b4c367f5" />
+        <env name="KAKAO_KEY" value="f9b458c1d685a9638dd928c2be0f6c63" />
       </envs>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="index.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/multi-module/back.main/templates/manage/index.html" useBuiltInWebServerPort="true">
-      <method v="2" />
-    </configuration>
-    <configuration name="unknown.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/multi-module/back.main/templates/unknown.html" useBuiltInWebServerPort="true">
-      <method v="2" />
-    </configuration>
-    <configuration name="BackApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <option name="ACTIVE_PROFILES" />
+    <configuration name="BackApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <envs>
         <env name="API_KEY" value="26f037dc249943e4b75e005d6fc3858d" />
-        <env name="KAKAO_KEY" value="26908928dc4fbc906aa69783b4c367f5" />
+        <env name="KAKAO_KEY" value="f9b458c1d685a9638dd928c2be0f6c63" />
       </envs>
       <module name="back.main" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="org.hotel.back.BackApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.hotel.back.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="BookingModuleApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <module name="booking-module.main" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.back.bookingmodule.BookingModuleApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <list>
-      <item itemvalue="Gradle.booking-module" />
-      <item itemvalue="Gradle.MemberDetailsServiceTest.MemberDetailsServiceTest" />
-      <item itemvalue="JavaScript Debug.index.html" />
-      <item itemvalue="JavaScript Debug.unknown.html" />
-      <item itemvalue="JUnit.HotelAPIServiceTest.HotelAPIServiceTest" />
-      <item itemvalue="JUnit.HotelAPIServiceTest.test" />
-      <item itemvalue="Spring Boot.BackApplication" />
-      <item itemvalue="Spring Boot.BookingModuleApplication" />
-    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.HotelAPIServiceTest.HotelAPIServiceTest" />
-        <item itemvalue="JavaScript Debug.index.html" />
-        <item itemvalue="JavaScript Debug.unknown.html" />
-        <item itemvalue="JUnit.HotelAPIServiceTest.test" />
-        <item itemvalue="Gradle.MemberDetailsServiceTest.MemberDetailsServiceTest" />
+        <item itemvalue="Spring Boot.BackApplication" />
+        <item itemvalue="JUnit.RoomRepositoryTest.RoomRepositoryTest" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="72fe5824-7f18-44b4-b4a7-fd643a592f7b" name="Changes" comment="" />
-      <created>1676373926204</created>
+      <changelist id="ee25ebb2-7795-4bae-8ff2-c390a84e9928" name="Changes" comment="" />
+      <created>1677561145140</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1676373926204</updated>
-      <workItem from="1676373927794" duration="6078000" />
-      <workItem from="1676460899033" duration="4123000" />
-      <workItem from="1676520704820" duration="1211000" />
-      <workItem from="1676544340038" duration="599000" />
-      <workItem from="1676608551489" duration="2003000" />
-      <workItem from="1676879035903" duration="4377000" />
-      <workItem from="1676952736211" duration="6918000" />
-      <workItem from="1676984222653" duration="124000" />
-      <workItem from="1676990326071" duration="546000" />
-      <workItem from="1677057641464" duration="8000" />
-      <workItem from="1677063675568" duration="6282000" />
-      <workItem from="1677126315384" duration="12396000" />
-      <workItem from="1677151272786" duration="2372000" />
-      <workItem from="1677153703943" duration="984000" />
-      <workItem from="1677394825452" duration="487000" />
-      <workItem from="1677395327639" duration="789000" />
-      <workItem from="1677405814542" duration="3761000" />
-      <workItem from="1677418624434" duration="417000" />
-      <workItem from="1677470926951" duration="10970000" />
-      <workItem from="1677557390756" duration="453000" />
+      <updated>1677561145140</updated>
+      <workItem from="1677561146173" duration="9913000" />
+      <workItem from="1677588797114" duration="571000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.security/spring-security-web/5.7.1/c80f768a854c473c4d2cbb69a15985b5b9f18256/spring-security-web-5.7.1-sources.jar!/org/springframework/security/web/authentication/UsernamePasswordAuthenticationFilter.java</url>
-          <line>78</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.security/spring-security-core/5.7.1/c5ca609ecbbfa1cad607b19e5bc29be3d3fa7244/spring-security-core-5.7.1-sources.jar!/org/springframework/security/authentication/dao/AbstractUserDetailsAuthenticationProvider.java</url>
-          <line>167</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
-    <watches-manager>
-      <configuration name="SpringBootApplicationConfigurationType">
-        <watch expression="username" />
-        <watch expression="authRequest" />
-      </configuration>
-    </watches-manager>
-  </component>
-  <component name="XSLT-Support.FileAssociations.UIState">
-    <expand />
-    <select />
   </component>
 </project>

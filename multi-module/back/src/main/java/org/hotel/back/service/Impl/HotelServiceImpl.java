@@ -2,6 +2,7 @@ package org.hotel.back.service.Impl;
 
 import lombok.RequiredArgsConstructor;
 import org.hotel.back.config.exception.FileUploadException;
+import org.hotel.back.data.response.HotelListResponseDTO;
 import org.hotel.back.data.response.HotelResponseDTO;
 import org.hotel.back.domain.Hotel;
 import org.hotel.back.data.request.HotelRequestDTO;
@@ -17,9 +18,13 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.io.IOException;
+import java.nio.DoubleBuffer;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
@@ -44,7 +49,9 @@ public class HotelServiceImpl implements HotelService {
         else{
             Hotel hotel=hotelRequestDTO.toEntity(hotelRequestDTO);
             Long hotelId=hotelRepository.save(hotel).getId();
-            for(MultipartFile hotelImage:hotelRequestDTO.getHotelImage()){;
+
+            //썸네일
+            for(MultipartFile hotelImage:hotelRequestDTO.getHotelImage()){
                 String uuid = UUID.randomUUID().toString()+"_"+hotelImage.getOriginalFilename();
                 Path savePath = Paths.get(path, uuid);
                 try{
@@ -61,14 +68,18 @@ public class HotelServiceImpl implements HotelService {
     }
     //호텔 리스트
     @Override
-    public Page<Hotel> hotelList(Pageable pageable) {
+    public Page<HotelListResponseDTO> hotelList(Pageable pageable) {
+        Page hotel=hotelRepository.findAll(pageable);
 
-        return hotelRepository.findAll(pageable);
+        return hotel;
     }
-    //호텔 자세히보기
+    //호텔 자세히보
+
+
     @Override
     public HotelResponseDTO hotelDetail(Long id) throws ParseException {
         Hotel hotel=hotelRepository.findFetchJoin(id);
+
         var data = kaKaoAPIService.getAddressInfo(hotel.getLongitude(),hotel.getLatitude());
         HotelResponseDTO dto = new HotelResponseDTO(hotel);
 
@@ -78,7 +89,9 @@ public class HotelServiceImpl implements HotelService {
         }
 
         return dto;
+
     }
+
     //호텔 지우기
     @Override
     public boolean hotelDelete(Long id) {
@@ -99,8 +112,8 @@ public class HotelServiceImpl implements HotelService {
     }
 
     @Override
-    public List<Hotel> hotelListSearch(String keyword) {
+    public List<HotelResponseDTO> hotelListSearch(String keyword) {
         List<Hotel> hotels = hotelRepository.findByHotelNameContaining(keyword);
-        return hotels;
+        return null;
     }
 }
