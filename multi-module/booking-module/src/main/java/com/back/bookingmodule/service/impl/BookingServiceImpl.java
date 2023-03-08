@@ -6,6 +6,7 @@ import com.back.bookingmodule.domain.Member;
 import com.back.bookingmodule.repository.BookingRepository;
 import com.back.bookingmodule.service.BookingService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -29,24 +30,20 @@ public class BookingServiceImpl implements BookingService {
         }
 
         /**
-        * @apiNote id(PK)로 해당 엔티티 단건 조회
-        *
-        * */
-         public Optional<BookingDTO> findById(Long id){
-                Booking bookingEntity =  bookingRepository.findById(id).orElse(null);
-
-                if(bookingEntity != null){
-                        return Optional.of(BookingDTO.toDTO(bookingEntity));
-                }else{
-                        return Optional.empty();
-                }
+         * @apiNote id(PK)로 해당 엔티티 단건 조회
+         */
+         public BookingDTO findById(Long id){
+             return BookingDTO.toDTO(bookingRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("not found id data")));
          }
 
 
-         //TODO: UPDATE 진행 중
-         public void updateBooking(String checkIn, String checkout, Member member, Long id){
-             bookingRepository.updateBooking(member, id, checkIn, checkout);
-
+         /**
+          * SecurityContextHolder 사용해서 로그인 정보 id 값인 memberemail과 파라미터로 전달받은 memberEmail이 같을 경우 updateBooking 실행
+          * */
+         public void updateBooking(String checkIn, String checkout, String memberEmail, Long id){
+             if(SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals(memberEmail)){
+                 bookingRepository.updateBooking(id, checkIn, checkout);
+             }
          }
 
 
@@ -55,7 +52,7 @@ public class BookingServiceImpl implements BookingService {
         public List<Booking> getBooking(){
              return bookingRepository.findAll();
         }
-        public void delete(Long id){ //일단 써놓긴 했는데 bookingRepository에 컨트롤러에서 그냥 deleteById를 바로 사용하는 것랑 차이가 있을까여..?
+        public void delete(Long id){
              bookingRepository.deleteById(id);
         }
 

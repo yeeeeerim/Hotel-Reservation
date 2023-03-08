@@ -4,6 +4,7 @@ import com.back.bookingmodule.data.BookingDTO;
 import com.back.bookingmodule.domain.Booking;
 import com.back.bookingmodule.repository.BookingRepository;
 import com.back.bookingmodule.service.BookingService;
+import io.lettuce.core.dynamic.annotation.Param;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,36 +17,46 @@ import java.util.Optional;
 @RequestMapping("/booking")
 public class BookingController {
     private final BookingService bookingService;
-    private final BookingRepository bookingRepository;
 
-    @PostMapping("/bookings")
-    public ResponseEntity<BookingDTO> bookingSave(@RequestBody BookingDTO bookingDTO){
-        Booking createBooking = bookingService.bookingSave(bookingDTO);
-        return ResponseEntity.ok(bookingDTO);
+    @PostMapping("/save")
+    public Boolean bookingSave(@RequestBody BookingDTO bookingDTO){
+        try {
+            bookingService.bookingSave(bookingDTO);
+            return true;
+        }catch (Exception e){
+            System.out.println("저장실패");
+            return false;
+        }
     }
 
     @GetMapping("/list") //예약 리스트 전부 불러오기
     public List<Booking> bookingList(){
         return bookingService.getBooking();
     }
-    @GetMapping("/id") //id로 예약정보 한개 찾기
-    public Optional<BookingDTO> findBooking(BookingDTO dto){
-        return bookingService.findById(dto.toEntity().getId());
+    @GetMapping("/find/{id}") //id로 예약정보 한개 찾기
+    public BookingDTO findBooking(@PathVariable("id") Long id){
+        BookingDTO dto = bookingService.findById(id);
+        return dto;
     }
 
-    @GetMapping("/{id}") // 수정
-    public ResponseEntity<Void> updateBooking(@PathVariable Long id, @RequestBody Booking booking){
-        bookingService.updateBooking(booking.getCheckIn(), booking.getCheckOut(), booking.getMember(), id);
-        return ResponseEntity.ok().build(); //
-    }
-
-    @GetMapping("/{id}") // 삭제
-    public ResponseEntity<?> deleteBooking(@PathVariable("id") Long id) {
-        Optional<Booking> reservation = bookingRepository.findById(id);
-        if (!reservation.isPresent()) {
-            return ResponseEntity.notFound().build();
+    @PutMapping("/modify/{id}") // 수정
+    public Boolean updateBooking(@PathVariable("id") Long id, @RequestBody BookingDTO bookingDTO){
+        try {
+            bookingService.updateBooking(bookingDTO.getCheckIn(), bookingDTO.getCheckOut(), bookingDTO.getMemberEmail(), id);
+            return true;
+        }catch (Exception e){
+            return false;
         }
-        bookingRepository.deleteById(id);
-        return ResponseEntity.ok().build();
+
+    }
+
+    @DeleteMapping("/delete/{id}") // 삭제
+    public Boolean deleteBooking(@PathVariable("id") Long id) {
+        try {
+            bookingService.delete(id);
+            return true;
+        }catch (Exception e){
+            return false;
+        }
     }
 }

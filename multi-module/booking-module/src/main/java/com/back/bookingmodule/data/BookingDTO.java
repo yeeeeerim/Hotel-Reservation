@@ -20,6 +20,7 @@ public class BookingDTO {
     private String checkOut;
 
     private Status status;
+    private String memberEmail;
 
     private LocalDateTime createdAt;
 
@@ -31,6 +32,7 @@ public class BookingDTO {
                     .checkIn(this.checkIn)
                     .checkOut(this.checkOut)
                     .status(this.status)
+                    .memberEmail(this.memberEmail)
                     .build();
     }
     public static BookingDTO toDTO(Booking booking){
@@ -38,6 +40,7 @@ public class BookingDTO {
                     .checkIn(booking.getCheckIn())
                     .checkOut(booking.getCheckOut())
                     .status(booking.getStatus())
+                    .memberEmail(booking.getMemberEmail())
                     .createdAt(booking.getCreatedAt())
                     .modifiedAt(booking.getModifiedAt())
                     .build();
