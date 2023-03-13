@@ -1,5 +1,7 @@
 package com.back.bookingmodule.service.impl;
 
+import com.back.bookingmodule.config.exception.BookingErrorCode;
+import com.back.bookingmodule.config.exception.BookingException;
 import com.back.bookingmodule.data.BookingDTO;
 import com.back.bookingmodule.domain.Booking;
 import com.back.bookingmodule.domain.Member;
@@ -26,14 +28,19 @@ public class BookingServiceImpl implements BookingService {
          * @param  dto BookingDTO를 받고 엔티티로 변환함
          * */
         public Booking bookingSave(BookingDTO dto){
-            return bookingRepository.save(dto.toEntity());
+            Booking booking = bookingRepository.save(dto.toEntity());
+            if (bookingRepository.findById(dto.toEntity().getId()).isEmpty()){
+                throw new BookingException(BookingErrorCode.BOOKING_SAVE_FAIL);
+            }
+            return booking;
         }
 
         /**
-         * @apiNote id(PK)로 해당 엔티티 단건 조회
+         * @apiNote id(PK)로 해당 엔티티 단건 조회, 조회 실패할 경우 NOT_FOUND Exception 발생
          */
          public BookingDTO findById(Long id){
-             return BookingDTO.toDTO(bookingRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("not found id data")));
+             return BookingDTO.toDTO(bookingRepository.findById(id)
+                     .orElseThrow(() -> new BookingException(BookingErrorCode.BOOKING_NOT_FOUND)));
          }
 
 
@@ -41,7 +48,12 @@ public class BookingServiceImpl implements BookingService {
           * SecurityContextHolder 사용해서 로그인 정보 id 값인 memberemail과 파라미터로 전달받은 memberEmail이 같을 경우 updateBooking 실행
           * */
          public void updateBooking(String checkIn, String checkout, String memberEmail, Long id){
-             if(SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals(memberEmail)){
+             if (bookingRepository.findById(id).isEmpty()){
+                 throw new BookingException(BookingErrorCode.BOOKING_NOT_FOUND);
+             } else if ((checkIn.equals(bookingRepository.findById(id).get().getCheckIn()))
+                     && (checkout.equals(bookingRepository.findById(id).get().getCheckOut()))) {
+                 throw new BookingException(BookingErrorCode.BOOKING_NOT_CHANGE);
+             }else {
                  bookingRepository.updateBooking(id, checkIn, checkout);
              }
          }
@@ -54,6 +66,9 @@ public class BookingServiceImpl implements BookingService {
         }
         public void delete(Long id){
              bookingRepository.deleteById(id);
+             if (!(bookingRepository.findById(id).isEmpty())){
+                 throw new BookingException(BookingErrorCode.BOOKING_DELETE_FAIL);
+             }
         }
 
 }

@@ -1,18 +1,19 @@
 package com.back.bookingmodule.controller;
 
+import com.back.bookingmodule.config.exception.BookingException;
 import com.back.bookingmodule.data.BookingDTO;
+import com.back.bookingmodule.data.Response.BookingErrorResponse;
 import com.back.bookingmodule.domain.Booking;
-import com.back.bookingmodule.repository.BookingRepository;
 import com.back.bookingmodule.service.BookingService;
-import io.lettuce.core.dynamic.annotation.Param;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
-
+import java.security.Principal;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
+@Slf4j
 @RequiredArgsConstructor
 @RequestMapping("/booking")
 public class BookingController {
@@ -20,13 +21,8 @@ public class BookingController {
 
     @PostMapping("/save")
     public Boolean bookingSave(@RequestBody BookingDTO bookingDTO){
-        try {
             bookingService.bookingSave(bookingDTO);
             return true;
-        }catch (Exception e){
-            System.out.println("저장실패");
-            return false;
-        }
     }
 
     @GetMapping("/list") //예약 리스트 전부 불러오기
@@ -34,29 +30,32 @@ public class BookingController {
         return bookingService.getBooking();
     }
     @GetMapping("/find/{id}") //id로 예약정보 한개 찾기
-    public BookingDTO findBooking(@PathVariable("id") Long id){
+    public BookingDTO findBooking(@RequestParam("id") Long id){
         BookingDTO dto = bookingService.findById(id);
         return dto;
     }
 
     @PutMapping("/modify/{id}") // 수정
-    public Boolean updateBooking(@PathVariable("id") Long id, @RequestBody BookingDTO bookingDTO){
-        try {
-            bookingService.updateBooking(bookingDTO.getCheckIn(), bookingDTO.getCheckOut(), bookingDTO.getMemberEmail(), id);
+    public Boolean updateBooking(@RequestBody BookingDTO bookingDTO, @AuthenticationPrincipal Principal principal) {
+        if (principal.getName().equals(bookingDTO.getMemberEmail())) {
+            bookingService.updateBooking(bookingDTO.getCheckIn(), bookingDTO.getCheckOut(), bookingDTO.getMemberEmail(), bookingDTO.toEntity().getId());
             return true;
-        }catch (Exception e){
-            return false;
-        }
-
+        } else if (principal.getName().equals(null)) {
+            throw new NullPointerException();
+        }else return false;
     }
 
     @DeleteMapping("/delete/{id}") // 삭제
-    public Boolean deleteBooking(@PathVariable("id") Long id) {
-        try {
+    public Boolean deleteBooking(@PathVariable("id") Long id){
             bookingService.delete(id);
             return true;
-        }catch (Exception e){
-            return false;
-        }
+    }
+
+    @ExceptionHandler(Exception.class)
+    public BookingErrorResponse handleException(BookingException e){
+        return BookingErrorResponse.builder()
+                .errorCode(e.getBookingErrorCode())
+                .errorMessage(e.getDetailMessage())
+                .build();
     }
 }

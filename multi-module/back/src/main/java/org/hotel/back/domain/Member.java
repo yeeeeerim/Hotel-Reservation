@@ -33,7 +33,6 @@ public class Member {
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL,mappedBy = "member")
     private List<Booking> bookingList = new ArrayList<>();
 
-    private String tellNumber;
 
     public void addRole(MemberRole memberRole){
         this.roleSet.add(memberRole);

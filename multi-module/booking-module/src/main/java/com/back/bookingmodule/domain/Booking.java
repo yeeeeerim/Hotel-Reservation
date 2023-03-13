@@ -24,7 +24,7 @@ public class Booking {      //TODO: 실제로 삭제가 아닌 값을 넘길 예
 
     @ToString.Exclude
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "member_email", insertable = false)
+    @JoinColumn(name = "member_email", insertable = false, updatable = false)
     private Member member;
 
     @Column(nullable = false)
