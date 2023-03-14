@@ -5,37 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ee25ebb2-7795-4bae-8ff2-c390a84e9928" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e7468247-4beb-4c6a-9ebb-c21d8f77086a.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/e7468247-4beb-4c6a-9ebb-c21d8f77086a.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/generated/org/hotel/back/domain/QBaseTimeEntity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/generated/org/hotel/back/domain/QBooking.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/generated/org/hotel/back/domain/QHotel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/generated/org/hotel/back/domain/QHotelImage.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/generated/org/hotel/back/domain/QMember.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/generated/org/hotel/back/domain/QRating.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/generated/org/hotel/back/domain/QReview.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/generated/org/hotel/back/domain/QRoom.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/generated/org/hotel/back/domain/QRoomImage.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/repository/HotelRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/repository/HotelRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/repository/custom/impl/CustomRoomRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/repository/custom/impl/CustomRoomRepositoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/service/Impl/HotelServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/service/Impl/HotelServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/resources/templates/hotelDetail.html" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/resources/templates/hotelDetail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/test/java/org/hotel/back/BackApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/test/java/org/hotel/back/BackApplicationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/test/java/org/hotel/back/controller/HotelControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/test/java/org/hotel/back/controller/HotelControllerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/test/java/org/hotel/back/repository/MemberRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/test/java/org/hotel/back/repository/MemberRepositoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/test/java/org/hotel/back/repository/RoomRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/test/java/org/hotel/back/repository/RoomRepositoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/test/java/org/hotel/back/repository/custom/impl/CustomRoomRepositoryImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/test/java/org/hotel/back/repository/custom/impl/CustomRoomRepositoryImplTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/test/java/org/hotel/back/repository/custom/impl/ManagerRepositoryImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/test/java/org/hotel/back/repository/custom/impl/ManagerRepositoryImplTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/test/java/org/hotel/back/service/Impl/BookingServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/test/java/org/hotel/back/service/Impl/BookingServiceImplTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/test/java/org/hotel/back/service/Impl/ReviewServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/test/java/org/hotel/back/service/Impl/ReviewServiceImplTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/test/java/org/hotel/back/service/RoomServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/test/java/org/hotel/back/service/RoomServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/test/java/org/hotel/back/service/api/HotelAPIServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/test/java/org/hotel/back/service/api/HotelAPIServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/test/java/org/hotel/back/service/api/KaKaoAPIServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/test/java/org/hotel/back/service/api/KaKaoAPIServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/test/java/org/hotel/back/service/security/MemberDetailsServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/test/java/org/hotel/back/service/security/MemberDetailsServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/controller/HotelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/controller/HotelController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/resources/templates/hotelDetail.html" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/resources/templates/hotel/hotelDetail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/resources/templates/hotelMain.html" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/resources/templates/hotel/hotelMain.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/resources/templates/hotelSave.html" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/resources/templates/hotel/hotelSave.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/resources/templates/hotelSearch.html" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/resources/templates/hotel/hotelSearch.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/resources/templates/hotelUpdate.html" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/resources/templates/hotel/hotelUpdate.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/resources/templates/reviewUpdate.html" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/resources/templates/review/reviewUpdate.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -280,6 +256,7 @@
       <workItem from="1678693104737" duration="2989000" />
       <workItem from="1678721289276" duration="1777000" />
       <workItem from="1678760030175" duration="12632000" />
+      <workItem from="1678783124035" duration="447000" />
     </task>
     <servers />
   </component>

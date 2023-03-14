@@ -5,7 +5,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.hotel.back.data.response.HotelListResponseDTO;
 import org.hotel.back.data.response.HotelResponseDTO;
 import org.hotel.back.data.response.KaKaoResponseData;
-import org.hotel.back.domain.Hotel;
 
 import org.hotel.back.data.request.HotelRequestDTO;
 import org.hotel.back.service.HotelService;
@@ -22,9 +21,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Slf4j
 @Controller
 @RequiredArgsConstructor
@@ -40,7 +36,7 @@ public class HotelController {
     @GetMapping("/hotel/save")//localhost:8080/save
     public String hotelWriteForm(){
 
-        return "hotelSave";
+        return "hotel/hotelSave";
     }
 
     @PreAuthorize("isAuthenticated()")
@@ -78,7 +74,7 @@ public class HotelController {
         model.addAttribute("endPage",endPage);
         model.addAttribute("list",list);
         System.out.println(list);
-        return "index";
+        return "hotel/index";
     }
 
 //    @GetMapping("/hotel/search")
@@ -96,7 +92,7 @@ public class HotelController {
         HotelResponseDTO hotelResponseDTO =hotelService.hotelDetail(id); //호텔 객체를 불러옴 ->service hotelDetail메서드
         model.addAttribute("article",hotelResponseDTO);
         model.addAttribute("path",path);
-        return "hotelDetail";
+        return "hotel/hotelDetail";
     }
 
     @PreAuthorize("isAuthenticated()")
@@ -116,6 +112,6 @@ public class HotelController {
     @GetMapping("/hotel/update")
     public String hotelUpdate(Long id, Model model) throws ParseException {
         model.addAttribute("article", hotelService.hotelDetail(id));
-        return "hotelUpdate";
+        return "hotel/hotelUpdate";
     }
 }
