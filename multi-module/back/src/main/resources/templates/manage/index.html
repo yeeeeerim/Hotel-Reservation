@@ -154,14 +154,14 @@
                             <h2 class="card-title">${hotelDTO.hotelName}</h2>
                             <p class="card-text">${hotelDTO.address}</p>
                             <p class="card-text"> &starf; ${hotel.totalRating}</p>
-                            <a class="btn btn-success" href="#!">Read more →</a>
+                            <a class="btn btn-success" href="/hotel/detail?id=${hotelDTO.id}">Read more →</a>
                         </div>
                     </div>`)
 
                     if(reviewDTO != null){
                         for(const review of reviewDTO){
                             $('.review-content').append(`
-                                <div><a href="/hotel?id=${hotelDTO.id}" style="text-decoration: none;margin-bottom: 10px">${review.reviewContent}</a></div>
+                                <div><a href="/hotel/detail?id=${hotelDTO.id}" style="text-decoration: none;margin-bottom: 10px">${review.reviewContent}</a></div>
                          `)
                     }
 

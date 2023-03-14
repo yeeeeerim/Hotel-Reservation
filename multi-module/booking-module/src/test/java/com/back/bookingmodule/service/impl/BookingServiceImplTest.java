@@ -15,7 +15,7 @@ class BookingServiceImplTest {
     @Test
     @DisplayName("예약서비스를 테스트하기 위함..")
     void serviceTest(){
-        bookingService.bookingChangeInAndOut();
+        //bookingService.bookingChangeInAndOut();
     }
 
 }

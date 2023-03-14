@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.hotel.back.service.security.MemberDetailsService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.MediaType;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -27,7 +28,9 @@ public class SecurityConfig {
                 .disable()
                 .formLogin()
                 .loginPage("/login")
-                .defaultSuccessUrl("/hotel")
+                .successHandler((request, response, authentication) -> {
+                    response.sendRedirect("/hotel?login=success");
+                })
                 .failureUrl("/login?err=e")
                 .and()
                 .userDetailsService(memberDetailsService)

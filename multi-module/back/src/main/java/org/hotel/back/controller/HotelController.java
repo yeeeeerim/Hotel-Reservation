@@ -21,6 +21,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,14 +37,14 @@ public class HotelController {
     private String path;
 
 
-    @PreAuthorize("isAuthenticated()")
+    @PreAuthorize("hasRole('OWNER')")
     @GetMapping("/hotel/save")//localhost:8080/save
     public String hotelWriteForm(){
 
         return "hotelSave";
     }
 
-    @PreAuthorize("isAuthenticated()")
+    @PreAuthorize("hasRole('OWNER')")
     @PostMapping("/hotel/save")
     public String hotelSave(HotelRequestDTO hotelRequestDTO) throws ParseException {
         String address=hotelRequestDTO.getAddress();
@@ -64,7 +65,11 @@ public class HotelController {
     }
 
     @GetMapping("/hotel")
-    public String hotelList(@PageableDefault(page = 0, size = 12,sort="id",direction = Sort.Direction.DESC) Pageable pageable, Model model){
+    public String hotelList(@PageableDefault(page = 0, size = 12,sort="id",direction = Sort.Direction.DESC) Pageable pageable,
+                            Model model,
+                            @RequestParam(required = false) String login){
+        if(login != null) model.addAttribute("msg","로그인 성공!");
+
         //서비스에서 생성한 리스트를 list라는 이름으로 반환하겠다.
         Page<Hotel> list =hotelService.hotelList(pageable);
 
@@ -81,14 +86,6 @@ public class HotelController {
         return "index";
     }
 
-//    @GetMapping("/hotel/search")
-//    public String hotelListSearch(Model model,String keyword){
-//        //서비스에서 생성한 리스트를 list라는 이름으로 반환하겠다.
-//        List<Hotel> list =hotelService.hotelListSearch(keyword);
-//
-//        model.addAttribute("list",list);
-//        return "hotelSearch";
-//    }
 
     //========호텔 자세히보기  ============
     @GetMapping("/hotel/detail")
@@ -99,20 +96,20 @@ public class HotelController {
         return "hotelDetail";
     }
 
-    @PreAuthorize("isAuthenticated()")
+    @PreAuthorize("hasRole('OWNER')")
     @GetMapping("/hotel/delete")
     public String hotelDelete(Long id) {
         hotelService.hotelDelete(id);
         return "redirect:/hotel";
     }
 
-    @PreAuthorize("isAuthenticated()")
+    @PreAuthorize("hasRole('OWNER')")
     @PostMapping("/hotel/update")
     public String hotelUpdatePost(HotelRequestDTO hotelRequestDTO) {
         hotelService.hotelUpdate(hotelRequestDTO);
         return "redirect:/hotel/detail?id=" + hotelRequestDTO.getId(); //숙소정보 업데이트 후 detail=id로 다시 redirect
     }
-    @PreAuthorize("isAuthenticated()")
+    @PreAuthorize("hasRole('OWNER')")
     @GetMapping("/hotel/update")
     public String hotelUpdate(Long id, Model model) throws ParseException {
         model.addAttribute("article", hotelService.hotelDetail(id));
