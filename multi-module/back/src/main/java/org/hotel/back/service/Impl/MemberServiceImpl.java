@@ -19,6 +19,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.ObjectUtils;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -74,32 +76,43 @@ public class MemberServiceImpl implements MemberService {
      * @return HotelAndReviewDTO Type
      * */
     @Transactional(readOnly = true)
-    public HotelAndReviewDTO getHotelAndReviewWithRoom(String email) throws ParseException {
+    public List<HotelAndReviewDTO> getHotelAndReviewWithRoom(String email) throws ParseException {
 
         var hotelData = managerRepository.getHotelInfo(email);
+        List<HotelAndReviewDTO> dtoList = new ArrayList<>();
+
         if (hotelData.isPresent()){
-            Hotel hotel = hotelData.get();
+            List<Hotel> hotelList = hotelData.get();
 
-            Optional<String> addressInfo =
-                    kaKaoAPIService.getAddressInfo(hotel.getLongitude(), hotel.getLatitude());
+            hotelList.forEach(hotel ->  {
 
-            return HotelAndReviewDTO.builder()
-                    .hotelResponseDTO(HotelResponseDTO.builder()
-                            .id(hotel.getId())
-                            .hotelName(hotel.getHotelName())
-                            .cityName(hotel.getCityName())
-                            .tellNumber(hotel.getTellNumber())
-                            .latitude(hotel.getLatitude())
-                            .address(addressInfo.orElse("정확하지 않은 주소"))
-                            .longitude(hotel.getLongitude())
-                            .build())
-                    .reviewResponseDTO(hotel.getReviews().stream()
-                            .map(ReviewResponseDTO::new)
-                            .collect(Collectors.toList()))
-                    .images(hotel.getHotelImages().stream().map(hotelImage ->
-                            hotelImage.getName())
-                            .collect(Collectors.toList()))
-                    .build();
+                Optional<String> addressInfo = null;
+                try {
+                    addressInfo = kaKaoAPIService.getAddressInfo(hotel.getLongitude(), hotel.getLatitude());
+                } catch (ParseException e) {
+                    throw new RuntimeException(e);
+                }
+
+               dtoList.add( HotelAndReviewDTO.builder()
+                       .hotelResponseDTO(HotelResponseDTO.builder()
+                               .id(hotel.getId())
+                               .hotelName(hotel.getHotelName())
+                               .cityName(hotel.getCityName())
+                               .tellNumber(hotel.getTellNumber())
+                               .latitude(hotel.getLatitude())
+                               .address(addressInfo.orElse("정확하지 않은 주소"))
+                               .longitude(hotel.getLongitude())
+                               .build())
+                       .reviewResponseDTO(hotel.getReviews().stream()
+                               .map(ReviewResponseDTO::new)
+                               .collect(Collectors.toList()))
+                       .images(hotel.getHotelImages().stream().map(hotelImage ->
+                                       hotelImage.getName())
+                               .collect(Collectors.toList()))
+                       .build());
+           });
+
+            return dtoList;
         }else{
             return null;
         }

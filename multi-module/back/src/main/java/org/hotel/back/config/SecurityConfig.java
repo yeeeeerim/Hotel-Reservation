@@ -27,7 +27,7 @@ public class SecurityConfig {
                 .disable()
                 .formLogin()
                 .loginPage("/login")
-                .defaultSuccessUrl("/main")
+                .defaultSuccessUrl("/hotel")
                 .failureUrl("/login?err=e")
                 .and()
                 .userDetailsService(memberDetailsService)

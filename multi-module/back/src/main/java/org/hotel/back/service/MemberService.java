@@ -16,6 +16,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.ObjectUtils;
 
+import java.util.List;
+
 
 public interface MemberService {
 
@@ -39,7 +41,9 @@ public interface MemberService {
 
     /**
      * @param email 해당 작성자가 작성한 호텔정보/룸정보/리뷰까지
+     * @apiNote 여기서 Hotel과 Review는 fetch join 으로 가져오고
+     *              hotelImage는 따로 BatchSize를 통해 가져옴 -> 데이터가 많아봤자 10개 안 넘음
      *
      * */
-    public HotelAndReviewDTO getHotelAndReviewWithRoom(String email) throws ParseException;
+    public List<HotelAndReviewDTO> getHotelAndReviewWithRoom(String email) throws ParseException;
 }

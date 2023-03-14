@@ -5,64 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ee25ebb2-7795-4bae-8ff2-c390a84e9928" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/data/dto/BookingDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/data/response/HotelListResponseDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back/src/main/resources/static/css/star.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back/src/main/resources/templates/hotelSearch.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back/src/main/resources/templates/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back/src/test/java/org/hotel/back/repository/HotelRepositoryTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back/temp/0c5606e1-a013-4c0b-affe-8c05656f03ec_card_3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back/temp/1eda6a65-e061-4a4f-9ee9-745f5adacad5_card_2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back/temp/4b68821c-d761-4eaa-852a-8c0d191ee40e_제목을-입력해주세요_-001 (7).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back/temp/7cf61c00-122b-4805-8a85-1790536a73b8_thumbnail (24).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back/temp/8c20c755-1d61-4d00-8a59-eea9df6cdd68_card_back.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back/temp/S_0c5606e1-a013-4c0b-affe-8c05656f03ec_card_3.png_card_3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back/temp/S_1eda6a65-e061-4a4f-9ee9-745f5adacad5_card_2.png_card_2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back/temp/S_7cf61c00-122b-4805-8a85-1790536a73b8_thumbnail (24).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back/temp/S_8c20c755-1d61-4d00-8a59-eea9df6cdd68_card_back.png_card_back.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back/temp/b164a891-6a1f-4d6f-9e72-3a1a2e5553dc_제목을-입력해주세요_-001 (6).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back/temp/f049b8dd-afda-40c2-8a84-8f0872efff7d_IMG_7144.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/booking-module/src/main/java/com/back/bookingmodule/controller/BookingController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/booking-module/src/test/java/com/back/bookingmodule/service/impl/BookingServiceImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/e7468247-4beb-4c6a-9ebb-c21d8f77086a.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/e7468247-4beb-4c6a-9ebb-c21d8f77086a.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jpa-buddy.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jpa-buddy.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/back/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/generated/org/hotel/back/domain/QHotel.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/generated/org/hotel/back/domain/QHotel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/generated/org/hotel/back/domain/QReview.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/generated/org/hotel/back/domain/QReview.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/config/MemberAuditorAware.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/config/MemberAuditorAware.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/api/HotelRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/api/HotelRestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/config/SecurityConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/controller/HotelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/controller/HotelController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/controller/MemberController.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/controller/MemberController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/data/request/HotelRequestDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/data/request/HotelRequestDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/data/request/ReviewRequestDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/data/request/ReviewRequestDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/data/response/HotelAndReviewDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/data/response/HotelAndReviewDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/data/response/HotelResponseDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/data/response/HotelResponseDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/data/response/ReviewResponseDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/data/response/ReviewResponseDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/domain/Hotel.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/domain/Hotel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/domain/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/domain/Member.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/domain/Review.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/domain/Review.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/repository/HotelRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/repository/HotelRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/repository/ReviewRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/repository/ReviewRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/repository/RoomRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/repository/RoomRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/repository/MemberRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/repository/MemberRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/repository/custom/ManagerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/repository/custom/ManagerRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/repository/custom/impl/ManagerRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/repository/custom/impl/ManagerRepositoryImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/service/HotelService.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/service/HotelService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/service/Impl/HotelServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/service/Impl/HotelServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/service/Impl/ReviewServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/service/Impl/ReviewServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/service/Impl/RoomServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/service/Impl/RoomServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/service/ReviewService.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/service/ReviewService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/service/Impl/MemberServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/service/Impl/MemberServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/service/MemberService.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/service/MemberService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/service/security/MemberDetailsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/service/security/MemberDetailsService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/resources/static/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/resources/static/css/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/resources/templates/hotelDetail.html" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/resources/templates/hotelDetail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/resources/templates/hotelDetail2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/resources/templates/hotelSave.html" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/resources/templates/hotelSave.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/resources/templates/hotelimage.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/back/src/main/resources/templates/manage/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/resources/templates/manage/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/test/java/org/hotel/back/repository/RoomRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/test/java/org/hotel/back/repository/RoomRepositoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/booking-module/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/booking-module/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/booking-module/src/main/java/com/back/bookingmodule/repository/BookingRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/booking-module/src/main/java/com/back/bookingmodule/repository/BookingRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/booking-module/src/main/java/com/back/bookingmodule/service/BookingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/booking-module/src/main/java/com/back/bookingmodule/service/BookingService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/booking-module/src/main/java/com/back/bookingmodule/service/impl/BookingServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/booking-module/src/main/java/com/back/bookingmodule/service/impl/BookingServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/test/java/org/hotel/back/controller/HotelControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/test/java/org/hotel/back/controller/HotelControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/test/java/org/hotel/back/repository/MemberRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/test/java/org/hotel/back/repository/MemberRepositoryTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,10 +76,15 @@
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;terminal&quot;,
     &quot;spring.configuration.checksum&quot;: &quot;42064a0f62584d50ddb3493ccddc9bf5&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="ReactorSettings">
+    <option name="notificationShown" value="true" />
+  </component>
   <component name="RunDashboard">
     <option name="configurationTypes">
       <set>
@@ -127,7 +94,47 @@
     </option>
   </component>
   <component name="RunManager" selected="Spring Boot.BackApplication">
-    <configuration name="RoomRepositoryTest.RoomRepositoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="HotelAPIServiceTest.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="back.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.hotel.back.service.api.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.hotel.back.service.api" />
+      <option name="MAIN_CLASS_NAME" value="org.hotel.back.service.api.HotelAPIServiceTest" />
+      <option name="METHOD_NAME" value="test" />
+      <option name="TEST_OBJECT" value="method" />
+      <envs>
+        <env name="API_KEY" value="26f037dc249943e4b75e005d6fc3858d" />
+        <env name="KAKAO_KEY" value="f9b458c1d685a9638dd928c2be0f6c63" />
+      </envs>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="HotelControllerTest.hotelList" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="back.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.hotel.back.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.hotel.back.controller" />
+      <option name="MAIN_CLASS_NAME" value="org.hotel.back.controller.HotelControllerTest" />
+      <option name="METHOD_NAME" value="hotelList" />
+      <option name="TEST_OBJECT" value="method" />
+      <envs>
+        <env name="API_KEY" value="26f037dc249943e4b75e005d6fc3858d" />
+        <env name="KAKAO_KEY" value="f9b458c1d685a9638dd928c2be0f6c63" />
+      </envs>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MemberRepositoryTest.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="back.test" />
       <extension name="coverage">
         <pattern>
@@ -136,8 +143,28 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="org.hotel.back.repository" />
-      <option name="MAIN_CLASS_NAME" value="org.hotel.back.repository.RoomRepositoryTest" />
-      <option name="METHOD_NAME" value="RoomRepositoryTest" />
+      <option name="MAIN_CLASS_NAME" value="org.hotel.back.repository.MemberRepositoryTest" />
+      <option name="METHOD_NAME" value="test" />
+      <option name="TEST_OBJECT" value="method" />
+      <envs>
+        <env name="API_KEY" value="26f037dc249943e4b75e005d6fc3858d" />
+        <env name="KAKAO_KEY" value="f9b458c1d685a9638dd928c2be0f6c63" />
+      </envs>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MemberRepositoryTest.test2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="back.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.hotel.back.repository.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.hotel.back.repository" />
+      <option name="MAIN_CLASS_NAME" value="org.hotel.back.repository.MemberRepositoryTest" />
+      <option name="METHOD_NAME" value="test2" />
       <option name="TEST_OBJECT" value="method" />
       <envs>
         <env name="API_KEY" value="26f037dc249943e4b75e005d6fc3858d" />
@@ -167,7 +194,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Spring Boot.BackApplication" />
-        <item itemvalue="JUnit.RoomRepositoryTest.RoomRepositoryTest" />
+        <item itemvalue="JUnit.HotelAPIServiceTest.test" />
+        <item itemvalue="JUnit.MemberRepositoryTest.test" />
+        <item itemvalue="JUnit.MemberRepositoryTest.test2" />
+        <item itemvalue="JUnit.HotelControllerTest.hotelList" />
       </list>
     </recent_temporary>
   </component>
@@ -181,10 +211,31 @@
       <updated>1677561145140</updated>
       <workItem from="1677561146173" duration="9913000" />
       <workItem from="1677588797114" duration="571000" />
+      <workItem from="1677731519971" duration="3563000" />
+      <workItem from="1678682879051" duration="210000" />
+      <workItem from="1678683106164" duration="9439000" />
+      <workItem from="1678716458074" duration="2427000" />
+      <workItem from="1678767564378" duration="751000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/back/src/main/java/org/hotel/back/service/Impl/HotelServiceImpl.java</url>
+          <line>72</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="jdk.proxy3.$Proxy146" memberName="h" />
+      </pinned-members>
+    </pin-to-top-manager>
   </component>
 </project>

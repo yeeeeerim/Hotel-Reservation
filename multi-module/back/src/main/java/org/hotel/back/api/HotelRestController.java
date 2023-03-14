@@ -31,21 +31,21 @@ public class HotelRestController {
 
 
 
-    @PreAuthorize("isAuthenticated()")
-    @GetMapping("/api/hotel")
-    public ResponseEntity<HotelAndReviewDTO> getRestHotelDATA(
-            @AuthenticationPrincipal MemberDTO memberDTO
-            ){
-        if(memberDTO != null){
-            try {
-                return ResponseEntity.ok(memberService.getHotelAndReviewWithRoom(memberDTO.getEmail()));
-            } catch (ParseException e) {
-                throw new RuntimeException(e);
-            }
-        }else{
-            return ResponseEntity.badRequest().body(null);
-        }
-    }
+//    @PreAuthorize("isAuthenticated()")
+//    @GetMapping("/api/hotel")
+//    public ResponseEntity<HotelAndReviewDTO> getRestHotelDATA(
+//            @AuthenticationPrincipal MemberDTO memberDTO
+//            ){
+//        if(memberDTO != null){
+//            try {
+//                return ResponseEntity.ok(memberService.get(memberDTO.getEmail()));
+//            } catch (ParseException e) {
+//                throw new RuntimeException(e);
+//            }
+//        }else{
+//            return ResponseEntity.badRequest().body(null);
+//        }
+//    }
     @PreAuthorize("isAuthenticated()")
     @GetMapping("/api/room")
     public ResponseEntity<RoomDTO> getRestRoomDATA(

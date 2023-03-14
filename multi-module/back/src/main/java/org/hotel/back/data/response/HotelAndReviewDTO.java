@@ -13,10 +13,25 @@ import java.util.List;
 @ToString
 public class HotelAndReviewDTO {
 
-        public HotelResponseDTO hotelResponseDTO;
+        private HotelResponseDTO hotelResponseDTO;
 
-        public List<ReviewResponseDTO> reviewResponseDTO;
+        private List<ReviewResponseDTO> reviewResponseDTO;
 
 
-        public List<String> images = new ArrayList<>();
+        private List<String> images = new ArrayList<>();
+
+        private long totalRating;
+
+
+        public double getTotalRating(){
+           long rating = 0;
+
+           if(!reviewResponseDTO.isEmpty()){
+                   for (ReviewResponseDTO dto : reviewResponseDTO) {
+                           rating += dto.getRating();
+                   }
+                   return rating/reviewResponseDTO.size();
+           }
+           return 0;
+        }
 }

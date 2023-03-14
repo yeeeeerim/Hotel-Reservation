@@ -27,6 +27,7 @@ import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -68,9 +69,8 @@ public class HotelServiceImpl implements HotelService {
     }
     //호텔 리스트
     @Override
-    public Page<HotelListResponseDTO> hotelList(Pageable pageable) {
-        Page hotel=hotelRepository.findAll(pageable);
-
+    public Page<Hotel> hotelList(Pageable pageable) {
+        var hotel = hotelRepository.findAll(pageable);
         return hotel;
     }
     //호텔 자세히보

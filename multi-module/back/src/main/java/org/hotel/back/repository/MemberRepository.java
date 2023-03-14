@@ -12,7 +12,7 @@ public interface MemberRepository extends JpaRepository<Member,String> {
 
 
     @EntityGraph(attributePaths = {"roleSet"})
-    @Query("SELECT m FROM Member m WHERE m.email = :email")
+    @Query("SELECT distinct m FROM Member m WHERE m.email = :email")
     public Optional<Member> getMember(@Param("email") String email);
     public boolean existsByEmail(String email);
 }

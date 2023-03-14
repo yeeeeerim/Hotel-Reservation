@@ -66,7 +66,7 @@ public class HotelController {
     @GetMapping("/hotel")
     public String hotelList(@PageableDefault(page = 0, size = 12,sort="id",direction = Sort.Direction.DESC) Pageable pageable, Model model){
         //서비스에서 생성한 리스트를 list라는 이름으로 반환하겠다.
-        Page<HotelListResponseDTO> list =hotelService.hotelList(pageable);
+        Page<Hotel> list =hotelService.hotelList(pageable);
 
         int nowPage =list.getPageable().getPageNumber()+1;//pageable은 0부터 시작해서 +1을 해줘야 함
         int startPage=1;//시작페이지
