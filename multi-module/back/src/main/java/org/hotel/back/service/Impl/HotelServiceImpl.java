@@ -7,6 +7,7 @@ import org.hotel.back.data.response.HotelResponseDTO;
 import org.hotel.back.domain.Hotel;
 import org.hotel.back.data.request.HotelRequestDTO;
 import org.hotel.back.domain.HotelImage;
+import org.hotel.back.domain.Review;
 import org.hotel.back.repository.HotelImageRepository;
 import org.hotel.back.repository.HotelRepository;
 import org.hotel.back.service.HotelService;
@@ -27,6 +28,10 @@ import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+import static java.lang.Double.NaN;
 
 @Service
 @RequiredArgsConstructor
@@ -73,16 +78,22 @@ public class HotelServiceImpl implements HotelService {
 
         return hotel;
     }
-    //호텔 자세히보
-
-
+    //호텔 자세히보기
     @Override
     public HotelResponseDTO hotelDetail(Long id) throws ParseException {
         Hotel hotel=hotelRepository.findFetchJoin(id);
 
-        var data = kaKaoAPIService.getAddressInfo(hotel.getLongitude(),hotel.getLatitude());
-        HotelResponseDTO dto = new HotelResponseDTO(hotel);
+        List<Long> rating=hotel.getReviews().stream().map(review -> review.getRating()).collect(Collectors.toList());
+        //리뷰 평점계산
+        double avg=0;
+        for (Long a:rating) {
+            avg+=a;
+        }
+        avg/=rating.size();
+        if(Double.isNaN(avg)){avg=0;} //평점이 없어 NaN으로 계산이 된 경우 0으로 값을 변경한다.
 
+        HotelResponseDTO dto=new HotelResponseDTO(hotel,avg);
+        var data = kaKaoAPIService.getAddressInfo(hotel.getLongitude(),hotel.getLatitude());
         if(data.isPresent()){//위, 경도를 넣어서 주소가 반환된다면
             String address = data.get();
             dto.setAddress(address);//변환한 주소 넣기
