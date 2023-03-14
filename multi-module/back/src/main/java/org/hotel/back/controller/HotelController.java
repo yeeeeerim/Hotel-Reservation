@@ -7,6 +7,7 @@ import org.hotel.back.data.response.HotelResponseDTO;
 import org.hotel.back.data.response.KaKaoResponseData;
 
 import org.hotel.back.data.request.HotelRequestDTO;
+import org.hotel.back.domain.Hotel;
 import org.hotel.back.service.HotelService;
 import org.hotel.back.service.api.KaKaoAPIService;
 import org.json.simple.parser.ParseException;
@@ -20,6 +21,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Controller
@@ -68,12 +73,10 @@ public class HotelController {
         int startPage=1;//시작페이지
         int endPage=list.getTotalPages();//12개씩 자른 페이지
 
-
         model.addAttribute("nowPage",nowPage);
         model.addAttribute("startPage",startPage);
         model.addAttribute("endPage",endPage);
         model.addAttribute("list",list);
-        System.out.println(list);
         return "hotel/index";
     }
 

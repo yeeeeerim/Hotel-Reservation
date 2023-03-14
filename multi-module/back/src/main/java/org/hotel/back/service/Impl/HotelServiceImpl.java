@@ -15,6 +15,7 @@ import org.hotel.back.service.api.KaKaoAPIService;
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -25,6 +26,7 @@ import java.nio.DoubleBuffer;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
@@ -74,9 +76,18 @@ public class HotelServiceImpl implements HotelService {
     //호텔 리스트
     @Override
     public Page<HotelListResponseDTO> hotelList(Pageable pageable) {
-        Page hotel=hotelRepository.findAll(pageable);
-
-        return hotel;
+        Page<Hotel>hotels=hotelRepository.findAll(pageable);
+        List<HotelListResponseDTO> listDTO=new ArrayList<>();
+        //호텔이미지가 있으면 dto에 호텔 대표이미지 담기
+        for(Hotel h:hotels){
+            HotelListResponseDTO dto=new HotelListResponseDTO(h);
+            List<HotelImage>hotelImages=h.getHotelImages();
+            if (hotelImages != null && !hotelImages.isEmpty()) {
+                dto.setHotelImage(hotelImages.get(0).getName());
+            }
+            listDTO.add(dto);
+        }
+        return new PageImpl<>(listDTO,pageable,hotels.getTotalElements());
     }
     //호텔 자세히보기
     @Override
