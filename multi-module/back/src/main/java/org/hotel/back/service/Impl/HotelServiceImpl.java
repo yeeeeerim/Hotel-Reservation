@@ -57,7 +57,6 @@ public class HotelServiceImpl implements HotelService {
             Hotel hotel=hotelRequestDTO.toEntity(hotelRequestDTO);
             Long hotelId=hotelRepository.save(hotel).getId();
 
-            //썸네일
             for(MultipartFile hotelImage:hotelRequestDTO.getHotelImage()){
                 String uuid = UUID.randomUUID().toString()+"_"+hotelImage.getOriginalFilename();
                 Path savePath = Paths.get(path, uuid);
@@ -89,6 +88,7 @@ public class HotelServiceImpl implements HotelService {
         }
         return new PageImpl<>(listDTO,pageable,hotels.getTotalElements());
     }
+
     //호텔 자세히보기
     @Override
     public HotelResponseDTO hotelDetail(Long id) throws ParseException {
