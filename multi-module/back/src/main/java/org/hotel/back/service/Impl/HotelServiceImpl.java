@@ -31,9 +31,12 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
+<<<<<<< HEAD
 import java.util.stream.Stream;
 
 import static java.lang.Double.NaN;
+=======
+>>>>>>> 61c0dc166be82ee55c2658f83a9f500cd6060f80
 
 @Service
 @RequiredArgsConstructor
@@ -74,6 +77,7 @@ public class HotelServiceImpl implements HotelService {
     }
     //호텔 리스트
     @Override
+<<<<<<< HEAD
     public Page<HotelListResponseDTO> hotelList(Pageable pageable) {
         Page<Hotel>hotels=hotelRepository.findAll(pageable);
         List<HotelListResponseDTO> listDTO=new ArrayList<>();
@@ -87,6 +91,11 @@ public class HotelServiceImpl implements HotelService {
             listDTO.add(dto);
         }
         return new PageImpl<>(listDTO,pageable,hotels.getTotalElements());
+=======
+    public Page<Hotel> hotelList(Pageable pageable) {
+        var hotel = hotelRepository.findAll(pageable);
+        return hotel;
+>>>>>>> 61c0dc166be82ee55c2658f83a9f500cd6060f80
     }
 
     //호텔 자세히보기

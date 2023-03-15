@@ -41,14 +41,14 @@
         <div class="container">
             <div class="row">
                 <!-- Blog entries-->
-                <div class="col-lg-8">
+                <div class="col-lg-8 post">
                     <!-- Featured blog post-->
-                    <div class="card mb-4">
-                        <a href="#!" class="card-header"><img class="card-img-top hotel-image" src="https://dummyimage.com/850x350/dee2e6/6c757d.jpg" alt="..." /></a>
+                    <div class="main-card mb-4">
+                        <a href="#!" class="main-card-header"><img class="card-img-top hotel-image" src="https://dummyimage.com/850x350/dee2e6/6c757d.jpg" alt="..." /></a>
                         <div class="card-body card-one-body">
                             <div class="small text-muted">January 1, 2022</div>
-                            <h2 class="card-title" th:text="${hotel.hotelResponseDTO.getHotelName()}">Featured Post Title</h2>
-                            <p class="card-text" th:text="${hotel.hotelResponseDTO.getAddress()}">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
+                            <h2 class="card-title">Featured Post Title</h2>
+                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
                             <a class="btn btn-primary" href="#!">Read more →</a>
                         </div>
                     </div>
@@ -84,23 +84,13 @@
                     </div>
                     <!-- Categories widget-->
                     <div class="card mb-4">
-                        <div class="card-header">Categories</div>
+                        <div class="card-header">REVIEW 관리</div>
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-sm-6">
-                                    <ul class="list-unstyled mb-0">
-                                        <li><a href="#!">Web Design</a></li>
-                                        <li><a href="#!">HTML</a></li>
-                                        <li><a href="#!">Freebies</a></li>
-                                    </ul>
+                                <div class="col-6 review-content">
+
                                 </div>
-                                <div class="col-sm-6">
-                                    <ul class="list-unstyled mb-0">
-                                        <li><a href="#!">JavaScript</a></li>
-                                        <li><a href="#!">CSS</a></li>
-                                        <li><a href="#!">Tutorials</a></li>
-                                    </ul>
-                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -128,38 +118,68 @@
             $(document).ready(function(){
                 const member = [[ ${member} ]]
                 const data = [[ ${hotel} ]]
-                const fileName = [[ ${images} ]]
-                hotelId = data.hotelResponseDTO.id
+
+                let hotelDTO
+
 
                 if(member != null){
                     $('#email').text(member.email)
                     $('#nickName').text('Welcome to'+member.nickName)
                 }
 
-                if(fileName != null){
-                    const imgSrc = "/view?fileName="+fileName
-                    console.log(imgSrc)
-                    $('.hotel-image').attr('src',imgSrc)
-                }
+
                 if(data == null) {
                     alert("작성된 데이터가 없습니다.")
                     window.history.back()
                 }
+
+
+                $('.card-one-body').remove()
+                $('.main-card-header').remove()
+
+                for(const hotel of data){
+                    hotelDTO = hotel.hotelResponseDTO
+                    reviewDTO = hotel.reviewResponseDTO
+
+                    const fileName = hotel.images[0]
+
+
+
+                    $('.post').append(` <div class="main-card mb-4">
+                        <a href="#!" class="main-card-header">
+                        <img class="card-img-top hotel-image" src="/view?fileName=${fileName}" alt="..." />
+                        </a>
+                       <div class="card-body card-one-body">
+                            <div class="small text-muted">${hotelDTO.cityName}</div>
+                            <h2 class="card-title">${hotelDTO.hotelName}</h2>
+                            <p class="card-text">${hotelDTO.address}</p>
+                            <p class="card-text"> &starf; ${hotel.totalRating}</p>
+                            <a class="btn btn-success" href="/hotel/detail?id=${hotelDTO.id}">Read more →</a>
+                        </div>
+                    </div>`)
+
+                    if(reviewDTO != null){
+                        for(const review of reviewDTO){
+                            $('.review-content').append(`
+                                <div><a href="/hotel/detail?id=${hotelDTO.id}" style="text-decoration: none;margin-bottom: 10px">${review.reviewContent}</a></div>
+                         `)
+                    }
+
+                    }
+
+                }
+
             })
 
             function changeSelect(){
                 const selectData = $('.form-select').val();
 
-
-
                 if(selectData == 'room'){       //Hotel 일 경우로 바꿀예정
                     $('.card-header').remove()
                     $('.card-one-body').remove()
-
                      roomRequest().then(value => {
                             const data = value.data;
                             console.log(data)
-
                             str = `<div class="card mb-4">
                                 <a href="#!"><img class="${data.filename}" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." /></a>
                                 <div class="card-body">

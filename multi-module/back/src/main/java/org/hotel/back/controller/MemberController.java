@@ -54,17 +54,20 @@ public class MemberController {
         return "redirect:login";
     }
 
+
+
     @GetMapping("/manage")
-    //@PreAuthorize("hasRole('OWNER')")
+    @PreAuthorize("hasRole('OWNER')")
     public String manageGET(Model model,
                             @AuthenticationPrincipal MemberDTO memberDTO){
-        HotelAndReviewDTO dto = null;
+        List<HotelAndReviewDTO>  dtoList = null;
 
         try{
-            dto = memberService.getHotelAndReviewWithRoom(memberDTO != null? memberDTO.getEmail() : "Unknown");
-            if (dto != null){
-                model.addAttribute("hotel",dto);
-                if(!dto.getImages().isEmpty()) model.addAttribute("images",dto.getImages().stream().findFirst().get());
+            dtoList = memberService.getHotelAndReviewWithRoom(memberDTO != null? memberDTO.getEmail() : "Unknown");
+            if (dtoList != null){
+
+                model.addAttribute("hotel",dtoList);
+
             }
             if(memberDTO != null) model.addAttribute("member",memberDTO);
         } catch (ParseException e) {
