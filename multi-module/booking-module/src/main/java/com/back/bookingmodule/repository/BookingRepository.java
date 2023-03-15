@@ -2,10 +2,10 @@ package com.back.bookingmodule.repository;
 
 import com.back.bookingmodule.domain.Booking;
 import com.back.bookingmodule.domain.Member;
-import io.lettuce.core.dynamic.annotation.Param;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
