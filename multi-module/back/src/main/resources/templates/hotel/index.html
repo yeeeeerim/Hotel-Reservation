@@ -65,12 +65,12 @@
                             <div class="col mb-5">
                                 <div class="card h-100">
                                     <!-- Product image-->
-                                    <th:block th:if="${hotel.hotelImages!=null&&hotel.hotelImages.size>0}">
-                                        <img class="card-img-top" th:src="|/view?fileName=${hotel.hotelImages.get(0).name}|"width="350px" height="150px"   />
-                                    </th:block>
-                                    <th:block th:unless="${hotel.hotelImages!=null&&hotel.hotelImages.size>0}">
-                                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..."width="350px" height="170px"  />
-                                    </th:block>
+                                    <div th:if="${hotel.hotelImage!= null}">
+                                        <img class="card-img-top" th:src="|/view?fileName=${hotel.hotelImage}|" width="350px" height="150px" />
+                                    </div>
+                                    <div th:unless="${hotel.hotelImage!= null}">
+                                        <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." width="350px" height="170px" />
+                                    </div>
 
                                     <!-- Product details-->
                                     <div class="card-body p-4">

@@ -71,8 +71,8 @@
 
                                 <td>평균 평점</td>
                                 <td>
-                                    <input type="tel" class="form-control" th:value="${article.ratingAvg}" readonly>
-                                    <input type="tel" class="form-control" th:value="${article.hotelImages.get(0)}" readonly>
+                                    <input type="tel" class="form-control" th:value="(${article.ratingAvg}==0.0)? '-' : ${article.ratingAvg}" readonly>
+
                                 </td>
                             </tr>
                             </tbody>
@@ -171,10 +171,10 @@
 <script th:inline="javascript">  //여기서 요청 넣는 거에요 저 메소드에
 
 let imageList = [[ ${article.hotelImages}]]
-let imageList2 = [[ ${article.hotelImages.get(0)}]]
 let latitude = [[${article.latitude}]]
 let longitude = [[${article.longitude}]]
-console.log(imageList2)
+console.log(latitude)
+console.log(longitude)
 
 if (imageList != null) {
 

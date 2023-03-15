@@ -7,6 +7,7 @@ import org.hotel.back.data.response.HotelResponseDTO;
 import org.hotel.back.domain.Hotel;
 import org.hotel.back.data.request.HotelRequestDTO;
 import org.hotel.back.domain.HotelImage;
+import org.hotel.back.domain.Review;
 import org.hotel.back.repository.HotelImageRepository;
 import org.hotel.back.repository.HotelRepository;
 import org.hotel.back.service.HotelService;
@@ -14,6 +15,7 @@ import org.hotel.back.service.api.KaKaoAPIService;
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -24,10 +26,17 @@ import java.nio.DoubleBuffer;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
+<<<<<<< HEAD
+import java.util.stream.Stream;
+
+import static java.lang.Double.NaN;
+=======
+>>>>>>> 61c0dc166be82ee55c2658f83a9f500cd6060f80
 
 @Service
 @RequiredArgsConstructor
@@ -51,7 +60,6 @@ public class HotelServiceImpl implements HotelService {
             Hotel hotel=hotelRequestDTO.toEntity(hotelRequestDTO);
             Long hotelId=hotelRepository.save(hotel).getId();
 
-            //썸네일
             for(MultipartFile hotelImage:hotelRequestDTO.getHotelImage()){
                 String uuid = UUID.randomUUID().toString()+"_"+hotelImage.getOriginalFilename();
                 Path savePath = Paths.get(path, uuid);
@@ -69,20 +77,43 @@ public class HotelServiceImpl implements HotelService {
     }
     //호텔 리스트
     @Override
+<<<<<<< HEAD
+    public Page<HotelListResponseDTO> hotelList(Pageable pageable) {
+        Page<Hotel>hotels=hotelRepository.findAll(pageable);
+        List<HotelListResponseDTO> listDTO=new ArrayList<>();
+        //호텔이미지가 있으면 dto에 호텔 대표이미지 담기
+        for(Hotel h:hotels){
+            HotelListResponseDTO dto=new HotelListResponseDTO(h);
+            List<HotelImage>hotelImages=h.getHotelImages();
+            if (hotelImages != null && !hotelImages.isEmpty()) {
+                dto.setHotelImage(hotelImages.get(0).getName());
+            }
+            listDTO.add(dto);
+        }
+        return new PageImpl<>(listDTO,pageable,hotels.getTotalElements());
+=======
     public Page<Hotel> hotelList(Pageable pageable) {
         var hotel = hotelRepository.findAll(pageable);
         return hotel;
+>>>>>>> 61c0dc166be82ee55c2658f83a9f500cd6060f80
     }
-    //호텔 자세히보
 
-
+    //호텔 자세히보기
     @Override
     public HotelResponseDTO hotelDetail(Long id) throws ParseException {
         Hotel hotel=hotelRepository.findFetchJoin(id);
 
-        var data = kaKaoAPIService.getAddressInfo(hotel.getLongitude(),hotel.getLatitude());
-        HotelResponseDTO dto = new HotelResponseDTO(hotel);
+        List<Long> rating=hotel.getReviews().stream().map(review -> review.getRating()).collect(Collectors.toList());
+        //리뷰 평점계산
+        double avg=0;
+        for (Long a:rating) {
+            avg+=a;
+        }
+        avg/=rating.size();
+        if(Double.isNaN(avg)){avg=0;} //평점이 없어 NaN으로 계산이 된 경우 0으로 값을 변경한다.
 
+        HotelResponseDTO dto=new HotelResponseDTO(hotel,avg);
+        var data = kaKaoAPIService.getAddressInfo(hotel.getLongitude(),hotel.getLatitude());
         if(data.isPresent()){//위, 경도를 넣어서 주소가 반환된다면
             String address = data.get();
             dto.setAddress(address);//변환한 주소 넣기

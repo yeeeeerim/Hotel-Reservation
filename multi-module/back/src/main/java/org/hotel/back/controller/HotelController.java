@@ -5,9 +5,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.hotel.back.data.response.HotelListResponseDTO;
 import org.hotel.back.data.response.HotelResponseDTO;
 import org.hotel.back.data.response.KaKaoResponseData;
-import org.hotel.back.domain.Hotel;
 
 import org.hotel.back.data.request.HotelRequestDTO;
+import org.hotel.back.domain.Hotel;
 import org.hotel.back.service.HotelService;
 import org.hotel.back.service.api.KaKaoAPIService;
 import org.json.simple.parser.ParseException;
@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Controller
@@ -41,7 +42,7 @@ public class HotelController {
     @GetMapping("/hotel/save")//localhost:8080/save
     public String hotelWriteForm(){
 
-        return "hotelSave";
+        return "hotel/hotelSave";
     }
 
     @PreAuthorize("hasRole('OWNER')")
@@ -77,13 +78,11 @@ public class HotelController {
         int startPage=1;//시작페이지
         int endPage=list.getTotalPages();//12개씩 자른 페이지
 
-
         model.addAttribute("nowPage",nowPage);
         model.addAttribute("startPage",startPage);
         model.addAttribute("endPage",endPage);
         model.addAttribute("list",list);
-        System.out.println(list);
-        return "index";
+        return "hotel/index";
     }
 
 
@@ -93,7 +92,7 @@ public class HotelController {
         HotelResponseDTO hotelResponseDTO =hotelService.hotelDetail(id); //호텔 객체를 불러옴 ->service hotelDetail메서드
         model.addAttribute("article",hotelResponseDTO);
         model.addAttribute("path",path);
-        return "hotelDetail";
+        return "hotel/hotelDetail";
     }
 
     @PreAuthorize("hasRole('OWNER')")
@@ -113,6 +112,6 @@ public class HotelController {
     @GetMapping("/hotel/update")
     public String hotelUpdate(Long id, Model model) throws ParseException {
         model.addAttribute("article", hotelService.hotelDetail(id));
-        return "hotelUpdate";
+        return "hotel/hotelUpdate";
     }
 }
