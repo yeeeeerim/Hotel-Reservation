@@ -5,25 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bc574e16-4d76-49d5-ab53-791684c68122" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/back/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/config/RedisConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/config/RedisConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/controller/HotelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/controller/HotelController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/domain/Hotel.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/domain/Hotel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/domain/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/domain/Room.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/service/HotelService.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/service/HotelService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/service/Impl/HotelServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/service/Impl/HotelServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/resources/templates/hotel/hotelDetail.html" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/resources/templates/hotel/hotelDetail.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back/src/main/resources/templates/hotel/hotelUpdate.html" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/resources/templates/hotel/hotelUpdate.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/test/java/org/hotel/back/controller/HotelControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/test/java/org/hotel/back/controller/HotelControllerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/test/java/org/hotel/back/repository/HotelRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/test/java/org/hotel/back/repository/HotelRepositoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/test/java/org/hotel/back/repository/MemberRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/test/java/org/hotel/back/repository/MemberRepositoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/booking-module/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/booking-module/build.gradle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,6 +79,7 @@
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;spring.configuration.checksum&quot;: &quot;42064a0f62584d50ddb3493ccddc9bf5&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
@@ -200,7 +184,8 @@
       <workItem from="1678866273825" duration="4926000" />
       <workItem from="1678880768266" duration="1846000" />
       <workItem from="1678882630802" duration="2058000" />
-      <workItem from="1678884708790" duration="751000" />
+      <workItem from="1678884708790" duration="2252000" />
+      <workItem from="1678938600970" duration="622000" />
     </task>
     <servers />
   </component>

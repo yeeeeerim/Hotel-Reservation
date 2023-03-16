@@ -26,6 +26,31 @@
                 <div class="form h-100">
                     <h3>호텔 정보 수정</h3>
                     <form th:action="@{/hotel/update(id=${article.id})}" method="post" enctype="multipart/form-data" name="contactForm">
+
+                        <div class="row">
+                            <table class="table">
+                                <tbody>
+                                <tr style="line-height:32px;">
+                                    <td>이미지 첨부</td>
+                                    <td>
+                                        파일 <input type="file" name="hotelImage" class="form-control" multiple>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <tr th:each="image:${article.hotelImages}">
+                            <img th:src="@{'/view?fileName=' + ${image}}"width="300" height="180"/>
+                            <td>
+                                <button type="button" class="btn btn-dark" th:onclick="|location.href='@{/image/delete(name=${image},id=${article.id})}'|">
+                                    이미지 삭제
+                                </button>
+                            </td>
+                        </tr>
+
+
+
                         <div class="row">
                             <div class="col-md-12 form-group mb-5">
                                 <label for="" class="col-form-label">hotel Name</label>
@@ -54,27 +79,6 @@
                                 <input type="text" class="form-control" name="tellNumber" id="tellNumber"  th:value="${article.tellNumber}">
                             </div>
                         </div>
-
-                        <div class="row">
-                            <table class="table">
-                                <tbody>
-                                <tr style="line-height:32px;">
-                                    <td>이미지 첨부</td>
-                                    <td>
-                                        파일 <input type="file" name="hotelImage" class="form-control" multiple>
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <tr th:each="image:${article.hotelImages}">
-                            <img th:src="@{'/view?fileName=' + ${image}}"width="300" height="180"/>
-                            <td>
-                                <button type="button" class="btn btn-dark" th:onclick="|location.href='@{/image/delete(name=${image},id=${article.id})}'|">
-                                    이미지 삭제
-                                </button>
-                            </td>
-                        </tr>
 
                         <div class="row">
                             <div class="col-md-12 form-group">
