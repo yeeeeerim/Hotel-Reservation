@@ -31,12 +31,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
-<<<<<<< HEAD
-import java.util.stream.Stream;
-
-import static java.lang.Double.NaN;
-=======
->>>>>>> 61c0dc166be82ee55c2658f83a9f500cd6060f80
 
 @Service
 @RequiredArgsConstructor
@@ -77,26 +71,21 @@ public class HotelServiceImpl implements HotelService {
     }
     //호텔 리스트
     @Override
-<<<<<<< HEAD
     public Page<HotelListResponseDTO> hotelList(Pageable pageable) {
-        Page<Hotel>hotels=hotelRepository.findAll(pageable);
-        List<HotelListResponseDTO> listDTO=new ArrayList<>();
+        Page<Hotel> hotels = hotelRepository.findAll(pageable);
+        List<HotelListResponseDTO> listDTO = new ArrayList<>();
         //호텔이미지가 있으면 dto에 호텔 대표이미지 담기
-        for(Hotel h:hotels){
-            HotelListResponseDTO dto=new HotelListResponseDTO(h);
-            List<HotelImage>hotelImages=h.getHotelImages();
+        for (Hotel h : hotels) {
+            HotelListResponseDTO dto = new HotelListResponseDTO(h);
+            List<HotelImage> hotelImages = h.getHotelImages();
             if (hotelImages != null && !hotelImages.isEmpty()) {
                 dto.setHotelImage(hotelImages.get(0).getName());
             }
             listDTO.add(dto);
         }
-        return new PageImpl<>(listDTO,pageable,hotels.getTotalElements());
-=======
-    public Page<Hotel> hotelList(Pageable pageable) {
-        var hotel = hotelRepository.findAll(pageable);
-        return hotel;
->>>>>>> 61c0dc166be82ee55c2658f83a9f500cd6060f80
+        return new PageImpl<>(listDTO, pageable, hotels.getTotalElements());
     }
+
 
     //호텔 자세히보기
     @Override
@@ -129,22 +118,48 @@ public class HotelServiceImpl implements HotelService {
         hotelRepository.deleteById(id);
         return true;
     }
+
     //호텔 업데이트
     @Override
     public boolean hotelUpdate(HotelRequestDTO hotelRequestDTO) {
+        //-----
+        System.out.println("-----*****이미지 이름"+hotelRequestDTO.getHotelImage().toString());
         Hotel hotel=hotelRepository.findById(hotelRequestDTO.getId()).get();
         hotel.modifyHotel(hotelRequestDTO.getHotelName(),
                 hotelRequestDTO.getCityName(),
                 hotelRequestDTO.getTellNumber(),
                 hotelRequestDTO.getLatitude(),
                 hotelRequestDTO.getLongitude());
+
+        if(!hotelRequestDTO.getHotelImage().isEmpty()) {
+            for(MultipartFile hotelImage:hotelRequestDTO.getHotelImage()){
+                if(!hotelImage.isEmpty()){
+                    String uuid = UUID.randomUUID().toString()+"_"+hotelImage.getOriginalFilename();
+                    Path savePath = Paths.get(path, uuid);
+                    try{
+                        hotelImage.transferTo(savePath);
+                    } catch (IOException e) {
+                        throw new FileUploadException();
+                    }
+                    HotelImage hotelImageSave=HotelImage.builder().name(uuid).hotel(hotel).build();
+                    hotelImageRepository.save(hotelImageSave);
+                }
+            }
+        }
         hotelRepository.save(hotel);
         return true;
     }
+
 
     @Override
     public List<HotelResponseDTO> hotelListSearch(String keyword) {
         List<Hotel> hotels = hotelRepository.findByHotelNameContaining(keyword);
         return null;
+    }
+
+    @Override
+    public boolean imageDelete(String name) {
+        hotelImageRepository.deleteById(name);
+        return true;
     }
 }
