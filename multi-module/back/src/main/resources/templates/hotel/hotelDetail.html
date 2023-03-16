@@ -103,7 +103,17 @@
 <button type="button" class="btn btn-dark" th:onclick="|location.href='@{/hotel/delete(id=${article.id})}'|">글 삭제
 </button>
 <button type="button" class="btn btn-warning" th:onclick="|location.href='@{/hotel/update(id=${article.id})}'|">글 수정
+
 </button>
+<form th:action="@{/booking/availableRooms}" method="get">
+    <label for="checkIn">체크인 날짜:</label>
+    <input type="date" id="checkIn" name="checkIn"
+           th:value="${checkIn}" required>
+    <label for="checkOut">체크아웃 날짜:</label>
+    <input type="date" id="checkOut" name="checkOut"
+           th:value="${checkOut}" required>
+    <button type="submit" th:onclick="|location.href='@{/booking/list}'|">객실 조회</button>
+</form>
 <button type="button" class="btn btn-dark" th:onclick="|location.href='@{/booking/save(id=${article.id})}'|">예약하기
 </button>
 <p></p>

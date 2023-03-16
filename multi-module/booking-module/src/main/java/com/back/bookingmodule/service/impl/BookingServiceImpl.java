@@ -1,15 +1,16 @@
 package com.back.bookingmodule.service.impl;
 
+import com.back.bookingmodule.config.exception.BookingErrorCode;
+import com.back.bookingmodule.config.exception.BookingException;
 import com.back.bookingmodule.data.BookingDTO;
-import com.back.bookingmodule.domain.Booking;
-import com.back.bookingmodule.domain.Member;
+import com.back.bookingmodule.domain.Status;
+import com.back.bookingmodule.domain.booking.Booking;
 import com.back.bookingmodule.repository.BookingRepository;
 import com.back.bookingmodule.service.BookingService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 
 @RequiredArgsConstructor
@@ -25,24 +26,36 @@ public class BookingServiceImpl implements BookingService {
          * @param  dto BookingDTO를 받고 엔티티로 변환함
          * */
         public Booking bookingSave(BookingDTO dto){
-            return bookingRepository.save(dto.toEntity());
+            Booking booking = bookingRepository.save(dto.toEntity());
+            if (bookingRepository.findById(dto.toEntity().getId()).isEmpty()){
+                throw new BookingException(BookingErrorCode.BOOKING_SAVE_FAIL);
+            }
+            return booking;
         }
 
         /**
-        * @apiNote id(PK)로 해당 엔티티 단건 조회
-        *
-        * */
-         public Optional<BookingDTO> findById(Long id){
-                Booking bookingEntity =  bookingRepository.findById(id).orElse(null);
-
-                if(bookingEntity != null){
-                        return Optional.of(BookingDTO.toDTO(bookingEntity));
-                }else{
-                        return Optional.empty();
-                }
+         * @apiNote id(PK)로 해당 엔티티 단건 조회, 조회 실패할 경우 NOT_FOUND Exception 발생
+         */
+         public BookingDTO findById(Long id){
+             return BookingDTO.toDTO(bookingRepository.findById(id)
+                     .orElseThrow(() -> new BookingException(BookingErrorCode.BOOKING_NOT_FOUND)));
          }
 
 
+<<<<<<< HEAD
+         /**
+          * SecurityContextHolder 사용해서 로그인 정보 id 값인 memberemail과 파라미터로 전달받은 memberEmail이 같을 경우 updateBooking 실행
+          * */
+         public void updateBooking(String checkIn, String checkout, String memberEmail, Long id){
+             if (bookingRepository.findById(id).isEmpty()){
+                 throw new BookingException(BookingErrorCode.BOOKING_NOT_FOUND);
+             } else if ((checkIn.equals(bookingRepository.findById(id).get().getCheckIn()))
+                     && (checkout.equals(bookingRepository.findById(id).get().getCheckOut()))) {
+                 throw new BookingException(BookingErrorCode.BOOKING_NOT_CHANGE);
+             }else {
+                 bookingRepository.updateBooking(id, checkIn, checkout);
+             }
+=======
          //TODO: UPDATE 진행 중
          public void updateBooking(String checkIn, String checkout, Member member, Long id){
              findById(id).get();
@@ -51,6 +64,7 @@ public class BookingServiceImpl implements BookingService {
              // hotel_id 만들어서 쓰는 방법인데 어려우면 안 해도 됨
              bookingRepository.updateBooking(member, id, checkIn, checkout);
 
+>>>>>>> d9e1a2d16757b4731bb10911a32e4d17cfdd989c
          }
 
 
@@ -59,8 +73,13 @@ public class BookingServiceImpl implements BookingService {
         public List<Booking> getBooking(){
              return bookingRepository.findAll();
         }
-        public void delete(Long id){ //일단 써놓긴 했는데 bookingRepository에 컨트롤러에서 그냥 deleteById를 바로 사용하는 것랑 차이가 있을까여..?
+        public void delete(Long id){
              bookingRepository.deleteById(id);
+             if (!(bookingRepository.findById(id).isEmpty())){
+                 throw new BookingException(BookingErrorCode.BOOKING_DELETE_FAIL);
+             }
         }
+
+
 
 }
