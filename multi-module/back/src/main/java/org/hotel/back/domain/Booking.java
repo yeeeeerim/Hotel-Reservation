@@ -8,6 +8,7 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
@@ -28,9 +29,9 @@ public class Booking {      //TODO: 실제로 삭제가 아닌 값을 넘길 예
     private Member member;
 
     @Column(nullable = false)
-    private LocalDateTime checkIn;
+    private LocalDate checkIn;
     @Column(nullable = false)
-    private LocalDateTime checkOut;
+    private LocalDate checkOut;
 
 //    @Enumerated(EnumType.STRING)
 //    private Status status;
@@ -43,5 +44,10 @@ public class Booking {      //TODO: 실제로 삭제가 아닌 값을 넘길 예
 
     @LastModifiedDate
     private LocalDateTime modifiedAt;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "room_id")
+    @ToString.Exclude
+    private Room room;
 
 }

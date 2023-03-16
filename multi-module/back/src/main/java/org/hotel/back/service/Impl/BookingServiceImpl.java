@@ -8,9 +8,11 @@ import org.hotel.back.data.dto.BookingDTO;
 import org.hotel.back.domain.Booking;
 import org.hotel.back.domain.Room;
 import org.hotel.back.repository.BookingRepository;
+import org.hotel.back.repository.RoomRepository;
 import org.hotel.back.service.BookingService;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -20,10 +22,11 @@ import java.util.List;
 public class BookingServiceImpl implements BookingService {
 
     private final BookingRepository bookingRepository;
+    private final RoomRepository roomRepository;
 
 
-    public List<Room> findAvailable(LocalDateTime checkIn, LocalDateTime checkOut) {
-        return bookingRepository.getNotReservation(checkIn, checkOut);
+    public List<Room> findAvailable(Long HotelId, LocalDate checkIn, LocalDate checkOut) {
+        return roomRepository.findAvailableRoomsByHotelAndDates(HotelId, checkIn,checkOut);
     }
 
     public Booking bookingSave(BookingDTO dto){

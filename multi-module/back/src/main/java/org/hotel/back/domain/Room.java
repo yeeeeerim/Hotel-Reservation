@@ -1,9 +1,12 @@
 package org.hotel.back.domain;
 
 import lombok.*;
+import org.hibernate.annotations.BatchSize;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -41,6 +44,11 @@ public class Room {
 
     private String checkIn;
     private String checkOut;
+    @BatchSize(size = 100)
+    @ToString.Exclude
+    @Builder.Default
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "room",fetch = FetchType.LAZY)
+    private List<Booking> bookingList = new ArrayList<>();
 
 
     @Column(name = "hotel_id")

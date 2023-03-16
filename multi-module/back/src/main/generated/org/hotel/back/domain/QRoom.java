@@ -22,6 +22,8 @@ public class QRoom extends EntityPathBase<Room> {
 
     public static final QRoom room = new QRoom("room");
 
+    public final ListPath<Booking, QBooking> bookingList = this.<Booking, QBooking>createList("bookingList", Booking.class, QBooking.class, PathInits.DIRECT2);
+
     public final StringPath checkIn = createString("checkIn");
 
     public final StringPath checkOut = createString("checkOut");

@@ -4,6 +4,7 @@ import lombok.*;
 import org.hotel.back.domain.Booking;
 
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Getter
@@ -14,9 +15,9 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class BookingDTO {
 
-    private LocalDateTime checkIn;
+    private LocalDate checkIn;
 
-    private LocalDateTime checkOut;
+    private LocalDate checkOut;
 
     private String memberEmail;
 
