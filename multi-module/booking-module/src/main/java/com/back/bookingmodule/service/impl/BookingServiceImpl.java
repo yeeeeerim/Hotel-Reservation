@@ -3,16 +3,14 @@ package com.back.bookingmodule.service.impl;
 import com.back.bookingmodule.config.exception.BookingErrorCode;
 import com.back.bookingmodule.config.exception.BookingException;
 import com.back.bookingmodule.data.BookingDTO;
-import com.back.bookingmodule.domain.Booking;
-import com.back.bookingmodule.domain.Member;
+import com.back.bookingmodule.domain.Status;
+import com.back.bookingmodule.domain.booking.Booking;
 import com.back.bookingmodule.repository.BookingRepository;
 import com.back.bookingmodule.service.BookingService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 
 @RequiredArgsConstructor
@@ -70,5 +68,7 @@ public class BookingServiceImpl implements BookingService {
                  throw new BookingException(BookingErrorCode.BOOKING_DELETE_FAIL);
              }
         }
+
+
 
 }

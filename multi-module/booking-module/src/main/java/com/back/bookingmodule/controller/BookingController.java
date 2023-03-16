@@ -2,14 +2,17 @@ package com.back.bookingmodule.controller;
 
 import com.back.bookingmodule.config.exception.BookingException;
 import com.back.bookingmodule.data.BookingDTO;
+import com.back.bookingmodule.data.Request.DateRequest;
 import com.back.bookingmodule.data.Response.BookingErrorResponse;
-import com.back.bookingmodule.domain.Booking;
+import com.back.bookingmodule.domain.booking.Booking;
 import com.back.bookingmodule.service.BookingService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 import java.security.Principal;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @RestController
@@ -21,9 +24,10 @@ public class BookingController {
 
     @PostMapping("/save")
     public Boolean bookingSave(@RequestBody BookingDTO bookingDTO){
-            bookingService.bookingSave(bookingDTO);
-            return true;
+        bookingService.bookingSave(bookingDTO);
+        return true;
     }
+
 
     @GetMapping("/list") //예약 리스트 전부 불러오기
     public List<Booking> bookingList(){

@@ -1,6 +1,8 @@
-package com.back.bookingmodule.domain;
+package com.back.bookingmodule.domain.booking;
 
 
+import com.back.bookingmodule.domain.Member;
+import com.back.bookingmodule.domain.Status;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;

@@ -1,7 +1,7 @@
 package com.back.bookingmodule.data;
 
 
-import com.back.bookingmodule.domain.Booking;
+import com.back.bookingmodule.domain.booking.Booking;
 import com.back.bookingmodule.domain.Status;
 import lombok.*;
 

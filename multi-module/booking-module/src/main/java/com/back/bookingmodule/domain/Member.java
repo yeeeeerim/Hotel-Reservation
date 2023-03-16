@@ -1,6 +1,7 @@
 package com.back.bookingmodule.domain;
 
 
+import com.back.bookingmodule.domain.booking.Booking;
 import lombok.*;
 
 import javax.persistence.*;

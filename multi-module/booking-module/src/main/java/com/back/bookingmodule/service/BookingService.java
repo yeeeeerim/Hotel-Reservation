@@ -2,8 +2,7 @@ package com.back.bookingmodule.service;
 
 import com.back.bookingmodule.config.exception.BookingException;
 import com.back.bookingmodule.data.BookingDTO;
-import com.back.bookingmodule.domain.Booking;
-import com.back.bookingmodule.domain.Member;
+import com.back.bookingmodule.domain.booking.Booking;
 
 import java.util.List;
 
