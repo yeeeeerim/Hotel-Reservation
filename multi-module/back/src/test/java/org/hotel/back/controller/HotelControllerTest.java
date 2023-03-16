@@ -1,3 +1,18 @@
+<<<<<<< HEAD
+//package org.hotel.back.controller;
+//
+//import org.junit.jupiter.api.Test;
+//import org.springframework.boot.test.context.SpringBootTest;
+//
+//import static org.junit.jupiter.api.Assertions.*;
+//@SpringBootTest
+//class HotelControllerTest {
+//
+//    @Test
+//    void hotelList() {
+//    }
+//}
+=======
 package org.hotel.back.controller;
 
 import org.assertj.core.api.Assertions;
@@ -24,3 +39,4 @@ class HotelControllerTest {
 
     }
 }
+>>>>>>> 61c0dc166be82ee55c2658f83a9f500cd6060f80

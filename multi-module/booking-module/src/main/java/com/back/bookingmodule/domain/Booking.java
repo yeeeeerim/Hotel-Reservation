@@ -2,6 +2,7 @@ package com.back.bookingmodule.domain;
 
 
 import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -28,14 +29,17 @@ public class Booking {      //TODO: 실제로 삭제가 아닌 값을 넘길 예
     private Member member;
 
     @Column(nullable = false)
-    private String checkIn;
+    private LocalDateTime checkIn;
     @Column(nullable = false)
-    private String checkOut;
+    private LocalDateTime checkOut;
 
     @Enumerated(EnumType.STRING)
     private Status status;
 
 
+
+    @ColumnDefault("false")
+    private boolean deleted;
 
     @CreatedDate
     private LocalDateTime createdAt;
@@ -44,9 +48,14 @@ public class Booking {      //TODO: 실제로 삭제가 아닌 값을 넘길 예
     private LocalDateTime modifiedAt;
 
 
-    public void changeBooking(String checkIn,String checkOut){
+    public void changeBooking(LocalDateTime checkIn,LocalDateTime checkOut){
             this.checkIn = checkIn;
             this.checkOut = checkOut;
+    }
+
+
+    public void changeDeleting(){
+            this.deleted = true;
     }
 
 }

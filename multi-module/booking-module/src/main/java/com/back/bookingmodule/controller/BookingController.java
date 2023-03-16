@@ -33,19 +33,19 @@ public class BookingController {
         return bookingService.findById(dto.toEntity().getId());
     }
 
-    @GetMapping("/{id}") // 수정
-    public ResponseEntity<Void> updateBooking(@PathVariable Long id, @RequestBody Booking booking){
-        bookingService.updateBooking(booking.getCheckIn(), booking.getCheckOut(), booking.getMember(), id);
-        return ResponseEntity.ok().build(); //
-    }
+//    @GetMapping("/{id}") // 수정
+//    public ResponseEntity<Void> updateBooking(@PathVariable Long id, @RequestBody Booking booking){
+//        bookingService.updateBooking(booking.getCheckIn(), booking.getCheckOut(), booking.getMember(), id);
+//        return ResponseEntity.ok().build(); //
+//    }
 
-    @GetMapping("/{id}") // 삭제
-    public ResponseEntity<?> deleteBooking(@PathVariable("id") Long id) {
-        Optional<Booking> reservation = bookingRepository.findById(id);
-        if (!reservation.isPresent()) {
-            return ResponseEntity.notFound().build();
-        }
-        bookingRepository.deleteById(id);
-        return ResponseEntity.ok().build();
-    }
+//    @GetMapping("/{id}") // 삭제
+//    public ResponseEntity<?> deleteBooking(@PathVariable("id") Long id) {
+//        Optional<Booking> reservation = bookingRepository.findById(id);
+//        if (!reservation.isPresent()) {
+//            return ResponseEntity.notFound().build();
+//        }
+//        bookingRepository.deleteById(id);
+//        return ResponseEntity.ok().build();
+//    }
 }

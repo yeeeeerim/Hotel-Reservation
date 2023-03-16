@@ -6,10 +6,6 @@ import org.hotel.back.domain.QHotel;
 import org.hotel.back.domain.Room;
 import org.hotel.back.repository.custom.CustomRoomRepository;
 import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
-
-import java.util.Optional;
 
 public class CustomRoomRepositoryImpl extends QuerydslRepositorySupport  implements CustomRoomRepository {
 

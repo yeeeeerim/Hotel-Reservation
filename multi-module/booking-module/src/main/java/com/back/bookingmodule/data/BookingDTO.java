@@ -15,9 +15,9 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class BookingDTO {
 
-    private String checkIn;
+    private LocalDateTime checkIn;
 
-    private String checkOut;
+    private LocalDateTime checkOut;
 
     private Status status;
 

@@ -8,6 +8,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
 import java.util.Set;
@@ -16,7 +17,7 @@ import java.util.stream.Collectors;
 @Getter
 @Setter
 @ToString
-public class MemberDTO extends User {
+public class MemberDTO extends User implements Serializable {
 
 
     private String email;
@@ -54,6 +55,8 @@ public class MemberDTO extends User {
                 member.getNickName()
         );
     }
+
+
 
 
 

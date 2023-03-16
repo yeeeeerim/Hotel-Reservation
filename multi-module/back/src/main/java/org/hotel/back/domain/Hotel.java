@@ -35,7 +35,7 @@ public class Hotel {
     private String writer;
     private String address;
 
-    @BatchSize(size = 10)
+    @BatchSize(size = 100)
     @ToString.Exclude
     @Builder.Default
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "hotel",fetch = FetchType.LAZY)
@@ -46,7 +46,7 @@ public class Hotel {
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL,mappedBy = "hotel")
     private List<Booking> bookingList = new ArrayList<>();
 
-    @BatchSize(size = 10)
+    @BatchSize(size = 100)
     @ToString.Exclude
     @Builder.Default
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "hotel",fetch = FetchType.LAZY)

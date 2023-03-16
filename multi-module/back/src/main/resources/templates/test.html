@@ -6,5 +6,28 @@
 </head>
 <body>
 
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+<script>
+
+    window.onload = function (){
+        get()
+
+        get2()
+    }
+
+    async function get(){
+        const response = await axios.get("http://localhost:8090/test2")
+
+        console.log(response.data)
+    }
+
+    async function get2(){
+        const response = await axios.get("http://localhost:8090/test3")
+
+        console.log(response.data)
+    }
+</script>
 </body>
 </html>
