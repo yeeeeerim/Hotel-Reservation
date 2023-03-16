@@ -1,7 +1,6 @@
 package com.back.bookingmodule.service.impl;
 
 
-import com.back.bookingmodule.domain.Booking;
 import com.back.bookingmodule.domain.Member;
 import com.back.bookingmodule.prog.BookingConfiguration;
 import com.back.bookingmodule.repository.BookingRepository;

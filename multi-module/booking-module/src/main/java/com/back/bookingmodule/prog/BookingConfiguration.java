@@ -1,7 +1,6 @@
 package com.back.bookingmodule.prog;
 
 
-import com.back.bookingmodule.domain.Booking;
 import com.back.bookingmodule.prog.tasklet.BookingTasklet;
 import lombok.RequiredArgsConstructor;
 import org.apache.tomcat.jni.Local;
@@ -58,30 +57,6 @@ public class BookingConfiguration {
                 .build();
     }
 
-    public ItemWriter<? super Booking> itemWriter(){
-
-        return items -> {
-            items.forEach(booking -> {
-                if(LocalDateTime.now().isBefore(booking.getCheckOut())){
-                         booking.changeDeleting();
-                }
-            });
-        };
-    }
-
-
-    public ItemReader<? extends Booking> bookingItemReader() throws Exception{
-        JpaPagingItemReader<Booking> bookingJpaPagingItemReader =
-                    new JpaPagingItemReaderBuilder<Booking>()
-                            .queryString("select b from Booking b")
-                            .entityManagerFactory(entityManagerFactory)
-                            .pageSize(100)
-                            .name("bookingItemReader")
-                            .build();
-
-        return bookingJpaPagingItemReader;
-
-    }
 
 
 }

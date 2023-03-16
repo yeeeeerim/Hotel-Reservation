@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>예약 날짜 선택 페이지</title>
+</head>
+
+<body>
+
+<form th:action="@{/booking/availableRooms}" method="post">
+  <label for="checkInDate">체크인 날짜:</label>
+  <input type="date" id="checkInDate" name="checkInDate"
+         th:value="${checkInDate}" required>
+  <label for="checkOutDate">체크아웃 날짜:</label>
+  <input type="date" id="checkOutDate" name="checkOutDate"
+         th:value="${checkOutDate}" required>
+  <button type="submit" th:onclick="|location.href='@{/booking/list}'|">객실 조회</button>
+</form>
+</body>
+</html>

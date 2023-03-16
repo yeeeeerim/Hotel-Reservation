@@ -49,7 +49,6 @@ public class HotelController {
     @PostMapping("/hotel/save")
     public String hotelSave(HotelRequestDTO hotelRequestDTO) throws ParseException {
         String address=hotelRequestDTO.getAddress();
-        System.out.println(address);
         try{
             if(kaKaoAPIService.getLocationInfo(address).isPresent()){
                 KaKaoResponseData kaKaoResponseData= kaKaoAPIService.getLocationInfo(hotelRequestDTO.getAddress()).orElse(null);
@@ -60,7 +59,6 @@ public class HotelController {
             return "redirect:/hotel/save";
         }
         hotelService.write(hotelRequestDTO);
-        System.out.println(hotelRequestDTO);
 
         return "redirect:/hotel";
     }
@@ -105,13 +103,36 @@ public class HotelController {
     @PreAuthorize("hasRole('OWNER')")
     @PostMapping("/hotel/update")
     public String hotelUpdatePost(HotelRequestDTO hotelRequestDTO) {
+        String updateAddress=hotelRequestDTO.getAddress();
+        try{
+            if(kaKaoAPIService.getLocationInfo(updateAddress).isPresent()){
+                KaKaoResponseData kaKaoResponseData= kaKaoAPIService.getLocationInfo(hotelRequestDTO.getAddress()).orElse(null);
+                hotelRequestDTO.setLatitude(kaKaoResponseData.getLatitude());
+                hotelRequestDTO.setLongitude(kaKaoResponseData.getLongitude());
+            }
+        }catch (IndexOutOfBoundsException e){
+            return "redirect:/hotel/update?id="+hotelRequestDTO.getId();
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
         hotelService.hotelUpdate(hotelRequestDTO);
         return "redirect:/hotel/detail?id=" + hotelRequestDTO.getId(); //숙소정보 업데이트 후 detail=id로 다시 redirect
     }
+
     @PreAuthorize("hasRole('OWNER')")
     @GetMapping("/hotel/update")
     public String hotelUpdate(Long id, Model model) throws ParseException {
         model.addAttribute("article", hotelService.hotelDetail(id));
+
+
         return "hotel/hotelUpdate";
     }
+    @PreAuthorize("hasRole('OWNER')")
+    @GetMapping("/image/delete")
+    public String imageDelete(String name,Long id) throws ParseException {
+        hotelService.imageDelete(name);
+
+        return "redirect:/hotel/update?id="+id;
+    }
+
 }

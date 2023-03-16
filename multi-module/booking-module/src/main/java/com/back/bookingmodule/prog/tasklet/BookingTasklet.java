@@ -1,7 +1,7 @@
 package com.back.bookingmodule.prog.tasklet;
 
 
-import com.back.bookingmodule.domain.Booking;
+import com.back.bookingmodule.domain.booking.Booking;
 import com.back.bookingmodule.repository.BookingRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.batch.core.StepContribution;
