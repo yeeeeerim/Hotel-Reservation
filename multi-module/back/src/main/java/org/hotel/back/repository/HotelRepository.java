@@ -8,14 +8,8 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface HotelRepository extends JpaRepository<Hotel,Long> {
-
-    @Query("select h, avg(coalesce(r.rating,0))" +
-            " from Hotel h " +
-            "left outer join HotelImage hi on hi.hotel = h " +
-            " left outer join Review r on r.hotel = h " +
-            " where h.id = :id ")
-    List<Object[]> getHotelWithAll(@Param("id")Long id);
-
-
     List<Hotel> findByHotelNameContaining(String keyword);
+    @Query("select distinct h from Hotel h " +
+            "left join fetch h.reviews where h.id = :id")
+    Hotel findFetchJoin(@Param("id")Long id);
 }

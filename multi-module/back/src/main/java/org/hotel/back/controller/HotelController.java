@@ -5,9 +5,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.hotel.back.data.response.HotelListResponseDTO;
 import org.hotel.back.data.response.HotelResponseDTO;
 import org.hotel.back.data.response.KaKaoResponseData;
-import org.hotel.back.domain.Hotel;
 
 import org.hotel.back.data.request.HotelRequestDTO;
+import org.hotel.back.domain.Hotel;
 import org.hotel.back.service.HotelService;
 import org.hotel.back.service.api.KaKaoAPIService;
 import org.json.simple.parser.ParseException;
@@ -21,8 +21,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Controller
@@ -35,18 +38,17 @@ public class HotelController {
     private String path;
 
 
-    @PreAuthorize("isAuthenticated()")
+    @PreAuthorize("hasRole('OWNER')")
     @GetMapping("/hotel/save")//localhost:8080/save
     public String hotelWriteForm(){
 
-        return "hotelSave";
+        return "hotel/hotelSave";
     }
 
-    @PreAuthorize("isAuthenticated()")
+    @PreAuthorize("hasRole('OWNER')")
     @PostMapping("/hotel/save")
     public String hotelSave(HotelRequestDTO hotelRequestDTO) throws ParseException {
         String address=hotelRequestDTO.getAddress();
-        System.out.println(address);
         try{
             if(kaKaoAPIService.getLocationInfo(address).isPresent()){
                 KaKaoResponseData kaKaoResponseData= kaKaoAPIService.getLocationInfo(hotelRequestDTO.getAddress()).orElse(null);
@@ -57,13 +59,16 @@ public class HotelController {
             return "redirect:/hotel/save";
         }
         hotelService.write(hotelRequestDTO);
-        System.out.println(hotelRequestDTO);
 
         return "redirect:/hotel";
     }
 
     @GetMapping("/hotel")
-    public String hotelList(@PageableDefault(page = 0, size = 12,sort="id",direction = Sort.Direction.DESC) Pageable pageable, Model model){
+    public String hotelList(@PageableDefault(page = 0, size = 12,sort="id",direction = Sort.Direction.DESC) Pageable pageable,
+                            Model model,
+                            @RequestParam(required = false) String login){
+        if(login != null) model.addAttribute("msg","로그인 성공!");
+
         //서비스에서 생성한 리스트를 list라는 이름으로 반환하겠다.
         Page<HotelListResponseDTO> list =hotelService.hotelList(pageable);
 
@@ -75,19 +80,9 @@ public class HotelController {
         model.addAttribute("startPage",startPage);
         model.addAttribute("endPage",endPage);
         model.addAttribute("list",list);
-
-        System.out.println(list);
-        return "index";
+        return "hotel/index";
     }
 
-//    @GetMapping("/hotel/search")
-//    public String hotelListSearch(Model model,String keyword){
-//        //서비스에서 생성한 리스트를 list라는 이름으로 반환하겠다.
-//        List<Hotel> list =hotelService.hotelListSearch(keyword);
-//
-//        model.addAttribute("list",list);
-//        return "hotelSearch";
-//    }
 
     //========호텔 자세히보기  ============
     @GetMapping("/hotel/detail")
@@ -95,26 +90,49 @@ public class HotelController {
         HotelResponseDTO hotelResponseDTO =hotelService.hotelDetail(id); //호텔 객체를 불러옴 ->service hotelDetail메서드
         model.addAttribute("article",hotelResponseDTO);
         model.addAttribute("path",path);
-        return "hotelDetail";
+        return "hotel/hotelDetail";
     }
 
-    @PreAuthorize("isAuthenticated()")
+    @PreAuthorize("hasRole('OWNER')")
     @GetMapping("/hotel/delete")
     public String hotelDelete(Long id) {
         hotelService.hotelDelete(id);
         return "redirect:/hotel";
     }
 
-    @PreAuthorize("isAuthenticated()")
+    @PreAuthorize("hasRole('OWNER')")
     @PostMapping("/hotel/update")
     public String hotelUpdatePost(HotelRequestDTO hotelRequestDTO) {
+        String updateAddress=hotelRequestDTO.getAddress();
+        try{
+            if(kaKaoAPIService.getLocationInfo(updateAddress).isPresent()){
+                KaKaoResponseData kaKaoResponseData= kaKaoAPIService.getLocationInfo(hotelRequestDTO.getAddress()).orElse(null);
+                hotelRequestDTO.setLatitude(kaKaoResponseData.getLatitude());
+                hotelRequestDTO.setLongitude(kaKaoResponseData.getLongitude());
+            }
+        }catch (IndexOutOfBoundsException e){
+            return "redirect:/hotel/update?id="+hotelRequestDTO.getId();
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
         hotelService.hotelUpdate(hotelRequestDTO);
         return "redirect:/hotel/detail?id=" + hotelRequestDTO.getId(); //숙소정보 업데이트 후 detail=id로 다시 redirect
     }
-    @PreAuthorize("isAuthenticated()")
+
+    @PreAuthorize("hasRole('OWNER')")
     @GetMapping("/hotel/update")
     public String hotelUpdate(Long id, Model model) throws ParseException {
         model.addAttribute("article", hotelService.hotelDetail(id));
-        return "hotelUpdate";
+
+
+        return "hotel/hotelUpdate";
     }
+    @PreAuthorize("hasRole('OWNER')")
+    @GetMapping("/image/delete")
+    public String imageDelete(String name,Long id) throws ParseException {
+        hotelService.imageDelete(name);
+
+        return "redirect:/hotel/update?id="+id;
+    }
+
 }

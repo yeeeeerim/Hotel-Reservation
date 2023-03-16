@@ -12,7 +12,14 @@ import java.util.List;
 public interface BookingRepository extends JpaRepository<Booking,Long> {
 
     @Transactional
+<<<<<<< HEAD
     @Modifying
     @Query("update Booking b set b.checkIn = :checkIn, b.checkOut = :checkOut where b.id = :id")
     void updateBooking(@Param("id") Long id, @Param("checkIn")String checkIn, @Param("checkOut")String checkOut);
+=======
+    @Query("update Booking b " +
+            "set b.id = :id, b.checkIn = :checkIn, b.checkOut = :checkOut " +
+            "where b.member.email = :email")
+    void updateBooking(@Param("member")Member member, @Param("id") Long id, @Param("checkIn")String checkIn, @Param("checkOut")String checkOut);
+>>>>>>> d9e1a2d16757b4731bb10911a32e4d17cfdd989c
 }

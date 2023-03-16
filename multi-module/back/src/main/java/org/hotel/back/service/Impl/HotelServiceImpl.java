@@ -1,13 +1,13 @@
 package org.hotel.back.service.Impl;
 
 import lombok.RequiredArgsConstructor;
-import net.coobird.thumbnailator.Thumbnailator;
 import org.hotel.back.config.exception.FileUploadException;
 import org.hotel.back.data.response.HotelListResponseDTO;
 import org.hotel.back.data.response.HotelResponseDTO;
 import org.hotel.back.domain.Hotel;
 import org.hotel.back.data.request.HotelRequestDTO;
 import org.hotel.back.domain.HotelImage;
+import org.hotel.back.domain.Review;
 import org.hotel.back.repository.HotelImageRepository;
 import org.hotel.back.repository.HotelRepository;
 import org.hotel.back.service.HotelService;
@@ -15,6 +15,7 @@ import org.hotel.back.service.api.KaKaoAPIService;
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -25,9 +26,11 @@ import java.nio.DoubleBuffer;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -51,7 +54,6 @@ public class HotelServiceImpl implements HotelService {
             Hotel hotel=hotelRequestDTO.toEntity(hotelRequestDTO);
             Long hotelId=hotelRepository.save(hotel).getId();
 
-            //썸네일
             for(MultipartFile hotelImage:hotelRequestDTO.getHotelImage()){
                 String uuid = UUID.randomUUID().toString()+"_"+hotelImage.getOriginalFilename();
                 Path savePath = Paths.get(path, uuid);
@@ -70,22 +72,44 @@ public class HotelServiceImpl implements HotelService {
     //호텔 리스트
     @Override
     public Page<HotelListResponseDTO> hotelList(Pageable pageable) {
-        Page hotel=hotelRepository.findAll(pageable);
-
-        return hotel;
+        Page<Hotel> hotels = hotelRepository.findAll(pageable);
+        List<HotelListResponseDTO> listDTO = new ArrayList<>();
+        //호텔이미지가 있으면 dto에 호텔 대표이미지 담기
+        for (Hotel h : hotels) {
+            HotelListResponseDTO dto = new HotelListResponseDTO(h);
+            List<HotelImage> hotelImages = h.getHotelImages();
+            if (hotelImages != null && !hotelImages.isEmpty()) {
+                dto.setHotelImage(hotelImages.get(0).getName());
+            }
+            listDTO.add(dto);
+        }
+        return new PageImpl<>(listDTO, pageable, hotels.getTotalElements());
     }
+
+
     //호텔 자세히보기
     @Override
     public HotelResponseDTO hotelDetail(Long id) throws ParseException {
-        List<Object[]> result = hotelRepository.getHotelWithAll(id);
-        Hotel hotel=(Hotel)result.get(0)[0];
-        Double avg=(Double) result.get(0)[1]; //평점
-        HotelResponseDTO hotelResponseDTO=new HotelResponseDTO(hotel,avg);
-        if(kaKaoAPIService.getAddressInfo(hotel.getLongitude(),hotel.getLatitude()).isPresent()){//위, 경도를 넣어서 주소가 반환된다면
-            String address=kaKaoAPIService.getAddressInfo(hotelResponseDTO.getLongitude(),hotelResponseDTO.getLatitude()).orElse(null);//address에 값 넣기
-            hotelResponseDTO.setAddress(address);//변환한 주소 넣기
+        Hotel hotel=hotelRepository.findFetchJoin(id);
+
+        List<Long> rating=hotel.getReviews().stream().map(review -> review.getRating()).collect(Collectors.toList());
+        //리뷰 평점계산
+        double avg=0;
+        for (Long a:rating) {
+            avg+=a;
         }
-        return hotelResponseDTO;
+        avg/=rating.size();
+        if(Double.isNaN(avg)){avg=0;} //평점이 없어 NaN으로 계산이 된 경우 0으로 값을 변경한다.
+
+        HotelResponseDTO dto=new HotelResponseDTO(hotel,avg);
+        var data = kaKaoAPIService.getAddressInfo(hotel.getLongitude(),hotel.getLatitude());
+        if(data.isPresent()){//위, 경도를 넣어서 주소가 반환된다면
+            String address = data.get();
+            dto.setAddress(address);//변환한 주소 넣기
+        }
+
+        return dto;
+
     }
 
     //호텔 지우기
@@ -94,22 +118,48 @@ public class HotelServiceImpl implements HotelService {
         hotelRepository.deleteById(id);
         return true;
     }
+
     //호텔 업데이트
     @Override
     public boolean hotelUpdate(HotelRequestDTO hotelRequestDTO) {
+        //-----
+        System.out.println("-----*****이미지 이름"+hotelRequestDTO.getHotelImage().toString());
         Hotel hotel=hotelRepository.findById(hotelRequestDTO.getId()).get();
         hotel.modifyHotel(hotelRequestDTO.getHotelName(),
                 hotelRequestDTO.getCityName(),
                 hotelRequestDTO.getTellNumber(),
                 hotelRequestDTO.getLatitude(),
                 hotelRequestDTO.getLongitude());
+
+        if(!hotelRequestDTO.getHotelImage().isEmpty()) {
+            for(MultipartFile hotelImage:hotelRequestDTO.getHotelImage()){
+                if(!hotelImage.isEmpty()){
+                    String uuid = UUID.randomUUID().toString()+"_"+hotelImage.getOriginalFilename();
+                    Path savePath = Paths.get(path, uuid);
+                    try{
+                        hotelImage.transferTo(savePath);
+                    } catch (IOException e) {
+                        throw new FileUploadException();
+                    }
+                    HotelImage hotelImageSave=HotelImage.builder().name(uuid).hotel(hotel).build();
+                    hotelImageRepository.save(hotelImageSave);
+                }
+            }
+        }
         hotelRepository.save(hotel);
         return true;
     }
+
 
     @Override
     public List<HotelResponseDTO> hotelListSearch(String keyword) {
         List<Hotel> hotels = hotelRepository.findByHotelNameContaining(keyword);
         return null;
+    }
+
+    @Override
+    public boolean imageDelete(String name) {
+        hotelImageRepository.deleteById(name);
+        return true;
     }
 }

@@ -44,5 +44,16 @@ public class HotelResponseDTO {
         this.ratingAvg=avg;
     }
 
+    public HotelResponseDTO(Hotel hotel){
+        this.id=hotel.getId();
+        this.hotelName=hotel.getHotelName();
+        this.cityName=hotel.getCityName();
+        this.tellNumber=hotel.getTellNumber();
+        this.latitude=hotel.getLatitude();
+        this.longitude=hotel.getLongitude();
+        this.hotelImages=hotel.getHotelImages().stream().map(entity-> entity.getName()).collect(Collectors.toList());
+        this.reviews=hotel.getReviews();
+    }
+
 
 }

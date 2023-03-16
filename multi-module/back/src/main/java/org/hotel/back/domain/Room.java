@@ -48,10 +48,10 @@ public class Room {
 
 
     public void addImage(String fileName){
-            this.roomImage.add(RoomImage.builder()
-                            .name(fileName)
-                            .room(this)
-                    .build());
+        this.roomImage.add(RoomImage.builder()
+                .name(fileName)
+                .room(this)
+                .build());
     }
 
     /**
@@ -59,8 +59,8 @@ public class Room {
      * @param description 두번째
      * */
     public void changeRoomInfo(String roomPrice,String description){
-            this.roomPrice = roomPrice;
-            this.description = description;
+        this.roomPrice = roomPrice;
+        this.description = description;
 
     }
 

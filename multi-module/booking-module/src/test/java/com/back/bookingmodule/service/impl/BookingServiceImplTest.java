@@ -28,8 +28,12 @@ class BookingServiceImplTest {
     @Test
     @DisplayName("예약서비스를 테스트하기 위함..")
     void serviceTest(){
+<<<<<<< HEAD
         bookingService.bookingSave(createDTO());
         bookingService.getBooking();
+=======
+        //bookingService.bookingChangeInAndOut();
+>>>>>>> d9e1a2d16757b4731bb10911a32e4d17cfdd989c
     }
 
 }

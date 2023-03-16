@@ -15,7 +15,7 @@ public interface RoomRepository extends JpaRepository<Room,Long>,CustomRoomRepos
 
 
     @EntityGraph(attributePaths = {"roomImage"})
-    @Query("SELECT r FROM Room r LEFT JOIN FETCH r.hotel WHERE r.id = :id")
+    @Query("SELECT r FROM Room r WHERE r.id = :id")
     public Optional<Room> getRoomWithImage(@Param("id") Long id);
 
     @EntityGraph(attributePaths = {"roomImage"})

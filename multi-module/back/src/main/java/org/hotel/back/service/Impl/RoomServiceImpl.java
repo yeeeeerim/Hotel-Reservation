@@ -108,6 +108,8 @@ public class RoomServiceImpl implements RoomService {
                 return toDTO(roomRepository.getRoomWithImage(id).orElseThrow(RuntimeException::new));
        }
 
+
+
         public boolean modifyRoom(RoomDTO roomDTO){
                 Room room = roomRepository.getRoomWithImage(roomDTO.getId()).orElse(null);
 

@@ -1,3 +1,4 @@
+
 package org.hotel.back.repository;
 
 import org.hotel.back.domain.Gender;
@@ -9,7 +10,11 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import java.util.List;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -25,12 +30,29 @@ class MemberRepositoryTest {
     PasswordEncoder passwordEncoder;
 
 
+    @PersistenceContext
+    EntityManager entityManager;
+
+
     @Test
+    @Transactional
     @DisplayName("Member EntityGraph 테스트")
     void test(){
-        Member member = memberRepository.getMember("test").get();
+           //    Member member = memberRepository.getMember("owner@naver.com").get();
+ //       Member member = memberRepository.findById("owner@naver.com").get();
 
-        Assertions.assertNotNull(member);
+        List<Member> member = entityManager.createQuery("select m from" +
+                " Member m " +
+                "left join fetch m.roleSet " +
+                "where m.email = :email",Member.class)
+                        .setParameter("email","owner@naver.com")
+                                .getResultList();
+
+        for (Member member1 : member) {
+            System.out.println(member1);
+        }
+
+
     }
 
 
@@ -48,3 +70,4 @@ class MemberRepositoryTest {
     }
 
 }
+

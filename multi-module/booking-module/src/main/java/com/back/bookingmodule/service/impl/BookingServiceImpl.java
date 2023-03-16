@@ -42,6 +42,7 @@ public class BookingServiceImpl implements BookingService {
          }
 
 
+<<<<<<< HEAD
          /**
           * SecurityContextHolder 사용해서 로그인 정보 id 값인 memberemail과 파라미터로 전달받은 memberEmail이 같을 경우 updateBooking 실행
           * */
@@ -54,6 +55,16 @@ public class BookingServiceImpl implements BookingService {
              }else {
                  bookingRepository.updateBooking(id, checkIn, checkout);
              }
+=======
+         //TODO: UPDATE 진행 중
+         public void updateBooking(String checkIn, String checkout, Member member, Long id){
+             findById(id).get();
+             // booking member fetch join --> member에 이메일과 접근한 사용자에 이메일 비교
+             // booking에다가 writer ==> writer 비교하는 거
+             // hotel_id 만들어서 쓰는 방법인데 어려우면 안 해도 됨
+             bookingRepository.updateBooking(member, id, checkIn, checkout);
+
+>>>>>>> d9e1a2d16757b4731bb10911a32e4d17cfdd989c
          }
 
 
