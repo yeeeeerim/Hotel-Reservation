@@ -46,12 +46,15 @@ public class Hotel {
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL,mappedBy = "hotel")
     private List<Booking> bookingList = new ArrayList<>();
 
+<<<<<<< HEAD
+=======
     @BatchSize(size = 100)
     @ToString.Exclude
     @Builder.Default
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "hotel",fetch = FetchType.LAZY)
     private List<HotelImage> hotelImages = new ArrayList<>();
 
+>>>>>>> d9e1a2d16757b4731bb10911a32e4d17cfdd989c
     @ToString.Exclude
     @Builder.Default
     @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL,orphanRemoval = true,mappedBy = "hotel")

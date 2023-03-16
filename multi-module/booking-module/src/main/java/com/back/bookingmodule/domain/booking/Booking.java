@@ -1,6 +1,8 @@
-package com.back.bookingmodule.domain;
+package com.back.bookingmodule.domain.booking;
 
 
+import com.back.bookingmodule.domain.Member;
+import com.back.bookingmodule.domain.Status;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -24,7 +26,7 @@ public class Booking {      //TODO: 실제로 삭제가 아닌 값을 넘길 예
 
     @ToString.Exclude
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "member_email")
+    @JoinColumn(name = "member_email", insertable = false, updatable = false)
     private Member member;
 
     @Column(nullable = false)
@@ -35,7 +37,8 @@ public class Booking {      //TODO: 실제로 삭제가 아닌 값을 넘길 예
     @Enumerated(EnumType.STRING)
     private Status status;
 
-
+    @Column(name = "member_email")
+    private String memberEmail;
 
     @CreatedDate
     private LocalDateTime createdAt;

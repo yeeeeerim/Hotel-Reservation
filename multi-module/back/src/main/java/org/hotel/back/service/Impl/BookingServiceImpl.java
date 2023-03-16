@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.hotel.back.data.request.BookingRequestDTO;
 import org.hotel.back.data.response.BookingResponseDTO;
 import org.hotel.back.domain.Booking;
+import org.hotel.back.domain.Room;
 import org.hotel.back.repository.BookingRepository;
 import org.hotel.back.service.BookingService;
 import org.springframework.data.domain.Page;
@@ -21,11 +22,16 @@ public class BookingServiceImpl implements BookingService {
 
     private final BookingRepository bookingRepository;
 
+
+    public List<Room> findAvailable(String checkIn, String checkOut) {
+        return bookingRepository.getNotReservation(checkIn, checkOut);
+    }
+
+
     /*
-    * 관리자용
-    * 예약내용 전체 가져오기.*/
-    @Override
-    public List<Booking> findAll() {
+     * 관리자용
+     * 예약내용 전체 가져오기.*/
+    public List<Booking> findAll(){
         return bookingRepository.findAll();
     }
 
