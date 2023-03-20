@@ -16,7 +16,7 @@ Spring Batch <br>
 Spring Data JPA <br>
 Thymeleaf(MVC) <br>
 ## 동작 방식
-![image](https://user-images.githubusercontent.com/79129475/218039449-e2fb805e-87bd-44a0-ae53-2aa043845bdd.png)
+![image](https://user-images.githubusercontent.com/79129475/226362885-dfc4dd89-168c-4fab-842b-a38a3dbb163b.png)
 
 8080 서버에서 MVC로 화면 그리고 각 기능들을 가지고 있음 --> Spring MVC
 8090 서버는 배치 프로그램과 호텔 예약 저장 기능과 삭제 기능만 만들예정 --> RESTAPI
