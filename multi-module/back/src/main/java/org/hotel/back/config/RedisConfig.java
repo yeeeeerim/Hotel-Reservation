@@ -30,7 +30,6 @@ public class RedisConfig {
     private String redisPort;
 
 
-    private final ObjectMapper objectMapper;
 
     @Bean
     public RedisConnectionFactory redisConnectionFactory() {
@@ -53,4 +52,8 @@ public class RedisConfig {
 
     }
 
+    @Bean
+    public ObjectMapper objectMapper(){
+        return new ObjectMapper();
+    }
 }

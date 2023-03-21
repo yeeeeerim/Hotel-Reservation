@@ -1,10 +1,13 @@
 package com.back.bookingmodule.service.impl;
 
-import com.back.bookingmodule.domain.Booking;
 import com.back.bookingmodule.domain.Member;
+import com.back.bookingmodule.domain.booking.Booking;
 import com.back.bookingmodule.repository.BookingRepository;
+import com.back.bookingmodule.service.BatchService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.springframework.batch.core.launch.JobLauncher;
+import org.springframework.batch.test.context.SpringBatchTest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -19,6 +22,7 @@ class BatchServiceImplTest {
 
     @Autowired
     private BookingRepository bookingRepository;
+
 
 
     @Test
@@ -41,6 +45,7 @@ class BatchServiceImplTest {
                     .build());
         });
         // when
+
 
         // then
     }
