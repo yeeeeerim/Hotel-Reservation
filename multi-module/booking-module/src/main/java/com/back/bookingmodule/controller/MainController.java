@@ -36,11 +36,18 @@ public class MainController {
         jobLauncher.run(job,jobParameters);
         return ResponseEntity.ok("test");
     }
+
+
     @GetMapping("/test2")
     public  ResponseEntity<String>  test2(){
-        System.out.println("test");
+        System.out.println("test2");
         return ResponseEntity.ok("SUCEEEE!!!!");
     }
 
+    @GetMapping("/test3")
+    public  ResponseEntity<String>  test3(){
+        System.out.println("test3");
+        return ResponseEntity.ok("SUCEEEE!!!!");
+    }
 
 }

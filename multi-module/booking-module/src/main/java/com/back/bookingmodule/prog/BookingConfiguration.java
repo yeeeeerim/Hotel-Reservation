@@ -1,7 +1,9 @@
 package com.back.bookingmodule.prog;
 
 
+import com.back.bookingmodule.prog.tasklet.BookingTasklet;
 import lombok.RequiredArgsConstructor;
+import org.apache.tomcat.jni.Local;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
@@ -11,10 +13,18 @@ import org.springframework.batch.core.configuration.annotation.StepBuilderFactor
 import org.springframework.batch.core.job.builder.JobBuilder;
 import org.springframework.batch.core.launch.support.RunIdIncrementer;
 import org.springframework.batch.core.repository.JobRepository;
+import org.springframework.batch.item.ItemReader;
+import org.springframework.batch.item.ItemWriter;
+import org.springframework.batch.item.database.JpaPagingItemReader;
+import org.springframework.batch.item.database.builder.JpaPagingItemReaderBuilder;
 import org.springframework.batch.repeat.RepeatStatus;
 import org.springframework.beans.factory.annotation.Required;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import java.time.LocalDateTime;
 
 @Configuration
 @EnableBatchProcessing
@@ -24,24 +34,29 @@ public class BookingConfiguration {
     private final JobBuilderFactory jobBuilderFactory;
     private final StepBuilderFactory stepBuilderFactory;
 
+    private final EntityManagerFactory entityManagerFactory;
+
+    private final BookingTasklet bookingTasklet;
 
     @Bean
-    public Job bookingJob(){
+    public Job bookingJob() throws Exception {
         return this.jobBuilderFactory.get("bookingJob")
-                .incrementer(new RunIdIncrementer())
-                .start(bookingStep())
+                .incrementer(new UniqueRunIdIncrementer())
+                .start(bookingJPAStep())
                 .build();
     }
 
+
+
     @Bean
     @JobScope
-    public Step bookingStep(){
-        return this.stepBuilderFactory.get("bookingStep")
-                .tasklet((contribution, chunkContext) -> {
-                    System.out.println("TEST 배치 프로그램");
-                    return RepeatStatus.CONTINUABLE;
-                }).build();
+    public Step bookingJPAStep() throws Exception {
+        return this.stepBuilderFactory
+                .get("bookingDeleting")
+                .tasklet(bookingTasklet)
+                .build();
     }
+
 
 
 }

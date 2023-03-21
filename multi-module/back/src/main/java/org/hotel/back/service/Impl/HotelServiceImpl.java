@@ -32,6 +32,7 @@ import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
+
 @Service
 @RequiredArgsConstructor
 public class HotelServiceImpl implements HotelService {
@@ -83,7 +84,9 @@ public class HotelServiceImpl implements HotelService {
             }
             listDTO.add(dto);
         }
+
         return new PageImpl<>(listDTO, pageable, hotels.getTotalElements());
+
     }
 
 

@@ -45,7 +45,6 @@ public class Hotel {
 //    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL,mappedBy = "hotel")
 //    private List<Booking> bookingList = new ArrayList<>();
 
-
     @BatchSize(size = 100)
     @ToString.Exclude
     @Builder.Default
