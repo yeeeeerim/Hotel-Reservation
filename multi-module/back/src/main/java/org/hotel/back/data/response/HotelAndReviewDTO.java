@@ -2,6 +2,7 @@ package org.hotel.back.data.response;
 
 
 import lombok.*;
+import org.springframework.util.ObjectUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,8 +28,11 @@ public class HotelAndReviewDTO {
            long rating = 0;
 
            if(!reviewResponseDTO.isEmpty()){
+
+
                    for (ReviewResponseDTO dto : reviewResponseDTO) {
-                           rating += dto.getRating();
+                           if(dto.getRating().longValue() == 0) return 0;
+                           if(!ObjectUtils.isEmpty(dto.getRating())) rating += dto.getRating();
                    }
                    return rating/reviewResponseDTO.size();
            }

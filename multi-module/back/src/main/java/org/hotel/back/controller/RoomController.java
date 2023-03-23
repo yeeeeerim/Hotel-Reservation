@@ -26,10 +26,14 @@ public class RoomController {
 
     @GetMapping("/room/list")
     public String roomListGET(@RequestParam Long id,
+                              String hotelNa,
                               Model model,
                               @AuthenticationPrincipal MemberDTO memberDTO){
+            log.info("HOTEL ROOM LIST NY NAME {}",hotelNa);
             if(memberDTO != null) model.addAttribute("email",memberDTO.getEmail());
+            model.addAttribute("hotelNa",hotelNa);
             model.addAttribute("dto",roomService.findAllWithImage(id));
+            model.addAttribute("hotelId",id);
             return "/room/room-list";
     }
 
@@ -37,10 +41,14 @@ public class RoomController {
     @GetMapping("/room/detail")
     public String roomDetailsGET(Long id,
                                  Model model,
+                                 String hotelNa,
                                  @RequestParam(required = false) String check,
                                  String hotel,
                                  @AuthenticationPrincipal MemberDTO memberDTO){
-        model.addAttribute("dto",roomService.getDetail(id,memberDTO != null ? memberDTO.getEmail() : null));
+        var data =roomService.getDetail(id,memberDTO != null ? memberDTO.getEmail() : null);
+        data.setHotelNa(hotelNa);
+
+        model.addAttribute("dto",data);
         model.addAttribute("hotelId",hotel);
         if(check != null) model.addAttribute("check",check);
         return "/room/room-detail";
@@ -48,8 +56,11 @@ public class RoomController {
 
     @PreAuthorize("hasRole('OWNER')")
     @GetMapping("/room/save")
-    public String roomSaveGET(Long id,Model model){
+    public String roomSaveGET(Long id,
+                              String hotelNa,
+                              Model model){
 
+        model.addAttribute("hotelNa",hotelNa);
         model.addAttribute("hotelId", id);
         return "/room/room-save";
     }
@@ -58,10 +69,12 @@ public class RoomController {
     @PreAuthorize("hasRole('OWNER')")
     @GetMapping("/room/modify")
     public String roomModifyGET(Long id,
+                                String hotelNa,
                                 Model model,
                                 @AuthenticationPrincipal MemberDTO memberDTO){
 
         var responseData =roomService.getDetail(id,memberDTO.getEmail());
+        responseData.setHotelNa(hotelNa);
         model.addAttribute("dto",responseData);
         if(responseData.isChecking()){
                 model.addAttribute("check",true);
@@ -89,7 +102,7 @@ public class RoomController {
     public String roomSavePOST(RoomDTO roomDTO){
             log.info("==> {}",roomDTO);
             roomService.save(roomDTO);
-             return "redirect:/room/save";
+             return "redirect:/room/list&id="+roomDTO.getHotelId();
     }
     @PreAuthorize("hasRole('OWNER')")
     @PostMapping("/room/modify")

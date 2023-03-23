@@ -23,11 +23,11 @@ public class ReviewController {
 
     //----------댓글 작성
     @PostMapping("/hotel/review/save")
-    public String reviewSave(Long id, ReviewRequestDTO reviewRequestDTO){
-        System.out.println(id);
+    public String reviewSave(ReviewRequestDTO reviewRequestDTO){
+        System.out.println(reviewRequestDTO.getId().longValue());
         System.out.println(reviewRequestDTO);
-        reviewService.saveReview(id,reviewRequestDTO);
-        return "redirect:/hotel/detail?id="+id;
+        reviewService.saveReview(reviewRequestDTO.getId().longValue(),reviewRequestDTO);
+        return "redirect:/hotel/detail?id="+reviewRequestDTO.getId().longValue();
     }
 
     //-----------댓글 수정

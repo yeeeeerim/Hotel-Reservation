@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko">
+<html lang="ko" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -22,6 +22,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <a style="color: white;margin-right: 200px" class="email"></a>
+    <button sec:authorize="hasRole('OWNER')" class="adminBtn btn-secondary"> 방 추가</button>
   </nav>
 </div>
 <div class="container">
@@ -34,18 +35,20 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
 <script th:inline ="javascript">
-   $(document).ready(function (){
-      axios.get('http://localhost:8090/test')
-      .then(reuslt => {
-        console.log(reuslt)
-      }).catch(e => {
-        console.log(e)
-      })
-   })
+
+
     const listDTO = [[${dto}]]
-    const hotelId = listDTO[0].hotelId;
+
+    const hotelId = [[${hotelId}]];
     const email = [[${email}]]
-    let index = 3;
+    const hotelNa = [[${hotelNa}]]
+
+      console.log(hotelNa)
+     $('.adminBtn').click(function (){
+       location.href = '/room/save?id='+hotelId+'&hotelNa'+hotelNa
+     })
+
+   let index = 3;
     let temp
     if(email != null){
         $('.email').text(email)
@@ -58,7 +61,7 @@
           temp = "/view?fileName="+dto.roomImage[0];
           console.log(temp)
         }
-        const more = '/room/detail?id='+dto.id+'&hotel='+hotelId
+        const more = '/room/detail?id='+dto.id+'&hotel='+hotelId+'&hotelNa='+hotelNa
         $(`.container`).append(`
          <div class="row">
               <div class="col-3">

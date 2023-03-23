@@ -154,7 +154,7 @@
         <td><a th:href="@{/hotel/review/delete/(id=${review.id},hotelid=${article.id})}">댓글 삭제</a></td>
         <td><a th:href="@{/hotel/review/update(id=${review.id})}">댓글 수정</a></td>
         <td>
-            <button type="button" class="btn btn-dark" th:onclick="|location.href='@{/room/list(id=${article.id})}'|">해당
+            <button type="button" class="btn btn-dark" th:onclick="|location.href='@{/room/list(id=${article.id},hotelNa=${article.hotelName})}'|">해당
                 호텔 룸 정보보기
             </button>
         </td>

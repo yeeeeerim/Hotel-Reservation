@@ -129,9 +129,13 @@ public class RoomServiceImpl implements RoomService {
        }
 
 
-
+        @Transactional
         public boolean modifyRoom(RoomDTO roomDTO){
                 Room room = roomRepository.getRoomWithImage(roomDTO.getId()).orElse(null);
+
+
+                RoomDTO cacheDTO = roomCacheService.findById(roomDTO.getId());
+                if(cacheDTO != null) roomCacheService.delete(roomDTO.getId());
 
                 if(room != null){
                     room.changeRoomInfo(roomDTO.getRoomPrice(), roomDTO.getDescription());
@@ -144,6 +148,7 @@ public class RoomServiceImpl implements RoomService {
                     }
 
                     roomRepository.save(room);
+                    // 이미지까지 저장하는 것이기에 dirty Checking 불가
                     return true;
                 }else{
                     return false;
