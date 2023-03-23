@@ -32,14 +32,13 @@ public class BatchServiceImpl implements BatchService {
     private final JobLauncher jobLauncher;
 
 
-    @Scheduled(initialDelay = 1, fixedDelay = 3000)
-    public void test() throws Exception {
+   // @Scheduled(initialDelay = 1, fixedDelay = 3000)
+    public void job() throws Exception {
 
         Map<String, JobParameter> confMap = new HashMap<>();
         confMap.put("time",new JobParameter(System.currentTimeMillis()));
         JobParameters jobParameters = new JobParameters(confMap);
         jobLauncher.run(bookingConfiguration.bookingJob(),jobParameters);
-        System.out.println("TEst 출력");
     }
 
 

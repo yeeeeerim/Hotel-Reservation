@@ -17,7 +17,7 @@ public class HotelAndReviewDTO {
 
         private List<ReviewResponseDTO> reviewResponseDTO;
 
-
+        @Builder.Default
         private List<String> images = new ArrayList<>();
 
         private long totalRating;

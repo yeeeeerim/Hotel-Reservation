@@ -1,6 +1,7 @@
 package org.hotel.back.data.response;
 
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
 import org.hotel.back.domain.Hotel;
 
@@ -11,6 +12,7 @@ import javax.persistence.ManyToOne;
 import java.util.List;
 
 @Builder
+@JsonInclude(JsonInclude.Include.NON_NULL)
 @ToString
 @Setter
 @Getter

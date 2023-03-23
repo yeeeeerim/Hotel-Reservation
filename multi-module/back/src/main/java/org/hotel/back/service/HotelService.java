@@ -1,8 +1,9 @@
 package org.hotel.back.service;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import org.hotel.back.data.response.HotelImageDTO;
 import org.hotel.back.data.response.HotelListResponseDTO;
 import org.hotel.back.data.response.HotelResponseDTO;
-import org.hotel.back.domain.Hotel;
 import org.hotel.back.data.request.HotelRequestDTO;
 import org.json.simple.parser.ParseException;
 import org.springframework.data.domain.Page;
@@ -20,7 +21,7 @@ public interface HotelService {
 
 
     /**
-     * @param Hotel PK를 받음
+     *  PK를 받음
      * @apiNote 위도,경도를 통해 도로명주소로 변경한 DTO를 리턴한다.
      * */
 
@@ -31,6 +32,7 @@ public interface HotelService {
     boolean hotelUpdate(HotelRequestDTO hotelRequestDTO);
     List<HotelResponseDTO> hotelListSearch(String keyword);
     boolean imageDelete(String name);
+    HotelImageDTO findByHotelImage(Long id) throws JsonProcessingException;
 
 
 

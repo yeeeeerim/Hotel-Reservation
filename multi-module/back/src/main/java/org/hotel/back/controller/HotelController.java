@@ -1,13 +1,16 @@
 package org.hotel.back.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.hotel.back.data.response.HotelImageDTO;
 import org.hotel.back.data.response.HotelListResponseDTO;
 import org.hotel.back.data.response.HotelResponseDTO;
 import org.hotel.back.data.response.KaKaoResponseData;
 
 import org.hotel.back.data.request.HotelRequestDTO;
 import org.hotel.back.domain.Hotel;
+import org.hotel.back.service.HotelImageCacheService;
 import org.hotel.back.service.HotelService;
 import org.hotel.back.service.api.KaKaoAPIService;
 import org.json.simple.parser.ParseException;
@@ -86,9 +89,13 @@ public class HotelController {
 
     //========호텔 자세히보기  ============
     @GetMapping("/hotel/detail")
-    public String hotelDetail(Model model, Long id) throws ParseException {
+    public String hotelDetail(Model model, Long id) throws ParseException, JsonProcessingException {
+        HotelImageDTO hotelImageDTO=hotelService.findByHotelImage(id);
         HotelResponseDTO hotelResponseDTO =hotelService.hotelDetail(id); //호텔 객체를 불러옴 ->service hotelDetail메서드
         model.addAttribute("article",hotelResponseDTO);
+            model.addAttribute("image",hotelImageDTO);
+            System.out.println("이미지 보내짐");
+
         model.addAttribute("path",path);
         return "hotel/hotelDetail";
     }

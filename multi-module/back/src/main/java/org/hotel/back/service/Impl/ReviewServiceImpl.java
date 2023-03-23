@@ -20,10 +20,12 @@ public class ReviewServiceImpl implements ReviewService {
     private final HotelRepository hotelRepository;
 
     @Override
-    public Long saveReview(Long id, ReviewRequestDTO reviewRequestDTO) {
-        Hotel hotel = hotelRepository.findById(id).
+    public Long saveReview(Long hotelId,ReviewRequestDTO reviewRequestDTO) {
+        System.out.println("--리뷰아이디"+reviewRequestDTO.getId());
+        System.out.println("---호텔아이디"+hotelId);
+        Hotel hotel = hotelRepository.findById(hotelId).
                 orElseThrow(()->new IllegalArgumentException
-                        ("댓글 쓰기 실패: 해당 게시글이 존재하지 않습니다." + id));
+                        ("댓글 쓰기 실패: 해당 게시글이 존재하지 않습니다." + reviewRequestDTO.getId()));
         reviewRequestDTO.setHotel(hotel);
         Review review = reviewRequestDTO.toEntity(reviewRequestDTO);
         reviewRepository.save(review);

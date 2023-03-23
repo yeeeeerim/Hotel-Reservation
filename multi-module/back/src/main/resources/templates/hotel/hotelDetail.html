@@ -119,7 +119,7 @@
 </button>
 <p></p>
 <p></p>
-<form class="mb-3" name="myform" id="myform" method="post" th:action="@{/hotel/review/save(id=${article.id})}">
+<form class="mb-3" name="myform" id="myform" method="post" th:action="@{/hotel/review/save(hotelId=${article.id})}">
     <fieldset>
         <span class="text-bold">별점을 선택해주세요</span>
         <input type="radio" name="rating" value=5 id="rate1"><label
@@ -178,29 +178,34 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script type="text/javascript"
-        src="//dapi.kakao.com/v2/maps/sdk.js?appkey=	2858a9737134fdb246117b738bcfffec"></script>
+        src="//dapi.kakao.com/v2/maps/sdk.js?appkey=2858a9737134fdb246117b738bcfffec"></script>
+
 <script th:inline="javascript">  //여기서 요청 넣는 거에요 저 메소드에
 
-let imageList = [[ ${article.hotelImages}]]
-let latitude = [[${article.latitude}]]
-let longitude = [[${article.longitude}]]
-console.log(latitude)
-console.log(longitude)
+    let imageList = [[ ${image.name} ]]
+    let latitude  = [[ ${article.latitude}  ]]
+    let longitude = [[ ${article.longitude} ]]
+    console.log(latitude)
+    console.log(longitude)
 
-if (imageList != null) {
-
-    for (const name of imageList) {
-        const imgSrc = "/view?fileName=" + name
-        $('.image').append(`
-                       <div class="card-temp" className="card" style="width: 1000px; display: inline-block; box-shadow: 5px 5px 5px;">
-                           <div className="card-body">
-                           <img src='${imgSrc}' width="1000" height="750" ' style="margin: 10px;"/>
+    if (imageList != null) {
+        for (const name of imageList) {
+            if (name!=null){
+                const imgSrc = "/view?fileName=" + name
+                $('.image').append(`
+                           <div class="card-temp" className="card" style="width: 1000px; display: inline-block; box-shadow: 5px 5px 5px;">
+                               <div className="card-body">
+                               <img src='${imgSrc}' width="1000" height="750" ' style="margin: 10px;"/>
+                               </div>
                            </div>
-                       </div>
-                    `)
+                        `)
+            }
+
+        }
     }
-}
+
 </script>
+
 <script>
     var container = document.getElementById('map');
     var options = {
