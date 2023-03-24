@@ -5,6 +5,7 @@ import org.hotel.back.data.response.HotelImageDTO;
 import org.hotel.back.data.response.HotelListResponseDTO;
 import org.hotel.back.data.response.HotelResponseDTO;
 import org.hotel.back.data.request.HotelRequestDTO;
+import org.hotel.back.service.Impl.FileDeleteException;
 import org.json.simple.parser.ParseException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -31,7 +32,7 @@ public interface HotelService {
     boolean  hotelDelete(Long id);
     boolean hotelUpdate(HotelRequestDTO hotelRequestDTO) throws JsonProcessingException;
     List<HotelResponseDTO> hotelListSearch(String keyword);
-    boolean imageDelete(Long id,String name);
+    boolean imageDelete(Long id,String name) throws FileDeleteException;
     HotelImageDTO findByHotelImage(Long id) throws JsonProcessingException;
 
 

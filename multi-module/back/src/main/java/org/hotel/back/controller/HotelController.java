@@ -12,6 +12,7 @@ import org.hotel.back.data.request.HotelRequestDTO;
 import org.hotel.back.domain.Hotel;
 import org.hotel.back.service.HotelImageCacheService;
 import org.hotel.back.service.HotelService;
+import org.hotel.back.service.Impl.FileDeleteException;
 import org.hotel.back.service.api.KaKaoAPIService;
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Value;
@@ -141,9 +142,8 @@ public class HotelController {
     }
     @PreAuthorize("hasRole('OWNER')")
     @GetMapping("/image/delete")
-    public String imageDelete(String name,Long id) throws ParseException {
+    public String imageDelete(String name,Long id) throws ParseException, FileDeleteException {
         hotelService.imageDelete(id,name);
-
         return "redirect:/hotel/update?id="+id;
     }
 

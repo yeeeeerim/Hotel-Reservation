@@ -28,6 +28,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -146,7 +147,6 @@ public class HotelServiceImpl implements HotelService {
                 hotelRequestDTO.getLatitude(),
                 hotelRequestDTO.getLongitude());
         saveHotelImages(hotelRequestDTO.getHotelImage(), hotel);
-        findByHotelImage(hotelRequestDTO.getId());
         hotelRepository.save(hotel);
         return true;
     }
@@ -192,7 +192,13 @@ public class HotelServiceImpl implements HotelService {
         return null;
     }
     @Override
-    public boolean imageDelete(Long id,String name) {
+    public boolean imageDelete(Long id,String name) throws FileDeleteException {
+        Path deletePath = Paths.get(path, name);
+        try {
+            Files.delete(deletePath);
+        } catch (IOException e) {
+            throw new FileDeleteException("Failed to delete hotel image");
+        }
         hotelImageRepository.deleteById(name);
         hotelCacheService.delete(id);
         return true;
