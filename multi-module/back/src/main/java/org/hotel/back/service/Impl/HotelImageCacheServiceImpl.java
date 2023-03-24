@@ -54,7 +54,7 @@ public class HotelImageCacheServiceImpl implements HotelImageCacheService {
 
 	@Override
 	public void delete(Long id) {
-		hashOperations.delete(KEY,String.valueOf(id));
+		hashOperations.delete(KEY,id.toString());
 		log.info("DELETE REDIS DATA {}",id);
 	}
 

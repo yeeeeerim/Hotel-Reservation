@@ -40,7 +40,7 @@
                             </table>
                         </div>
 
-                        <tr th:each="image:${article.hotelImages}">
+                        <tr th:each="image:${images.name}">
                             <img th:src="@{'/view?fileName=' + ${image}}"width="300" height="180"/>
                             <td>
                                 <button type="button" class="btn btn-dark" th:onclick="|location.href='@{/image/delete(name=${image},id=${article.id})}'|">

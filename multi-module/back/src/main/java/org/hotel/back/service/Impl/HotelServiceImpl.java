@@ -85,7 +85,6 @@ public class HotelServiceImpl implements HotelService {
     }
 
 
-
     /**
      * @apiNote
      * 호텔 자세히보기: 호텔 정보와 리뷰에 있는 평점을 가져와 계산한다.(만약 평점이 없을 경우 0을 반환한다.)
@@ -119,8 +118,8 @@ public class HotelServiceImpl implements HotelService {
         }
 
         return dto;
-
     }
+
 
     /**
      * @apiNote
@@ -132,22 +131,22 @@ public class HotelServiceImpl implements HotelService {
         return true;
     }
 
+
 	/***
 	 *
 	 * @apiNote
 	 * 호텔 업데이트: getHotelById메소드로 수정정보가 DB에 있는지 확인-> 수정 ->이미지 수정
 	 */
 	@Override
-    public boolean hotelUpdate(HotelRequestDTO hotelRequestDTO) {
+    public boolean hotelUpdate(HotelRequestDTO hotelRequestDTO) throws JsonProcessingException {
         Hotel hotel = getHotelById(hotelRequestDTO.getId());
         hotel.modifyHotel(hotelRequestDTO.getHotelName(),
                 hotelRequestDTO.getCityName(),
                 hotelRequestDTO.getTellNumber(),
                 hotelRequestDTO.getLatitude(),
                 hotelRequestDTO.getLongitude());
-
         saveHotelImages(hotelRequestDTO.getHotelImage(), hotel);
-
+        findByHotelImage(hotelRequestDTO.getId());
         hotelRepository.save(hotel);
         return true;
     }
@@ -192,10 +191,10 @@ public class HotelServiceImpl implements HotelService {
         List<Hotel> hotels = hotelRepository.findByHotelNameContaining(keyword);
         return null;
     }
-
     @Override
-    public boolean imageDelete(String name) {
+    public boolean imageDelete(Long id,String name) {
         hotelImageRepository.deleteById(name);
+        hotelCacheService.delete(id);
         return true;
     }
     @Override
@@ -205,13 +204,11 @@ public class HotelServiceImpl implements HotelService {
         if(hotelImageDTO==null){
             HotelImageDTO temp=toDTO(id,hotelImageRepository.findHotelImageByHotel_Id(id));
             hotelCacheService.save(temp);
-            System.out.println("레퍼지토리 저장");
+            System.out.println("레퍼지토리꺼 캐시에 저장");
             return temp;
         }
-        System.out.println("캐시에 저장");
         return hotelImageDTO;
     }
-
     protected HotelImageDTO toDTO(Long id, List<HotelImage>hotelImages){
         if(!hotelImages.isEmpty()||hotelImages!=null){
             HotelImageDTO dto= HotelImageDTO.builder()
@@ -219,9 +216,7 @@ public class HotelServiceImpl implements HotelService {
                     .name(hotelImages.stream().map(HotelImage::getName).collect(Collectors.toList()))
                     .build();
             return dto;
-
         }
         return null;
-
     }
 }

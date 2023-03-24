@@ -29,9 +29,9 @@ public interface HotelService {
 
     HotelResponseDTO hotelDetail(Long id) throws ParseException;
     boolean  hotelDelete(Long id);
-    boolean hotelUpdate(HotelRequestDTO hotelRequestDTO);
+    boolean hotelUpdate(HotelRequestDTO hotelRequestDTO) throws JsonProcessingException;
     List<HotelResponseDTO> hotelListSearch(String keyword);
-    boolean imageDelete(String name);
+    boolean imageDelete(Long id,String name);
     HotelImageDTO findByHotelImage(Long id) throws JsonProcessingException;
 
 

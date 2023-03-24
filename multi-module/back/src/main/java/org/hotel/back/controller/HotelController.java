@@ -37,6 +37,7 @@ public class HotelController {
     private final HotelService hotelService;
 
     private final KaKaoAPIService kaKaoAPIService;
+    private final HotelImageCacheService hotelImageCacheService;
     @Value("${upload.path}")
     private String path;
 
@@ -104,13 +105,15 @@ public class HotelController {
     @GetMapping("/hotel/delete")
     public String hotelDelete(Long id) {
         hotelService.hotelDelete(id);
+        hotelImageCacheService.delete(id);
         return "redirect:/hotel";
     }
 
     @PreAuthorize("hasRole('OWNER')")
     @PostMapping("/hotel/update")
-    public String hotelUpdatePost(HotelRequestDTO hotelRequestDTO) {
+    public String hotelUpdatePost(HotelRequestDTO hotelRequestDTO) throws JsonProcessingException {
         String updateAddress=hotelRequestDTO.getAddress();
+
         try{
             if(kaKaoAPIService.getLocationInfo(updateAddress).isPresent()){
                 KaKaoResponseData kaKaoResponseData= kaKaoAPIService.getLocationInfo(hotelRequestDTO.getAddress()).orElse(null);
@@ -123,12 +126,14 @@ public class HotelController {
             throw new RuntimeException(e);
         }
         hotelService.hotelUpdate(hotelRequestDTO);
+        hotelImageCacheService.delete(hotelRequestDTO.getId());
         return "redirect:/hotel/detail?id=" + hotelRequestDTO.getId(); //숙소정보 업데이트 후 detail=id로 다시 redirect
     }
 
     @PreAuthorize("hasRole('OWNER')")
     @GetMapping("/hotel/update")
-    public String hotelUpdate(Long id, Model model) throws ParseException {
+    public String hotelUpdate(Long id, Model model) throws ParseException, JsonProcessingException {
+        model.addAttribute("images",hotelService.findByHotelImage(id));
         model.addAttribute("article", hotelService.hotelDetail(id));
 
 
@@ -137,7 +142,7 @@ public class HotelController {
     @PreAuthorize("hasRole('OWNER')")
     @GetMapping("/image/delete")
     public String imageDelete(String name,Long id) throws ParseException {
-        hotelService.imageDelete(name);
+        hotelService.imageDelete(id,name);
 
         return "redirect:/hotel/update?id="+id;
     }
