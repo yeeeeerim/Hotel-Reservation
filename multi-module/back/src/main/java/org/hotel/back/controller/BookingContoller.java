@@ -53,8 +53,4 @@ public class BookingContoller {
      *
      * */
 
-    @PostMapping("/save")
-    public Boolean bookingSave(@RequestBody BookingDTO bookingDTO){
-        bookingService.bookingSave(bookingDTO);
-    }
 }
