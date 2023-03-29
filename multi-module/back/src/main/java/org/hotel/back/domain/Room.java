@@ -3,6 +3,7 @@ package org.hotel.back.domain;
 import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -39,8 +40,8 @@ public class Room {
     private String description; //방설명
 
 
-    private String checkIn;
-    private String checkOut;
+    private LocalDate checkIn;
+    private LocalDate checkOut;
 
 
     @Column(name = "hotel_id")
