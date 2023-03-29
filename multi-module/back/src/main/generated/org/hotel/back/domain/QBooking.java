@@ -24,9 +24,9 @@ public class QBooking extends EntityPathBase<Booking> {
 
     public final QBaseTimeEntity _super = new QBaseTimeEntity(this);
 
-    public final DateTimePath<java.time.LocalDateTime> check_out = createDateTime("check_out", java.time.LocalDateTime.class);
+    public final DateTimePath<java.util.Date> check_out = createDateTime("check_out", java.util.Date.class);
 
-    public final DateTimePath<java.time.LocalDateTime> checkIn = createDateTime("checkIn", java.time.LocalDateTime.class);
+    public final DateTimePath<java.util.Date> checkIn = createDateTime("checkIn", java.util.Date.class);
 
     //inherited
     public final DateTimePath<java.time.LocalDateTime> createdDate = _super.createdDate;
