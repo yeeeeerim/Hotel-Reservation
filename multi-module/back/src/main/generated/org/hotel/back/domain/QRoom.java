@@ -22,9 +22,9 @@ public class QRoom extends EntityPathBase<Room> {
 
     public static final QRoom room = new QRoom("room");
 
-    public final StringPath checkIn = createString("checkIn");
+    public final DatePath<java.time.LocalDate> checkIn = createDate("checkIn", java.time.LocalDate.class);
 
-    public final StringPath checkOut = createString("checkOut");
+    public final DatePath<java.time.LocalDate> checkOut = createDate("checkOut", java.time.LocalDate.class);
 
     public final StringPath description = createString("description");
 

@@ -3,12 +3,16 @@ package org.hotel.back.domain;
 import lombok.*;
 
 import javax.persistence.*;
+import java.sql.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 @Builder
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
@@ -39,8 +43,9 @@ public class Room {
     private String description; //방설명
 
 
-    private String checkIn;
-    private String checkOut;
+    private LocalDate checkIn;
+
+    private LocalDate checkOut;
 
 
     @Column(name = "hotel_id")

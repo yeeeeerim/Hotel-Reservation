@@ -1,18 +1,26 @@
 package org.hotel.back.service.Impl;
 
+import com.querydsl.core.Tuple;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.hotel.back.config.booking.RoomDtoConverter;
 import org.hotel.back.data.request.BookingRequestDTO;
 import org.hotel.back.data.response.BookingResponseDTO;
+import org.hotel.back.data.response.RoomDTO;
 import org.hotel.back.domain.Booking;
 import org.hotel.back.domain.Room;
 import org.hotel.back.repository.BookingRepository;
+import org.hotel.back.repository.RoomRepository;
 import org.hotel.back.service.BookingService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -22,9 +30,29 @@ public class BookingServiceImpl implements BookingService {
 
     private final BookingRepository bookingRepository;
 
+    private RoomDtoConverter roomDtoConverter = new RoomDtoConverter();
+    private final RoomRepository roomRepository;
+    public List<RoomDTO> findAvailable(LocalDate checkIn, LocalDate checkOut) {
+        java.sql.Date checkInDate = java.sql.Date.valueOf(checkIn);
+        java.sql.Date checkOutDate = java.sql.Date.valueOf(checkOut);
+        List<Room> rooms = roomRepository.findAvailableRooms(checkInDate, checkOutDate);
 
-    public List<Room> findAvailable(String checkIn, String checkOut) {
-        return bookingRepository.getNotReservation(checkIn, checkOut);
+        List<RoomDTO> roomDTOs = new ArrayList<>();
+
+        for(Room room : rooms) {
+            RoomDTO roomDTO = new RoomDTO();
+            roomDTO.setId(room.getId());
+            roomDTO.setRoomNumber(room.getRoomNumber());
+            roomDTO.setRoomClass(room.getRoomClass());
+            roomDTO.setRoomPrice(room.getRoomPrice());
+            roomDTO.setRoomLimit(room.getRoomLimit());
+            roomDTO.setDescription(room.getDescription());
+
+            roomDTOs.add(roomDTO);
+        }
+
+
+        return roomDTOs;
     }
 
 

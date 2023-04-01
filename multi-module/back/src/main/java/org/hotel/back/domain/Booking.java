@@ -4,6 +4,8 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Date;
+
 @Entity
 @Builder
 @Getter
@@ -27,10 +29,10 @@ public class Booking extends BaseTimeEntity{
     @JoinColumn(name = "member_email")
     private Member member;
 
-    @Column(nullable = false)
-    private LocalDateTime checkIn;
-    @Column(nullable = false)
-    private LocalDateTime check_out;
+    @Column(nullable = false, columnDefinition = "DATE")
+    private Date checkIn;
+    @Column(nullable = false, columnDefinition = "DATE")
+    private Date check_out;
 
 
 }

@@ -10,6 +10,5 @@ import java.util.List;
 
 public interface BookingRepository extends JpaRepository<Booking, Long> {
 
-    @Query("SELECT r FROM Room r WHERE r.id NOT IN (SELECT b FROM Booking b WHERE b.checkIn <= :checkOut AND b.check_out >= :checkIn)")
-    List<Room> getNotReservation(@Param("checkIn")String checkIn, @Param("checkOut")String checkOut);
+
 }
