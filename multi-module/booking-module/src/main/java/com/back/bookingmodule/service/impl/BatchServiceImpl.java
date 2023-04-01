@@ -47,10 +47,10 @@ public class BatchServiceImpl implements BatchService {
 
     public void hotelJob() throws Exception {
 
-        Map<String, JobParameter> confMap = new HashMap<>();
-        confMap.put("time",new JobParameter(System.currentTimeMillis()));
-        JobParameters jobParameters = new JobParameters(confMap);
-        jobLauncher.run(hotelCSVConfig.csvItemWriterJob(),jobParameters);
+        JobParameters jobParameters = new JobParametersBuilder()
+                .addString("JobID", String.valueOf(System.currentTimeMillis()))
+                .toJobParameters();
+        jobLauncher.run(hotelCSVConfig.csvItemWriterJob(), jobParameters);
     }
 
 

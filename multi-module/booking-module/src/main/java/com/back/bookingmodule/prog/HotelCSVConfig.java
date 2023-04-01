@@ -67,7 +67,7 @@ public class HotelCSVConfig {
     public Step csvItemWriterStep() throws Exception {
         return this.stepBuilderFactory
                 .get("csvItemWriterStep")
-                .<Hotel,Hotel>chunk(10)
+                .<Hotel,Hotel>chunk(100)
                 .reader(this.csvItemReader())
                 .writer(this.csvItemWriter())
                 .build();
@@ -81,7 +81,7 @@ public class HotelCSVConfig {
     public Step csvItemReaderStep() throws Exception {
         return this.stepBuilderFactory
                 .get("csvItemWriterStepFromCSV")
-                .<Hotel,Hotel>chunk(10)
+                .<Hotel,Hotel>chunk(200)
                 .reader(this.csvItemReaderFromCSV())
                 .writer(this.csvItemWriterFromCSV())
                 .build();
