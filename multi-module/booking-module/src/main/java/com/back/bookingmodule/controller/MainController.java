@@ -22,20 +22,20 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class MainController {
 
-    private final Job job;
-    private final JobLauncher jobLauncher;
-
-
-    @GetMapping("/test")
-    public ResponseEntity<String> test() throws JobInstanceAlreadyCompleteException,
-            JobExecutionAlreadyRunningException,
-            JobParametersInvalidException,
-            JobRestartException {
-        JobParameters jobParameters = new JobParametersBuilder()
-                .toJobParameters();
-        jobLauncher.run(job,jobParameters);
-        return ResponseEntity.ok("test");
-    }
+//    private final Job job;
+//    private final JobLauncher jobLauncher;
+//
+//
+//    @GetMapping("/test")
+//    public ResponseEntity<String> test() throws JobInstanceAlreadyCompleteException,
+//            JobExecutionAlreadyRunningException,
+//            JobParametersInvalidException,
+//            JobRestartException {
+//        JobParameters jobParameters = new JobParametersBuilder()
+//                .toJobParameters();
+//        jobLauncher.run(job,jobParameters);
+//        return ResponseEntity.ok("test");
+//    }
 
 
     @GetMapping("/test2")

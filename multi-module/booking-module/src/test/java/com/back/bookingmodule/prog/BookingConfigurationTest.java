@@ -40,7 +40,7 @@ class BookingConfigurationTest {
     @Autowired
     BatchServiceImpl batchService;
 
-    @BeforeEach
+   // @BeforeEach
     void init(){
         bookingRepository.findAll().forEach(System.out::println);
         bookingRepository.deleteAll();
@@ -54,12 +54,7 @@ class BookingConfigurationTest {
         });
     }
 
-    @AfterEach
-    void clear(){
-//        bookingRepository.findAll().forEach(booking -> {
-//                if(booking.isDeleted()) bookingRepository.deleteById(booking.getId());
-//        });
-    }
+
 
     @Test
     @DisplayName("Check-in data query verification")
@@ -82,6 +77,16 @@ class BookingConfigurationTest {
                     .matches(localDateTime ->
                             localDateTime.isBefore(LocalDateTime.now()));
         });
+    }
+
+    @Test
+    @DisplayName("")
+    void test() throws Exception {
+        // given
+        batchService.hotelJob();
+        // when
+
+        // then
     }
 
 }
