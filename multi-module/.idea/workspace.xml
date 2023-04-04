@@ -6,9 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="db43dd2a-a458-4234-bbd2-661777756490" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/controller/HotelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/controller/HotelController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/service/Impl/HotelServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/service/Impl/HotelServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/resources/templates/hotel/hotelUpdate.html" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/resources/templates/hotel/hotelUpdate.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/controller/BookingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/controller/BookingController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,6 +90,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="org.hotel.back.service.Impl" />
       <recent name="com.back.bookingmodule.config.exception" />
       <recent name="com.back.bookingmodule.data.Response" />
     </key>
@@ -116,7 +115,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.BackApplication">
+  <component name="RunManager" selected="Gradle.HotelAPIServiceTest.test">
     <configuration name="BookingModuleApplicationTests.contextLoads" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -131,6 +130,35 @@
             <option value=":test" />
             <option value="--tests" />
             <option value="&quot;com.back.bookingmodule.BookingModuleApplicationTests.contextLoads&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="HotelAPIServiceTest.test" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="env">
+          <map>
+            <entry key="API_KEY" value="26f037dc249943e4b75e005d6fc3858d" />
+            <entry key="KAKAO_KEY" value="f9b458c1d685a9638dd928c2be0f6c63" />
+          </map>
+        </option>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/back" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;org.hotel.back.service.api.HotelAPIServiceTest.test&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -198,12 +226,12 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="ManagerRepositoryImplTest.hotelInfoTest (1)" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="HotelCacheServiceImplTest.RoomCacheServiceImplTest2" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="env">
           <map>
             <entry key="API_KEY" value="26f037dc249943e4b75e005d6fc3858d" />
-            <entry key="KAKAO_KEY" value="26908928dc4fbc906aa69783b4c367f5" />
+            <entry key="KAKAO_KEY" value="f9b458c1d685a9638dd928c2be0f6c63" />
           </map>
         </option>
         <option name="executionName" />
@@ -217,36 +245,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;org.hotel.back.repository.custom.impl.ManagerRepositoryImplTest.hotelInfoTest&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="ManagerRepositoryImplTest.testData (1)" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="env">
-          <map>
-            <entry key="API_KEY" value="26f037dc249943e4b75e005d6fc3858d" />
-            <entry key="KAKAO_KEY" value="26908928dc4fbc906aa69783b4c367f5" />
-          </map>
-        </option>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/back" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;org.hotel.back.repository.custom.impl.ManagerRepositoryImplTest.testData&quot;" />
+            <option value="&quot;org.hotel.back.service.Impl.HotelCacheServiceImplTest.RoomCacheServiceImplTest2&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -301,21 +300,21 @@
     </configuration>
     <list>
       <item itemvalue="Gradle.booking-module" />
-      <item itemvalue="Gradle.HotelCacheServiceImplTest.RoomCacheServiceImplTest" />
-      <item itemvalue="Gradle.HotelCacheServiceImplTest" />
       <item itemvalue="Gradle.BookingModuleApplicationTests.contextLoads" />
-      <item itemvalue="Gradle.ManagerRepositoryImplTest.testData (1)" />
-      <item itemvalue="Gradle.ManagerRepositoryImplTest.hotelInfoTest (1)" />
+      <item itemvalue="Gradle.HotelAPIServiceTest.test" />
+      <item itemvalue="Gradle.HotelCacheServiceImplTest" />
+      <item itemvalue="Gradle.HotelCacheServiceImplTest.RoomCacheServiceImplTest2" />
+      <item itemvalue="Gradle.HotelCacheServiceImplTest.RoomCacheServiceImplTest" />
       <item itemvalue="Spring Boot.BackApplication" />
       <item itemvalue="Spring Boot.BookingModuleApplication" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.HotelCacheServiceImplTest.RoomCacheServiceImplTest" />
+        <item itemvalue="Gradle.HotelAPIServiceTest.test" />
+        <item itemvalue="Gradle.HotelCacheServiceImplTest.RoomCacheServiceImplTest2" />
         <item itemvalue="Gradle.HotelCacheServiceImplTest" />
+        <item itemvalue="Gradle.HotelCacheServiceImplTest.RoomCacheServiceImplTest" />
         <item itemvalue="Gradle.BookingModuleApplicationTests.contextLoads" />
-        <item itemvalue="Gradle.ManagerRepositoryImplTest.hotelInfoTest (1)" />
-        <item itemvalue="Gradle.ManagerRepositoryImplTest.testData (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -367,6 +366,15 @@
       <workItem from="1679543176263" duration="14047000" />
       <workItem from="1679573542639" duration="2009000" />
       <workItem from="1679630588561" duration="5267000" />
+      <workItem from="1679642389936" duration="10587000" />
+      <workItem from="1679659718181" duration="1359000" />
+      <workItem from="1679833379757" duration="604000" />
+      <workItem from="1679889575101" duration="1214000" />
+      <workItem from="1679977333960" duration="2114000" />
+      <workItem from="1680074885624" duration="752000" />
+      <workItem from="1680236980690" duration="1825000" />
+      <workItem from="1680315448108" duration="1000" />
+      <workItem from="1680595122365" duration="7000" />
     </task>
     <servers />
   </component>

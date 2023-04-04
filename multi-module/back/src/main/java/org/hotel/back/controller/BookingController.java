@@ -27,7 +27,7 @@ public class BookingController {
 
     @GetMapping("/booking/availableRooms")
     public String bookingRead(Model model,  @RequestParam Long hotelId, @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) @RequestParam LocalDate checkIn, @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) @RequestParam LocalDate checkOut){
-
+        System.out.println("------------"+checkIn);
         List<Room> availableRoomList = bookingService.findAvailable(hotelId,checkIn, checkOut);
         model.addAttribute("roomList", availableRoomList);
         return "booking/booking";
