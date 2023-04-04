@@ -2,6 +2,7 @@ package org.hotel.back.controller;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.hotel.back.data.dto.BookingDTO;
 import org.hotel.back.data.response.RoomDTO;
 import org.hotel.back.domain.*;
 import org.hotel.back.repository.BookingRepository;
@@ -26,7 +27,7 @@ import java.util.Date;
 import java.util.List;
 
 @RequiredArgsConstructor
-@RestController
+//@RestController
 @RequestMapping("/booking")
 @Slf4j
 public class BookingContoller {
@@ -56,5 +57,6 @@ public class BookingContoller {
     @PostMapping("/save")
     public Boolean bookingSave(@RequestBody BookingDTO bookingDTO){
         bookingService.bookingSave(bookingDTO);
+        return false;
     }
 }

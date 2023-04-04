@@ -18,5 +18,5 @@ public interface BookingService {
 
     public BookingDTO findById(Long id);
 
-    public void
+    void bookingSave(BookingDTO bookingDTO);
 }

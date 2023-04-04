@@ -4,6 +4,7 @@ import com.querydsl.core.Tuple;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.hotel.back.config.booking.RoomDtoConverter;
+import org.hotel.back.data.dto.BookingDTO;
 import org.hotel.back.data.request.BookingRequestDTO;
 import org.hotel.back.data.response.BookingResponseDTO;
 import org.hotel.back.data.response.RoomDTO;
@@ -55,6 +56,16 @@ public class BookingServiceImpl implements BookingService {
         return roomDTOs;
     }
 
+    @Override
+    public BookingDTO findById(Long id) {
+        return null;
+    }
+
+    @Override
+    public void bookingSave(BookingDTO bookingDTO) {
+
+    }
+
 
     /*
      * 관리자용
@@ -67,7 +78,7 @@ public class BookingServiceImpl implements BookingService {
     * (예약자 명으로 해야하나 고민중)
     * 레파지토리에서 아이디 값으로 찾아오고 null값일 경우 예외처리.
     * 반환 값은 DTO로 준다.*/
-    @Override
+    //@Override
     public BookingResponseDTO read(Long id) {
         Booking booking = bookingRepository.findById(id)
                 .orElseThrow(IllegalArgumentException::new);
@@ -81,7 +92,7 @@ public class BookingServiceImpl implements BookingService {
     * 요청받은 데이터를 엔티티로 바꿔 DB에 저장한다.
     * 예약정보가 생성된 시간과 체크인 시간은 현재시간으로 동일하게만듦.
     * 성공적으로 저장되면 false를 반환하고 콘솔에서 저장 내용을 확인할 수 있다.*/
-    @Override
+   // @Override
     public boolean save(BookingRequestDTO bookingRequestDTO) {
         bookingRequestDTO.setCreatedAt(LocalDateTime.now());
         //null에러 방지.
@@ -96,7 +107,7 @@ public class BookingServiceImpl implements BookingService {
     /*수정기능
     * 엔티티의 modify기능으로 입실, 퇴실 시간 자동지정 및
     * 고객과 방 변경기능.*/
-    @Override
+   // @Override
     public boolean modify(BookingRequestDTO bookingRequestDTO) {
         Booking booking = bookingRepository.findById(bookingRequestDTO.getBookingId())
                 .orElseThrow(RuntimeException::new);
@@ -112,7 +123,7 @@ public class BookingServiceImpl implements BookingService {
     /*삭제 기능
     * id 값으로 객체를 찾아서 삭제
     * 삭제에 성공하면 false를 반환*/
-    @Override
+   // @Override
     public boolean delete(Long id) {
         bookingRepository.deleteById(id);
         return false;

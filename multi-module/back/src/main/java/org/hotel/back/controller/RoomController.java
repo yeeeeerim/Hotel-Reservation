@@ -38,6 +38,8 @@ public class RoomController {
     }
 
 
+
+    // /room/detail?id=1&hotelNa=소풍호텔
     @GetMapping("/room/detail")
     public String roomDetailsGET(Long id,
                                  Model model,
