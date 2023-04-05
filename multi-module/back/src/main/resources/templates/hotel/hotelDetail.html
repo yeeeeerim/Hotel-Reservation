@@ -111,10 +111,10 @@
 <input class="checkOut" type="date" id="checkOut" name="checkOut"
        th:value="${checkOut}" required>
 <button class="checkbutton">객실 조회</button>
+
 <div class="container room-check"></div>
 
-<button type="button" class="btn btn-dark" th:onclick="|location.href='@{/booking/save(id=${article.id})}'|">예약하기
-</button>
+
 <p></p>
 <p></p>
 <form class="mb-3" name="myform" id="myform" method="post" th:action="@{/hotel/review/save(id=${article.id})}">
@@ -218,26 +218,57 @@ if (imageList != null) {
     // 마커가 지도 위에 표시되도록 설정합니다
     marker.setMap(map);
 
-    document.querySelector(".checkbutton").addEventListener("click", function (e){
+    document.querySelector(".checkbutton").addEventListener("click", async function (e){
         const data = 0;
-        gettest().then((response)=> {
+        try {
+            const response = await gettest();
             for(const dto of response){
                 $(`.room-check`).append(`
-                    <div>
-                        <p>${dto.roomNumber}</p>
-                        <p>${dto.roomClass}</p>
-                        <p>${dto.roomPrice}</p>
-                        <p>${dto.roomLimit}</p>
-                        <p>${dto.description}</p>
+                <div class="row">
+                    <div class="card">
+                        <div class="col-8" style="margin-top: 200px;margin-left: 30px">
+                            <p>${dto.roomNumber}</p>
+                            <p>객실 등급 : ${dto.roomClass}</p>
+                            <p>가격     : ${dto.roomPrice}</p>
+                            <p>인원     : ${dto.roomLimit}</p>
+                            <p>${dto.description}</p>
+                            <button class="roomsavebutton" data-room-number="${dto.roomNumber}">예약하기</button>
+                        </div>
                     </div>
-                 `)}}
-               ).catch(e => console.log("error"))
-    })
+                </div>
+            `);
+
+
+
+                $(`.room-check .card:last-child .roomsavebutton`).off('click').on('click', function() {
+                    const checkIn = document.querySelector(".checkIn").value;
+                    const checkOut = document.querySelector(".checkOut").value;
+                    const roomNumber = $(this).data('room-number');
+
+                    axios.post('/booking/save', {
+                        roomNumber: roomNumber,
+                        checkIn: checkIn,
+                        checkOut: checkOut
+                    }).then((response) => {
+                        console.log("OK")
+                    }).catch((error) => {
+                        console.log("fail")
+                        console.log(checkIn)
+                        console.log(roomNumber)
+                    });
+                });
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    });
+
 </script>
 <script>
     async function gettest(){
         const checkIn = document.querySelector(".checkIn").value
         const checkOut = document.querySelector(".checkOut").value
+
         const url = "/booking/available?checkIn="+checkIn+"&checkOut="+checkOut
 
 

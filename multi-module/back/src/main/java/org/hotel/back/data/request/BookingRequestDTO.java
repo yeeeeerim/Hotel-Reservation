@@ -5,6 +5,7 @@ import org.hotel.back.domain.Booking;
 import org.hotel.back.domain.Hotel;
 import org.hotel.back.domain.Member;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Builder
@@ -14,13 +15,9 @@ import java.time.LocalDateTime;
 @ToString
 public class BookingRequestDTO {
 
-    private Long bookingId;
-    private Hotel hotel;
-    private LocalDateTime createdAt;
-    private LocalDateTime modifiedAt;
-    private Member member;
+    private String roomNumber;
     private LocalDateTime checkIn;
-    private LocalDateTime check_out;
+    private LocalDateTime checkOut;
 
 
 }

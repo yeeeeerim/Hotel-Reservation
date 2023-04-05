@@ -5,6 +5,7 @@ import org.hotel.back.domain.Booking;
 import org.hotel.back.domain.Hotel;
 import org.hotel.back.domain.Member;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Builder

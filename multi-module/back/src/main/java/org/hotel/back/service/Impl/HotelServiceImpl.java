@@ -39,6 +39,7 @@ public class HotelServiceImpl implements HotelService {
     private final HotelRepository hotelRepository;
     private final HotelImageRepository hotelImageRepository;
     private final KaKaoAPIService kaKaoAPIService;
+
     @Value("${upload.path}")
     private String path;
 

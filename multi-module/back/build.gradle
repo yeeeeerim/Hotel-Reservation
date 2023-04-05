@@ -26,8 +26,11 @@ dependencies {
     implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
     implementation 'org.springframework.boot:spring-boot-starter-webflux'
     implementation 'org.springframework.session:spring-session-data-redis'
+    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310'
+
 
     implementation 'org.springframework.boot:spring-boot-starter-data-redis:3.0.4'
+    implementation project(path: ':')
     compileOnly 'org.projectlombok:lombok:1.18.26'
     annotationProcessor 'org.projectlombok:lombok:1.18.26'
 
@@ -55,6 +58,9 @@ dependencies {
 
 
     implementation 'net.coobird:thumbnailator:0.4.19'
+
+
+
 }
 
 tasks.named('test') {

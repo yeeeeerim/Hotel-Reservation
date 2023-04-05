@@ -62,6 +62,19 @@ class HotelAPIServiceTest {
     }
 
     @Test
+    @WithMockUser(username = "owner", roles = "OWNER")
+    void save(){
+
+        hotelRepository.save(Hotel.builder()
+                        .cityName("123")
+                        .latitude("37.7849662009")
+                        .longitude("126.6820458015")
+                        .hotelName("123")
+                        .tellNumber("1111")
+                        .writer("asdf")
+                .build());
+    }
+    @Test
     @DisplayName("Hotel IMAGE 불러오기 위한 데이터 삽입")
     void HotelAPIServiceTest() {
         // given
