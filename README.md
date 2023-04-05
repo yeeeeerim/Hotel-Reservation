@@ -16,7 +16,7 @@ Spring Batch <br>
 Spring Data JPA <br>
 Thymeleaf(MVC) <br>
 ## 동작 방식
-![image](https://user-images.githubusercontent.com/79129475/218039449-e2fb805e-87bd-44a0-ae53-2aa043845bdd.png)
+![image](https://user-images.githubusercontent.com/79129475/226362885-dfc4dd89-168c-4fab-842b-a38a3dbb163b.png)
 
 8080 서버에서 MVC로 화면 그리고 각 기능들을 가지고 있음 --> Spring MVC
 8090 서버는 배치 프로그램과 호텔 예약 저장 기능과 삭제 기능만 만들예정 --> RESTAPI
@@ -24,7 +24,8 @@ Thymeleaf(MVC) <br>
 
 
 ## ERD 
-![image](https://user-images.githubusercontent.com/79129475/220047446-a2d586cf-23cc-4b5c-8463-e0ca6c49803e.png)
+![image](https://user-images.githubusercontent.com/79129475/228429497-fc381b6a-bdce-49cf-99b3-31b24186a0b0.png)
+
 
 ## 작성법
 브랜치 이름 ->  FEAT: 브랜치이름(소문자)  브랜치 이름은 기능명
@@ -34,12 +35,15 @@ Thymeleaf(MVC) <br>
  
 ## 할 일 (하다가 생기면 적을 예정)
  
+- docker-compose mysql, redis -> AWS 배포테스트
+- Hotel(Image), Review -> 4/4 코드  정리예정
+- Rating 진행 후 -> 코드 정리예정
 
-## 고예림
-
-- 메인 페이지(우리가 가진 호텔 정보(이미지 포함)가 나오고, 이미지를 클릭하면 호텔 자세히 보기로 넘어감, 호텔 CRUD)
-- 리뷰 CRUD  
-- 평점 (2월 20일부터 구현) -> 호텔리스트에서 이미지 대표 한 장 띄우기, 평점 계산해서 호텔리스트에 같이 보이도록 하기 
+> 정리 규칙
+모든 메소드에 주석으로 설명 달기 @param, @apiNote @author
+필요없는 안 쓰는 코드 지우기 
+ERD 최신화 필요
+ 
 
 ## 김우람
 
@@ -52,13 +56,3 @@ Thymeleaf(MVC) <br>
 -  예약 CRUD 만들기, RestAPI로 구성
   (클라이언트가 원하는 날짜를 정해서 서브서버(8090)에 요청을 날림, 서버는 원하는 날짜에 예약이 없는 객실정보를 다 날리기, 그러고 클라이언트가 객실 리스트 중에서 선택을 한다. ) -객실리스트 페이지에서 JS 수정예정  
 
-## 김재우
-
-- 회원 가입 페이지
-- 로그인 페이지
-- WebClient 요청넣기
-- 배치 프로그램 - 뼈대 잡음
-- OpenAPI 데이터 뽑아오기 - 끝난듯
-- 업주 페이지 {호텔정보(객실,이미지) 저장페이지} -- 2월 20일
-- 레디스 세션공유 -- 2월 20일
-- Swagger 구현

@@ -1,15 +1,20 @@
 package org.hotel.back.repository;
 
 import org.hotel.back.domain.Booking;
-import org.hotel.back.domain.Room;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
+import java.sql.Date;
+import java.time.LocalDateTime;
 
 public interface BookingRepository extends JpaRepository<Booking, Long> {
 
-    @Query("SELECT r FROM Room r WHERE r.id NOT IN (SELECT b FROM Booking b WHERE b.checkIn <= :checkOut AND b.check_out >= :checkIn)")
-    List<Room> getNotReservation(@Param("checkIn")String checkIn, @Param("checkOut")String checkOut);
+    @Transactional
+    @Modifying
+    @Query("update Booking b set b.checkIn = :checkIn, b.checkOut = :checkOut where b.id = :id")
+    void updateBooking(@Param("id") Long id, @Param("checkIn") LocalDateTime checkIn, @Param("checkOut")LocalDateTime checkOut);
+
 }

@@ -12,4 +12,6 @@ public interface HotelRepository extends JpaRepository<Hotel,Long> {
     @Query("select distinct h from Hotel h " +
             "left join fetch h.reviews where h.id = :id")
     Hotel findFetchJoin(@Param("id")Long id);
+
+
 }

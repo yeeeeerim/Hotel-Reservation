@@ -2,6 +2,7 @@ package org.hotel.back.service.Impl;
 
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.hotel.back.config.exception.FileUploadException;
 import org.hotel.back.config.exception.FileViewException;
 import org.hotel.back.data.dto.FileDTO;
@@ -12,6 +13,7 @@ import org.hotel.back.data.response.RoomResponseDTO;
 import org.hotel.back.domain.Room;
 import org.hotel.back.domain.RoomImage;
 import org.hotel.back.repository.RoomRepository;
+import org.hotel.back.service.RoomCacheService;
 import org.hotel.back.service.RoomService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.FileSystemResource;
@@ -29,6 +31,7 @@ import java.nio.file.Paths;
 import java.util.*;
 import java.util.stream.Collectors;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class RoomServiceImpl implements RoomService {
@@ -38,6 +41,8 @@ public class RoomServiceImpl implements RoomService {
     private String path;
 
     private final RoomRepository roomRepository;
+
+    private final RoomCacheService roomCacheService;
 
 
     public List<FileDTO> upload(UploadDTO uploadDTO){
@@ -104,14 +109,33 @@ public class RoomServiceImpl implements RoomService {
        public void save(RoomDTO roomDTO){
                 roomRepository.save(toEntity(roomDTO));
        }
+
+        /**
+         * @apiNote id값으로 redis를 먼저 조회한 후 데이터가 없다면 RDB를 뒤져서 가져온다
+         *      RDB를 뒤져서 가져온 데이터는 바로 redis에 저장되고 다음 번 호출 때는 redis를 통해가져온다.
+         *
+         * */
        public RoomDTO findByRoomWithImage(Long id){
-                return toDTO(roomRepository.getRoomWithImage(id).orElseThrow(RuntimeException::new));
+
+           RoomDTO roomDTO = roomCacheService.findById(id);
+
+           if(roomDTO == null){
+               log.info("Extract from data Repository and Insert Data redis");
+               RoomDTO temp = toDTO(roomRepository.getRoomWithImage(id).orElseThrow(RuntimeException::new));
+               roomCacheService.save(temp);
+               return temp;
+           }
+           return roomDTO;
        }
 
 
-
+        @Transactional
         public boolean modifyRoom(RoomDTO roomDTO){
                 Room room = roomRepository.getRoomWithImage(roomDTO.getId()).orElse(null);
+
+
+                RoomDTO cacheDTO = roomCacheService.findById(roomDTO.getId());
+                if(cacheDTO != null) roomCacheService.delete(roomDTO.getId());
 
                 if(room != null){
                     room.changeRoomInfo(roomDTO.getRoomPrice(), roomDTO.getDescription());
@@ -124,6 +148,7 @@ public class RoomServiceImpl implements RoomService {
                     }
 
                     roomRepository.save(room);
+                    // 이미지까지 저장하는 것이기에 dirty Checking 불가
                     return true;
                 }else{
                     return false;
@@ -131,6 +156,10 @@ public class RoomServiceImpl implements RoomService {
         }
 
         public void deleteRoom(Long id){
+           RoomDTO dto  = roomCacheService.findById(id);
+
+           if(dto != null) roomCacheService.delete(id);
+
             roomRepository.deleteById(id);  //상세보기 페이지에서 id값을 날리기 때문에 굳이 null체크 필요없을 거 같다
         }
 
@@ -164,7 +193,7 @@ public class RoomServiceImpl implements RoomService {
 
          dto.setFileNames(room.getRoomImage()
                  .stream()
-                 .sorted()
+
                  .map(RoomImage::getName)
                  .collect(Collectors.toList()));
          return dto;

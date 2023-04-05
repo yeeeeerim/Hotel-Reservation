@@ -19,6 +19,8 @@ import java.util.Set;
 public class RoomResponseDTO {
     private Long id;
 
+
+    String hotelNa;
     @Builder.Default
     private Set<String> roomImage = new HashSet<>();
 

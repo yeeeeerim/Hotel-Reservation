@@ -32,12 +32,14 @@ import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
+
 @Service
 @RequiredArgsConstructor
 public class HotelServiceImpl implements HotelService {
     private final HotelRepository hotelRepository;
     private final HotelImageRepository hotelImageRepository;
     private final KaKaoAPIService kaKaoAPIService;
+
     @Value("${upload.path}")
     private String path;
 
@@ -83,7 +85,9 @@ public class HotelServiceImpl implements HotelService {
             }
             listDTO.add(dto);
         }
+
         return new PageImpl<>(listDTO, pageable, hotels.getTotalElements());
+
     }
 
 
@@ -93,12 +97,16 @@ public class HotelServiceImpl implements HotelService {
         Hotel hotel=hotelRepository.findFetchJoin(id);
 
         List<Long> rating=hotel.getReviews().stream().map(review -> review.getRating()).collect(Collectors.toList());
+
         //리뷰 평점계산
         double avg=0;
-        for (Long a:rating) {
-            avg+=a;
-        }
-        avg/=rating.size();
+        Long sum = 0L;
+
+            for (Long a:rating) {
+                if(a != null) sum += a;
+            }
+            if(sum != 0) avg = sum/rating.size();
+
         if(Double.isNaN(avg)){avg=0;} //평점이 없어 NaN으로 계산이 된 경우 0으로 값을 변경한다.
 
         HotelResponseDTO dto=new HotelResponseDTO(hotel,avg);

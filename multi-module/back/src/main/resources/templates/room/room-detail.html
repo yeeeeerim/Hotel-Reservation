@@ -39,9 +39,7 @@
               <tbody>
               <tr style="line-height:32px;">
                 <td>호텔이름</td>
-                <div th:text="${dto.id}">
-
-                </div>
+                  <input type="text" name="hotel" class="form-control" th:value="${dto.hotelNa}" readonly>
                 <td>
                   <input type="text" name="hotel" class="form-control" th:value="${dto.id}" readonly>
                 </td>
@@ -137,7 +135,6 @@
     const hotelId = [[ ${hotelId} ]]
     const roomId = [[ ${dto.id} ]]
 
-    $('.hotelId').val(hotelId)
 
     if(imageList != null){
           for(const fileName of imageList){

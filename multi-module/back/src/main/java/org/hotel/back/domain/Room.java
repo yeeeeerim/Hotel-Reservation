@@ -10,6 +10,7 @@ import java.util.Set;
 @Entity
 @Builder
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
@@ -41,6 +42,7 @@ public class Room {
 
 
     private LocalDate checkIn;
+
     private LocalDate checkOut;
 
 

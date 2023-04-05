@@ -2,98 +2,88 @@ package org.hotel.back.controller;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.hotel.back.config.exception.BookingErrorResponse;
+import org.hotel.back.config.exception.BookingException;
+import org.hotel.back.data.dto.BookingDTO;
+import org.hotel.back.data.request.BookingRequestDTO;
+import org.hotel.back.data.response.RoomDTO;
 import org.hotel.back.domain.*;
-import org.hotel.back.repository.BookingRepository;
-import org.hotel.back.repository.RoomRepository;
 import org.hotel.back.service.BookingService;
-import org.hotel.back.service.HotelService;
-import org.hotel.back.service.MemberService;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
+import java.security.Principal;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.List;
 
 @RequiredArgsConstructor
-@Controller
+@RestController
+@RequestMapping("/booking")
 @Slf4j
 public class BookingContoller {
-    private final RoomRepository roomRepository;
-    private final BookingRepository bookingRepository;
-
     private final BookingService bookingService;
-    private final HotelService hotelService;
-    private final MemberService memberService;
 
-    /*view 예약된 정보 조회*/
-    @GetMapping("/booking/list")
-    public String bookingRead(Model model, String checkIn, String checkOut){
-        List<Room> availableRoomList = bookingService.findAvailable(checkIn, checkOut);
-        model.addAttribute("roomList", availableRoomList);
-        return "booking";
+    /**
+     * 예약 가능한 방 불러오기
+     * */
+    @GetMapping("/available")
+    public ResponseEntity<List<RoomDTO>> availableRooms(@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate checkIn,
+                                               @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate checkOut){
+        LocalDateTime localDateTimeIn = checkIn.atTime(12,0);
+        LocalDateTime localDateTimeOut = checkOut.atTime(12,0);
+        List<RoomDTO> availableRoomList = bookingService.findAvailable(localDateTimeIn, localDateTimeOut);
+
+        return ResponseEntity.ok(availableRoomList);
     }
 
-    @GetMapping("/booking/date")
-    public String selectDate(){
-        return "dateSelecte";
+    /**
+     *
+     * */
+
+    @PostMapping("/save")
+    public Boolean bookingSave(@RequestBody BookingDTO bookingDTO){
+        bookingService.bookingSave(bookingDTO);
+        return true;
     }
 
 
+    @GetMapping("/list") //예약 리스트 전부 불러오기
+    public List<Booking> bookingList(){
+        return bookingService.getBooking();
+    }
+    @GetMapping("/find/{id}") //id로 예약정보 한개 찾기
+    public BookingDTO findBooking(@RequestParam("id") Long id){
+        BookingDTO dto = bookingService.findById(id);
+        return dto;
+    }
 
+    @PutMapping("/modify/{id}") // 수정
+    public Boolean updateBooking(@RequestBody BookingDTO bookingDTO, @AuthenticationPrincipal Principal principal) {
+        System.out.println(bookingDTO.getCheckIn().getClass().getName());
+        if (principal.getName().equals(bookingDTO.getMemberEmail())) {
+            bookingService.updateBooking(bookingDTO.getCheckIn(), bookingDTO.getCheckOut(), bookingDTO.getMemberEmail(), bookingDTO.toEntity().getId());
+            return true;
+        } else if (principal.getName().equals(null)) {
+            throw new NullPointerException();
+        }else return false;
+    }
 
-//
-//    /*view - 예약하기 버튼으로 수행되는 저장
-//    * requestDTO의 setter를 통해 바인딩 된 form데이터 저장
-//    * prg패턴으로 예약완료된 페이지 보여줌. */
-//    @GetMapping("/booking/save")
-//    public void bookingSave(@RequestParam Long id){
-//        //호텔 객체에 id값으로 조회된 호텔 불러오기
-//        Hotel hotel = hotelService.hotelDetail(id);
-//        //멤버 객체 불러와야하지만 임시로 멤버 객체 생성.
-//        Member member = Member.builder()
-//                .email("test1")
-//                .password("test1")
-//                .tellNumber("011-0202-0202")
-//                .gender(Gender.WOMAN)
-//                .nickName("mic")
+    @DeleteMapping("/delete/{id}") // 삭제
+    public Boolean deleteBooking(@PathVariable("id") Long id){
+        bookingService.delete(id);
+        return true;
+    }
+
+//    @ExceptionHandler(Exception.class)
+//    public BookingErrorResponse handleException(BookingException e){
+//        return BookingErrorResponse.builder()
+//                .errorCode(e.getBookingErrorCode())
+//                .errorMessage(e.getDetailMessage())
 //                .build();
-//
-//        //request 객체 생성하여 전달.
-//        BookingRequestDTO bookingRequestDTO = BookingRequestDTO.builder()
-//                .hotel(hotel)
-//                .member(member)
-//                .createdAt(LocalDateTime.now())
-//                .modifiedAt(LocalDateTime.of(2000,01,01,01,01,01))
-//                .checkIn(LocalDateTime.of(2000,01,01,01,01,01))
-//                .check_out(LocalDateTime.of(2000,01,01,01,01,01))
-//                .build();
-//
-//        //null에러 방지를 위해 localdateTime 기본값 입력.
-//
-//        bookingService.save(bookingRequestDTO);
-//       /* return "redirect:/booing";*/
 //    }
-//
-//
-//    /*수정
-//    * 조회된 예약정보에서 입실 기능으로 수행되는 수정기능
-//    * 입실 및 퇴실시간 자동등록*/
-//    @PostMapping("/booking/modify")
-//    public String bookingModify(@RequestBody BookingRequestDTO bookingRequestDTO){
-//        bookingService.modify(bookingRequestDTO);
-//        return "redirect:/booking";
-//    }
-//
-//
-//
-//    /*삭제
-//    * 예약취소버튼으로 수행되는 삭제
-//    * prg패턴으로 삭제이후 메인페이지 보여줌.*/
-//    @GetMapping("/booking/delete")
-//    public String bookingDelete(@RequestParam Long id){
-//        bookingService.delete(id);
-//        return "redirect:/hotel";
-//    }
-
 }
