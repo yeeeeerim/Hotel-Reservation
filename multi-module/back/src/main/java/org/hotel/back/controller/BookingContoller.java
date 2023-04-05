@@ -109,6 +109,7 @@ public class BookingContoller {
         LocalDate dateTime = LocalDate.parse(dateString, formatter);
         LocalDateTime localDateTimeOut = dateTime.atTime(12,0);
 
+
         return localDateTimeOut;
     }
 
