@@ -15,6 +15,7 @@ import org.hotel.back.repository.RoomRepository;
 import org.hotel.back.service.BookingService;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletResponse;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -31,10 +32,6 @@ public class BookingServiceImpl implements BookingService {
 
     public List<RoomDTO> findAvailable(LocalDateTime checkIn, LocalDateTime checkOut) {
         System.out.println("ServicecheckIn" + checkIn.getClass().getName());
-
-//        java.sql.Date checkInDate = java.sql.Date.valueOf(checkIn);
-//        java.sql.Date checkOutDate = java.sql.Date.valueOf(checkOut);
-//        System.out.println("ServicecheckIn" + checkInDate.getClass().getName());
 
         List<Room> rooms = roomRepository.findAvailableRooms(checkIn, checkOut);
 
@@ -57,6 +54,7 @@ public class BookingServiceImpl implements BookingService {
     }
 
     public Booking bookingSave(BookingDTO dto) throws BookingException {
+
         Booking booking = bookingRepository.save(dto.toEntity());
         if (bookingRepository.findById(dto.toEntity().getId()).isEmpty()) {
             throw new BookingException(BookingErrorCode.BOOKING_SAVE_FAIL);

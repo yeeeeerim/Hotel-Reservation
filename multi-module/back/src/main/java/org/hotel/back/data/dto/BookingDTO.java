@@ -2,9 +2,11 @@ package org.hotel.back.data.dto;
 
 import lombok.*;
 import org.apache.tomcat.jni.Local;
+import org.hotel.back.data.request.BookingRequestDTO;
 import org.hotel.back.domain.Booking;
 import org.hotel.back.domain.Member;
 
+import javax.validation.constraints.Pattern;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -16,15 +18,12 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class BookingDTO {
     private String roomNumber;
-    private LocalDateTime checkIn;
 
+
+    private LocalDateTime checkIn;
     private LocalDateTime checkOut;
 
     private String memberEmail;
-
-    private LocalDateTime createdAt;
-
-    private LocalDateTime modifiedAt;
 
 
     public Booking toEntity(){
@@ -40,8 +39,14 @@ public class BookingDTO {
                 .checkIn(booking.getCheckIn())
                 .checkOut(booking.getCheckOut())
                 .memberEmail(booking.getMemberEmail())
-                .createdAt(booking.getCreatedAt())
-                .modifiedAt(booking.getModifiedAt())
+                .build();
+    }
+
+    public static BookingDTO bookingDTO(BookingRequestDTO dto, LocalDateTime checkIn, LocalDateTime checkOut, MemberDTO memberDTO){
+        return BookingDTO.builder()
+                .checkIn(checkIn)
+                .checkOut(checkOut)
+                .memberEmail(memberDTO.getEmail())
                 .build();
     }
 

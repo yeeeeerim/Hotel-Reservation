@@ -2,9 +2,11 @@ package org.hotel.back.controller;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.hotel.back.config.exception.BookingErrorCode;
 import org.hotel.back.config.exception.BookingErrorResponse;
 import org.hotel.back.config.exception.BookingException;
 import org.hotel.back.data.dto.BookingDTO;
+import org.hotel.back.data.dto.MemberDTO;
 import org.hotel.back.data.request.BookingRequestDTO;
 import org.hotel.back.data.response.RoomDTO;
 import org.hotel.back.domain.*;
@@ -12,12 +14,15 @@ import org.hotel.back.service.BookingService;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.security.Principal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 
@@ -46,8 +51,21 @@ public class BookingContoller {
      * */
 
     @PostMapping("/save")
-    public Boolean bookingSave(@RequestBody BookingDTO bookingDTO){
-        bookingService.bookingSave(bookingDTO);
+    public Boolean bookingSave(@RequestBody @Valid BookingRequestDTO bookingRequestDTO,
+                               BindingResult bindingResult,
+                               @AuthenticationPrincipal MemberDTO memberDTO){
+        if(memberDTO == null){
+            throw new BookingException(BookingErrorCode.BOOKING_SAVE_FAIL);
+        }
+        if(bindingResult.hasErrors()){
+            bindingResult.getAllErrors().forEach(objectError -> {
+                log.error("ERROR Message {} ", objectError.getDefaultMessage());
+            });
+        }else{
+            BookingDTO dto = BookingDTO.bookingDTO(bookingRequestDTO, localDateTimeParser(bookingRequestDTO.getCheckIn()), localDateTimeParser(bookingRequestDTO.getCheckOut()), memberDTO);
+            bookingService.bookingSave(dto);
+        }
+
         return true;
     }
 
@@ -77,6 +95,15 @@ public class BookingContoller {
     public Boolean deleteBooking(@PathVariable("id") Long id){
         bookingService.delete(id);
         return true;
+    }
+
+    public LocalDateTime localDateTimeParser(String date){
+        String dateString = date;
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate dateTime = LocalDate.parse(dateString, formatter);
+        LocalDateTime localDateTimeOut = dateTime.atTime(12, 0);
+
+        return localDateTimeOut;
     }
 
 //    @ExceptionHandler(Exception.class)
