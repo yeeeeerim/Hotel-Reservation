@@ -1,27 +1,26 @@
 package org.hotel.back.service.Impl;
 
-import com.querydsl.core.Tuple;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.hotel.back.config.booking.RoomDtoConverter;
+<<<<<<< HEAD
+=======
+import org.hotel.back.config.exception.BookingErrorCode;
+import org.hotel.back.config.exception.BookingException;
+>>>>>>> 87aed1abae7e6e0ecc7c0afd6d271ac83d60b074
 import org.hotel.back.data.dto.BookingDTO;
 import org.hotel.back.data.request.BookingRequestDTO;
-import org.hotel.back.data.response.BookingResponseDTO;
 import org.hotel.back.data.response.RoomDTO;
 import org.hotel.back.domain.Booking;
 import org.hotel.back.domain.Room;
 import org.hotel.back.repository.BookingRepository;
 import org.hotel.back.repository.RoomRepository;
 import org.hotel.back.service.BookingService;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.ZoneId;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Service
@@ -31,16 +30,20 @@ public class BookingServiceImpl implements BookingService {
 
     private final BookingRepository bookingRepository;
 
-    private RoomDtoConverter roomDtoConverter = new RoomDtoConverter();
     private final RoomRepository roomRepository;
-    public List<RoomDTO> findAvailable(LocalDate checkIn, LocalDate checkOut) {
-        java.sql.Date checkInDate = java.sql.Date.valueOf(checkIn);
-        java.sql.Date checkOutDate = java.sql.Date.valueOf(checkOut);
-        List<Room> rooms = roomRepository.findAvailableRooms(checkInDate, checkOutDate);
+
+    public List<RoomDTO> findAvailable(LocalDateTime checkIn, LocalDateTime checkOut) {
+        System.out.println("ServicecheckIn" + checkIn.getClass().getName());
+
+//        java.sql.Date checkInDate = java.sql.Date.valueOf(checkIn);
+//        java.sql.Date checkOutDate = java.sql.Date.valueOf(checkOut);
+//        System.out.println("ServicecheckIn" + checkInDate.getClass().getName());
+
+        List<Room> rooms = roomRepository.findAvailableRooms(checkIn, checkOut);
 
         List<RoomDTO> roomDTOs = new ArrayList<>();
 
-        for(Room room : rooms) {
+        for (Room room : rooms) {
             RoomDTO roomDTO = new RoomDTO();
             roomDTO.setId(room.getId());
             roomDTO.setRoomNumber(room.getRoomNumber());
@@ -56,6 +59,7 @@ public class BookingServiceImpl implements BookingService {
         return roomDTOs;
     }
 
+<<<<<<< HEAD
     @Override
     public BookingDTO findById(Long id) {
         return null;
@@ -116,10 +120,17 @@ public class BookingServiceImpl implements BookingService {
             bookingRepository.save(booking);
         }catch (Exception e){
             return true;
+=======
+    public Booking bookingSave(BookingDTO dto) throws BookingException {
+        Booking booking = bookingRepository.save(dto.toEntity());
+        if (bookingRepository.findById(dto.toEntity().getId()).isEmpty()) {
+            throw new BookingException(BookingErrorCode.BOOKING_SAVE_FAIL);
+>>>>>>> 87aed1abae7e6e0ecc7c0afd6d271ac83d60b074
         }
-        return false;
+        return booking;
     }
 
+<<<<<<< HEAD
     /*삭제 기능
     * id 값으로 객체를 찾아서 삭제
     * 삭제에 성공하면 false를 반환*/
@@ -127,5 +138,38 @@ public class BookingServiceImpl implements BookingService {
     public boolean delete(Long id) {
         bookingRepository.deleteById(id);
         return false;
+=======
+    /**
+     * @apiNote id(PK)로 해당 엔티티 단건 조회, 조회 실패할 경우 NOT_FOUND Exception 발생
+     */
+    public BookingDTO findById(Long id) {
+        return BookingDTO.toDTO(bookingRepository.findById(id)
+                .orElseThrow(() -> new BookingException(BookingErrorCode.BOOKING_NOT_FOUND)));
+>>>>>>> 87aed1abae7e6e0ecc7c0afd6d271ac83d60b074
     }
+
+    /**
+     * SecurityContextHolder 사용해서 로그인 정보 id 값인 memberemail과 파라미터로 전달받은 memberEmail이 같을 경우 updateBooking 실행
+     */
+    public void updateBooking(LocalDateTime checkIn, LocalDateTime checkOut, String memberEmail, Long id) {
+        if (bookingRepository.findById(id).isEmpty()) {
+            throw new BookingException(BookingErrorCode.BOOKING_NOT_FOUND);
+        } else if ((checkIn.equals(bookingRepository.findById(id).get().getCheckIn()))
+                && (checkOut.equals(bookingRepository.findById(id).get().getCheckOut()))) {
+            throw new BookingException(BookingErrorCode.BOOKING_NOT_CHANGE);
+        } else {
+
+            bookingRepository.updateBooking(id, checkIn, checkOut);
+        }
+    }
+        //TODO: 리스트조회, 삭제
+        public List<Booking> getBooking(){
+            return bookingRepository.findAll();
+        }
+        public void delete (Long id){
+            bookingRepository.deleteById(id);
+            if (!(bookingRepository.findById(id).isEmpty())) {
+                throw new BookingException(BookingErrorCode.BOOKING_DELETE_FAIL);
+            }
+        }
 }
