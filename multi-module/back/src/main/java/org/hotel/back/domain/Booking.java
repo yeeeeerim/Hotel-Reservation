@@ -1,15 +1,13 @@
 package org.hotel.back.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
-import org.apache.tomcat.jni.Local;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -24,20 +22,28 @@ public class Booking {      //TODO: 실제로 삭제가 아닌 값을 넘길 예
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ToString.Exclude
+
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_email", insertable = false, updatable = false)
     private Member member;
 
+    @JoinColumn(name = "hotel_id", insertable = false, updatable = false)
     @ManyToOne(fetch = FetchType.LAZY)
     private Hotel hotel;
 
-    @Column(name = "room_number")
-    private String roomNumber;
+    @JsonIgnore
+    @JoinColumn(name = "room_id", insertable = false, updatable = false)
+    @ManyToOne
+    private Room room;
+
     @Column(nullable = false)
     private LocalDateTime checkIn;
     @Column(nullable = false)
     private LocalDateTime checkOut;
+
+    @Column(name = "room_id")
+    private Long roomId;
 
     @Column(name = "member_email")
     private String memberEmail;
@@ -47,5 +53,6 @@ public class Booking {      //TODO: 실제로 삭제가 아닌 값을 넘길 예
 
     @LastModifiedDate
     private LocalDateTime modifiedAt;
+
 
 }

@@ -8,8 +8,12 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.security.test.context.support.WithMockUser;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.IntStream;
 
@@ -28,6 +32,22 @@ class RoomRepositoryTest {
     @Autowired
     RoomService roomService;
 
+    @PersistenceContext
+    EntityManager em;
+
+    @Test
+    void test222(){
+        em.createQuery( "SELECT DISTINCT r FROM Room r LEFT JOIN r.booking b WHERE r.hotelId = :hotelId AND (b.checkOut <= :checkIn OR b.checkIn >= :checkOut)")
+                .setParameter("hotelId", 178L)
+                .setParameter("checkIn", LocalDateTime.now().minusDays(1))
+                .setParameter("checkOut", LocalDateTime.now())
+                .getResultList().forEach(System.out::println);
+    }
+//체크인 4월 7일
+    //체크아웃 4월 8일
+
+    //체크아웃 4월 7일 이전
+    //체크인 4월 8일 이후
 
     @Test
     @DisplayName("룸 리스트를 보여줄때 이미지도 필요하기 때문에 시도한 테스트")

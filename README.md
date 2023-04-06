@@ -44,6 +44,16 @@ Thymeleaf(MVC) <br>
 필요없는 안 쓰는 코드 지우기 
 ERD 최신화 필요
  
+4/4 ~ 4/7
+Controller, Service, Repository 테스트
+
+그 다음 주
+
+AWS 배포(EC2, RDS , S3)
+
+
+다다음주
+배포환경에서 결겪은 에러해결
 
 ## 김우람
 

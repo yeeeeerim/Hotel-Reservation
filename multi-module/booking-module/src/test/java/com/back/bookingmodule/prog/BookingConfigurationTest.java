@@ -40,7 +40,11 @@ class BookingConfigurationTest {
     @Autowired
     BatchServiceImpl batchService;
 
+<<<<<<< HEAD
     @BeforeEach
+=======
+   // @BeforeEach
+>>>>>>> 527d5079c141d5a2fb705066adbd502aa53ed9e1
     void init(){
         bookingRepository.findAll().forEach(System.out::println);
         bookingRepository.deleteAll();
@@ -54,12 +58,16 @@ class BookingConfigurationTest {
         });
     }
 
+<<<<<<< HEAD
     @AfterEach
     void clear(){
 //        bookingRepository.findAll().forEach(booking -> {
 //                if(booking.isDeleted()) bookingRepository.deleteById(booking.getId());
 //        });
     }
+=======
+
+>>>>>>> 527d5079c141d5a2fb705066adbd502aa53ed9e1
 
     @Test
     @DisplayName("Check-in data query verification")
@@ -84,4 +92,17 @@ class BookingConfigurationTest {
         });
     }
 
+<<<<<<< HEAD
+=======
+    @Test
+    @DisplayName("")
+    void test() throws Exception {
+        // given
+        batchService.hotelJob();
+        // when
+
+        // then
+    }
+
+>>>>>>> 527d5079c141d5a2fb705066adbd502aa53ed9e1
 }

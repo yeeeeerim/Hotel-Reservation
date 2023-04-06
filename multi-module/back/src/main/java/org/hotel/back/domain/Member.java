@@ -1,5 +1,7 @@
 package org.hotel.back.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
 import javax.persistence.*;
@@ -12,6 +14,7 @@ import java.util.Set;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "member")
 @Builder
 @ToString
 public class Member {
@@ -24,12 +27,15 @@ public class Member {
     private String nickName;
 
     private String tellNumber;
+
     @ToString.Exclude
     @Builder.Default
     @ElementCollection(fetch = FetchType.LAZY)
     private Set<MemberRole> roleSet = new HashSet<>();
+
     @ToString.Exclude
     @Builder.Default
+    @JsonIgnoreProperties("member")
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL,mappedBy = "member")
     private List<Booking> bookingList = new ArrayList<>();
 

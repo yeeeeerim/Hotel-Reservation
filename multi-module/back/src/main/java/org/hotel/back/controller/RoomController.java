@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.hotel.back.data.dto.MemberDTO;
 import org.hotel.back.data.response.RoomDTO;
+import org.hotel.back.data.response.RoomResponseDTO;
 import org.hotel.back.domain.Room;
 import org.hotel.back.service.RoomService;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -38,6 +39,8 @@ public class RoomController {
     }
 
 
+
+    // /room/detail?id=1&hotelNa=소풍호텔
     @GetMapping("/room/detail")
     public String roomDetailsGET(Long id,
                                  Model model,
@@ -45,8 +48,9 @@ public class RoomController {
                                  @RequestParam(required = false) String check,
                                  String hotel,
                                  @AuthenticationPrincipal MemberDTO memberDTO){
-        var data =roomService.getDetail(id,memberDTO != null ? memberDTO.getEmail() : null);
-        data.setHotelNa(hotelNa);
+        RoomResponseDTO data =roomService.getDetail(id,memberDTO != null ? memberDTO.getEmail() : null);
+        if(data != null) data.setHotelNa(hotelNa);
+
 
         model.addAttribute("dto",data);
         model.addAttribute("hotelId",hotel);
@@ -97,7 +101,7 @@ public class RoomController {
         return "redirect:/room/list";
     }
 
-    @PreAuthorize("hasRole('OWNER')")
+   // @PreAuthorize("hasRole('OWNER')")
     @PostMapping("/room/save")
     public String roomSavePOST(RoomDTO roomDTO){
             log.info("==> {}",roomDTO);

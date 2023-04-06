@@ -1,34 +1,37 @@
 package org.hotel.back.data.dto;
 
 import lombok.*;
-import org.apache.tomcat.jni.Local;
 import org.hotel.back.data.request.BookingRequestDTO;
 import org.hotel.back.domain.Booking;
-import org.hotel.back.domain.Member;
-
-import javax.validation.constraints.Pattern;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Getter
 @Setter
 @ToString
 @Builder
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 public class BookingDTO {
-    private String roomNumber;
 
+    private Long id;
+
+    private Long roomId;
 
     private LocalDateTime checkIn;
+
     private LocalDateTime checkOut;
 
     private String memberEmail;
 
+    private LocalDateTime createdAt;
+
+    private LocalDateTime modifiedAt;
+
 
     public Booking toEntity(){
         return Booking.builder()
-                .roomNumber(this.roomNumber)
+                .id(this.id)
+                .roomId(this.roomId)
                 .checkIn(this.checkIn)
                 .checkOut(this.checkOut)
                 .memberEmail(this.memberEmail)
@@ -36,6 +39,7 @@ public class BookingDTO {
     }
     public static BookingDTO toDTO(Booking booking){
         return BookingDTO.builder()
+                .roomId(booking.getRoomId())
                 .checkIn(booking.getCheckIn())
                 .checkOut(booking.getCheckOut())
                 .memberEmail(booking.getMemberEmail())
@@ -44,6 +48,7 @@ public class BookingDTO {
 
     public static BookingDTO bookingDTO(BookingRequestDTO dto, LocalDateTime checkIn, LocalDateTime checkOut, MemberDTO memberDTO){
         return BookingDTO.builder()
+                .roomId(dto.getRoomId())
                 .checkIn(checkIn)
                 .checkOut(checkOut)
                 .memberEmail(memberDTO.getEmail())
