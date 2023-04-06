@@ -86,13 +86,8 @@ public class BookingContoller {
 
     @GetMapping(value = "/find/{id}", produces = MediaType.APPLICATION_JSON_VALUE) //id로 예약정보 한개 찾기
     public BookingResponseDTO findBooking(@PathVariable("id") Long id){
-        BookingDTO dto = bookingService.findById(id);
-        BookingResponseDTO bookingResponseDTO = new BookingResponseDTO();
-        bookingResponseDTO.setId(id);
-        bookingResponseDTO.setRoomId(dto.getRoomId());
-        bookingResponseDTO.setCheckIn(dto.getCheckIn().toString());
-        bookingResponseDTO.setCheckOut(dto.getCheckOut().toString());
-        bookingResponseDTO.setMemberEmail(dto.getMemberEmail());
+        BookingResponseDTO bookingResponseDTO = bookingService.findById(id);
+
         return bookingResponseDTO;
     }
 
@@ -107,7 +102,7 @@ public class BookingContoller {
         }else return false;
     }
 
-    @DeleteMapping("/delete/{id}") // 삭제
+    @PostMapping("/delete/{id}") // 삭제
     public Boolean deleteBooking(@PathVariable("id") Long id) {
         bookingService.delete(id);
         return true;

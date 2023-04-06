@@ -57,9 +57,16 @@ public class BookingServiceImpl implements BookingService {
     /**
      * @apiNote id(PK)로 해당 엔티티 단건 조회, 조회 실패할 경우 NOT_FOUND Exception 발생
      */
-    public BookingDTO findById(Long id) {
-        return BookingDTO.toDTO(bookingRepository.findById(id)
+    public BookingResponseDTO findById(Long id) {
+        BookingDTO bookingDTO = BookingDTO.toDTO(bookingRepository.findById(id)
                 .orElseThrow(() -> new BookingException(BookingErrorCode.BOOKING_NOT_FOUND)));
+        BookingResponseDTO bookingResponseDTO = new BookingResponseDTO();
+        bookingResponseDTO.setId(id);
+        bookingResponseDTO.setRoomId(bookingDTO.getRoomId());
+        bookingResponseDTO.setCheckIn(bookingDTO.getCheckIn().toString());
+        bookingResponseDTO.setCheckOut(bookingDTO.getCheckOut().toString());
+        bookingResponseDTO.setMemberEmail(bookingDTO.getMemberEmail());
+        return bookingResponseDTO;
     }
 
     /**
@@ -93,13 +100,16 @@ public class BookingServiceImpl implements BookingService {
         }
 
         public void delete (Long id){
-            if (!(bookingRepository.findById(id).isEmpty())) {
+            if (findById(id) == null) {
                 throw new BookingException(BookingErrorCode.BOOKING_DELETE_FAIL);
             }else {
-                BookingDTO bookingDTO = new BookingDTO();
-                bookingDTO.toDTO(bookingRepository.findById(id)
-                        .orElseThrow(() -> new BookingException(BookingErrorCode.BOOKING_NOT_FOUND)));
-
+                BookingResponseDTO bookingResponseDTO = findById(id);
+                LocalDateTime checkIn = LocalDateTime.parse(bookingResponseDTO.getCheckIn());
+                LocalDateTime checkOut = LocalDateTime.parse(bookingResponseDTO.getCheckOut());
+                BookingDTO bookingDTO = bookingResponseDTO.bookingDTO(checkIn, checkOut);
+                Booking booking = bookingDTO.toDeletedEntity();
+                System.out.println("==============="+booking.getDeleted());
+                bookingRepository.save(booking);
             }
         }
 }

@@ -54,5 +54,5 @@ public class Booking {      //TODO: 실제로 삭제가 아닌 값을 넘길 예
     @LastModifiedDate
     private LocalDateTime modifiedAt;
 
-
+    private Boolean deleted;
 }

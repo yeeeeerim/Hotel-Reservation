@@ -27,6 +27,7 @@ public class BookingDTO {
 
     private LocalDateTime modifiedAt;
 
+    private Boolean deleted;
 
     public Booking toEntity(){
         return Booking.builder()
@@ -55,5 +56,15 @@ public class BookingDTO {
                 .build();
     }
 
+    public Booking toDeletedEntity(){
+        return Booking.builder()
+                .id(this.id)
+                .roomId(this.roomId)
+                .checkIn(this.checkIn)
+                .checkOut(this.checkOut)
+                .memberEmail(this.memberEmail)
+                .deleted(true)
+                .build();
+    }
 
 }
