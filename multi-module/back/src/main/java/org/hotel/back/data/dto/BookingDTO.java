@@ -36,6 +36,7 @@ public class BookingDTO {
                 .checkIn(this.checkIn)
                 .checkOut(this.checkOut)
                 .memberEmail(this.memberEmail)
+                .deleted(this.deleted)
                 .build();
     }
     public static BookingDTO toDTO(Booking booking){
@@ -53,17 +54,7 @@ public class BookingDTO {
                 .checkIn(checkIn)
                 .checkOut(checkOut)
                 .memberEmail(memberDTO.getEmail())
-                .build();
-    }
-
-    public Booking toDeletedEntity(){
-        return Booking.builder()
-                .id(this.id)
-                .roomId(this.roomId)
-                .checkIn(this.checkIn)
-                .checkOut(this.checkOut)
-                .memberEmail(this.memberEmail)
-                .deleted(true)
+                .deleted(false)
                 .build();
     }
 

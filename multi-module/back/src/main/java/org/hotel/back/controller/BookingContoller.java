@@ -50,7 +50,6 @@ public class BookingContoller {
         LocalDateTime localDateTimeOut = checkOut.atTime(12,0);
         List<RoomDTO> availableRoomList = bookingService.findAvailable(localDateTimeIn, localDateTimeOut, hotelId);
 
-        log.info(" ============================== {}", hotelId);
         return ResponseEntity.ok(availableRoomList);
     }
 
@@ -102,7 +101,7 @@ public class BookingContoller {
         }else return false;
     }
 
-    @PostMapping("/delete/{id}") // 삭제
+    @RequestMapping("/delete/{id}") // 삭제
     public Boolean deleteBooking(@PathVariable("id") Long id) {
         bookingService.delete(id);
         return true;
@@ -116,17 +115,6 @@ public class BookingContoller {
         LocalDateTime localDateTimeOut = dateTime.atTime(12, 0);
         return localDateTimeOut;
     }
-
-//    @PutMapping("/modify/{id}") // 수정
-//    public Boolean updateBooking(@RequestBody BookingDTO bookingDTO, @AuthenticationPrincipal Principal principal) {
-//        System.out.println(bookingDTO.getCheckIn().getClass().getName());
-//        if (principal.getName().equals(bookingDTO.getMemberEmail())) {
-//            bookingService.updateBooking(bookingDTO.getCheckIn(), bookingDTO.getCheckOut(), bookingDTO.getMemberEmail(), bookingDTO.toEntity().getId());
-//            return true;
-//        } else if (principal.getName().equals(null)) {
-//            throw new NullPointerException();
-//        }else return false;
-//    }
 
 
 //    @ExceptionHandler(Exception.class)

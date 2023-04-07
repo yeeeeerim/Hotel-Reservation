@@ -16,6 +16,8 @@ import org.hotel.back.repository.BookingRepository;
 import org.hotel.back.repository.RoomRepository;
 import org.hotel.back.service.BookingService;
 import org.springframework.stereotype.Service;
+
+import javax.transaction.Transactional;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +33,7 @@ public class BookingServiceImpl implements BookingService {
     private final RoomRepository roomRepository;
 
     public List<RoomDTO> findAvailable(LocalDateTime checkIn, LocalDateTime checkOut, Long hotelId) {
-        List<Room> rooms = roomRepository.findAvailableRooms(checkIn, checkOut, hotelId);
+        List<Room> rooms = roomRepository.findAvailableRooms(checkIn, checkOut);
         List<RoomDTO> roomDTOs = new ArrayList<>();
         for (Room room : rooms) {
             RoomDTO roomDTO = new RoomDTO();
@@ -48,9 +50,6 @@ public class BookingServiceImpl implements BookingService {
     public Booking bookingSave(BookingDTO dto) throws BookingException {
 
         Booking booking = bookingRepository.save(dto.toEntity());
-        if (bookingRepository.findById(dto.toEntity().getId()).isEmpty()) {
-            throw new BookingException(BookingErrorCode.BOOKING_SAVE_FAIL);
-        }
         return booking;
     }
 
@@ -99,17 +98,13 @@ public class BookingServiceImpl implements BookingService {
             return bookingResponseDTOList;
         }
 
+        @Transactional
         public void delete (Long id){
-            if (findById(id) == null) {
-                throw new BookingException(BookingErrorCode.BOOKING_DELETE_FAIL);
-            }else {
-                BookingResponseDTO bookingResponseDTO = findById(id);
-                LocalDateTime checkIn = LocalDateTime.parse(bookingResponseDTO.getCheckIn());
-                LocalDateTime checkOut = LocalDateTime.parse(bookingResponseDTO.getCheckOut());
-                BookingDTO bookingDTO = bookingResponseDTO.bookingDTO(checkIn, checkOut);
-                Booking booking = bookingDTO.toDeletedEntity();
-                System.out.println("==============="+booking.getDeleted());
-                bookingRepository.save(booking);
+            Optional<Booking> booking = bookingRepository.findById(id);
+            if (booking.isPresent()) {
+                Booking b = booking.get();
+                b.setDeleted(true);
+                System.out.println(b.getDeleted());
             }
         }
 }

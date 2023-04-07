@@ -13,6 +13,7 @@ import javax.validation.constraints.Pattern;
 @NoArgsConstructor
 @ToString
 public class BookingRequestDTO {
+    private Long id;
 
     private Long roomId;
 
@@ -22,5 +23,7 @@ public class BookingRequestDTO {
     private String checkOut;
 
     private Member member;
+
+    private Boolean deleted;
 
 }

@@ -55,4 +55,8 @@ public class Booking {      //TODO: 실제로 삭제가 아닌 값을 넘길 예
     private LocalDateTime modifiedAt;
 
     private Boolean deleted;
+
+    public void setDeleted(Boolean deleted) {
+        this.deleted = deleted;
+    }
 }
