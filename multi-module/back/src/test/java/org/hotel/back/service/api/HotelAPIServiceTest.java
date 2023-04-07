@@ -1,8 +1,9 @@
 package org.hotel.back.service.api;
 
-
+import org.assertj.core.api.Assertions;
 import org.hotel.back.data.request.HotelRequestData;
 import org.hotel.back.domain.Hotel;
+import org.hotel.back.domain.HotelImage;
 import org.hotel.back.repository.HotelImageRepository;
 import org.hotel.back.repository.HotelRepository;
 import org.junit.jupiter.api.DisplayName;
@@ -12,11 +13,20 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.test.context.support.WithMockUser;
 
 
+import java.util.HashSet;
+import java.util.Set;
+import java.util.UUID;
+
+
+import static org.junit.jupiter.api.Assertions.*;
+
+
 @SpringBootTest
 class HotelAPIServiceTest {
 
 
-
+    @Autowired
+    HotelAPIService hotelAPIService;
 
     @Autowired
     HotelRepository hotelRepository;

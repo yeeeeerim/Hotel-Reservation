@@ -1,5 +1,6 @@
 package org.hotel.back.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.hibernate.annotations.BatchSize;
 import org.springframework.data.annotation.CreatedBy;
@@ -54,6 +55,7 @@ public class Hotel {
     private List<HotelImage> hotelImages = new ArrayList<>();
 
 
+    @JsonIgnore
     @ToString.Exclude
     @Builder.Default
     @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL,orphanRemoval = true,mappedBy = "hotel")

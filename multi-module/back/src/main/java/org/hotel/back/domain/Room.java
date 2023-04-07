@@ -3,10 +3,9 @@ package org.hotel.back.domain;
 import lombok.*;
 
 import javax.persistence.*;
-import java.sql.Date;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -26,6 +25,10 @@ public class Room {
     @JoinColumn(name = "hotel_id",insertable = false,updatable = false)
     private Hotel hotel;    //호텔
 
+
+    @ToString.Exclude
+    @OneToMany(mappedBy = "room")
+    private List<Booking> booking;
 
     @ToString.Exclude
     @Builder.Default
