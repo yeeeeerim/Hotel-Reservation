@@ -19,12 +19,7 @@ public interface BookingService {
 
     public Booking bookingSave(BookingDTO dto) throws BookingException;
     public BookingDTO findById(Long id);
-<<<<<<< HEAD
-
-    void bookingSave(BookingDTO bookingDTO);
-=======
     public void updateBooking(LocalDateTime checkIn, LocalDateTime checkout, String memberEmail, Long id);
     public List<Booking> getBooking();
     public void delete(Long id);
->>>>>>> 87aed1abae7e6e0ecc7c0afd6d271ac83d60b074
 }
