@@ -1,6 +1,7 @@
 package org.hotel.back.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.hotel.back.data.response.HotelImageDTO;
@@ -43,7 +44,7 @@ public class HotelController {
     private String path;
 
 
-    @PreAuthorize("hasRole('OWNER')")
+    //@PreAuthorize("hasRole('OWNER')")
     @GetMapping("/hotel/save")//localhost:8080/save
     public String hotelWriteForm(){
 
@@ -85,7 +86,7 @@ public class HotelController {
         model.addAttribute("startPage",startPage);
         model.addAttribute("endPage",endPage);
         model.addAttribute("list",list);
-        return "hotel/index";
+        return "/hotel/index";
     }
 
 

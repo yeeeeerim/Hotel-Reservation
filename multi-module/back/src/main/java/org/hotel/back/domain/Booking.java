@@ -28,10 +28,12 @@ public class Booking {      //TODO: 실제로 삭제가 아닌 값을 넘길 예
     @JoinColumn(name = "member_email", insertable = false, updatable = false)
     private Member member;
 
+
     @Column(nullable = false)
     private LocalDate checkIn;
     @Column(nullable = false)
     private LocalDate checkOut;
+
 
 //    @Enumerated(EnumType.STRING)
 //    private Status status;

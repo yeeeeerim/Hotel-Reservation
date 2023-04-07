@@ -12,6 +12,7 @@ import java.util.List;
 
 public interface BookingRepository extends JpaRepository<Booking, Long> {
 
+
     @Transactional
     @Modifying
     @Query("update Booking b set b.checkIn = :checkIn, b.checkOut = :checkOut where b.id = :id")
@@ -20,3 +21,4 @@ public interface BookingRepository extends JpaRepository<Booking, Long> {
     @Query("SELECT r FROM Room r WHERE r.id NOT IN (SELECT b FROM Booking b WHERE b.checkIn <= :checkOut AND b.checkOut >= :checkIn)")
     List<Room> getNotReservation(@Param("checkIn")LocalDateTime checkIn, @Param("checkOut")LocalDateTime checkOut);
 }
+

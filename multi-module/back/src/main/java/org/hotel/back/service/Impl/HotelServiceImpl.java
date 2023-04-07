@@ -133,12 +133,12 @@ public class HotelServiceImpl implements HotelService {
     }
 
 
-	/***
-	 *
-	 * @apiNote
-	 * 호텔 업데이트: getHotelById메소드로 수정정보가 DB에 있는지 확인-> 수정 ->이미지 수정
-	 */
-	@Override
+    /***
+     *
+     * @apiNote
+     * 호텔 업데이트: getHotelById메소드로 수정정보가 DB에 있는지 확인-> 수정 ->이미지 수정
+     */
+    @Override
     public boolean hotelUpdate(HotelRequestDTO hotelRequestDTO) throws JsonProcessingException {
         Hotel hotel = getHotelById(hotelRequestDTO.getId());
         hotel.modifyHotel(hotelRequestDTO.getHotelName(),
@@ -161,10 +161,10 @@ public class HotelServiceImpl implements HotelService {
                 .orElseThrow(() -> new HotelNotFoundException("Hotel not found with id " + hotelId));
     }
 
-	/**
-	 * @apiNote
-	 * 호텔이미지 저장
-	 * */
+    /**
+     * @apiNote
+     * 호텔이미지 저장
+     * */
     private void saveHotelImages(List<MultipartFile> hotelImages, Hotel hotel) {
         if (hotel.getHotelImages() != null && !hotelImages.isEmpty()) {
             for (MultipartFile hotelImage : hotelImages) {

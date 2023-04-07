@@ -3,6 +3,7 @@ package com.back.bookingmodule.service.impl;
 
 import com.back.bookingmodule.domain.Member;
 import com.back.bookingmodule.prog.BookingConfiguration;
+import com.back.bookingmodule.prog.HotelCSVConfig;
 import com.back.bookingmodule.repository.BookingRepository;
 import com.back.bookingmodule.service.BatchService;
 import lombok.RequiredArgsConstructor;
@@ -31,6 +32,9 @@ public class BatchServiceImpl implements BatchService {
 
     private final JobLauncher jobLauncher;
 
+    private final HotelCSVConfig hotelCSVConfig;
+
+
 
    // @Scheduled(initialDelay = 1, fixedDelay = 3000)
     public void job() throws Exception {
@@ -39,6 +43,14 @@ public class BatchServiceImpl implements BatchService {
         confMap.put("time",new JobParameter(System.currentTimeMillis()));
         JobParameters jobParameters = new JobParameters(confMap);
         jobLauncher.run(bookingConfiguration.bookingJob(),jobParameters);
+    }
+
+    public void hotelJob() throws Exception {
+
+        JobParameters jobParameters = new JobParametersBuilder()
+                .addString("JobID", String.valueOf(System.currentTimeMillis()))
+                .toJobParameters();
+        jobLauncher.run(hotelCSVConfig.csvItemWriterJob(), jobParameters);
     }
 
 

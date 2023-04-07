@@ -26,4 +26,7 @@ public class HotelListResponseDTO {
 		this.hotelName=hotel.getHotelName();
 		this.cityName=hotel.getCityName();
 	}
+
+	public HotelListResponseDTO(String hotel1, String address1, String city1) {
+	}
 }

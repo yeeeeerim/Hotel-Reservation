@@ -182,27 +182,27 @@
 
 <script th:inline="javascript">  //여기서 요청 넣는 거에요 저 메소드에
 
-    let imageList = [[ ${image.name} ]]
-    let latitude  = [[ ${article.latitude}  ]]
-    let longitude = [[ ${article.longitude} ]]
-    console.log(latitude)
-    console.log(longitude)
+let imageList = [[ ${image.name} ]]
+let latitude  = [[ ${article.latitude}  ]]
+let longitude = [[ ${article.longitude} ]]
+console.log(latitude)
+console.log(longitude)
 
-    if (imageList != null) {
-        for (const name of imageList) {
-            if (name!=null){
-                const imgSrc = "/view?fileName=" + name
-                $('.image').append(`
+if (imageList != null) {
+    for (const name of imageList) {
+        if (name!=null){
+            const imgSrc = "/view?fileName=" + name
+            $('.image').append(`
                            <div class="card-temp" className="card" style="width: 1000px; display: inline-block; box-shadow: 5px 5px 5px;">
                                <div className="card-body">
                                <img src='${imgSrc}' width="1000" height="750" ' style="margin: 10px;"/>
                                </div>
                            </div>
                         `)
-            }
-
         }
+
     }
+}
 
 </script>
 
