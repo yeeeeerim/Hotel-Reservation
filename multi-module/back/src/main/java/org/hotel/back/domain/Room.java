@@ -1,6 +1,7 @@
 package org.hotel.back.domain;
 
 import lombok.*;
+import org.hibernate.annotations.BatchSize;
 
 import javax.persistence.*;
 import java.sql.Date;
@@ -29,6 +30,7 @@ public class Room {
 
     @ToString.Exclude
     @Builder.Default
+    @BatchSize(size = 100)
     @OneToMany(mappedBy = "room",fetch = FetchType.LAZY,cascade = CascadeType.ALL,orphanRemoval = true)
     private Set<RoomImage> roomImage = new HashSet<>();
 

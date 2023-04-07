@@ -38,7 +38,9 @@ public class QBooking extends EntityPathBase<Booking> {
 
     public final DateTimePath<java.time.LocalDateTime> modifiedAt = createDateTime("modifiedAt", java.time.LocalDateTime.class);
 
-    public final StringPath roomNumber = createString("roomNumber");
+    public final QRoom room;
+
+    public final NumberPath<Long> roomId = createNumber("roomId", Long.class);
 
     public QBooking(String variable) {
         this(Booking.class, forVariable(variable), INITS);
@@ -60,6 +62,7 @@ public class QBooking extends EntityPathBase<Booking> {
         super(type, metadata, inits);
         this.hotel = inits.isInitialized("hotel") ? new QHotel(forProperty("hotel")) : null;
         this.member = inits.isInitialized("member") ? new QMember(forProperty("member")) : null;
+        this.room = inits.isInitialized("room") ? new QRoom(forProperty("room"), inits.get("room")) : null;
     }
 
 }

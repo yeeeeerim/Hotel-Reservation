@@ -1,6 +1,7 @@
 
 package org.hotel.back.repository;
 
+import org.hotel.back.domain.Booking;
 import org.hotel.back.domain.Gender;
 import org.hotel.back.domain.Member;
 import org.hotel.back.domain.MemberRole;
@@ -8,12 +9,15 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Set;
 
@@ -21,6 +25,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 
 @SpringBootTest
+@AutoConfigureMockMvc(addFilters = false)
 class MemberRepositoryTest {
 
     @Autowired
@@ -28,6 +33,10 @@ class MemberRepositoryTest {
 
     @Autowired
     PasswordEncoder passwordEncoder;
+
+    @Autowired
+    BookingRepository bookingRepository;
+
 
 
     @PersistenceContext
@@ -67,6 +76,47 @@ class MemberRepositoryTest {
                         .nickName("업주")
                         .password(passwordEncoder.encode("1234"))
                 .build());
+    }
+
+    @Test
+    @WithMockUser(username = "owner", roles = "OWNER")
+    @DisplayName("TEST")
+    void test33() {
+        // given
+        Member member = memberRepository.findById("owner@naver.com").get();
+
+
+        Booking booking = Booking.builder()
+                .memberEmail("owner@naver.com")
+                .checkIn(LocalDateTime.now().minusDays(7L))
+                .checkOut(LocalDateTime.now())
+                .roomId(1L)
+                .build();
+
+        // when
+        bookingRepository.save(booking);
+
+        Booking booking2 = Booking.builder()
+                .memberEmail("owner@naver.com")
+                .member(member)
+                .checkIn(LocalDateTime.now().minusDays(14L))
+                .checkOut(LocalDateTime.now().minusDays(7L))
+                .roomId(2L)
+                .build();
+
+        // when
+        bookingRepository.save(booking2);
+        // then
+    }
+
+    @Test
+    @DisplayName("")
+    void test44() {
+        // given
+
+        // when
+        bookingRepository.findByEmail("owner@naver.com").forEach(System.out::println);
+        // then
     }
 
 }

@@ -27,19 +27,13 @@ public class ManagerRepositoryImpl implements ManagerRepository{
      * 해당 사용자가 작성한 글이 없을 수 있으므로 null처리가 필요하다.
      *
      * */
-    public Optional<List<Hotel>> getHotelInfo(String email){
+    public Optional<List<Review>> getReviewInfo(String email){
 
-        QHotel hotel = QHotel.hotel;
         QReview review =  QReview.review;
-        QRoom room = QRoom.room;
-        QHotelImage hotelImage = QHotelImage.hotelImage;
 
-        List<Hotel> hotelData = jpaQueryFactory.select(hotel)
-                .distinct()
-                .from(hotel)
-                .leftJoin(hotel.reviews, review)
-                .fetchJoin()
-                .where(hotel.writer.eq(email))
+        List<Review> hotelData = jpaQueryFactory.select(review)
+                .from(review)
+                .where(review.reviewWriter.eq(email))
                 .fetch();
 
         if(hotelData != null)  return  Optional.of(hotelData);

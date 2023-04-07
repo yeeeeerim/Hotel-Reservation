@@ -45,5 +45,5 @@ public interface MemberService {
      *              hotelImage는 따로 BatchSize를 통해 가져옴 -> 데이터가 많아봤자 10개 안 넘음
      *
      * */
-    public List<HotelAndReviewDTO> getHotelAndReviewWithRoom(String email) throws ParseException;
+    public List<HotelAndReviewDTO> getReviewByEmail(String email) throws ParseException;
 }

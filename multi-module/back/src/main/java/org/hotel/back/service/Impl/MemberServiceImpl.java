@@ -5,10 +5,7 @@ import org.hotel.back.data.request.RegisterData;
 import org.hotel.back.data.response.HotelAndReviewDTO;
 import org.hotel.back.data.response.HotelResponseDTO;
 import org.hotel.back.data.response.ReviewResponseDTO;
-import org.hotel.back.domain.Gender;
-import org.hotel.back.domain.Hotel;
-import org.hotel.back.domain.Member;
-import org.hotel.back.domain.MemberRole;
+import org.hotel.back.domain.*;
 import org.hotel.back.repository.MemberRepository;
 import org.hotel.back.repository.custom.ManagerRepository;
 import org.hotel.back.service.MemberService;
@@ -76,42 +73,21 @@ public class MemberServiceImpl implements MemberService {
      * @return HotelAndReviewDTO Type
      * */
     @Transactional(readOnly = true)
-    public List<HotelAndReviewDTO> getHotelAndReviewWithRoom(String email) throws ParseException {
+    public List<HotelAndReviewDTO> getReviewByEmail(String email) throws ParseException {
 
-        var hotelData = managerRepository.getHotelInfo(email);
+        var reviewInfo = managerRepository.getReviewInfo(email);
         List<HotelAndReviewDTO> dtoList = new ArrayList<>();
 
-        if (hotelData.isPresent()){
-            List<Hotel> hotelList = hotelData.get();
+        if (reviewInfo.isPresent()){
+            reviewInfo.get().forEach(review ->
 
-            hotelList.forEach(hotel ->  {
-
-                Optional<String> addressInfo = null;
-                try {
-                    addressInfo = kaKaoAPIService.getAddressInfo(hotel.getLongitude(), hotel.getLatitude());
-                } catch (ParseException e) {
-                    throw new RuntimeException(e);
-                }
-
-               dtoList.add( HotelAndReviewDTO.builder()
-                       .hotelResponseDTO(HotelResponseDTO.builder()
-                               .id(hotel.getId())
-                               .hotelName(hotel.getHotelName())
-                               .cityName(hotel.getCityName())
-                               .tellNumber(hotel.getTellNumber())
-                               .latitude(hotel.getLatitude())
-                               .address(addressInfo.orElse("정확하지 않은 주소"))
-                               .longitude(hotel.getLongitude())
-                               .build())
-                       .reviewResponseDTO(hotel.getReviews().stream()
-                               .map(ReviewResponseDTO::new)
-                               .collect(Collectors.toList()))
-                       .images(hotel.getHotelImages().stream().map(hotelImage ->
-                                       hotelImage.getName())
-                               .collect(Collectors.toList()))
-                       .build());
-           });
-
+                   dtoList.add( HotelAndReviewDTO.builder()
+                           .reviewResponseDTO(ReviewResponseDTO.builder()
+                                   .id(review.getId())
+                                   .reviewContent(review.getReviewContent())
+                                   .build())
+                           .build())
+                    );
             return dtoList;
         }else{
             return null;

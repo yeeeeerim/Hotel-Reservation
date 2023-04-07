@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class BookingDTO {
-    private String roomNumber;
+    private Long roomId;
     private LocalDateTime checkIn;
 
     private LocalDateTime checkOut;
@@ -29,7 +29,7 @@ public class BookingDTO {
 
     public Booking toEntity(){
         return Booking.builder()
-                .roomNumber(this.roomNumber)
+                .roomId(this.roomId)
                 .checkIn(this.checkIn)
                 .checkOut(this.checkOut)
                 .memberEmail(this.memberEmail)

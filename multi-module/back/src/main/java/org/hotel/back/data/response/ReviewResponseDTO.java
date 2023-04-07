@@ -1,11 +1,13 @@
 package org.hotel.back.data.response;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.hotel.back.domain.Review;
 import org.hotel.back.data.request.ReviewRequestDTO;
 
 @Getter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Setter
 public class ReviewResponseDTO {
     Long id;

@@ -43,7 +43,7 @@ class MemberDetailsServiceTest {
         // given
         String email = "owner@naver.com";
         // when
-        var data = memberService.getHotelAndReviewWithRoom(email);
+        var data = memberService.getReviewByEmail(email);
 
         // then
         Assertions.assertThat(data).isNotNull();

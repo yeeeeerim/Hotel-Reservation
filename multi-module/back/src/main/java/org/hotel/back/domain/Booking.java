@@ -6,9 +6,7 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -31,8 +29,14 @@ public class Booking {      //TODO: 실제로 삭제가 아닌 값을 넘길 예
     @ManyToOne(fetch = FetchType.LAZY)
     private Hotel hotel;
 
+    @ToString.Exclude
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "room_number",insertable = false,updatable = false)
+    private Room room;
+
+
     @Column(name = "room_number")
-    private String roomNumber;
+    private Long roomId;
     @Column(nullable = false)
     private LocalDateTime checkIn;
     @Column(nullable = false)

@@ -3,6 +3,7 @@ package org.hotel.back.service;
 import org.hotel.back.config.exception.BookingException;
 import org.hotel.back.data.dto.BookingDTO;
 import org.hotel.back.data.request.BookingRequestDTO;
+import org.hotel.back.data.response.BookingAndRoomDTO;
 import org.hotel.back.data.response.BookingResponseDTO;
 import org.hotel.back.data.response.RoomDTO;
 import org.hotel.back.domain.Booking;
@@ -22,4 +23,7 @@ public interface BookingService {
     public void updateBooking(LocalDateTime checkIn, LocalDateTime checkout, String memberEmail, Long id);
     public List<Booking> getBooking();
     public void delete(Long id);
+
+    public List<BookingAndRoomDTO> findByEmail(String email);
+
 }
