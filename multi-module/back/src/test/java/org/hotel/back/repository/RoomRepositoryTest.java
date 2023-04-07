@@ -15,11 +15,14 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.jpa.repository.EntityGraph;
+
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
+
 import org.springframework.security.test.context.support.WithMockUser;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -36,6 +39,22 @@ class RoomRepositoryTest {
     RoomRepository roomRepository;
 
 
+    @PersistenceContext
+    EntityManager em;
+
+    @Test
+    void test222(){
+        em.createQuery( "SELECT DISTINCT r FROM Room r LEFT JOIN r.booking b WHERE r.hotelId = :hotelId AND (b.checkOut <= :checkIn OR b.checkIn >= :checkOut)")
+                .setParameter("hotelId", 178L)
+                .setParameter("checkIn", LocalDateTime.now().minusDays(1))
+                .setParameter("checkOut", LocalDateTime.now())
+                .getResultList().forEach(System.out::println);
+    }
+//체크인 4월 7일
+    //체크아웃 4월 8일
+
+    //체크아웃 4월 7일 이전
+    //체크인 4월 8일 이후
 
     @Autowired
     TestEntityManager entityManager;

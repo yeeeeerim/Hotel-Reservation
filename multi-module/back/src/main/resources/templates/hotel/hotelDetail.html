@@ -39,7 +39,7 @@
                             <tbody>
                             <tr style="line-height:32px;">
                                 <td></td>
-                                <div th:text="${article.id}">
+                                <div class="hotel-id" th:text="${article.id}">
 
                                 </div>
 
@@ -110,7 +110,7 @@
 <label for="checkOut">체크아웃 날짜:</label>
 <input class="checkOut" type="date" id="checkOut" name="checkOut"
        th:value="${checkOut}" required>
-<button class="checkbutton">객실 조회</button>
+<button class="checkButton">객실 조회</button>
 
 <div class="container room-check"></div>
 
@@ -200,6 +200,7 @@ if (imageList != null) {
 }
 </script>
 <script>
+
     var container = document.getElementById('map');
     var options = {
         center: new kakao.maps.LatLng(latitude, longitude),
@@ -218,7 +219,7 @@ if (imageList != null) {
     // 마커가 지도 위에 표시되도록 설정합니다
     marker.setMap(map);
 
-    document.querySelector(".checkbutton").addEventListener("click", async function (e){
+    document.querySelector(".checkButton").addEventListener("click", async function (e){
         const data = 0;
         try {
             const response = await gettest();
@@ -226,13 +227,13 @@ if (imageList != null) {
                 $(`.room-check`).append(`
                 <div class="row">
                     <div class="card">
-                        <div class="col-8" style="margin-top: 200px;margin-left: 30px">
-                            <p>${dto.roomNumber}</p>
+                        <div class="col-10" style="margin-top: 200px;margin-left: 30px">
+                            <p>객실 번호 : ${dto.roomNumber}</p>
                             <p>객실 등급 : ${dto.roomClass}</p>
                             <p>가격     : ${dto.roomPrice}</p>
                             <p>인원     : ${dto.roomLimit}</p>
                             <p>${dto.description}</p>
-                            <button class="roomsavebutton" data-room-number="${dto.roomNumber}">예약하기</button>
+                            <button class="roomSaveButton" data-room-id="${dto.id}">예약하기</button>
                         </div>
                     </div>
                 </div>
@@ -240,13 +241,12 @@ if (imageList != null) {
 
 
 
-                $(`.room-check .card:last-child .roomsavebutton`).off('click').on('click', function() {
+                $(`.room-check .card:last-child .roomSaveButton`).off('click').on('click', function() {
                     const checkIn = document.querySelector(".checkIn").value;
                     const checkOut = document.querySelector(".checkOut").value;
-                    const roomNumber = $(this).data('room-number');
-
+                    const roomId = $(this).data('room-id');
                     axios.post('/booking/save', {
-                        roomNumber: roomNumber,
+                        roomId: roomId,
                         checkIn: checkIn,
                         checkOut: checkOut
                     }).then((response) => {
@@ -254,7 +254,7 @@ if (imageList != null) {
                     }).catch((error) => {
                         console.log("fail")
                         console.log(checkIn)
-                        console.log(roomNumber)
+                        console.log(roomId)
                     });
                 });
             }
@@ -268,9 +268,9 @@ if (imageList != null) {
     async function gettest(){
         const checkIn = document.querySelector(".checkIn").value
         const checkOut = document.querySelector(".checkOut").value
-
-        const url = "/booking/available?checkIn="+checkIn+"&checkOut="+checkOut
-
+        const hotelId = $(".hotel-id").html()
+        console.log(hotelId)
+        const url = "/booking/available?checkIn="+checkIn+"&checkOut="+checkOut+"&hotelId="+hotelId
 
         const response = await axios.get(url)
         console.log(response)

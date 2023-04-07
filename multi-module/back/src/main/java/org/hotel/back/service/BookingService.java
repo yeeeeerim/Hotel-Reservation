@@ -16,14 +16,16 @@ import java.util.List;
 
 
 public interface BookingService {
-    public List<RoomDTO> findAvailable(LocalDateTime checkIn, LocalDateTime checkOut);
+    public List<RoomDTO> findAvailable(LocalDateTime checkIn, LocalDateTime checkOut, Long hotelId);
 
     public Booking bookingSave(BookingDTO dto) throws BookingException;
-    public BookingDTO findById(Long id);
-    public void updateBooking(LocalDateTime checkIn, LocalDateTime checkout, String memberEmail, Long id);
-    public List<Booking> getBooking();
-    public void delete(Long id);
 
+    public BookingResponseDTO findById(Long id);
+
+    public void updateBooking(LocalDateTime checkIn, LocalDateTime checkout, String memberEmail, Long id);
+    public List<BookingResponseDTO> bookingList();
+    public void delete(Long id);
     public List<BookingAndRoomDTO> findByEmail(String email);
+
 
 }

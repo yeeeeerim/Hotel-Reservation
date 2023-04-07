@@ -68,11 +68,8 @@ public class MemberController {
     public String manageGET(Model model,
                             @AuthenticationPrincipal MemberDTO memberDTO){
         List<HotelAndReviewDTO>  dtoList = null;
-
-
         try{
             dtoList = memberService.getReviewByEmail(memberDTO != null? memberDTO.getEmail() : "Unknown");
-            System.out.println(dtoList);
             if (dtoList != null){
                 model.addAttribute("review",dtoList);
             }

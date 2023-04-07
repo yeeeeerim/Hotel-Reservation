@@ -1,3 +1,4 @@
+
 package org.hotel.back.service.Impl;
 
 import lombok.RequiredArgsConstructor;
@@ -5,10 +6,14 @@ import lombok.extern.slf4j.Slf4j;
 import org.hotel.back.config.exception.BookingErrorCode;
 import org.hotel.back.config.exception.BookingException;
 import org.hotel.back.data.dto.BookingDTO;
+
+import org.hotel.back.data.dto.MemberDTO;
+import org.hotel.back.data.request.BookingRequestDTO;
 import org.hotel.back.data.response.BookingAndRoomDTO;
 import org.hotel.back.data.response.BookingResponseDTO;
 import org.hotel.back.data.response.RoomDTO;
 import org.hotel.back.domain.Booking;
+import org.hotel.back.domain.Member;
 import org.hotel.back.domain.Room;
 import org.hotel.back.repository.BookingRepository;
 import org.hotel.back.repository.RoomRepository;
@@ -16,9 +21,11 @@ import org.hotel.back.service.BookingService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -30,17 +37,9 @@ public class BookingServiceImpl implements BookingService {
 
     private final RoomRepository roomRepository;
 
-    public List<RoomDTO> findAvailable(LocalDateTime checkIn, LocalDateTime checkOut) {
-        System.out.println("ServicecheckIn" + checkIn.getClass().getName());
-
-//        java.sql.Date checkInDate = java.sql.Date.valueOf(checkIn);
-//        java.sql.Date checkOutDate = java.sql.Date.valueOf(checkOut);
-//        System.out.println("ServicecheckIn" + checkInDate.getClass().getName());
-
+    public List<RoomDTO> findAvailable(LocalDateTime checkIn, LocalDateTime checkOut, Long hotelId) {
         List<Room> rooms = roomRepository.findAvailableRooms(checkIn, checkOut);
-
         List<RoomDTO> roomDTOs = new ArrayList<>();
-
         for (Room room : rooms) {
             RoomDTO roomDTO = new RoomDTO();
             roomDTO.setId(room.getId());
@@ -52,89 +51,28 @@ public class BookingServiceImpl implements BookingService {
 
             roomDTOs.add(roomDTO);
         }
-
-
         return roomDTOs;
     }
-
-    @Override
     public Booking bookingSave(BookingDTO dto) throws BookingException {
-        return null;
+
+        Booking booking = bookingRepository.save(dto.toEntity());
+        return booking;
     }
-
-    @Override
-    public BookingDTO findById(Long id) {
-        return null;
-    }
-
-//    @Override
-//    public void bookingSave(BookingDTO bookingDTO) {
-//
-//    }
-
-
-    /*
-     * 관리자용
-     * 예약내용 전체 가져오기.*/
-    public List<Booking> findAll(){
-        return bookingRepository.findAll();
-    }
-
-    /*booking id를 통해 하나의 예약 정보를 가져온다.
-    * (예약자 명으로 해야하나 고민중)
-    * 레파지토리에서 아이디 값으로 찾아오고 null값일 경우 예외처리.
-    * 반환 값은 DTO로 준다.*/
-    //@Override
-    public BookingResponseDTO read(Long id) {
-        Booking booking = bookingRepository.findById(id)
-                .orElseThrow(IllegalArgumentException::new);
-
-        return BookingResponseDTO.builder()
-
-                .build();
-    }
-
-    /*저장기능
-    * 요청받은 데이터를 엔티티로 바꿔 DB에 저장한다.
-    * 예약정보가 생성된 시간과 체크인 시간은 현재시간으로 동일하게만듦.
-    * 성공적으로 저장되면 false를 반환하고 콘솔에서 저장 내용을 확인할 수 있다.*/
-   // @Override
-//    public boolean save(BookingRequestDTO bookingRequestDTO) {
-//        bookingRequestDTO.setCreatedAt(LocalDateTime.now());
-//        //null에러 방지.
-//        bookingRequestDTO.setCheckIn(LocalDateTime.of(2000,01,01,01,01,01));
-//        bookingRequestDTO.setCheck_out(LocalDateTime.of(2000,01,01,01,01,01));
-//        bookingRequestDTO.setModifiedAt(LocalDateTime.of(2000,01,01,01,01,01));
-//
-//    //    bookingRepository.save(BookingRequestDTO.toEntity(bookingRequestDTO));
-//        System.out.println(bookingRequestDTO); // 콘솔에서 확인용.
-//        return false;
-//    }
-    /*수정기능
-    * 엔티티의 modify기능으로 입실, 퇴실 시간 자동지정 및
-    * 고객과 방 변경기능.*/
-   // @Override
-//    public boolean modify(BookingRequestDTO bookingRequestDTO) {
-//        Booking booking = bookingRepository.findById(bookingRequestDTO.getBookingId())
-//                .orElseThrow(RuntimeException::new);
-//
-//        try {
-//            bookingRepository.save(booking);
-//        }catch (Exception e){
-//            return true;
-//
-//        }
-//        return false;
-//    }
-
 
     /**
      * @apiNote id(PK)로 해당 엔티티 단건 조회, 조회 실패할 경우 NOT_FOUND Exception 발생
      */
-//    public BookingDTO findById(Long id) {
-//        return BookingDTO.toDTO(bookingRepository.findById(id)
-//                .orElseThrow(() -> new BookingException(BookingErrorCode.BOOKING_NOT_FOUND)));
-//    }
+    public BookingResponseDTO findById(Long id) {
+        BookingDTO bookingDTO = BookingDTO.toDTO(bookingRepository.findById(id)
+                .orElseThrow(() -> new BookingException(BookingErrorCode.BOOKING_NOT_FOUND)));
+        BookingResponseDTO bookingResponseDTO = new BookingResponseDTO();
+        bookingResponseDTO.setId(id);
+        bookingResponseDTO.setRoomId(bookingDTO.getRoomId());
+        bookingResponseDTO.setCheckIn(bookingDTO.getCheckIn().toString());
+        bookingResponseDTO.setCheckOut(bookingDTO.getCheckOut().toString());
+        bookingResponseDTO.setMemberEmail(bookingDTO.getMemberEmail());
+        return bookingResponseDTO;
+    }
 
     /**
      * SecurityContextHolder 사용해서 로그인 정보 id 값인 memberemail과 파라미터로 전달받은 memberEmail이 같을 경우 updateBooking 실행
@@ -150,16 +88,7 @@ public class BookingServiceImpl implements BookingService {
             bookingRepository.updateBooking(id, checkIn, checkOut);
         }
     }
-        //TODO: 리스트조회, 삭제
-        public List<Booking> getBooking(){
-            return bookingRepository.findAll();
-        }
-        public void delete (Long id){
-            bookingRepository.deleteById(id);
-            if (!(bookingRepository.findById(id).isEmpty())) {
-                throw new BookingException(BookingErrorCode.BOOKING_DELETE_FAIL);
-            }
-        }
+
 
     @Override
     @Transactional(readOnly = true)
@@ -202,4 +131,28 @@ public class BookingServiceImpl implements BookingService {
             return resultList;
         }
     }
+        public List<BookingResponseDTO> bookingList(){
+            List<Booking> bookingList = bookingRepository.findAll();
+            List<BookingResponseDTO> bookingResponseDTOList = new ArrayList<>();
+            for (Booking booking : bookingList){
+                BookingResponseDTO bookingResponseDTO = new BookingResponseDTO();
+                bookingResponseDTO.setId(booking.getId());
+                bookingResponseDTO.setRoomId(booking.getRoomId());
+                bookingResponseDTO.setCheckIn(booking.getCheckIn().toString());
+                bookingResponseDTO.setCheckOut(booking.getCheckOut().toString());
+                bookingResponseDTO.setMemberEmail(booking.getMemberEmail());
+                bookingResponseDTOList.add(bookingResponseDTO);
+            }
+            return bookingResponseDTOList;
+        }
+
+        @Transactional
+        public void delete (Long id){
+            Optional<Booking> booking = bookingRepository.findById(id);
+            if (booking.isPresent()) {
+                Booking b = booking.get();
+                b.setDeleted(true);
+                System.out.println(b.getDeleted());
+            }
+        }
 }

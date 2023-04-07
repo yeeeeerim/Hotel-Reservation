@@ -26,7 +26,6 @@ dependencies {
     implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
     implementation 'org.springframework.boot:spring-boot-starter-webflux'
     implementation 'org.springframework.session:spring-session-data-redis'
-    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310'
 
 
     implementation 'org.springframework.boot:spring-boot-starter-data-redis:3.0.4'
@@ -34,7 +33,6 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok:1.18.26'
 
     implementation 'com.googlecode.json-simple:json-simple:1.1.1'
-    implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.14.2'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     compileOnly 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
