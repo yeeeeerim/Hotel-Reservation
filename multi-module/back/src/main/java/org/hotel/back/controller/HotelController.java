@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.catalina.User;
 import org.hotel.back.data.response.HotelImageDTO;
 import org.hotel.back.data.response.HotelListResponseDTO;
 import org.hotel.back.data.response.HotelResponseDTO;
@@ -22,12 +23,14 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -92,12 +95,23 @@ public class HotelController {
 
     //========호텔 자세히보기  ============
     @GetMapping("/hotel/detail")
-    public String hotelDetail(Model model, Long id) throws ParseException, JsonProcessingException {
+    public String hotelDetail(Model model, Long id, Principal principal) throws ParseException, JsonProcessingException {
         HotelImageDTO hotelImageDTO=hotelService.findByHotelImage(id);
         HotelResponseDTO hotelResponseDTO =hotelService.hotelDetail(id); //호텔 객체를 불러옴 ->service hotelDetail메서드
         model.addAttribute("article",hotelResponseDTO);
-            model.addAttribute("image",hotelImageDTO);
-            System.out.println("이미지 보내짐");
+        model.addAttribute("image",hotelImageDTO);
+        System.out.println("이미지 보내짐");
+        if(principal!=null){
+            boolean writer= hotelService.hotelWriter(id,principal.getName());
+            if(writer){
+                model.addAttribute("writer",true);
+            }else{
+                model.addAttribute("writer",false);
+            }
+
+        }else{
+            model.addAttribute("writer",false);
+        }
 
         model.addAttribute("path",path);
         return "hotel/hotelDetail";

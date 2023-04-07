@@ -35,6 +35,8 @@ public interface HotelService {
     boolean imageDelete(Long id,String name) throws FileDeleteException;
     HotelImageDTO findByHotelImage(Long id) throws JsonProcessingException;
 
+    boolean hotelWriter(Long id, String writer);
+
 
 
 }

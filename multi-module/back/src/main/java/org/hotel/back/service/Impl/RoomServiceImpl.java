@@ -57,7 +57,7 @@ public class RoomServiceImpl implements RoomService {
                 try{
                     multipartFile.transferTo(savePath);
                 } catch (IOException e) {
-                    throw new FileUploadException("me");
+                    throw new FileUploadException("");
                 }
 
                 list.add(FileDTO.builder()
@@ -107,7 +107,8 @@ public class RoomServiceImpl implements RoomService {
 
 
     public void save(RoomDTO roomDTO){
-        roomRepository.save(toEntity(roomDTO));
+        Room room = roomRepository.save(toEntity(roomDTO));
+
     }
 
     /**
@@ -168,11 +169,11 @@ public class RoomServiceImpl implements RoomService {
     protected Room toEntity(RoomDTO dto){
         Room room = Room.builder()
                 .hotelId(Long.parseLong(dto.getHotelId()))
-                .description(dto.getDescription())
-                .roomPrice(dto.getRoomPrice())
-                .roomLimit(dto.getRoomLimit())
-                .roomNumber(dto.getRoomNumber())
-                .roomClass(dto.getRoomClass())
+                .description(dto.getDescription() != null ? dto.getDescription() : null)
+                .roomPrice(dto.getRoomPrice() != null ? dto.getRoomPrice() : null)
+                .roomLimit(dto.getRoomLimit() != null ? dto.getRoomLimit() : null)
+                .roomNumber(dto.getRoomNumber() != null ? dto.getRoomNumber() : null)
+                .roomClass(dto.getRoomClass() != null ? dto.getRoomClass() : null)
                 .build();
 
         if(dto.getFileNames() != null){

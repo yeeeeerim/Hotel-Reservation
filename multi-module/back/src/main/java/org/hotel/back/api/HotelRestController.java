@@ -24,7 +24,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class HotelRestController {
 
 
-    private final MemberService memberService;
 
 
     private final RoomService roomService;

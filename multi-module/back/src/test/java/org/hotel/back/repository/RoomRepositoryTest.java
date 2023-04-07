@@ -1,105 +1,104 @@
 package org.hotel.back.repository;
 
+import org.assertj.core.api.Assertions;
 import org.hotel.back.data.response.RoomDTO;
 import org.hotel.back.domain.Hotel;
 import org.hotel.back.domain.Room;
+import org.hotel.back.domain.RoomImage;
 import org.hotel.back.service.RoomService;
+import org.junit.Before;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import org.springframework.data.jpa.repository.Query;
+
 import org.springframework.security.test.context.support.WithMockUser;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 import java.util.stream.IntStream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 
-@SpringBootTest
+@DataJpaTest
+@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 class RoomRepositoryTest {
-
-    @Autowired
-    HotelRepository hotelRepository;
 
     @Autowired
     RoomRepository roomRepository;
 
+
+    @PersistenceContext
+    EntityManager em;
+
+    @Test
+    void test222(){
+        em.createQuery( "SELECT DISTINCT r FROM Room r LEFT JOIN r.booking b WHERE r.hotelId = :hotelId AND (b.checkOut <= :checkIn OR b.checkIn >= :checkOut)")
+                .setParameter("hotelId", 178L)
+                .setParameter("checkIn", LocalDateTime.now().minusDays(1))
+                .setParameter("checkOut", LocalDateTime.now())
+                .getResultList().forEach(System.out::println);
+    }
+//체크인 4월 7일
+    //체크아웃 4월 8일
+
+    //체크아웃 4월 7일 이전
+    //체크인 4월 8일 이후
+
     @Autowired
-    RoomService roomService;
+    TestEntityManager entityManager;
 
+    @BeforeEach
+    public void setUp(){
 
-    @Test
-    @DisplayName("룸 리스트를 보여줄때 이미지도 필요하기 때문에 시도한 테스트")
-    void test(){
-        Hotel hotel = hotelRepository.save(Hotel.builder()
-                        .cityName("테스트")
-                        .tellNumber("xptmxm")
-                        .hotelName("테스트호텔")
-                .build());
         Room room = Room.builder()
-
-                .hotelId(hotel.getId())
-                .roomClass("테스트클래스")
-                .roomLimit("3")
-                .build();
-        room.addImage("테스트이미지3.jpg");
-
-        Room room2 = Room.builder()
-                .hotelId(hotel.getId())
-                .roomClass("테스트클래스")
+                .hotelId(1L)
                 .roomLimit("4")
+                .roomPrice("120,000")
+                .roomNumber("404")
                 .build();
-        room.addImage("테스트이미지4.jpg");
 
-
-        roomRepository.save(room);
-        roomRepository.save(room2);
-        List<Room> test = roomRepository.roomListWithImage(hotel.getId());
-            test.forEach(room1 -> {
-                room1.getRoomImage().forEach(System.out::println);
-            });
+        room.addImage("404.jpg");
+        entityManager.persist(room);
     }
+//    @Query("SELECT r FROM Room r WHERE r.id = :id")
+//    public Optional<Room> getRoomWithImage(@Param("id") Long id);
+//
+//
+//    @Query("SELECT DISTINCT r FROM Room  r LEFT JOIN FETCH r.roomImage WHERE r.hotel.id = :id")
+//    public List<Room> roomListWithImage(@Param("id") Long id);
+//
 
+
+    /**
+     *
+     * 실제 쿼리와 실제 데이터 들어옴 주의가 필요하다
+     * */
     @Test
-    @DisplayName("JPQL로 룸 리스트 불러오기 테스트")
-    void test3(){
-       // select * from room left join room_image ri on room.id = ri.room_id where room.hotel_id = 1;
-        //해당 네이티브 쿼리와 동일함
-        roomService.findAllWithImage(1L).forEach(System.out::println);
-    }
-
-    @Test
-    @DisplayName("사용자 검증 테스트")
-    void testQuery(){
-         roomRepository.getRoomWithImage(13L);
-
-         roomRepository.getRoomWithImageOne(13L);
-
-        System.out.println("3");
-        // roomRepository.getRoomWithImageTwo(13L);
-
-
-    }
-
-    @Test
-    @WithMockUser(username = "owner", roles = "OWNER")
-    @DisplayName("")
-    void RoomRepositoryTest() {
+    @DisplayName("getRoomWithImage 테스트")
+    void test1() {
         // given
-        String str = "b164a891-6a1f-4d6f-9e72-3a1a2e5553dc_제목을-입력해주세요_-001 (6).png";
+        Room room = roomRepository.getRoomWithImage(1L).get();
+        Set<RoomImage> roomImage = room.getRoomImage();
         // when
-        IntStream.rangeClosed(1,5).forEach(value -> {
-            roomService.save(RoomDTO.builder()
-                            .roomNumber(Integer.toString(value))
-                            .roomPrice(Integer.toString(value+100))
-                            .roomClass(Integer.toString(value+10))
-                            .description("정말 좋은 방..."+value)
-                            .fileNames(List.of(str))
-                            .hotelId("1")
-                    .build());
-        });
+        String fileName = roomImage.stream().findFirst().get().getName();
         // then
+        Assertions.assertThat(fileName).isEqualTo("b4197ce5-f4d4-4041-9b2a-f3ab8514a14c_testImge2.jpg");
+        Assertions.assertThat(room.getRoomLimit()).isEqualTo("3");
 
     }
+
+
+
 }

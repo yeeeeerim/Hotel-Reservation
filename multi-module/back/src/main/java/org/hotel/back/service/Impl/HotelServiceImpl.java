@@ -31,10 +31,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.UUID;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -45,6 +42,7 @@ public class HotelServiceImpl implements HotelService {
     private final HotelRepository hotelRepository;
     private final HotelImageRepository hotelImageRepository;
     private final KaKaoAPIService kaKaoAPIService;
+
     private final HotelImageCacheService hotelCacheService;
     @Value("${upload.path}")
     private String path;
@@ -215,6 +213,15 @@ public class HotelServiceImpl implements HotelService {
         }
         return hotelImageDTO;
     }
+
+    @Override
+    public boolean hotelWriter(Long id, String writer) {
+
+        Optional<Hotel> hotel=hotelRepository.findHotelByIdAndWriter(id,writer);
+        if(hotel.isPresent()) return true; //값을 가지고 있다면
+        else return false; //값이 없다면
+    }
+
     protected HotelImageDTO toDTO(Long id, List<HotelImage>hotelImages){
         if(!hotelImages.isEmpty()||hotelImages!=null){
             HotelImageDTO dto= HotelImageDTO.builder()

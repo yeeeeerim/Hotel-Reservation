@@ -38,6 +38,21 @@ public class MainController {
 //    }
 
 
+<<<<<<< HEAD
+    @GetMapping("/test")
+    public ResponseEntity<String> test() throws JobInstanceAlreadyCompleteException,
+            JobExecutionAlreadyRunningException,
+            JobParametersInvalidException,
+            JobRestartException {
+        JobParameters jobParameters = new JobParametersBuilder()
+                .toJobParameters();
+        jobLauncher.run(job,jobParameters);
+        return ResponseEntity.ok("test");
+    }
+
+
+=======
+>>>>>>> 527d5079c141d5a2fb705066adbd502aa53ed9e1
     @GetMapping("/test2")
     public  ResponseEntity<String>  test2(){
         System.out.println("test2");

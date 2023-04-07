@@ -3,6 +3,7 @@ import lombok.Getter;
 
 @Getter
 public class BookingException extends RuntimeException{
+
 	private BookingErrorCode bookingErrorCode;
 	private String detailMessage;
 
@@ -16,4 +17,5 @@ public class BookingException extends RuntimeException{
 		this.bookingErrorCode = errorCode;
 		this.detailMessage = detailMessage;
 	}
+
 }

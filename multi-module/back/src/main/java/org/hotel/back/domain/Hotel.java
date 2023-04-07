@@ -1,5 +1,6 @@
 package org.hotel.back.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.hibernate.annotations.BatchSize;
 import org.springframework.data.annotation.CreatedBy;
@@ -28,8 +29,6 @@ public class Hotel {
     private String tellNumber;
     private String latitude;
     private String longitude;
-
-
     @CreatedBy
     private String writer;
     private String address;
@@ -51,6 +50,7 @@ public class Hotel {
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "hotel",fetch = FetchType.LAZY)
     private List<HotelImage> hotelImages = new ArrayList<>();
 
+    @JsonIgnore
     @ToString.Exclude
     @Builder.Default
     @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL,orphanRemoval = true,mappedBy = "hotel")

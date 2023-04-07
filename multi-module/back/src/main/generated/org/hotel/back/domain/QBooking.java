@@ -22,11 +22,15 @@ public class QBooking extends EntityPathBase<Booking> {
 
     public static final QBooking booking = new QBooking("booking");
 
-    public final DatePath<java.time.LocalDate> checkIn = createDate("checkIn", java.time.LocalDate.class);
+    public final DateTimePath<java.time.LocalDateTime> checkIn = createDateTime("checkIn", java.time.LocalDateTime.class);
 
-    public final DatePath<java.time.LocalDate> checkOut = createDate("checkOut", java.time.LocalDate.class);
+    public final DateTimePath<java.time.LocalDateTime> checkOut = createDateTime("checkOut", java.time.LocalDateTime.class);
 
     public final DateTimePath<java.time.LocalDateTime> createdAt = createDateTime("createdAt", java.time.LocalDateTime.class);
+
+    public final BooleanPath deleted = createBoolean("deleted");
+
+    public final QHotel hotel;
 
     public final NumberPath<Long> id = createNumber("id", Long.class);
 
@@ -37,6 +41,8 @@ public class QBooking extends EntityPathBase<Booking> {
     public final DateTimePath<java.time.LocalDateTime> modifiedAt = createDateTime("modifiedAt", java.time.LocalDateTime.class);
 
     public final QRoom room;
+
+    public final NumberPath<Long> roomId = createNumber("roomId", Long.class);
 
     public QBooking(String variable) {
         this(Booking.class, forVariable(variable), INITS);
@@ -56,6 +62,7 @@ public class QBooking extends EntityPathBase<Booking> {
 
     public QBooking(Class<? extends Booking> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
+        this.hotel = inits.isInitialized("hotel") ? new QHotel(forProperty("hotel")) : null;
         this.member = inits.isInitialized("member") ? new QMember(forProperty("member")) : null;
         this.room = inits.isInitialized("room") ? new QRoom(forProperty("room"), inits.get("room")) : null;
     }

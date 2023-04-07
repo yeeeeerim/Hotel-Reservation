@@ -19,5 +19,7 @@ public interface HotelRepository extends JpaRepository<Hotel,Long> {
     @Query("SELECT h FROM Hotel h WHERE h.id = :id")
     Optional<Hotel> getHotelWithReviewsAndImages(@Param("id") Long id);
 
+    Optional<Hotel> findHotelByIdAndWriter(@Param("id")Long id, @Param("writer")String writer);
+
 
 }

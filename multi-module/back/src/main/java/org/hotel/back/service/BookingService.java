@@ -1,5 +1,6 @@
 package org.hotel.back.service;
 
+import org.hotel.back.config.exception.BookingException;
 import org.hotel.back.data.dto.BookingDTO;
 import org.hotel.back.data.request.BookingRequestDTO;
 import org.hotel.back.data.response.BookingResponseDTO;
@@ -14,9 +15,14 @@ import java.util.List;
 
 
 public interface BookingService {
-    public List<RoomDTO> findAvailable(LocalDate checkIn, LocalDate checkOut);
+    public List<RoomDTO> findAvailable(LocalDateTime checkIn, LocalDateTime checkOut, Long hotelId);
 
-    public BookingDTO findById(Long id);
+    public Booking bookingSave(BookingDTO dto) throws BookingException;
 
-    void bookingSave(BookingDTO bookingDTO);
+    public BookingResponseDTO findById(Long id);
+
+    public void updateBooking(LocalDateTime checkIn, LocalDateTime checkout, String memberEmail, Long id);
+    public List<BookingResponseDTO> bookingList();
+    public void delete(Long id);
+
 }

@@ -2,25 +2,25 @@ package org.hotel.back.controller;
 
 import org.assertj.core.api.Assertions;
 import org.hotel.back.config.JpaAuditingConfig;
-import org.hotel.back.repository.RoomRepository;
-import org.hotel.back.service.MemberService;
+import org.hotel.back.data.response.RoomDTO;
 import org.hotel.back.service.RoomService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.servlet.ModelAndView;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  *
@@ -29,6 +29,7 @@ import static org.junit.jupiter.api.Assertions.*;
  *
  * */
 @WebMvcTest(RoomController.class)
+@AutoConfigureMockMvc(addFilters = false)   //필터비활성화
 class RoomControllerTest {
 
 
@@ -37,6 +38,7 @@ class RoomControllerTest {
 
     @MockBean
     private RoomService roomService;
+
 
     @MockBean
     private JpaAuditingConfig jpaAuditingConfig;
@@ -49,7 +51,11 @@ class RoomControllerTest {
      * @success
      * */
     @Test
+<<<<<<< HEAD
     @WithMockUser(username = "owner", roles = "OWNER")
+=======
+    @WithMockUser(username = "owner",password = "password", roles = {"OWNER"})
+>>>>>>> ab00e4733e4c529df5883b5b7a8e316718d0a407
     @DisplayName("ROOM GET을 통해 리스트 조회")
     void test() throws Exception {
       MvcResult result =  mockMvc.perform(MockMvcRequestBuilders
@@ -68,21 +74,55 @@ class RoomControllerTest {
     }
 
     /**
-     * @WithMockUser는 Security 테스트에서 애노테이션으로 특정 사용자 정보를 모킹하여 해당 사용자로 인즈된 것처럼 테스트할 수 있도록함
-     * @apiNote /room/list  1번 소풍호텔에 한 개에 room이 달려있음
+     * @apiNote /room/save  해당 주소에  RoomDTO데이터를 from 데이터로 보내면 해당 컨트롤러는 리다이렉션시킨다.
      * @success
      * */
-
     @Test
-    @WithMockUser(username = "owner", roles = {"ROLE_OWNER"})
-    @DisplayName("1번 룸을 조회하기")
-    void RoomControllerTest() {
+    @WithMockUser(username = "owner@naver.com",password = "1234",authorities={ "OWNER"})
+    @DisplayName("룸 POST요청 날리기")
+    void RoomControllerTest() throws Exception {
         // given
+        MultiValueMap<String, String> formData = new LinkedMultiValueMap<>();
+        formData.add("roomNumber","404");
+        formData.add("roomClass","VIP");
+        formData.add("roomPrice","120,000");
+        formData.add("description","넓은 방입니다");
+
+        RoomDTO roomDTO  = RoomDTO.builder()
+                .roomNumber("404")
+                .roomClass("VIP")
+                .roomPrice("120,000")
+                .description("넓은 방입니다.")
+                .hotelId("1")
+                .build();
 
         // when
+        mockMvc.perform(MockMvcRequestBuilders
+                .post("/room/save")
+                        .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+                        .flashAttr("roomDTO",roomDTO))
+                .andExpect(MockMvcResultMatchers.redirectedUrl("/room/list&id=1"));
 
-        // then
+       // then
+        Mockito.verify(roomService).save(roomDTO);
     }
+
+
+    /**
+     * @apiNote /room/detail  해당 주소에  hotelId 그리고 hotelNa 값을 차례대로 넣으면 호텔
+     * */
+    @Test
+    @DisplayName("/room/detail GET Method Test")
+    void test2() throws Exception {
+        // given
+        mockMvc.perform(MockMvcRequestBuilders.get("/room/detail")
+                .param("id","1")
+                .param("hotelNa","소풍호텔")
+                .param("hotelId","1")
+        ).andExpect(MockMvcResultMatchers.status().isOk());
+
+    }
+
 
 
 }
