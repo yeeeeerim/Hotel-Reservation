@@ -27,7 +27,10 @@ import org.springframework.http.HttpHeaders;
 import javax.swing.text.html.Option;
 import java.io.File;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.nio.file.Files;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -58,7 +61,7 @@ class RoomServiceTest {
      * */
     @Test
     @DisplayName("File View Test")
-    void RoomServiceTest() throws IOException {
+    void roomTest1() throws IOException {
         // given
         String fileName = "404.jpg";
         String path = "C:/PROJECT/TAELT/STUDY-GROUP-ACTIVITY/multi-module/back/temp"+ File.separator+fileName;
@@ -93,7 +96,7 @@ class RoomServiceTest {
 
     @Test
     @DisplayName("Room Id Test")
-    void RoomServiceTest2() {
+    void roomTest2() {
         // given
         given(roomRepository.getRoomWithImage(1L))
                 .willReturn(Optional.of(Room.builder()
@@ -106,6 +109,36 @@ class RoomServiceTest {
         // then
         Assertions.assertThat(roomDTO.getId()).isEqualTo(1L);
         Assertions.assertThat(roomDTO.getRoomClass()).isEqualTo("VIP");
+    }
+
+
+    @Test
+    @DisplayName("")
+    void roomTest3() {
+        // given
+        // given
+        RoomDTO roomDTO = RoomDTO.builder()
+                .roomNumber("101")
+                .roomClass("DELUXE")
+                .roomPrice("120,000")
+                .roomLimit("2")
+                .description("This is a beautiful room")
+                .hotelId("1")
+                .build();
+
+        Room room = Room.builder()
+                .roomNumber("101")
+                .roomClass("DELUXE")
+                .roomPrice("120,000")
+                .roomLimit("2")
+                .description("This is a beautiful room")
+                .hotelId(1L)
+                .build();
+
+
+        // when
+        roomService.save(roomDTO);
+        // then
     }
 
 

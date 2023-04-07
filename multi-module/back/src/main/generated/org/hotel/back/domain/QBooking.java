@@ -30,6 +30,7 @@ public class QBooking extends EntityPathBase<Booking> {
 
     public final BooleanPath deleted = createBoolean("deleted");
 
+
     public final QHotel hotel;
 
     public final NumberPath<Long> id = createNumber("id", Long.class);
@@ -43,6 +44,7 @@ public class QBooking extends EntityPathBase<Booking> {
     public final QRoom room;
 
     public final NumberPath<Long> roomId = createNumber("roomId", Long.class);
+
 
     public QBooking(String variable) {
         this(Booking.class, forVariable(variable), INITS);
@@ -64,7 +66,9 @@ public class QBooking extends EntityPathBase<Booking> {
         super(type, metadata, inits);
         this.hotel = inits.isInitialized("hotel") ? new QHotel(forProperty("hotel")) : null;
         this.member = inits.isInitialized("member") ? new QMember(forProperty("member")) : null;
+
         this.room = inits.isInitialized("room") ? new QRoom(forProperty("room"), inits.get("room")) : null;
+
     }
 
 }
