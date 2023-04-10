@@ -1,17 +1,14 @@
 package org.hotel.back.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.catalina.User;
 import org.hotel.back.data.response.HotelImageDTO;
 import org.hotel.back.data.response.HotelListResponseDTO;
 import org.hotel.back.data.response.HotelResponseDTO;
 import org.hotel.back.data.response.KaKaoResponseData;
 
 import org.hotel.back.data.request.HotelRequestDTO;
-import org.hotel.back.domain.Hotel;
 import org.hotel.back.service.HotelImageCacheService;
 import org.hotel.back.service.HotelService;
 import org.hotel.back.service.Impl.FileDeleteException;
@@ -23,7 +20,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,9 +27,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.security.Principal;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Slf4j
 @Controller
@@ -116,6 +109,7 @@ public class HotelController {
         model.addAttribute("path",path);
         return "hotel/hotelDetail";
     }
+
 
     @PreAuthorize("hasRole('OWNER')")
     @GetMapping("/hotel/delete")

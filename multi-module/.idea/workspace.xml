@@ -5,65 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db43dd2a-a458-4234-bbd2-661777756490" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/config/JpaAuditingConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/config/booking/LocalDateToDateConverter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/config/booking/RoomDtoConverter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/config/booking/WebConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back/src/test/java/org/hotel/back/controller/RoomControllerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back/temp/404.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back/temp/bdfca66e-a47d-4b67-b3d7-1527162608c5_testImage.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/booking-module/src/main/java/com/back/bookingmodule/config/CustomLineRunner.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/booking-module/src/main/java/com/back/bookingmodule/domain/Hotel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/booking-module/src/main/java/com/back/bookingmodule/prog/HotelCSVConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/booking-module/src/main/java/com/back/bookingmodule/repository/HotelRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/booking-module/src/main/resources/hotel-data.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/resources/static/js/detail-scripts.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/resources/templates/hotel/resume.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/back/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/generated/org/hotel/back/domain/QBooking.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/generated/org/hotel/back/domain/QBooking.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/generated/org/hotel/back/domain/QRoom.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/generated/org/hotel/back/domain/QRoom.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/BackApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/BackApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/api/HotelRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/api/HotelRestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/controller/BookingContoller.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/controller/BookingContoller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/controller/BookingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/controller/BookingController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/controller/HotelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/controller/HotelController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/controller/ReviewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/controller/ReviewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/controller/RoomController.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/controller/RoomController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/data/request/HotelRequestDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/data/request/HotelRequestDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/data/response/HotelAndReviewDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/data/response/HotelAndReviewDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/data/response/HotelListResponseDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/data/response/HotelListResponseDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/data/response/KaKaoResponseData.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/data/response/KaKaoResponseData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/data/response/RoomResponseDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/data/response/RoomResponseDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/domain/Booking.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/domain/Booking.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/domain/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/domain/Room.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/repository/BookingRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/repository/BookingRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/repository/RoomRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/repository/RoomRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/service/BookingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/service/BookingService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/service/Impl/BookingServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/service/Impl/BookingServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/service/Impl/HotelServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/service/Impl/HotelServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/service/Impl/RoomServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/service/Impl/RoomServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back/src/main/resources/templates/hotel/hotelDetail.html" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/resources/templates/hotel/hotelDetail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/resources/templates/room/room-detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/resources/templates/room/room-detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/resources/templates/room/room-list.html" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/resources/templates/room/room-list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/resources/templates/room/room-save.html" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/resources/templates/room/room-save.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/test/java/org/hotel/back/controller/HotelControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/test/java/org/hotel/back/controller/HotelControllerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/test/java/org/hotel/back/service/Impl/BookingServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/test/java/org/hotel/back/service/Impl/BookingServiceImplTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/test/java/org/hotel/back/service/Impl/ReviewServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/test/java/org/hotel/back/service/Impl/ReviewServiceImplTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/test/java/org/hotel/back/service/Impl/RoomCacheServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/test/java/org/hotel/back/service/Impl/RoomCacheServiceImplTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/test/java/org/hotel/back/service/RoomServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/test/java/org/hotel/back/service/RoomServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/test/java/org/hotel/back/service/api/HotelAPIServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/test/java/org/hotel/back/service/api/HotelAPIServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/test/java/org/hotel/back/service/api/KaKaoAPIServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/test/java/org/hotel/back/service/api/KaKaoAPIServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/test/java/org/hotel/back/service/security/MemberDetailsServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/test/java/org/hotel/back/service/security/MemberDetailsServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/temp/54d0b404-936e-4740-a494-7a40d8a8ea41_thumbnail (1).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/booking-module/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/booking-module/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/booking-module/src/main/java/com/back/bookingmodule/BookingModuleApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/booking-module/src/main/java/com/back/bookingmodule/BookingModuleApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/booking-module/src/main/java/com/back/bookingmodule/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/booking-module/src/main/java/com/back/bookingmodule/controller/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/booking-module/src/main/java/com/back/bookingmodule/service/BatchService.java" beforeDir="false" afterPath="$PROJECT_DIR$/booking-module/src/main/java/com/back/bookingmodule/service/BatchService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/booking-module/src/main/java/com/back/bookingmodule/service/impl/BatchServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/booking-module/src/main/java/com/back/bookingmodule/service/impl/BatchServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/booking-module/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/booking-module/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/booking-module/src/test/java/com/back/bookingmodule/prog/BookingConfigurationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/booking-module/src/test/java/com/back/bookingmodule/prog/BookingConfigurationTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -138,28 +84,29 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelOrder2&quot;: &quot;2&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth2&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;42064a0f62584d50ddb3493ccddc9bf5&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelOrder2": "2",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RequestMappingsPanelWidth2": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "last_opened_file_path": "/Users/yerim/Desktop/Spring_study/hotel_221/STUDY-GROUP-ACTIVITY/multi-module/back/src/main/resources/static/css",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "spring.configuration.checksum": "42064a0f62584d50ddb3493ccddc9bf5",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
@@ -169,10 +116,15 @@
       <recent name="com.back.bookingmodule.config.exception" />
       <recent name="com.back.bookingmodule.data.Response" />
     </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/back/src/main/resources/static/css" />
+    </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/back/src/main/resources/static/js" />
+      <recent name="$PROJECT_DIR$/back/src/main/resources/templates/hotel" />
       <recent name="C:\Users\rla73\OneDrive\바탕 화면\new\study\multi-module\back\src\main\resources\templates\booking" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
@@ -190,7 +142,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Gradle.HotelControllerTest.test222">
+  <component name="RunManager" selected="Spring Boot.BackApplication">
     <configuration name="HotelControllerTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -431,6 +383,10 @@
       <workItem from="1680703960529" duration="6096000" />
       <workItem from="1680751128532" duration="2615000" />
       <workItem from="1680783133511" duration="3052000" />
+      <workItem from="1680837404755" duration="8945000" />
+      <workItem from="1680977979883" duration="648000" />
+      <workItem from="1681038662597" duration="1540000" />
+      <workItem from="1681135413284" duration="7458000" />
     </task>
     <servers />
   </component>
