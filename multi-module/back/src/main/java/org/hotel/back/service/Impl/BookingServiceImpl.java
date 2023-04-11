@@ -38,7 +38,7 @@ public class BookingServiceImpl implements BookingService {
     private final RoomRepository roomRepository;
 
     public List<RoomDTO> findAvailable(LocalDateTime checkIn, LocalDateTime checkOut, Long hotelId) {
-        List<Room> rooms = roomRepository.findAvailableRooms(checkIn, checkOut);
+        List<Room> rooms = roomRepository.findAvailableRooms(checkIn, checkOut, hotelId);
         List<RoomDTO> roomDTOs = new ArrayList<>();
         for (Room room : rooms) {
             RoomDTO roomDTO = new RoomDTO();

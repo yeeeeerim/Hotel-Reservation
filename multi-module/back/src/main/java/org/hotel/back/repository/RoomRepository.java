@@ -26,8 +26,8 @@ public interface RoomRepository extends JpaRepository<Room,Long>,CustomRoomRepos
     @Query("SELECT DISTINCT r FROM Room  r LEFT JOIN FETCH r.roomImage WHERE r.hotel.id = :id")
     public List<Room> roomListWithImage(@Param("id") Long id);
 
-    @Query("SELECT r FROM Room r WHERE r NOT IN (SELECT b.room FROM Booking b WHERE b.checkOut >= :checkIn AND b.checkIn <= :checkOut)")
-    List<Room> findAvailableRooms(@Param("checkIn") LocalDateTime checkIn, @Param("checkOut") LocalDateTime checkOut);
+    @Query("SELECT r FROM Room r WHERE r.hotelId = :hotelId AND r NOT IN (SELECT b.room FROM Booking b WHERE b.checkOut >= :checkIn AND b.checkIn <= :checkOut AND b.deleted = false)")
+    List<Room> findAvailableRooms(@Param("checkIn") LocalDateTime checkIn, @Param("checkOut") LocalDateTime checkOut, @Param("hotelId") Long hotelId);
 
 }
 
