@@ -39,11 +39,8 @@
               <tbody>
               <tr style="line-height:32px;">
                 <td>호텔이름</td>
-<<<<<<< HEAD
                   <input type="text" name="hotel" class="form-control" th:value="${dto.hotelNa}" readonly>
-=======
-                  <input type="text" name="hotel" class="form-control hotelNa" readonly>
->>>>>>> 527d5079c141d5a2fb705066adbd502aa53ed9e1
+
                 <td>
                   <input type="text" name="hotel" class="form-control id"  readonly>
                 </td>
@@ -148,7 +145,6 @@
       alert("해당 객실을 삭제할 권한이 없습니다.")
       window.history.back()
     }
-<<<<<<< HEAD
   })
     let imageList = [[ ${dto.roomImage} ]]
     const hotelId = [[ ${hotelId} ]]
@@ -157,14 +153,9 @@
 
     if(imageList != null){
           for(const fileName of imageList){
-            const imgSrc = "/view?fileName="+fileName
+            const imgSrc = fileName
             $('.image').append(`
-=======
-    if(imageList != null && imageList.length != 0){
-      for(const fileName of imageList){
-        const imgSrc = "/view?fileName="+fileName
-        $('.image').append(`
->>>>>>> 527d5079c141d5a2fb705066adbd502aa53ed9e1
+
                        <div class="card-temp" className="card" style="width: 200px; display: inline-block; box-shadow: 5px 5px 5px;">
                          <img src='${imgSrc}' width="200" height="140" data-src='${fileName}'/>
                            <div className="card-body">
@@ -173,7 +164,6 @@
                     `)
       }
     }
-  })
 
     $('#modify').click(function (){
           location.href = '/room/modify?id='+roomId+'&hotel='+hotelId

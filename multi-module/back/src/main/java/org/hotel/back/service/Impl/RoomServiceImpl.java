@@ -15,6 +15,7 @@ import org.hotel.back.domain.RoomImage;
 import org.hotel.back.repository.RoomRepository;
 import org.hotel.back.service.RoomCacheService;
 import org.hotel.back.service.RoomService;
+import org.hotel.back.service.S3Config;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
@@ -44,6 +45,9 @@ public class RoomServiceImpl implements RoomService {
 
     private final RoomCacheService roomCacheService;
 
+    private final S3Config s3Config;
+
+
 
     public List<FileDTO> upload(UploadDTO uploadDTO){
         if(!uploadDTO.getFiles().isEmpty()){
@@ -51,6 +55,7 @@ public class RoomServiceImpl implements RoomService {
             final List<FileDTO> list = new ArrayList<>();
 
             uploadDTO.getFiles().forEach(multipartFile -> {
+
                 String uuid = UUID.randomUUID().toString();
                 Path savePath = Paths.get(path, uuid+"_"+multipartFile.getOriginalFilename());
 
@@ -107,6 +112,17 @@ public class RoomServiceImpl implements RoomService {
 
 
        public void save(RoomDTO roomDTO){
+        List<String> tempDTO = new ArrayList<>();
+
+        roomDTO.getFileNames().forEach(s -> {
+            String temp =s3Config.upload(s);
+            tempDTO.add(temp);
+        });
+
+        roomDTO.setFileNames(tempDTO);
+
+        roomDTO.getFileNames().forEach(s -> System.out.println("변경된 파일네임"+s));
+
         Room room = roomRepository.save(toEntity(roomDTO));
 
        }
