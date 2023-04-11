@@ -53,7 +53,6 @@ public class BookingContoller {
         LocalDateTime localDateTimeIn = checkIn.atTime(12,0);
         LocalDateTime localDateTimeOut = checkOut.atTime(12,0);
         List<RoomDTO> availableRoomList = bookingService.findAvailable(localDateTimeIn, localDateTimeOut, hotelId);
-
         return ResponseEntity.ok(availableRoomList);
     }
 
