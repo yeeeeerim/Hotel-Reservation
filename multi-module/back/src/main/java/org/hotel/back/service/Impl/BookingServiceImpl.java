@@ -6,8 +6,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.hotel.back.config.exception.BookingErrorCode;
 import org.hotel.back.config.exception.BookingException;
 import org.hotel.back.data.dto.BookingDTO;
+
 import org.hotel.back.data.dto.MemberDTO;
 import org.hotel.back.data.request.BookingRequestDTO;
+import org.hotel.back.data.response.BookingAndRoomDTO;
 import org.hotel.back.data.response.BookingResponseDTO;
 import org.hotel.back.data.response.RoomDTO;
 import org.hotel.back.domain.Booking;
@@ -17,12 +19,14 @@ import org.hotel.back.repository.BookingRepository;
 import org.hotel.back.repository.RoomRepository;
 import org.hotel.back.service.BookingService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.Transactional;
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -44,6 +48,7 @@ public class BookingServiceImpl implements BookingService {
             roomDTO.setRoomPrice(room.getRoomPrice());
             roomDTO.setRoomLimit(room.getRoomLimit());
             roomDTO.setDescription(room.getDescription());
+
             roomDTOs.add(roomDTO);
         }
         return roomDTOs;
@@ -83,18 +88,64 @@ public class BookingServiceImpl implements BookingService {
             bookingRepository.updateBooking(checkIn, checkOut,id);
         }
     }
-    //TODO: 리스트조회, 삭제
-    public List<BookingResponseDTO> bookingList(){
-        List<Booking> bookingList = bookingRepository.findAll();
-        List<BookingResponseDTO> bookingResponseDTOList = new ArrayList<>();
-        for (Booking booking : bookingList){
-            BookingResponseDTO bookingResponseDTO = new BookingResponseDTO();
-            bookingResponseDTO.setId(booking.getId());
-            bookingResponseDTO.setRoomId(booking.getRoomId());
-            bookingResponseDTO.setCheckIn(booking.getCheckIn().toString());
-            bookingResponseDTO.setCheckOut(booking.getCheckOut().toString());
-            bookingResponseDTO.setMemberEmail(booking.getMemberEmail());
-            bookingResponseDTOList.add(bookingResponseDTO);
+
+p
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<BookingAndRoomDTO> findByEmail(String email) {
+        List<Booking> list = bookingRepository.findByEmail(email);
+        List<BookingAndRoomDTO> resultList = new ArrayList<>();
+
+        if(list.isEmpty() || list == null){
+            return new ArrayList<>();
+        }else{
+            list.forEach(booking -> {
+
+                Room temp = booking.getRoom();
+
+                BookingAndRoomDTO dto = BookingAndRoomDTO.builder()
+                        .bookingDTO(
+                                BookingDTO.builder()
+                                        .roomId(booking.getRoomId())
+                                        .createdAt(booking.getCreatedAt())
+                                        .memberEmail(booking.getMemberEmail())
+                                        .checkIn(booking.getCheckIn())
+                                        .checkOut(booking.getCheckOut())
+                                        .build())
+                        .roomDTO(RoomDTO.builder()
+                                .id(temp.getId())
+                                .roomNumber(temp.getRoomNumber())
+                                .roomPrice(temp.getRoomPrice())
+                                .description(temp.getDescription())
+                                .roomClass(temp.getRoomClass())
+                                .fileNames(temp.getRoomImage()
+                                        .stream().map(roomImage -> roomImage.getName()).
+                                        collect(Collectors.toList()))
+                                .roomLimit(temp.getRoomLimit())
+                                .build())
+                        .build();
+                resultList.add(dto);
+            });
+
+
+            return resultList;
+        }
+    }
+        public List<BookingResponseDTO> bookingList(){
+            List<Booking> bookingList = bookingRepository.findAll();
+            List<BookingResponseDTO> bookingResponseDTOList = new ArrayList<>();
+            for (Booking booking : bookingList){
+                BookingResponseDTO bookingResponseDTO = new BookingResponseDTO();
+                bookingResponseDTO.setId(booking.getId());
+                bookingResponseDTO.setRoomId(booking.getRoomId());
+                bookingResponseDTO.setCheckIn(booking.getCheckIn().toString());
+                bookingResponseDTO.setCheckOut(booking.getCheckOut().toString());
+                bookingResponseDTO.setMemberEmail(booking.getMemberEmail());
+                bookingResponseDTOList.add(bookingResponseDTO);
+            }
+            return bookingResponseDTOList;
+
         }
         return bookingResponseDTOList;
     }

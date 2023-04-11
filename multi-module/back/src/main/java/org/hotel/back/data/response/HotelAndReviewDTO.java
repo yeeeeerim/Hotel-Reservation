@@ -16,7 +16,7 @@ public class HotelAndReviewDTO {
 
         private HotelResponseDTO hotelResponseDTO;
 
-        private List<ReviewResponseDTO> reviewResponseDTO;
+        private ReviewResponseDTO reviewResponseDTO;
 
 
         @Builder.Default
@@ -25,18 +25,4 @@ public class HotelAndReviewDTO {
         private long totalRating;
 
 
-        public double getTotalRating(){
-           long rating = 0;
-
-           if(!reviewResponseDTO.isEmpty()){
-
-
-                   for (ReviewResponseDTO dto : reviewResponseDTO) {
-                           if(dto.getRating().longValue() == 0) return 0;
-                           if(!ObjectUtils.isEmpty(dto.getRating())) rating += dto.getRating();
-                   }
-                   return rating/reviewResponseDTO.size();
-           }
-           return 0;
-        }
 }

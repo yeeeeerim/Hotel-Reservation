@@ -17,8 +17,12 @@ public interface BookingRepository extends JpaRepository<Booking, Long> {
     @Query("update Booking b set b.checkIn = :checkIn, b.checkOut = :checkOut where b.id = :id")
     void updateBooking(@Param("checkIn") LocalDateTime checkIn, @Param("checkOut") LocalDateTime checkOut, @Param("id") Long id);
 
-    @Query("SELECT r FROM Room r WHERE r.id NOT IN (SELECT b FROM Booking b WHERE b.checkIn <= :checkOut AND b.checkOut >= :checkIn)")
-    List<Room> getNotReservation(@Param("checkIn")LocalDateTime checkIn, @Param("checkOut")LocalDateTime checkOut);
+
+
+    @Query("select b from Booking b join fetch b.room where b.memberEmail = :email")
+     List<Booking> findByEmail(@Param("email") String email);
+
+
 
 }
 

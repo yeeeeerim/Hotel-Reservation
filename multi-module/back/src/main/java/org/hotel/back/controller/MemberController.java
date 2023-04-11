@@ -6,6 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.hotel.back.data.dto.MemberDTO;
 import org.hotel.back.data.request.RegisterData;
 import org.hotel.back.data.response.HotelAndReviewDTO;
+import org.hotel.back.service.BookingService;
 import org.hotel.back.service.MemberService;
 import org.json.simple.parser.ParseException;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -27,6 +28,8 @@ import java.util.stream.Collectors;
 public class MemberController {
 
     private final MemberService memberService;
+
+    private final BookingService bookingService;
 
     @GetMapping("/login")
     public String loginGET(@RequestParam(required = false) String err,
@@ -53,6 +56,10 @@ public class MemberController {
         memberService.registerSave(data);
         return "redirect:login";
     }
+    @GetMapping("/")
+    public String forWardGet(){
+        return "forward:/hotel";
+    }
 
 
 
@@ -61,30 +68,23 @@ public class MemberController {
     public String manageGET(Model model,
                             @AuthenticationPrincipal MemberDTO memberDTO){
         List<HotelAndReviewDTO>  dtoList = null;
-
         try{
-            dtoList = memberService.getHotelAndReviewWithRoom(memberDTO != null? memberDTO.getEmail() : "Unknown");
+            dtoList = memberService.getReviewByEmail(memberDTO != null? memberDTO.getEmail() : "Unknown");
             if (dtoList != null){
-
-                model.addAttribute("hotel",dtoList);
-
+                model.addAttribute("review",dtoList);
             }
-            if(memberDTO != null) model.addAttribute("member",memberDTO);
+            if(memberDTO != null){
+                model.addAttribute("list",bookingService.findByEmail(memberDTO.getEmail()));
+                model.addAttribute("member",memberDTO);
+            }
         } catch (ParseException e) {
            log.error("파싱 실패");
         }
-
-
-
         return "/manage/index";
 
-
     }
 
-    @GetMapping("/test")
-    public String test(){
-        return "test";
-    }
+
 
 
 

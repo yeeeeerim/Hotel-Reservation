@@ -1,7 +1,6 @@
 package org.hotel.back.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -23,7 +22,6 @@ public class Booking {      //TODO: 실제로 삭제가 아닌 값을 넘길 예
     private Long id;
 
 
-    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_email", insertable = false, updatable = false)
     private Member member;
@@ -32,9 +30,10 @@ public class Booking {      //TODO: 실제로 삭제가 아닌 값을 넘길 예
     @ManyToOne(fetch = FetchType.LAZY)
     private Hotel hotel;
 
-    @JsonIgnore
+
+
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "room_id", insertable = false, updatable = false)
-    @ManyToOne
     private Room room;
 
     @Column(nullable = false)

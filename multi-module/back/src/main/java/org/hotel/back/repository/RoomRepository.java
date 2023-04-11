@@ -1,5 +1,6 @@
 package org.hotel.back.repository;
 
+import org.hotel.back.domain.Booking;
 import org.hotel.back.domain.Room;
 import org.hotel.back.repository.custom.CustomRoomRepository;
 import org.springframework.data.jpa.repository.EntityGraph;
@@ -27,5 +28,6 @@ public interface RoomRepository extends JpaRepository<Room,Long>,CustomRoomRepos
 
     @Query("SELECT r FROM Room r WHERE r NOT IN (SELECT b.room FROM Booking b WHERE b.checkOut >= :checkIn AND b.checkIn <= :checkOut)")
     List<Room> findAvailableRooms(@Param("checkIn") LocalDateTime checkIn, @Param("checkOut") LocalDateTime checkOut);
+
 }
 

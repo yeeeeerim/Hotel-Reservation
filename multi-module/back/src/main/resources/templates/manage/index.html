@@ -72,32 +72,21 @@
                 <div class="col-lg-4">
                     <!-- Search widget-->
                     <div class="card mb-4">
-                        <div class="card-header">Search</div>
-                        <div class="card-body">
-                            <div class="input-group">
-                                <select class="form-select" aria-label="Default select example" onchange="changeSelect()">
-                                    <option value="hotel" selected>Hotel</option>
-                                    <option value="room">Room</option>
-                                </select>
-                            </div>
-                        </div>
+
                     </div>
                     <!-- Categories widget-->
                     <div class="card mb-4">
                         <div class="card-header">REVIEW 관리</div>
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-6 review-content">
-
-                                </div>
-
+                                <div class="col-6 review-content"></div>
                             </div>
                         </div>
                     </div>
                     <!-- Side widget-->
                     <div class="card mb-4">
                         <div class="card-header">Side Widget</div>
-                        <div class="card-body">You can put anything you want inside of these side widgets. They are easy to use, and feature the Bootstrap 5 card component!</div>
+                        <div class="card-body booking-list"></div>
                     </div>
                 </div>
             </div>
@@ -114,10 +103,23 @@
 
         <script th:inline="javascript">
 
+            function format(inputString){
+                const date = new Date(inputString);
+                const year = date.getFullYear();
+                const month = String(date.getMonth() + 1).padStart(2, "0");
+                const day = String(date.getDate()).padStart(2, "0");
+                const hour = String(date.getHours()).padStart(2, "0");
+                const minute = String(date.getMinutes()).padStart(2, "0");
+
+                const outputString = `${year}-${month}-${day} ${hour}:${minute}`;
+                return outputString
+            }
+
             let hotelId
             $(document).ready(function(){
                 const member = [[ ${member} ]]
-                const data = [[ ${hotel} ]]
+                const data = [[ ${review} ]]
+                const bookingList = [[ ${list} ]]
 
                 let hotelDTO
 
@@ -137,41 +139,53 @@
                 $('.card-one-body').remove()
                 $('.main-card-header').remove()
 
-                for(const hotel of data){
-                    hotelDTO = hotel.hotelResponseDTO
-                    reviewDTO = hotel.reviewResponseDTO
+                for(const booking of bookingList){
+                    const reservation = booking.bookingDTO
+                    const room = booking.roomDTO
+                    const roomImage = room.fileNames[0]
+                    const checkIn = format(`${reservation.checkIn}`)
+                    const checkOut = format(`${reservation.checkOut}`)
+                    const createdAt = format(`${reservation.createdAt}`)
 
-                    const fileName = hotel.images[0]
+                    $('.booking-list').append(`<div>
+                                                    <div>체크인  ${checkIn}</div>
+                                                    <div>체크아웃  ${checkOut}</div>
+                                                    <div>예약시기 ${createdAt}</div>
+                                                    <div>방 번호 ${room.roomNumber}</div>
+                                                </div><br><hr>`)
 
 
 
                     $('.post').append(` <div class="main-card mb-4">
                         <a href="#!" class="main-card-header">
-                        <img class="card-img-top hotel-image" src="/view?fileName=${fileName}" alt="..." />
+                        <img class="card-img-top hotel-image" src="/view?fileName=${roomImage}" alt="..." />
                         </a>
                        <div class="card-body card-one-body">
-                            <div class="small text-muted">${hotelDTO.cityName}</div>
-                            <h2 class="card-title">${hotelDTO.hotelName}</h2>
-                            <p class="card-text">${hotelDTO.address}</p>
-                            <p class="card-text"> &starf; ${hotel.totalRating}</p>
-                            <a class="btn btn-success" href="/hotel/detail?id=${hotelDTO.id}">Read more →</a>
+                            <div class="small text-muted">${room.roomNumber} 호</div>
+                            <h2 class="card-title">방 등급 : ${room.roomClass}</h2>
+                            <p class="card-text">방 최대인원 : ${room.roomLimit}</p>
+                            <p class="card-text"> &starf; ${room.description}</p>
+                            <a class="btn btn-success" href="/room/detail?id=${room.id}">Read more →</a>
                         </div>
                     </div>`)
 
+                }
+
+                for(const review of data){
+                    reviewDTO = review.reviewResponseDTO
+
+                    console.log(reviewDTO)
                     if(reviewDTO != null){
-                        for(const review of reviewDTO){
                             $('.review-content').append(`
-                                <div><a href="/hotel/detail?id=${hotelDTO.id}" style="text-decoration: none;margin-bottom: 10px">${review.reviewContent}</a></div>
+                                <div><a href="/hotel/detail?id=${reviewDTO.id}" style="text-decoration: none;margin-bottom: 10px">${reviewDTO.reviewContent}</a></div>
                          `)
                     }
-
-                    }
-
                 }
 
             })
 
             function changeSelect(){
+
                 const selectData = $('.form-select').val();
 
                 if(selectData == 'room'){       //Hotel 일 경우로 바꿀예정
@@ -203,14 +217,12 @@
             async function hotelRequest(){
                     const response = await axios.get('/api/hotel')
                 return response
-
             }
 
             async function roomRequest(){
                 console.log(hotelId)
                 const response = await axios.get('/api/room?id='+hotelId)
                 return response
-
             }
 
 
