@@ -30,7 +30,7 @@ public class HotelRestController {
 
 
 
-//    @PreAuthorize("isAuthenticated()")
+    //    @PreAuthorize("isAuthenticated()")
 //    @GetMapping("/api/hotel")
 //    public ResponseEntity<HotelAndReviewDTO> getRestHotelDATA(
 //            @AuthenticationPrincipal MemberDTO memberDTO
@@ -54,9 +54,9 @@ public class HotelRestController {
 
         log.info("들어온 아이디 값 : {}",id);
         if(memberDTO != null){
-                return ResponseEntity.ok(
-                        roomService.findByRoomWithImage(Long.parseLong(id))
-                );
+            return ResponseEntity.ok(
+                    roomService.findByRoomWithImage(Long.parseLong(id))
+            );
         }else{
             return ResponseEntity.badRequest().body(null);
         }

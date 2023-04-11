@@ -17,20 +17,20 @@ import java.util.stream.Collectors;
 @Getter
 public class HotelResponseDTO {
 
-    Long id;
-    String hotelName;
-    String cityName;
-    String tellNumber;
-    String latitude;
-    String longitude;
+    private Long id;
+    private String hotelName;
+    private String cityName;
+    private String tellNumber;
+    private String latitude;
+    private String longitude;
 
     @Builder.Default
-    List<Review> reviews = new ArrayList<>();
-    String address;
-    Double ratingAvg;
+    private List<Review> reviews = new ArrayList<>();
+    private String address;
+    private Double ratingAvg;
 
     @Builder.Default
-    List<String>hotelImages=new ArrayList<>();
+    private List<String>hotelImages=new ArrayList<>();
 
     public HotelResponseDTO(Hotel hotel,Double avg){
         this.id=hotel.getId();
@@ -39,21 +39,11 @@ public class HotelResponseDTO {
         this.tellNumber=hotel.getTellNumber();
         this.latitude=hotel.getLatitude();
         this.longitude=hotel.getLongitude();
-        this.hotelImages=hotel.getHotelImages().stream().map(entity-> entity.getName()).collect(Collectors.toList());
+        //this.hotelImages=hotel.getHotelImages().stream().map(entity-> entity.getName()).collect(Collectors.toList());
         this.reviews=hotel.getReviews();
         this.ratingAvg=avg;
     }
 
-    public HotelResponseDTO(Hotel hotel){
-        this.id=hotel.getId();
-        this.hotelName=hotel.getHotelName();
-        this.cityName=hotel.getCityName();
-        this.tellNumber=hotel.getTellNumber();
-        this.latitude=hotel.getLatitude();
-        this.longitude=hotel.getLongitude();
-        this.hotelImages=hotel.getHotelImages().stream().map(entity-> entity.getName()).collect(Collectors.toList());
-        this.reviews=hotel.getReviews();
-    }
 
 
 }

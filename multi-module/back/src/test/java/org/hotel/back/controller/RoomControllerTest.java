@@ -51,7 +51,11 @@ class RoomControllerTest {
      * @success
      * */
     @Test
+<<<<<<< HEAD
+    @WithMockUser(username = "owner", roles = "OWNER")
+=======
     @WithMockUser(username = "owner",password = "password", roles = {"OWNER"})
+>>>>>>> ab00e4733e4c529df5883b5b7a8e316718d0a407
     @DisplayName("ROOM GET을 통해 리스트 조회")
     void test() throws Exception {
       MvcResult result =  mockMvc.perform(MockMvcRequestBuilders
@@ -60,7 +64,7 @@ class RoomControllerTest {
                         .param("hotelNa","소풍호텔")
                 )
                 .andExpect(MockMvcResultMatchers.status().isOk())
-                .andReturn(); //andReturn을 통해 ResultAction이 아닌 MvcResult를 반환한다.
+                 .andReturn(); //andReturn을 통해 ResultAction이 아닌 MvcResult를 반환한다.
 
         ModelAndView modelAndView  = result.getModelAndView();
         ModelMap modelMap = modelAndView.getModelMap();

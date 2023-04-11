@@ -44,7 +44,7 @@ public class BookingContoller {
 
     @GetMapping("/available")
     public ResponseEntity<List<RoomDTO>> availableRooms(@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate checkIn,
-                                               @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate checkOut,
+                                                        @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate checkOut,
                                                         @RequestParam Long hotelId){
         LocalDateTime localDateTimeIn = checkIn.atTime(12,0);
         LocalDateTime localDateTimeOut = checkOut.atTime(12,0);

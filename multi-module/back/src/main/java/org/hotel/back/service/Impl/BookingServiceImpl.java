@@ -85,10 +85,11 @@ public class BookingServiceImpl implements BookingService {
             throw new BookingException(BookingErrorCode.BOOKING_NOT_CHANGE);
         } else {
 
-            bookingRepository.updateBooking(id, checkIn, checkOut);
+            bookingRepository.updateBooking(checkIn, checkOut,id);
         }
     }
 
+p
 
     @Override
     @Transactional(readOnly = true)
@@ -144,15 +145,18 @@ public class BookingServiceImpl implements BookingService {
                 bookingResponseDTOList.add(bookingResponseDTO);
             }
             return bookingResponseDTOList;
-        }
 
-        @Transactional
-        public void delete (Long id){
-            Optional<Booking> booking = bookingRepository.findById(id);
-            if (booking.isPresent()) {
-                Booking b = booking.get();
-                b.setDeleted(true);
-                System.out.println(b.getDeleted());
-            }
         }
+        return bookingResponseDTOList;
+    }
+
+    @Transactional
+    public void delete (Long id){
+        Optional<Booking> booking = bookingRepository.findById(id);
+        if (booking.isPresent()) {
+            Booking b = booking.get();
+            b.setDeleted(true);
+            System.out.println(b.getDeleted());
+        }
+    }
 }

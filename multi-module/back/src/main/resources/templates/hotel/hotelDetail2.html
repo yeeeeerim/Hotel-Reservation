@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:text="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>객실 정보조회</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/star.css">
+</head>
+<body>
+<div class="pos-f-t">
+    <div class="collapse" id="navbarToggleExternalContent">
+        <div class="bg-dark p-4">
+            <h5 class="text-white h4">Collapsed content</h5>
+            <span class="text-muted">Toggleable via the navbar brand.</span>
+        </div>
+    </div>
+    <nav class="navbar navbar-dark bg-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent"
+                aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </nav>
+</div>
+
+
+<div class="container">
+    <form action="/room/save" method="post" id="form-info">
+
+        <div class="col-sm-12 pt-3">
+            <div class="card">
+                <div class="card-header card-header-primary">
+                    <h4 class="card-title"><i class="fas fa-chess-queen"></i>&nbsp&nbsp 호텔 정보</h4>
+                    <p class="card-catagory"></p>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <tbody>
+                            <tr style="line-height:32px;">
+                                <td></td>
+                                <div class="hotel-id" th:text="${article.id}">
+
+                                </div>
+
+
+                            </tr>
+
+                            <tr>
+                                <td>호텔 이름</td>
+                                <td>
+                                    <input type="text" class="form-control" th:value="${article.hotelName}" readonly>
+                                </td>
+
+                                <td>시 이름</td>
+                                <td>
+                                    <input type="text" class="form-control" th:value="${article.cityName}" readonly>
+                                </td>
+                            </tr>
+                            <tr>
+
+                                <td>전화번호</td>
+                                <td>
+                                    <input type="text" class="form-control" th:value="${article.tellNumber}" readonly>
+                                </td>
+
+                                <td>주소</td>
+                                <td>
+                                    <input type="tel" class="form-control" th:value="${article.address}" readonly>
+                                </td>
+
+                                <td>평균 평점</td>
+                                <td>
+                                    <input type="tel" class="form-control" th:value="(${article.ratingAvg}==0.0)? '-' : ${article.ratingAvg}" readonly>
+
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <div id="map" style="width:1000px;height:400px;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-3"></div>
+
+            <div class="card">
+                <div class="card-header"><i class="fas fa-chess-rook"></i>&nbsp&nbsp 이미지</div>
+                <div class="card-body">
+                    <table>
+                        <tr>
+                            <td class="image">
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </form>
+    <div class="delete-update">
+
+
+    </div>
+
+    <label for="checkIn">체크인 날짜:</label>
+    <input class="checkIn" type="date" id="checkIn" name="checkIn"
+           th:value="${checkIn}" required>
+    <label for="checkOut">체크아웃 날짜:</label>
+    <input class="checkOut" type="date" id="checkOut" name="checkOut"
+           th:value="${checkOut}" required>
+    <button class="checkButton">객실 조회</button>
+
+    <div class="container room-check"></div>
+
+
+    <p></p>
+    <p></p>
+    <form class="mb-3" name="myform" id="myform" method="post" th:action="@{/hotel/review/save(id=${article.id})}">
+        <fieldset>
+            <span class="text-bold">별점을 선택해주세요</span>
+            <input type="radio" name="rating" value=5 id="rate1"><label
+                for="rate1">⭐️</label>
+            <input type="radio" name="rating" value=4 id="rate2"><label
+                for="rate2">⭐️</label>
+            <input type="radio" name="rating" value=3 id="rate3"><label
+                for="rate3">⭐️</label>
+            <input type="radio" name="rating" value=2 id="rate4"><label
+                for="rate4">⭐️</label>
+            <input type="radio" name="rating" value=1 id="rate5"><label
+                for="rate5">⭐️</label>
+        </fieldset>
+        <input class="form-control" placeholder="리뷰를 입력하세요 " name="reviewContent" type="text">
+        <button class="btn btn-primary" type="submit">리뷰 작성</button>
+    </form>
+
+    <table class="table table-striped">
+        <thead class="thead-dark">
+        <tr>
+            <th>id</th>
+            <th>Review Content</th>
+            <th>Review Writer</th>
+            <th>Created Date</th>
+            <th>Modified Date</th>
+            <th>평점</th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+        </thead>
+
+        <tbody>
+
+
+        <tr th:each="review:${article.reviews}">
+            <td th:text="${review.id}"></td>
+            <td th:text="${review.reviewContent}"></td>
+            <td th:text="${review.reviewWriter}"></td>
+            <td th:text="${review.createdDate}"></td>
+            <td th:text="${review.modifiedDate}"></td>
+            <td th:text="${review.rating}"></td>
+            <td><a th:href="@{/hotel/review/delete/(id=${review.id},hotelid=${article.id})}">댓글 삭제</a></td>
+            <td><a th:href="@{/hotel/review/update(id=${review.id})}">댓글 수정</a></td>
+            <td>
+                <button type="button" class="btn btn-dark" th:onclick="|location.href='@{/room/list(id=${article.id},hotelNa=${article.hotelName})}'|">해당
+                    호텔 룸 정보보기
+                </button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script type="text/javascript"
+        src="//dapi.kakao.com/v2/maps/sdk.js?appkey=	2858a9737134fdb246117b738bcfffec"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+
+<script th:inline="javascript">  //여기서 요청 넣는 거에요 저 메소드에
+let imageList = [[ ${image.name}]]
+let latitude = [[${article.latitude}]]
+let longitude = [[${article.longitude}]]
+console.log(latitude)
+console.log(longitude)
+
+if (imageList != null) {
+
+    for (const name of imageList) {
+        const imgSrc = "/view?fileName=" + name
+        $('.image').append(`
+                       <div class="card-temp" className="card" style="width: 1000px; display: inline-block; box-shadow: 5px 5px 5px;">
+                           <div className="card-body">
+                           <img src='${imgSrc}' width="1000" height="750" style="margin: 10px;"/>
+                           </div>
+                       </div>
+                    `)
+
+        console.log(imgSrc)
+    }
+}
+
+let hotelWriter =[[${writer}]]
+let id=[[${article.id}]]
+
+const updateSrc = "/hotel/update?id=" + id;
+const deleteSrc = "/hotel/delete?id=" + id;
+
+if (hotelWriter) {
+    $('.delete-update').append(`
+    <button type="button" class="btn btn-dark" onclick="location.href='${deleteSrc}'">글 삭제</button>
+    <button type="button" class="btn btn-warning" onclick="location.href='${updateSrc}'">글 수정</button>
+
+  `);
+    console.log(updateSrc)
+}
+
+</script>
+<script>
+
+    var container = document.getElementById('map');
+    var options = {
+        center: new kakao.maps.LatLng(latitude, longitude),
+        level: 3
+    };
+
+    var map = new kakao.maps.Map(container, options);
+
+    var markerPosition = new kakao.maps.LatLng(latitude, longitude);
+
+    // 마커를 생성합니다
+    var marker = new kakao.maps.Marker({
+        position: markerPosition
+    });
+
+    // 마커가 지도 위에 표시되도록 설정합니다
+    marker.setMap(map);
+
+    document.querySelector(".checkButton").addEventListener("click", async function (e){
+        const data = 0;
+        try {
+            const response = await gettest();
+            for(const dto of response){
+                $(`.room-check`).append(`
+                <div class="row">
+                    <div class="card">
+                        <div class="col-10" style="margin-top: 200px;margin-left: 30px">
+                            <p>객실 번호 : ${dto.roomNumber}</p>
+                            <p>객실 등급 : ${dto.roomClass}</p>
+                            <p>가격     : ${dto.roomPrice}</p>
+                            <p>인원     : ${dto.roomLimit}</p>
+                            <p>${dto.description}</p>
+                            <button class="roomSaveButton" data-room-id="${dto.id}">예약하기</button>
+                        </div>
+                    </div>
+                </div>
+            `);
+
+
+
+                $(`.room-check .card:last-child .roomSaveButton`).off('click').on('click', function() {
+                    const checkIn = document.querySelector(".checkIn").value;
+                    const checkOut = document.querySelector(".checkOut").value;
+                    const roomId = $(this).data('room-id');
+                    axios.post('/booking/save', {
+                        roomId: roomId,
+                        checkIn: checkIn,
+                        checkOut: checkOut
+                    }).then((response) => {
+                        console.log("OK")
+                    }).catch((error) => {
+                        console.log("fail")
+                        console.log(checkIn)
+                        console.log(roomId)
+                    });
+                });
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    });
+
+</script>
+<script>
+    async function gettest(){
+        const checkIn = document.querySelector(".checkIn").value
+        const checkOut = document.querySelector(".checkOut").value
+        const hotelId = $(".hotel-id").html()
+        console.log(hotelId)
+        const url = "/booking/available?checkIn="+checkIn+"&checkOut="+checkOut+"&hotelId="+hotelId
+
+        const response = await axios.get(url)
+        console.log(response)
+        return response.data
+    }
+</script>
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+      integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+
+</body>
+</html>
