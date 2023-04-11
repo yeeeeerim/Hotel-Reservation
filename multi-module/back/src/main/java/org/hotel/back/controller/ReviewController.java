@@ -1,56 +1,46 @@
 package org.hotel.back.controller;
 
+
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.hotel.back.data.request.ReviewRequestDTO;
+import org.hotel.back.data.response.ReviewResponseDTO;
 import org.hotel.back.service.ReviewService;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @Slf4j
-@Controller
+@RestController
+@RequestMapping("/hotel/review")
 @RequiredArgsConstructor
 public class ReviewController {
     private final ReviewService reviewService;
-    //-----------댓글 삭제
-    @GetMapping("/hotel/review/delete")
-    public String reviewDelete(Long id, Long hotelid){
+
+    // 댓글 삭제
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> reviewDelete(@PathVariable("id") Long id) {
         reviewService.deleteReview(id);
-        return "redirect:/hotel/detail?id="+hotelid;
+        return ResponseEntity.noContent().build();
     }
 
-    //----------댓글 작성
-    @PostMapping("/hotel/review/save")
-
-    public String reviewSave(Long hotelId, ReviewRequestDTO reviewRequestDTO){
-        System.out.println(reviewRequestDTO);
-        reviewService.saveReview(hotelId,reviewRequestDTO);
-        return "redirect:/hotel/detail?id="+hotelId;}
-
-    public String reviewSave(ReviewRequestDTO reviewRequestDTO){
-        System.out.println(reviewRequestDTO.getId().longValue());
-        System.out.println(reviewRequestDTO);
-        reviewService.saveReview(reviewRequestDTO.getId().longValue(),reviewRequestDTO);
-        return "redirect:/hotel/detail?id="+reviewRequestDTO.getId().longValue();
-
+    // 댓글 작성
+    @PostMapping("/{hotelId}")
+    public ResponseEntity<Void> reviewSave(@PathVariable("hotelId") Long hotelId, @RequestBody ReviewRequestDTO reviewRequestDTO) {
+        reviewService.saveReview(hotelId, reviewRequestDTO);
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
-    //-----------댓글 수정
-    @GetMapping("/hotel/review/update")
-    public String reviewUpdate(Long id, Model model){
-        model.addAttribute("review",reviewService.readReview(id));
-        return "reviewUpdate";
+    // 댓글 수정
+    @PutMapping
+    public ResponseEntity<Void> reviewUpdate( @RequestBody ReviewRequestDTO reviewRequestDTO) {
+        reviewService.updateReview(reviewRequestDTO);
+        return ResponseEntity.status(HttpStatus.OK).build();
     }
-
-    @PostMapping("/hotel/review/update")
-    public String reviewUpdatePost(ReviewRequestDTO reviewRequestDTO){
-        System.out.println("----=========***"+reviewRequestDTO);
-        long id=reviewService.updateReview(reviewRequestDTO);
-        System.out.println(reviewRequestDTO.getReviewContent());
-        return "redirect:/hotel/detail?id="+id;
+    @GetMapping("/{id}")
+    public ResponseEntity<?> reviewUpdateGet(@PathVariable Long id) {
+        ReviewResponseDTO review=reviewService.readReview(id);
+        return ResponseEntity.ok(review);
     }
-
 
 }

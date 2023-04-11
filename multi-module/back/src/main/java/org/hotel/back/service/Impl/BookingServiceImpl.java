@@ -89,7 +89,7 @@ public class BookingServiceImpl implements BookingService {
         }
     }
 
-p
+
 
     @Override
     @Transactional(readOnly = true)
@@ -132,10 +132,10 @@ p
             return resultList;
         }
     }
-        public List<BookingResponseDTO> bookingList(){
+        public List<BookingResponseDTO> bookingList() {
             List<Booking> bookingList = bookingRepository.findAll();
             List<BookingResponseDTO> bookingResponseDTOList = new ArrayList<>();
-            for (Booking booking : bookingList){
+            for (Booking booking : bookingList) {
                 BookingResponseDTO bookingResponseDTO = new BookingResponseDTO();
                 bookingResponseDTO.setId(booking.getId());
                 bookingResponseDTO.setRoomId(booking.getRoomId());
@@ -147,9 +147,6 @@ p
             return bookingResponseDTOList;
 
         }
-        return bookingResponseDTOList;
-    }
-
     @Transactional
     public void delete (Long id){
         Optional<Booking> booking = bookingRepository.findById(id);
