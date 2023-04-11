@@ -249,7 +249,9 @@ if (hotelWriter) {
     // 마커가 지도 위에 표시되도록 설정합니다
     marker.setMap(map);
 
+
     document.querySelector(".checkButton").addEventListener("click", async function (e){
+        document.querySelector(".room-check").innerHTML = "";
         const data = 0;
         try {
             const response = await gettest();
@@ -278,12 +280,14 @@ if (hotelWriter) {
                     const checkIn = document.querySelector(".checkIn").value;
                     const checkOut = document.querySelector(".checkOut").value;
                     const roomId = $(this).data('room-id');
+                    const $parentDiv = $(this).parent()
                     axios.post('/booking/save', {
                         roomId: roomId,
                         checkIn: checkIn,
                         checkOut: checkOut
                     }).then((response) => {
                         console.log("OK")
+                        $parentDiv.remove()
                     }).catch((error) => {
                         console.log("fail")
                         console.log(checkIn)

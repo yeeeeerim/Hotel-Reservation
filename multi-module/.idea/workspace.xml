@@ -5,11 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db43dd2a-a458-4234-bbd2-661777756490" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/back/src/main/resources/static/js/detail-scripts.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back/src/main/resources/templates/hotel/resume.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/controller/HotelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/controller/HotelController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/generated/org/hotel/back/domain/QBaseTimeEntity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/generated/org/hotel/back/domain/QBooking.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/generated/org/hotel/back/domain/QHotel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/generated/org/hotel/back/domain/QHotelImage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/generated/org/hotel/back/domain/QMember.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/generated/org/hotel/back/domain/QRating.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/generated/org/hotel/back/domain/QReview.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/generated/org/hotel/back/domain/QRoom.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/generated/org/hotel/back/domain/QRoomImage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/controller/BookingContoller.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/controller/BookingContoller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/data/dto/BookingDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/data/dto/BookingDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/service/Impl/BookingServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/service/Impl/BookingServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back/src/main/resources/templates/hotel/hotelDetail.html" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/resources/templates/hotel/hotelDetail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/resources/templates/manage/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/resources/templates/manage/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,29 +96,29 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelOrder2": "2",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RequestMappingsPanelWidth2": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "last_opened_file_path": "/Users/yerim/Desktop/Spring_study/hotel_221/STUDY-GROUP-ACTIVITY/multi-module/back/src/main/resources/static/css",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "spring.configuration.checksum": "42064a0f62584d50ddb3493ccddc9bf5",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelOrder2&quot;: &quot;2&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth2&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/yerim/Desktop/Spring_study/hotel_221/STUDY-GROUP-ACTIVITY/multi-module/back/src/main/resources/static/css&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;42064a0f62584d50ddb3493ccddc9bf5&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
@@ -164,6 +176,7 @@
       <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
+      <ForceTestExec>false</ForceTestExec>
       <method v="2" />
     </configuration>
     <configuration name="HotelControllerTest.test222" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
@@ -187,6 +200,7 @@
       <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
+      <ForceTestExec>false</ForceTestExec>
       <method v="2" />
     </configuration>
     <configuration name="HotelControllerTest.testHotelDetail" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
@@ -210,6 +224,7 @@
       <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
+      <ForceTestExec>false</ForceTestExec>
       <method v="2" />
     </configuration>
     <configuration name="RoomControllerTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
@@ -233,6 +248,7 @@
       <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
+      <ForceTestExec>false</ForceTestExec>
       <method v="2" />
     </configuration>
     <configuration name="RoomControllerTest.test" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
@@ -256,6 +272,7 @@
       <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
+      <ForceTestExec>false</ForceTestExec>
       <method v="2" />
     </configuration>
     <configuration name="booking-module" type="GradleRunConfiguration" factoryName="Gradle" nameIsGenerated="true">
@@ -281,6 +298,7 @@
       <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
+      <ForceTestExec>false</ForceTestExec>
       <method v="2" />
     </configuration>
     <configuration name="BackApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">

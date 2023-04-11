@@ -41,9 +41,11 @@ public class BookingDTO {
     }
     public static BookingDTO toDTO(Booking booking){
         return BookingDTO.builder()
+                .id(booking.getId())
                 .roomId(booking.getRoomId())
                 .checkIn(booking.getCheckIn())
                 .checkOut(booking.getCheckOut())
+                .deleted(booking.getDeleted())
                 .memberEmail(booking.getMemberEmail())
                 .build();
     }

@@ -101,7 +101,7 @@ public class BookingContoller {
         }else return false;
     }
 
-    @RequestMapping("/delete/{id}") // 삭제
+    @PostMapping("/delete/{id}") // 삭제
     public Boolean deleteBooking(@PathVariable("id") Long id) {
         bookingService.delete(id);
         return true;

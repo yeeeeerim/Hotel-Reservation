@@ -88,9 +88,6 @@ public class BookingServiceImpl implements BookingService {
             bookingRepository.updateBooking(checkIn, checkOut,id);
         }
     }
-
-p
-
     @Override
     @Transactional(readOnly = true)
     public List<BookingAndRoomDTO> findByEmail(String email) {
@@ -107,9 +104,11 @@ p
                 BookingAndRoomDTO dto = BookingAndRoomDTO.builder()
                         .bookingDTO(
                                 BookingDTO.builder()
+                                        .id(booking.getId())
                                         .roomId(booking.getRoomId())
                                         .createdAt(booking.getCreatedAt())
                                         .memberEmail(booking.getMemberEmail())
+                                        .deleted(booking.getDeleted())
                                         .checkIn(booking.getCheckIn())
                                         .checkOut(booking.getCheckOut())
                                         .build())
@@ -147,8 +146,6 @@ p
             return bookingResponseDTOList;
 
         }
-        return bookingResponseDTOList;
-    }
 
     @Transactional
     public void delete (Long id){
