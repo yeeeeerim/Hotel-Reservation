@@ -5,22 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db43dd2a-a458-4234-bbd2-661777756490" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/generated/org/hotel/back/domain/QBaseTimeEntity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/generated/org/hotel/back/domain/QBooking.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/generated/org/hotel/back/domain/QHotel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/generated/org/hotel/back/domain/QHotelImage.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/generated/org/hotel/back/domain/QMember.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/generated/org/hotel/back/domain/QRating.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/generated/org/hotel/back/domain/QReview.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/generated/org/hotel/back/domain/QRoom.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/generated/org/hotel/back/domain/QRoomImage.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/controller/BookingContoller.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/controller/BookingContoller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/data/dto/BookingDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/data/dto/BookingDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/repository/RoomRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/repository/RoomRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/service/BookingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/service/BookingService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/service/Impl/BookingServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/service/Impl/BookingServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/resources/templates/hotel/hotelDetail.html" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/resources/templates/hotel/hotelDetail.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back/src/main/resources/templates/manage/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/resources/templates/manage/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

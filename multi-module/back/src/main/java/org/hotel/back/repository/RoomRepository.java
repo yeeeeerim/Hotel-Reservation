@@ -29,5 +29,7 @@ public interface RoomRepository extends JpaRepository<Room,Long>,CustomRoomRepos
     @Query("SELECT r FROM Room r WHERE r.hotelId = :hotelId AND r NOT IN (SELECT b.room FROM Booking b WHERE b.checkOut >= :checkIn AND b.checkIn <= :checkOut AND b.deleted = false)")
     List<Room> findAvailableRooms(@Param("checkIn") LocalDateTime checkIn, @Param("checkOut") LocalDateTime checkOut, @Param("hotelId") Long hotelId);
 
+    @Query("select r from Room r where r.hotelId = :hotelId")
+    List<Room> findByHotelId(@Param("hotelId") Long hotelId);
 }
 

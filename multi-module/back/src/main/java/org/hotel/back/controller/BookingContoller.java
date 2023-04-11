@@ -43,9 +43,13 @@ public class BookingContoller {
      * */
 
     @GetMapping("/available")
-    public ResponseEntity<List<RoomDTO>> availableRooms(@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate checkIn,
-                                                        @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate checkOut,
+    public ResponseEntity<List<RoomDTO>> availableRooms(@RequestParam(required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate checkIn,
+                                                        @RequestParam(required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate checkOut,
                                                         @RequestParam Long hotelId){
+        if (checkIn == null || checkOut == null) {
+            List<RoomDTO> nullList = bookingService.findNull(hotelId);
+            return ResponseEntity.ok(nullList);
+        }
         LocalDateTime localDateTimeIn = checkIn.atTime(12,0);
         LocalDateTime localDateTimeOut = checkOut.atTime(12,0);
         List<RoomDTO> availableRoomList = bookingService.findAvailable(localDateTimeIn, localDateTimeOut, hotelId);
@@ -101,7 +105,7 @@ public class BookingContoller {
         }else return false;
     }
 
-    @PostMapping("/delete/{id}") // 삭제
+    @PutMapping("/delete/{id}") // 삭제
     public Boolean deleteBooking(@PathVariable("id") Long id) {
         bookingService.delete(id);
         return true;

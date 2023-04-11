@@ -174,16 +174,16 @@
                     </div>`)
 
                 }
-                $(`.cancel-button`).on(`click`, function (){
+                $(`.cancel-button`).on(`click`, async function () {
                     const bookingId = $(this).data(`booking-id`)
                     const $parentDiv = $(this).parent()
-                    axios.post(`/booking/delete/`+ bookingId)
-                        .then((response) => {
-                            console.log("OK")
-                            $parentDiv.remove()
-                        }).catch((error) => {
-                        console.log("fail")
-                    });
+                    try {
+                        const response = await axios.put(`/booking/delete/${bookingId}`);
+                        console.log("OK");
+                        $parentDiv.remove();
+                    } catch (error) {
+                        console.log("fail");
+                    }
                 })
 
                 for(const review of data){

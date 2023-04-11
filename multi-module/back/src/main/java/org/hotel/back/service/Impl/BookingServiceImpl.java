@@ -38,20 +38,37 @@ public class BookingServiceImpl implements BookingService {
     private final RoomRepository roomRepository;
 
     public List<RoomDTO> findAvailable(LocalDateTime checkIn, LocalDateTime checkOut, Long hotelId) {
-        List<Room> rooms = roomRepository.findAvailableRooms(checkIn, checkOut, hotelId);
-        List<RoomDTO> roomDTOs = new ArrayList<>();
-        for (Room room : rooms) {
-            RoomDTO roomDTO = new RoomDTO();
-            roomDTO.setId(room.getId());
-            roomDTO.setRoomNumber(room.getRoomNumber());
-            roomDTO.setRoomClass(room.getRoomClass());
-            roomDTO.setRoomPrice(room.getRoomPrice());
-            roomDTO.setRoomLimit(room.getRoomLimit());
-            roomDTO.setDescription(room.getDescription());
+            List<Room> rooms = roomRepository.findAvailableRooms(checkIn, checkOut, hotelId);
+            List<RoomDTO> roomDTOs = new ArrayList<>();
+            for (Room room : rooms) {
+                RoomDTO roomDTO = new RoomDTO();
+                roomDTO.setId(room.getId());
+                roomDTO.setRoomNumber(room.getRoomNumber());
+                roomDTO.setRoomClass(room.getRoomClass());
+                roomDTO.setRoomPrice(room.getRoomPrice());
+                roomDTO.setRoomLimit(room.getRoomLimit());
+                roomDTO.setDescription(room.getDescription());
 
-            roomDTOs.add(roomDTO);
-        }
-        return roomDTOs;
+                roomDTOs.add(roomDTO);
+            }
+            return roomDTOs;
+
+    }
+    public List<RoomDTO> findNull(Long hotelId){
+            List<Room> roomList = roomRepository.findByHotelId(hotelId);
+            List<RoomDTO> roomDTOs = new ArrayList<>();
+            for (Room room : roomList) {
+                RoomDTO roomDTO = new RoomDTO();
+                roomDTO.setId(room.getId());
+                roomDTO.setRoomNumber(room.getRoomNumber());
+                roomDTO.setRoomClass(room.getRoomClass());
+                roomDTO.setRoomPrice(room.getRoomPrice());
+                roomDTO.setRoomLimit(room.getRoomLimit());
+                roomDTO.setDescription(room.getDescription());
+
+                roomDTOs.add(roomDTO);
+            }
+            return roomDTOs;
     }
     public Booking bookingSave(BookingDTO dto) throws BookingException {
 
