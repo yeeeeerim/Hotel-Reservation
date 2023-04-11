@@ -23,7 +23,7 @@
     <!-- Page Content-->
     <div class="container px-5 my-5">
         <div class="text-center mb-5">
-            <h1 class="display-5 fw-bolder mb-0" th:text="${article.hotelName}"></h1>
+            <h1 class="display-5 fw-bolder mb-0 hotel-name" th:text="${article.hotelName}"></h1>
         </div>
         <div class="row gx-5 justify-content-center">
             <div>
@@ -381,8 +381,14 @@
     /**
      * 예약가능한 룸 조회 및 예약버튼 눌렀을 때
      * */
+
+
     document.querySelector(".checkButton").addEventListener("click", async function (e){
         const data = 0;
+        const response = await gettest();
+        const id = $(".hotel-id").html()
+        const hotelNa = $(".hotel-name").html()
+        const url = `/room/detail?id=${id}&hotelNa=${hotelNa}`;
         try {
             const response = await gettest();
             for(const dto of response){
@@ -397,6 +403,7 @@
                             <p class="card-text">인원     : ${dto.roomLimit}</p>
                             <p class="card-text">${dto.description}</p>
                             <button class="btn btn-primary roomSaveButton" data-room-id="${dto.id}">예약하기</button>
+                            <button type="button" class="btn btn-dark" onclick="location.href='${url}'">정보보기</button>
                           </div>
                         </div>
                       </div>
