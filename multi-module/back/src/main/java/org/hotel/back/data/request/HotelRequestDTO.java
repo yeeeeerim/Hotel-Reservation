@@ -13,6 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @ToString
 @Getter
+@NoArgsConstructor
 public class HotelRequestDTO {
     private Long id;
     private String hotelName;

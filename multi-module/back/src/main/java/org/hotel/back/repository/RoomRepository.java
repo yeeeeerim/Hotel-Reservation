@@ -30,3 +30,4 @@ public interface RoomRepository extends JpaRepository<Room,Long>,CustomRoomRepos
     List<Room> findAvailableRooms(@Param("checkIn") LocalDateTime checkIn, @Param("checkOut") LocalDateTime checkOut);
 
 }
+

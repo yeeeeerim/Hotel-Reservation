@@ -23,18 +23,25 @@ public class ReviewController {
 
     //----------댓글 작성
     @PostMapping("/hotel/review/save")
+
+    public String reviewSave(Long hotelId, ReviewRequestDTO reviewRequestDTO){
+        System.out.println(reviewRequestDTO);
+        reviewService.saveReview(hotelId,reviewRequestDTO);
+        return "redirect:/hotel/detail?id="+hotelId;}
+
     public String reviewSave(ReviewRequestDTO reviewRequestDTO){
         System.out.println(reviewRequestDTO.getId().longValue());
         System.out.println(reviewRequestDTO);
         reviewService.saveReview(reviewRequestDTO.getId().longValue(),reviewRequestDTO);
         return "redirect:/hotel/detail?id="+reviewRequestDTO.getId().longValue();
+
     }
 
     //-----------댓글 수정
     @GetMapping("/hotel/review/update")
     public String reviewUpdate(Long id, Model model){
         model.addAttribute("review",reviewService.readReview(id));
-        return "reviewUpdate";
+        return "/review/reviewUpdate";
     }
 
     @PostMapping("/hotel/review/update")

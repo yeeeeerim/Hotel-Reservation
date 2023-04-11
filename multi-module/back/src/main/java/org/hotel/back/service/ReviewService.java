@@ -8,9 +8,10 @@ import java.util.List;
 public interface ReviewService {
     ReviewResponseDTO readReview(Long id);
 
-    List<ReviewResponseDTO> findReview(Long id);
 
-    Long saveReview(Long id, ReviewRequestDTO reviewRequestDTO);
+	List<ReviewResponseDTO> findReview(Long id);
+
+    Long saveReview(Long hotelId, ReviewRequestDTO reviewRequestDTO);
 
     Long updateReview(ReviewRequestDTO reviewRequestDTO);
 

@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
 @Entity
 @Builder
 @Getter
@@ -30,8 +29,6 @@ public class Hotel {
     private String tellNumber;
     private String latitude;
     private String longitude;
-
-
     @CreatedBy
     private String writer;
     private String address;
@@ -42,18 +39,16 @@ public class Hotel {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "hotel",fetch = FetchType.LAZY)
     private List<Review> reviews = new ArrayList<>();
 
-    @ToString.Exclude
-    @Builder.Default
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL,mappedBy = "hotel")
-    private List<Booking> bookingList = new ArrayList<>();
-
+//    @ToString.Exclude
+//    @Builder.Default
+//    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL,mappedBy = "hotel")
+//    private List<Booking> bookingList = new ArrayList<>();
 
     @BatchSize(size = 100)
     @ToString.Exclude
     @Builder.Default
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "hotel",fetch = FetchType.LAZY)
     private List<HotelImage> hotelImages = new ArrayList<>();
-
 
     @JsonIgnore
     @ToString.Exclude

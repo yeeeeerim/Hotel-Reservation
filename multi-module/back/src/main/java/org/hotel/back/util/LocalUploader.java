@@ -32,8 +32,7 @@ public class LocalUploader {
                     list.add(savePath.toFile().getAbsolutePath());
 
                 } catch (IOException e) {
-
-                    throw new FileUploadException();
+                    throw new FileUploadException("Exception");
                 }
 
             });

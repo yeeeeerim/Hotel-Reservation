@@ -85,9 +85,10 @@ public class BookingServiceImpl implements BookingService {
             throw new BookingException(BookingErrorCode.BOOKING_NOT_CHANGE);
         } else {
 
-            bookingRepository.updateBooking(id, checkIn, checkOut);
+            bookingRepository.updateBooking(checkIn, checkOut,id);
         }
     }
+
 
 
     @Override
@@ -131,28 +132,29 @@ public class BookingServiceImpl implements BookingService {
             return resultList;
         }
     }
-        public List<BookingResponseDTO> bookingList(){
-            List<Booking> bookingList = bookingRepository.findAll();
-            List<BookingResponseDTO> bookingResponseDTOList = new ArrayList<>();
-            for (Booking booking : bookingList){
-                BookingResponseDTO bookingResponseDTO = new BookingResponseDTO();
-                bookingResponseDTO.setId(booking.getId());
-                bookingResponseDTO.setRoomId(booking.getRoomId());
-                bookingResponseDTO.setCheckIn(booking.getCheckIn().toString());
-                bookingResponseDTO.setCheckOut(booking.getCheckOut().toString());
-                bookingResponseDTO.setMemberEmail(booking.getMemberEmail());
-                bookingResponseDTOList.add(bookingResponseDTO);
-            }
-            return bookingResponseDTOList;
+    public List<BookingResponseDTO> bookingList(){
+        List<Booking> bookingList = bookingRepository.findAll();
+        List<BookingResponseDTO> bookingResponseDTOList = new ArrayList<>();
+        for (Booking booking : bookingList){
+            BookingResponseDTO bookingResponseDTO = new BookingResponseDTO();
+            bookingResponseDTO.setId(booking.getId());
+            bookingResponseDTO.setRoomId(booking.getRoomId());
+            bookingResponseDTO.setCheckIn(booking.getCheckIn().toString());
+            bookingResponseDTO.setCheckOut(booking.getCheckOut().toString());
+            bookingResponseDTO.setMemberEmail(booking.getMemberEmail());
+            bookingResponseDTOList.add(bookingResponseDTO);
         }
+        return bookingResponseDTOList;
 
-        @Transactional
-        public void delete (Long id){
-            Optional<Booking> booking = bookingRepository.findById(id);
-            if (booking.isPresent()) {
-                Booking b = booking.get();
-                b.setDeleted(true);
-                System.out.println(b.getDeleted());
-            }
+    }
+
+    @Transactional
+    public void delete (Long id){
+        Optional<Booking> booking = bookingRepository.findById(id);
+        if (booking.isPresent()) {
+            Booking b = booking.get();
+            b.setDeleted(true);
+            System.out.println(b.getDeleted());
         }
+    }
 }
