@@ -158,7 +158,10 @@
                                 <th:block th:if = "${#authentication != null and #authentication.isAuthenticated()}">
                                     <td><button type="button" th:attr="class='btn btn-warning review-update-btn ' + ${review.id}"  th:if="${review.reviewWriter == #authentication.name}"  th:data-review-id="${review.id}">수정</button></td>
                                 </th:block>
-                                <td><button type="button" class="btn btn-dark review-delete-btn" th:data-review-id="${review.id}" >삭제</button></td>
+
+                                <th:block th:if = "${#authentication != null and #authentication.isAuthenticated()}">
+                                    <td><button type="button" th:attr="class='btn btn-dark review-delete-btn ' + ${review.id}" th:if="${review.reviewWriter == #authentication.name}" th:data-review-id="${review.id}" >삭제</button></td>
+                                </th:block>
                             </tr>
                             </tbody>
                         </table>
