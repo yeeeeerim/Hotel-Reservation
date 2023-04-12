@@ -17,6 +17,7 @@ import java.util.List;
 
 public interface BookingService {
     public List<RoomDTO> findAvailable(LocalDateTime checkIn, LocalDateTime checkOut, Long hotelId);
+    public List<RoomDTO> findNull(Long hotelId);
 
     public Booking bookingSave(BookingDTO dto) throws BookingException;
 

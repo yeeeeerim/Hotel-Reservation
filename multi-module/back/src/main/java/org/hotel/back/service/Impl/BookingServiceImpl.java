@@ -38,20 +38,37 @@ public class BookingServiceImpl implements BookingService {
     private final RoomRepository roomRepository;
 
     public List<RoomDTO> findAvailable(LocalDateTime checkIn, LocalDateTime checkOut, Long hotelId) {
-        List<Room> rooms = roomRepository.findAvailableRooms(checkIn, checkOut, hotelId);
-        List<RoomDTO> roomDTOs = new ArrayList<>();
-        for (Room room : rooms) {
-            RoomDTO roomDTO = new RoomDTO();
-            roomDTO.setId(room.getId());
-            roomDTO.setRoomNumber(room.getRoomNumber());
-            roomDTO.setRoomClass(room.getRoomClass());
-            roomDTO.setRoomPrice(room.getRoomPrice());
-            roomDTO.setRoomLimit(room.getRoomLimit());
-            roomDTO.setDescription(room.getDescription());
+            List<Room> rooms = roomRepository.findAvailableRooms(checkIn, checkOut, hotelId);
+            List<RoomDTO> roomDTOs = new ArrayList<>();
+            for (Room room : rooms) {
+                RoomDTO roomDTO = new RoomDTO();
+                roomDTO.setId(room.getId());
+                roomDTO.setRoomNumber(room.getRoomNumber());
+                roomDTO.setRoomClass(room.getRoomClass());
+                roomDTO.setRoomPrice(room.getRoomPrice());
+                roomDTO.setRoomLimit(room.getRoomLimit());
+                roomDTO.setDescription(room.getDescription());
 
-            roomDTOs.add(roomDTO);
-        }
-        return roomDTOs;
+                roomDTOs.add(roomDTO);
+            }
+            return roomDTOs;
+
+    }
+    public List<RoomDTO> findNull(Long hotelId){
+            List<Room> roomList = roomRepository.findByHotelId(hotelId);
+            List<RoomDTO> roomDTOs = new ArrayList<>();
+            for (Room room : roomList) {
+                RoomDTO roomDTO = new RoomDTO();
+                roomDTO.setId(room.getId());
+                roomDTO.setRoomNumber(room.getRoomNumber());
+                roomDTO.setRoomClass(room.getRoomClass());
+                roomDTO.setRoomPrice(room.getRoomPrice());
+                roomDTO.setRoomLimit(room.getRoomLimit());
+                roomDTO.setDescription(room.getDescription());
+
+                roomDTOs.add(roomDTO);
+            }
+            return roomDTOs;
     }
     public Booking bookingSave(BookingDTO dto) throws BookingException {
 
@@ -89,8 +106,6 @@ public class BookingServiceImpl implements BookingService {
         }
     }
 
-
-
     @Override
     @Transactional(readOnly = true)
     public List<BookingAndRoomDTO> findByEmail(String email) {
@@ -107,9 +122,11 @@ public class BookingServiceImpl implements BookingService {
                 BookingAndRoomDTO dto = BookingAndRoomDTO.builder()
                         .bookingDTO(
                                 BookingDTO.builder()
+                                        .id(booking.getId())
                                         .roomId(booking.getRoomId())
                                         .createdAt(booking.getCreatedAt())
                                         .memberEmail(booking.getMemberEmail())
+                                        .deleted(booking.getDeleted())
                                         .checkIn(booking.getCheckIn())
                                         .checkOut(booking.getCheckOut())
                                         .build())
@@ -148,6 +165,7 @@ public class BookingServiceImpl implements BookingService {
             return bookingResponseDTOList;
 
         }
+
     @Transactional
     public void delete (Long id){
         Optional<Booking> booking = bookingRepository.findById(id);

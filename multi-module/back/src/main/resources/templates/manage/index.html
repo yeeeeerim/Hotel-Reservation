@@ -146,14 +146,18 @@
                     const checkIn = format(`${reservation.checkIn}`)
                     const checkOut = format(`${reservation.checkOut}`)
                     const createdAt = format(`${reservation.createdAt}`)
-
-                    $('.booking-list').append(`<div>
+                    const bookingId = booking.bookingDTO.id
+                    const bookingdeleted = booking.bookingDTO.deleted
+                    if(!bookingdeleted) {
+                        $('.booking-list').append(`<div>
                                                     <div>체크인  ${checkIn}</div>
                                                     <div>체크아웃  ${checkOut}</div>
                                                     <div>예약시기 ${createdAt}</div>
                                                     <div>방 번호 ${room.roomNumber}</div>
+                                                    <div>예약 번호 ${bookingId}</div>
+                                                    <button class="btn btn-danger cancel-button" data-booking-id="${bookingId}">예약 취소</button>
                                                 </div><br><hr>`)
-
+                    }
 
 
                     $('.post').append(` <div class="main-card mb-4">
@@ -170,6 +174,17 @@
                     </div>`)
 
                 }
+                $(`.cancel-button`).on(`click`, async function () {
+                    const bookingId = $(this).data(`booking-id`)
+                    const $parentDiv = $(this).parent()
+                    try {
+                        const response = await axios.put(`/booking/delete/${bookingId}`);
+                        console.log("OK");
+                        $parentDiv.remove();
+                    } catch (error) {
+                        console.log("fail");
+                    }
+                })
 
                 for(const review of data){
                     reviewDTO = review.reviewResponseDTO

@@ -388,12 +388,8 @@
     marker.setMap(map);
 
 
-    /**
-     * 예약가능한 룸 조회 및 예약버튼 눌렀을 때
-     * */
-
-
     document.querySelector(".checkButton").addEventListener("click", async function (e){
+        document.querySelector(".room-check").innerHTML = "";
         const data = 0;
         const response = await gettest();
         const id = $(".hotel-id").html()
@@ -426,12 +422,14 @@
                     const checkIn = document.querySelector(".checkIn").value;
                     const checkOut = document.querySelector(".checkOut").value;
                     const roomId = $(this).data('room-id');
+                    const $parentDiv = $(this).parent()
                     axios.post('/booking/save', {
                         roomId: roomId,
                         checkIn: checkIn,
                         checkOut: checkOut
                     }).then((response) => {
                         console.log("OK")
+                        $parentDiv.remove()
                     }).catch((error) => {
                         console.log("fail")
                         console.log(checkIn)
@@ -443,7 +441,6 @@
             console.log(error);
         }
     });
-
 </script>
 <script>
     async function gettest(){
