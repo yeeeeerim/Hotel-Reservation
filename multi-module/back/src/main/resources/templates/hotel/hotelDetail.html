@@ -392,12 +392,11 @@
         document.querySelector(".room-check").innerHTML = "";
         const data = 0;
         const response = await gettest();
-        const id = $(".hotel-id").html()
         const hotelNa = $(".hotel-name").html()
-        const url = `/room/detail?id=${id}&hotelNa=${hotelNa}`;
         try {
             const response = await gettest();
             for(const dto of response){
+                const url = `/room/detail?id=${dto.id}&hotelNa=${hotelNa}`;
                 $(`.room-check`).append(`<div class="row justify-content-center mt-5">
                       <div class="col-10">
                         <div class="card">
