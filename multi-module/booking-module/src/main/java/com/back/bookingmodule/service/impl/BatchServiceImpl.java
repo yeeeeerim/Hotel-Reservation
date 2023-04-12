@@ -36,7 +36,7 @@ public class BatchServiceImpl implements BatchService {
 
 
 
-   // @Scheduled(initialDelay = 1, fixedDelay = 3000)
+    @Scheduled(initialDelay = 1000, fixedDelay = 12 * 60 * 60 * 1000)
     public void job() throws Exception {
 
         Map<String, JobParameter> confMap = new HashMap<>();

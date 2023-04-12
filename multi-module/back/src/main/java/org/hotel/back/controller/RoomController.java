@@ -35,7 +35,7 @@ public class RoomController {
             model.addAttribute("hotelNa",hotelNa);
             model.addAttribute("dto",roomService.findAllWithImage(id));
             model.addAttribute("hotelId",id);
-            return "/room/room-list";
+            return "room/room-list";
     }
 
 
@@ -55,7 +55,7 @@ public class RoomController {
         model.addAttribute("dto",data);
         model.addAttribute("hotelId",hotel);
         if(check != null) model.addAttribute("check",check);
-        return "/room/room-detail";
+        return "room/room-detail";
     }
 
     @PreAuthorize("hasRole('OWNER')")
@@ -66,7 +66,7 @@ public class RoomController {
 
         model.addAttribute("hotelNa",hotelNa);
         model.addAttribute("hotelId", id);
-        return "/room/room-save";
+        return "room/room-save";
     }
 
 
@@ -83,7 +83,7 @@ public class RoomController {
         if(responseData.isChecking()){
                 model.addAttribute("check",true);
         }
-        return "/room/room-modify";
+        return "room/room-modify";
     }
 
 

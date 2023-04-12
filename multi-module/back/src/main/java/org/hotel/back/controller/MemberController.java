@@ -80,7 +80,7 @@ public class MemberController {
         } catch (ParseException e) {
            log.error("파싱 실패");
         }
-        return "/manage/index";
+        return "manage/index";
 
     }
 

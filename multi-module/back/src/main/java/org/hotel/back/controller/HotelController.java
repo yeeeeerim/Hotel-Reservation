@@ -82,7 +82,7 @@ public class HotelController {
         model.addAttribute("startPage",startPage);
         model.addAttribute("endPage",endPage);
         model.addAttribute("list",list);
-        return "/hotel/index";
+        return "hotel/index";
     }
 
 
