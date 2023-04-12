@@ -45,7 +45,7 @@
 
       console.log(hotelNa)
      $('.adminBtn').click(function (){
-       location.href = '/room/save?id='+hotelId+'&hotelNa'+hotelNa
+       location.href = '/room/save?id='+hotelId+'&hotelNa='+hotelNa
      })
 
    let index = 3;
@@ -58,7 +58,7 @@
       for(const dto of listDTO){
 
         if(dto.roomImage != null){
-          temp = "/view?fileName="+dto.roomImage[0];
+          temp = dto.roomImage[0];
           console.log(temp)
         }
         const more = '/room/detail?id='+dto.id+'&hotel='+hotelId+'&hotelNa='+hotelNa

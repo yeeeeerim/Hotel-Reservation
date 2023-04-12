@@ -105,6 +105,7 @@ public class BookingServiceImpl implements BookingService {
             bookingRepository.updateBooking(checkIn, checkOut,id);
         }
     }
+
     @Override
     @Transactional(readOnly = true)
     public List<BookingAndRoomDTO> findByEmail(String email) {
@@ -148,10 +149,11 @@ public class BookingServiceImpl implements BookingService {
             return resultList;
         }
     }
-        public List<BookingResponseDTO> bookingList(){
+
+        public List<BookingResponseDTO> bookingList() {
             List<Booking> bookingList = bookingRepository.findAll();
             List<BookingResponseDTO> bookingResponseDTOList = new ArrayList<>();
-            for (Booking booking : bookingList){
+            for (Booking booking : bookingList) {
                 BookingResponseDTO bookingResponseDTO = new BookingResponseDTO();
                 bookingResponseDTO.setId(booking.getId());
                 bookingResponseDTO.setRoomId(booking.getRoomId());

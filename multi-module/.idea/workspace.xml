@@ -6,11 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="db43dd2a-a458-4234-bbd2-661777756490" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/controller/BookingContoller.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/controller/BookingContoller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/repository/RoomRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/repository/RoomRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/service/BookingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/service/BookingService.java" afterDir="false" />
+
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/controller/ReviewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/controller/ReviewController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/service/Impl/BookingServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/service/Impl/BookingServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/src/main/resources/templates/manage/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/resources/templates/manage/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/service/Impl/ReviewServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/org/hotel/back/service/Impl/ReviewServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/resources/templates/hotel/hotelDetail.html" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/resources/templates/hotel/hotelDetail.html" afterDir="false" />
+
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -393,7 +394,12 @@
       <workItem from="1680837404755" duration="8945000" />
       <workItem from="1680977979883" duration="648000" />
       <workItem from="1681038662597" duration="1540000" />
-      <workItem from="1681135413284" duration="7458000" />
+      <workItem from="1681135413284" duration="7755000" />
+      <workItem from="1681183207483" duration="1647000" />
+      <workItem from="1681195182256" duration="825000" />
+      <workItem from="1681196674718" duration="8247000" />
+      <workItem from="1681214789233" duration="1137000" />
+      <workItem from="1681215936424" duration="1639000" />
     </task>
     <servers />
   </component>

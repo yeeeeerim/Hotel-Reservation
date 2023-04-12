@@ -73,7 +73,7 @@ class MemberRepositoryTest {
                         .tellNumber("01012345678")
                         .gender(Gender.MAN)
                         .roleSet(Set.of(MemberRole.ROLE_OWNER))
-                        .nickName("업주")
+                        .nickName("닉네임")
                         .password(passwordEncoder.encode("1234"))
                 .build());
     }

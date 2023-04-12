@@ -49,14 +49,13 @@ public class ReviewServiceImpl implements ReviewService {
                 (id).orElseThrow(RuntimeException::new);
         System.out.println("======="+review);
         return new ReviewResponseDTO(review);
-
     }
 
+
     public Long updateReview(ReviewRequestDTO reviewRequestDTO){
-        System.out.println("****reviewRequestDTO*******  "+reviewRequestDTO);
         Review review=reviewRepository.findById(reviewRequestDTO.getId())
                 .orElseThrow(()-> new IllegalArgumentException("해당 리뷰가 존재하지 않습니다. "));
-        review.updateReview(reviewRequestDTO.getReviewContent());
+        review.updateReview(reviewRequestDTO.getReviewContent(),reviewRequestDTO.getRating());
         reviewRepository.save(review);
         return review.getHotel().getId();
     }
