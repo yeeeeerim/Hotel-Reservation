@@ -16,6 +16,7 @@ import org.hotel.back.domain.Booking;
 import org.hotel.back.domain.Member;
 import org.hotel.back.domain.Room;
 import org.hotel.back.repository.BookingRepository;
+import org.hotel.back.repository.MemberRepository;
 import org.hotel.back.repository.RoomRepository;
 import org.hotel.back.service.BookingService;
 import org.springframework.stereotype.Service;
@@ -36,6 +37,7 @@ public class BookingServiceImpl implements BookingService {
     private final BookingRepository bookingRepository;
 
     private final RoomRepository roomRepository;
+
 
     public List<RoomDTO> findAvailable(LocalDateTime checkIn, LocalDateTime checkOut, Long hotelId) {
             List<Room> rooms = roomRepository.findAvailableRooms(checkIn, checkOut, hotelId);
@@ -168,11 +170,14 @@ public class BookingServiceImpl implements BookingService {
 
     @Transactional
     public void delete (Long id){
-        Optional<Booking> booking = bookingRepository.findById(id);
+        Optional<Booking> booking = bookingRepository.findByIdWithMember(id);
+
         if (booking.isPresent()) {
             Booking b = booking.get();
             b.setDeleted(true);
-            System.out.println(b.getDeleted());
+
+            log.info("삭제 ID {}",b.getDeleted());
+
         }
     }
 }
