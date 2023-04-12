@@ -8,6 +8,7 @@ import org.hotel.back.data.response.ReviewResponseDTO;
 import org.hotel.back.service.ReviewService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @Slf4j
@@ -25,6 +26,7 @@ public class ReviewController {
     }
 
     // 댓글 작성
+    @PreAuthorize("isAuthenticated()")
     @PostMapping("/{hotelId}")
     public ResponseEntity<Void> reviewSave(@PathVariable("hotelId") Long hotelId, @RequestBody ReviewRequestDTO reviewRequestDTO) {
         reviewService.saveReview(hotelId, reviewRequestDTO);
@@ -32,11 +34,15 @@ public class ReviewController {
     }
 
     // 댓글 수정
+
+    @PreAuthorize("isAuthenticated()")
     @PutMapping
     public ResponseEntity<Void> reviewUpdate( @RequestBody ReviewRequestDTO reviewRequestDTO) {
         reviewService.updateReview(reviewRequestDTO);
         return ResponseEntity.status(HttpStatus.OK).build();
     }
+
+    @PreAuthorize("isAuthenticated()")
     @GetMapping("/{id}")
     public ResponseEntity<?> reviewUpdateGet(@PathVariable Long id) {
         ReviewResponseDTO review=reviewService.readReview(id);

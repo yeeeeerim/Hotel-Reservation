@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml">
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8" />
@@ -151,11 +151,13 @@
                             <tr th:each="review:${article.reviews}">
                                 <td th:text="${review.id}"></td>
                                 <td th:text="${review.reviewContent}"></td>
-                                <td th:text="${review.reviewWriter}"></td>
+                                <td th:text="${review.reviewWriter}" class="review-writer"></td>
                                 <td th:text="${review.createdDate}"></td>
                                 <td th:text="${review.modifiedDate}"></td>
                                 <td class="align-content-center" th:text="${review.rating}"></td>
-                                <td><button type="button" class="btn btn-warning review-update-btn" th:data-review-id="${review.id}" >수정</button></td>
+                                <th:block th:if = "${#authentication != null and #authentication.isAuthenticated()}">
+                                    <td><button type="button" th:attr="class='btn btn-warning review-update-btn ' + ${review.id}"  th:if="${review.reviewWriter == #authentication.name}"  th:data-review-id="${review.id}">수정</button></td>
+                                </th:block>
                                 <td><button type="button" class="btn btn-dark review-delete-btn" th:data-review-id="${review.id}" >삭제</button></td>
                             </tr>
                             </tbody>
@@ -221,6 +223,15 @@
         let hotelId = [[ ${article.id}]]
         let latitude = [[${article.latitude}]]
         let longitude = [[${article.longitude}]]
+        const writer = $('.review-writer').text()
+
+        if(writer != null){
+            const user = $('.login-user').val()
+
+
+            console.log(user)
+        }
+
         console.log(latitude)
         console.log(longitude)
 
@@ -377,12 +388,8 @@
     marker.setMap(map);
 
 
-    /**
-     * 예약가능한 룸 조회 및 예약버튼 눌렀을 때
-     * */
-
-
     document.querySelector(".checkButton").addEventListener("click", async function (e){
+        document.querySelector(".room-check").innerHTML = "";
         const data = 0;
         const response = await gettest();
         const id = $(".hotel-id").html()
@@ -415,12 +422,14 @@
                     const checkIn = document.querySelector(".checkIn").value;
                     const checkOut = document.querySelector(".checkOut").value;
                     const roomId = $(this).data('room-id');
+                    const $parentDiv = $(this).parent()
                     axios.post('/booking/save', {
                         roomId: roomId,
                         checkIn: checkIn,
                         checkOut: checkOut
                     }).then((response) => {
                         console.log("OK")
+                        $parentDiv.remove()
                     }).catch((error) => {
                         console.log("fail")
                         console.log(checkIn)
@@ -432,7 +441,6 @@
             console.log(error);
         }
     });
-
 </script>
 <script>
     async function gettest(){
