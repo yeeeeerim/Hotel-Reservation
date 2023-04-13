@@ -129,8 +129,9 @@
     const check = [[ ${check} ]]
     const dto = [[ ${dto} ]]
     const imageList = dto.roomImage
-    const hotelId = [[ ${hotelId} ]]
+    const hotelId = dto.hotelId
     const roomId = dto.id
+
 
     if(dto != null){
       $('.hotelNa').val(dto.hotelNa)
@@ -145,9 +146,16 @@
       alert("해당 객실을 삭제할 권한이 없습니다.")
       window.history.back()
     }
+
+    $('#modify').click(function (){
+      location.href = '/room/modify?id='+roomId+'&hotel='+hotelId
+    })
+    $('#delete').click(function (){
+      location.href = '/room/delete?id='+roomId+'&hotel='+hotelId
+    })
   })
     let imageList = [[ ${dto.roomImage} ]]
-    const hotelId = [[ ${hotelId} ]]
+    const hotelId = [[ ${id} ]]
     const roomId = [[ ${dto.id} ]]
 
 
@@ -165,12 +173,7 @@
       }
     }
 
-    $('#modify').click(function (){
-          location.href = '/room/modify?id='+roomId+'&hotel='+hotelId
-    })
-    $('#delete').click(function (){
-      location.href = '/room/delete?id='+roomId+'&hotel='+hotelId
-    })
+
 </script>
 <script>
 
