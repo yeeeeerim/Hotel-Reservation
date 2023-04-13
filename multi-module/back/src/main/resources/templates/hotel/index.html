@@ -98,10 +98,10 @@
                     </li>
                     <th:block th:each="page:${#numbers.sequence(startPage,endPage)}">
                         <li class="page-item">
-                            <a class="page-link text-light" th:if="${page != nowPage}"
+                            <a class="page-link text-dark" th:if="${page != nowPage}"
                                th:href="@{/hotel(page=${page}-1)}"
                                th:text="${page}"></a>
-                            <strong class="page-link text-light bg-dark"
+                            <strong class="page-link text-white bg-dark"
                                     th:if="${page == nowPage}"
                                     th:text="${page}"></strong>
                         </li>
@@ -114,6 +114,7 @@
                     </li>
                 </ul>
             </nav>
+
 
 
 
