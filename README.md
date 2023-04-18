@@ -18,7 +18,7 @@ https://data.gg.go.kr/portal/data/service/selectServicePage.do?page=1&rows=10&so
 
 ## 동작 방식
 
-![image](https://user-images.githubusercontent.com/79129475/226362885-dfc4dd89-168c-4fab-842b-a38a3dbb163b.png)
+![제목을-입력해주세요_-001 (1)](https://user-images.githubusercontent.com/95463650/232680670-4218bcff-94b9-4395-bf7a-1bb6d21ea6de.jpg)
 
 
 ## ERD 
