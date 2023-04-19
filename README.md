@@ -20,6 +20,12 @@ https://data.gg.go.kr/portal/data/service/selectServicePage.do?page=1&rows=10&so
 
 ![제목을-입력해주세요_-001 (1)](https://user-images.githubusercontent.com/95463650/232680670-4218bcff-94b9-4395-bf7a-1bb6d21ea6de.jpg)
 
+- Redis
+   
+- Spring Batch
+
+- 
+
 
 ## ERD 
 ![image](https://user-images.githubusercontent.com/79129475/228429497-fc381b6a-bdce-49cf-99b3-31b24186a0b0.png)
