@@ -21,6 +21,10 @@ https://data.gg.go.kr/portal/data/service/selectServicePage.do?page=1&rows=10&so
 ![제목을-입력해주세요_-001 (1)](https://user-images.githubusercontent.com/95463650/232680670-4218bcff-94b9-4395-bf7a-1bb6d21ea6de.jpg)
 
 
+## 간단설명
+
+호텔과 객실은 데이터를 조회할 때 바로 Mysql 서버를 조회하는 것이 아닌 Redis를 조회하고 없을 경우 Mysql을 조회한다. 여기서 Mysql에 데이터를 조회하면서 바로 Redis에 저장하게 되는데 
+
 ## ERD 
 ![image](https://user-images.githubusercontent.com/79129475/228429497-fc381b6a-bdce-49cf-99b3-31b24186a0b0.png)
 
