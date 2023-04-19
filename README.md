@@ -22,12 +22,16 @@ https://data.gg.go.kr/portal/data/service/selectServicePage.do?page=1&rows=10&so
 
 - Redis
    
+객실 데이터를 조회할 떄 해당 데이터를 바로 Mysql에서 가져오는 것이 아닌 Redis를 먼저 조회하고 없을 경우 Mysql에서 가져오는 방식으로 구성했다. 처음 조회할 떄는 Redis를 조회하고 Mysql을 조회하지만 그 다음 사용자가 조회할 때는 계속 Redis만 조회하도록 구성했다. 
+
 - Spring Batch 
+
 Spring 스케줄링을 통해 하루에 한 번씩 기간이 지난 예약 데이터들을 삭제하는 방식으로 구현했고, 처음에 호텔 Open API 데이터를 받는 것을
 8080 서버에서 실행할 때 다 받아오도록 하려했는데 중간에 OpenApi 중단이 끊기게 되어서 해당 데이터를 사용하려 했는데 사용 못하게 되었었다.
 그래서 현재 PC에 있는 호텔 데이터를 CSV 파일로 Batch 프로그램을 돌려 생성하고,  만든 CSV 파일을 통해 Mysql 컨테이너에 데이터를 넣었다.
 
 - KaKao API 활용
+- 
  Open API에 데이터는 위도 경도는 주지만 자세한 위치가 안 나오는 곳이 있어 해당 값으로 KaKao map으로 보여주기도 하고 해당 위도, 경도 데이터로 요청해서 도로명 주소를 받아오도록 구성했다. 
 - 
 
